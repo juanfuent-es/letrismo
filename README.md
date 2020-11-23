@@ -2,14 +2,13 @@
 
 ##  Instrucciones de instalación
 ```
-	$ git clone git@bitbucket.org:_elflaco/juanfuent.es.git
-	$ cd juanfuent.es
+	$ git clone https://github.com/juanfuent-es/letrismo.git
+	$ cd letrismo
 	$ bundle install
 	$ npm install
 	$ yarn install
 	$ rake db:create
 	$ rake db:migrate
-	$ rake db:seed
 	$ rails s
 ```
 
