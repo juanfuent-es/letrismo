@@ -1,0 +1,10 @@
+<% if object.errors.any? %>
+  <div id="error_explanation" class="col-ds-12">
+    <h3>Corrige estos <%= object.errors.count %> errores para poder continuar.</h3>
+    <ul>
+    <% object.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

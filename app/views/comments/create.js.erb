@@ -1,0 +1,7 @@
+var form = document.getElementById("new_comment");
+document.getElementById("comments").removeChild(form);
+//
+var commentsContainer = document.getElementById("comments-container");
+var html = commentsContainer.innerHTML;
+var comment = "<%= escape_javascript(render('/comments/show', object: @comment)) %>";
+commentsContainer.innerHTML = html + comment;

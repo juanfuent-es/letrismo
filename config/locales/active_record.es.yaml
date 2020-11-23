@@ -1,0 +1,22 @@
+es:
+  activerecord:
+    models:
+      project:
+        one: Proyecto
+        other: Proyectos
+      user:
+        one: Usuario
+        other: Usuarios
+    attributes:
+      user:
+        email: Correo
+        password: Contraseña
+        remember_me: Mantener Sesión Abierta
+      palette:
+        name: Paleta de color
+    errors:
+      messages:
+        record_invalid: 'La validación falló: %{errors}'
+        restrict_dependent_destroy:
+          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+          has_many: No se puede eliminar el registro porque existen %{record} dependientes

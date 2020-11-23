@@ -1,0 +1,29 @@
+<li class="comment" id="comment-<%= object.id %>">
+  <% if signed_in? %>
+    <%= link_to 'Eliminar', object, method: :delete, data: { confirm: "¿Estás seguro de eliminar este comentario" }, :class => "pure-button button-error button-small" %>
+  <% end %>
+  <p><strong><%= object.name %></strong> <time><%= time_ago(object.created_at) %></time></h4></p>
+  <p><%= object.message %></p>
+<!--
+  <% if object.comments.count > 0 %>
+    <ul class="comment-responses" id="comment-responses-<%= object.id %>">
+      <% object.comments.each do |comment| %>
+        <%= render "comments/response", object: comment %>
+      <% end %>
+    </ul>
+  <% end %>
+  <button class="toggle-form-container">
+    <span class="sr-only">Responder</span>
+  </button>
+
+  <%= form_for [object, Comment.new], remote: true, html: { :class => "form-comment-container", id: "form-comment-response-#{object.id}" } do |f| %>
+    <div class="field">
+      <%= f.text_field :name, placeholder: "Nombre" %>
+      <%= f.text_area :message, placeholder: "Respuesta a comentario" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Responder", :class => "pure-button pure-button-primary" %>
+    </div>
+  <% end %>
+  -->
+</li>

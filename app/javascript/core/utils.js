@@ -1,0 +1,1 @@
+export const PX_RATIO = window.devicePixelRatio;

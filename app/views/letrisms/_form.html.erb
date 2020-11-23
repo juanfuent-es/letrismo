@@ -1,0 +1,9 @@
+<%= form_for(letrism, html: { :class => "row", id: "letrism-form" }) do |f| %>
+	<% if letrism.errors.any? %>
+		<p>Escribe algo antes de guardar!</p>
+	<% end %>
+	<%= f.hidden_field :paths %>
+	<%= f.hidden_field :img %>
+	<div class="field"><%= f.text_field :chars, placeholder: "¿Qué escribiste?" %></div>
+	<div class="field"><%= f.submit "Guardar", id: "save-letrism" %></div>
+<% end %>

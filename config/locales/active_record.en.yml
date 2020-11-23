@@ -1,0 +1,19 @@
+en:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Validation failed: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Cannot delete record because a dependent %{record} exists
+          has_many: Cannot delete record because dependent %{record} exist
+    models:
+      user: Usuario
+    models:
+      user:
+        one: Usuario
+        other: Usuarios
+    attributes:
+      user:
+        email: Email
+        password: Password
+        remember_me: Remember me

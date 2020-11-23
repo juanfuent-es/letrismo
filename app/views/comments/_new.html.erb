@@ -1,0 +1,9 @@
+<%= form_for [object, Comment.new], remote: true, :class => "pure-form" do |f| %>
+	<%= f.label :message, "Entra en la conversación" %>
+	<div class="field">
+		<%= f.text_area :message, placeholder: "Comentario..." %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Comentar", :class => "pure-button pure-button-primary" %>
+	</div>
+<% end %>

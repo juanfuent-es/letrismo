@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale.to_s.downcase %>">
+  <head>
+    <link rel="preload" as="script" href="/js/vendor.js">
+    <!-- @see: https://developers.google.com/analytics/devguides/collection/gtagjs -->
+    <%= render "shared/analytics" %>
+    <meta charset='utf-8'>
+    <!-- user agent -->
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= render "shared/metas" %>
+    <%= render "shared/favicons" %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <!--
+        Datos estructurados
+        @see: https://developers.google.com/search/docs/guides/intro-structured-data?hl=es
+    -->
+    <%= yield :jsonld %>
+  </head>
+  <body>
+    <%= render "shared/preloader" %>
+    <%= render "shared/header" %>
+    <main id="app"><%= yield %></main>
+    <script src="/js/vendor.js"></script>
+    <%= javascript_pack_tag 'application' %>
+  </body>
+</html>

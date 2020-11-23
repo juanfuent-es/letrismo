@@ -1,0 +1,10 @@
+<% if flash.any? %>
+	<ul>
+		<% flash.each do |key, value| %>
+			<li><%= value %></li>
+		<% end
+	</ul>
+	flash.delete(:notice)
+	flash.discard
+	flash.clear
+end %>

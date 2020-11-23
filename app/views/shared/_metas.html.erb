@@ -1,0 +1,29 @@
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<!-- titles -->
+<meta property='og:title' content='<%= full_title(yield(:title)) %>'>
+<meta name='twitter:title' content='<%= full_title(yield(:title)) %>'>
+<meta name='title' content='<%= full_title(yield(:title)) %>'>
+<title><%= full_title(yield(:title)) %></title>
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Juan Fuentes">
+
+<meta property='og:type' content='website'>
+
+<!-- image -->
+<meta name='image' content='<%= meta_image(yield(:image)) %>'>
+<meta property='og:image' content='<%= meta_image(yield(:image)) %>'>
+<meta property='og:image' content='<%= "#{request.protocol}#{request.host_with_port}" %>/static/letrismo-share.png'>
+<meta name='twitter:image' content='<%= meta_image(yield(:image)) %>'>
+
+<!-- descriptions -->
+<meta name='description' content='<%= meta_description(yield(:description)) %>'>
+<meta property='og:description' content='<%= meta_description(yield(:description)) %>'>
+<meta name='twitter:description' content='<%= meta_description(yield(:description)) %>'>
+
+<meta name='keywords' content='<%= meta_keys(yield(:keywords)) %>'>
+<meta name='date' content='<%= meta_date(yield(:_date)) %>' scheme="YYYY-MM-DD">
+
+<!-- urls -->
+<link rel="canonical" href="<%= request.original_url %>">
+<meta property="og:url" content="<%= request.original_url %>">
