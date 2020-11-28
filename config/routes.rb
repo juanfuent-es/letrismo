@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
 	get 'gallery' => 'static_pages#gallery'
 	get 'contact' => 'static_pages#contact'
+	get 'draw' => 'static_pages#draw'
 
 	# data
 	get "manifest.json" => "site_info#manifest"
