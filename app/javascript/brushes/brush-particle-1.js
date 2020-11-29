@@ -1,3 +1,9 @@
+/*
+    Brush que considera la VELOCIDAD del trazo
+    y cambia el tamaño de las partículas según ese valor,
+    a mayor velocidad, más grande serán las partículas.
+*/
+
 import { Particle } from "./particle";
 import { Cursor } from "./cursor";
 
@@ -57,7 +63,7 @@ export const Brush = (p5) => {
         // Partículas que se están creando mientras el usuario dibuja
         if (p5.virtualParticleShape.length > 0){
             for (var i = 0; i < p5.virtualParticleShape.length; i++) {
-                p5.ellipse(p5.virtualParticleShape[i].position.x, p5.virtualParticleShape[i].position.y, p5.virtualParticleShape[i].radius)
+                p5.ellipse(p5.virtualParticleShape[i].position.x, p5.virtualParticleShape[i].position.y, p5.virtualParticleShape[i].moveSpeed);
                 p5.virtualParticleShape[i].animate();
             }
         }
@@ -66,7 +72,7 @@ export const Brush = (p5) => {
         for (var i = 0; i < p5.particleShapes.length; i++) {
             for (var j = 0; j < p5.particleShapes[i].length; j++) {
                 // Dibuja la partícula
-                p5.ellipse(p5.particleShapes[i][j].position.x, p5.particleShapes[i][j].position.y, p5.particleShapes[i][j].radius);
+                p5.ellipse(p5.particleShapes[i][j].position.x, p5.particleShapes[i][j].position.y, p5.particleShapes[i][j].moveSpeed);
 
                 // Modifica las propiedades de la partícula para que en el siguiente "frame" se vea distinto
                 p5.particleShapes[i][j].animate();

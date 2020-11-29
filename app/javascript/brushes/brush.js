@@ -1,3 +1,8 @@
+/*
+    Brush que crea una línea infinita,
+    uniendo todos los trazos.
+*/
+
 export const Brush = (p5) => {
     p5.shapes = [];
     p5.points = [];

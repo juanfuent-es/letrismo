@@ -4,7 +4,8 @@ import Controls from "components/controls";
 import p5 from 'p5';
 // import { Brush } from "brushes/brush"; /* Esqueleto de brush esencial */
 // import { Brush } from "brushes/brush-particle-0"; /* Esqueleto de brush con partícula(s) */
-import { Brush } from "brushes/brush-particle-1";
+// import { Brush } from "brushes/brush-particle-1";
+import { Brush } from "brushes/brush-particle-2";
 
 class App {
     constructor() {

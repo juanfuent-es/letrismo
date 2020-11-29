@@ -1,9 +1,13 @@
 /*
-    Brush que imprime una PARTÍCULA
-    en la posición de cada vértice guardado.
+    Brush que considera la VELOCIDAD y la DIRECCIÓN
+    en la que se realizan los trazos, modificando
+    el tamaño de las partículas y rotándolas
+    en el ángulo que se trazaron de acuerdo a la posición
+    anterior.
 */
 
 import { Particle } from "./particle";
+import { Cursor } from "./cursor";
 
 export const Brush = (p5) => {
     p5.shapes = [];
@@ -24,6 +28,10 @@ export const Brush = (p5) => {
     }
 
     p5.draw = () => {
+        // Actualiza los valores de Cursor
+        Cursor.update(p5.mouseX, p5.mouseY);
+        // console.log(Cursor.position);
+
         p5.clear();
         p5.noFill();
         p5.stroke("#FFF");
@@ -52,12 +60,20 @@ export const Brush = (p5) => {
         
 
         // Operaciones para dibujar y animar las partículas
-        p5.stroke("#F60");
+        p5.stroke("#F6F");
 
         // Partículas que se están creando mientras el usuario dibuja
         if (p5.virtualParticleShape.length > 0){
             for (var i = 0; i < p5.virtualParticleShape.length; i++) {
-                p5.ellipse(p5.virtualParticleShape[i].position.x, p5.virtualParticleShape[i].position.y, p5.virtualParticleShape[i].radius)
+                p5.push();
+                    p5.translate(p5.virtualParticleShape[i].position.x, p5.virtualParticleShape[i].position.y);
+                    p5.rotate(p5.virtualParticleShape[i].rotation);
+                    // p5.ellipse(0,0, 10, p5.virtualParticleShape[i].radius)
+                    // p5.ellipse(0,0, p5.virtualParticleShape[i].radius, 10);
+                    // p5.ellipse(0,0, p5.virtualParticleShape[i].width, p5.virtualParticleShape[i].height);
+                    p5.ellipse(0,0, p5.virtualParticleShape[i].height, p5.virtualParticleShape[i].width);
+                p5.pop();
+                
                 p5.virtualParticleShape[i].animate();
             }
         }
@@ -66,7 +82,14 @@ export const Brush = (p5) => {
         for (var i = 0; i < p5.particleShapes.length; i++) {
             for (var j = 0; j < p5.particleShapes[i].length; j++) {
                 // Dibuja la partícula
-                p5.ellipse(p5.particleShapes[i][j].position.x, p5.particleShapes[i][j].position.y, p5.particleShapes[i][j].radius)
+                p5.push();
+                    p5.translate(p5.particleShapes[i][j].position.x, p5.particleShapes[i][j].position.y);
+                    p5.rotate(p5.particleShapes[i][j].rotation);
+                    // p5.ellipse(0,0, 10, p5.particleShapes[i][j].radius);
+                    // p5.ellipse(0,0, p5.particleShapes[i][j].radius, 10);
+                    // p5.ellipse(0,0, p5.particleShapes[i][j].width, p5.particleShapes[i][j].height);
+                    p5.ellipse(0,0, p5.particleShapes[i][j].height, p5.particleShapes[i][j].width);
+                p5.pop();
 
                 // Modifica las propiedades de la partícula para que en el siguiente "frame" se vea distinto
                 p5.particleShapes[i][j].animate();
@@ -75,6 +98,16 @@ export const Brush = (p5) => {
 
         // console.log(p5.particleShapes);
 
+        // Dibuja el cursor para hacer pruebas
+        p5.noStroke();
+        p5.fill("#f60");
+        // p5.ellipse(Cursor.position.x, Cursor.position.y, 10);
+        p5.push();
+            p5.translate(Cursor.position.x, Cursor.position.y);
+            p5.rotate(Cursor.angle);
+            p5.ellipse(0, 0, 10, Cursor.distance);
+            // p5.ellipse(0, 0, Cursor.distance, 10);
+        p5.pop();
     }
 
     p5.reset = () => {
@@ -113,6 +146,7 @@ export const Brush = (p5) => {
         p5.virtualShape.push(_mousePos);
     }
 
+
     p5.mouseDragged = throttle((e) => {
         // console.log("mouseDragged triggered");
 
@@ -131,14 +165,17 @@ export const Brush = (p5) => {
         var _particle = new Particle({
             position: {
                 x: p5.mouseX,
-                y: p5.mouseY,
-            }
+                y: p5.mouseY
+            },
+
+            cursor: Cursor
         });
 
         // Guarda la partícula para ser dibujada constantemente
         p5.virtualParticleShape.push(_particle);
     }, 40);
 
+    
     p5.mouseReleased = () => {
         // console.log("mouseReleased triggered");
 
