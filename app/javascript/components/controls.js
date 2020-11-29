@@ -33,6 +33,17 @@ export default class Controls {
                     break;
             }
         });
+        // El dibujo de una forma requiere de 3 valores de color, background, relleno y stroke
+        let changeColorInputs = document.querySelectorAll(".change-color-input");
+        // Se asigna evento a los inputs de cambio de valor, el evento se dispara al cambiar de valor
+        for (let i = 0; i < changeColorInputs.length; i++) {
+            changeColorInputs[i].addEventListener("change", (e) => {
+                let _key = e.target.getAttribute("data-key");
+                let _value = e.target.value;
+                // Cada input tiene un valor clave {'key'}, y un valor asignado {'value'};
+                this.stage.updateAttr(_key, _value);
+            });
+        }
     }
 
     undo() {

@@ -2,7 +2,7 @@ require("@rails/ujs").start()
 import Preloader from "components/preloader";
 import Controls from "components/controls";
 import p5 from 'p5';
-import { Particle } from "brushes/particle";
+// import { Particle } from "brushes/particle";
 // import { Brush } from "brushes/brush"; /* Esqueleto de brush esencial */
 import { Brush } from "brushes/brush-particle-0"; /* Esqueleto de brush con partícula(s) */
 
