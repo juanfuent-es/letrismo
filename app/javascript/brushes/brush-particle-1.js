@@ -1,20 +1,16 @@
 /*
-    Brush que imprime una PARTÍCULA
-    en la posición de cada vértice guardado.
+    Brush que considera la VELOCIDAD del trazo
+    y cambia el tamaño de las partículas según ese valor,
+    a mayor velocidad, más grande serán las partículas.
 */
 
 import { Particle } from "./particle";
+import { Cursor } from "./cursor";
 
 export const Brush = (p5) => {
     p5.shapes = [];
     p5.undoneShapes = []; /* Necesario para utilizar undo() y redo() o sea ctrl+z y ctrl+y (aunque los comandos son las flechas izquierda y derecha) */
     p5.virtualShape = []; /* Necesario para guardar las formas una vez que se levante el lápiz */
-    
-    // colors
-    p5.bg_color = "#000";
-    p5.stroke_color = "#FFF";
-    p5.fill_color = "#000";
-    // colors
 
     p5.points = []; /* Necesario para previsualizar los trazos que se están dibujando porque "p5.shapes" se dibuja hasta que la forma se haya terminado */
 
@@ -29,18 +25,18 @@ export const Brush = (p5) => {
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
     }
 
-    p5.updateAttr = (key, value) => {
-        return p5[key] = value;
-    }
-
     p5.draw = () => {
-        p5.background(p5.bg_color);
+        // Actualiza los valores de Cursor
+        Cursor.update(p5.mouseX, p5.mouseY);
+        // console.log(Cursor.position);
+
+        p5.clear();
         p5.noFill();
-        p5.stroke(p5.stroke_color);
+        p5.stroke("#FFF");
 
         // Previsualuzación de la línea que se está dibujando
         p5.beginShape();
-        for (let i = 0; i < p5.points.length; i++) {
+        for (var i = 0; i < p5.points.length; i++) {
             let p = p5.points[i];
             p5.curveVertex(p.x, p.y);
         }
@@ -50,33 +46,33 @@ export const Brush = (p5) => {
         // Dibuja los "p5.shapes" guardados hasta el momento,
             // si es que el usuario decide verlos presionando "x"
         if (p5.drawLines) {
-            for (let i = 0; i < p5.shapes.length; i++) {
+            for (var i = 0; i < p5.shapes.length; i++) {
                 p5.beginShape();
-                let shape = p5.shapes[i];
-                for (let j = 0; j < shape.length; j++) {
-                    let p = shape[j];
-                    p5.curveVertex(p.x, p.y);
-                }
+                    for (var j = 0; j < p5.shapes[i].length; j++) {
+                        let p = p5.shapes[i][j];
+                        p5.curveVertex(p.x, p.y);
+                    }
                 p5.endShape();
             }
         }
         
 
         // Operaciones para dibujar y animar las partículas
-        p5.stroke(p5.stroke_color);
+        p5.stroke("#F6F");
 
         // Partículas que se están creando mientras el usuario dibuja
-        // if (p5.virtualParticleShape.length > 0) <- Se puede eliminar, el if consume más memoria que si hace la evaluación al ciclo en 0, simplemente lo saltaría
-        for (let i = 0; i < p5.virtualParticleShape.length; i++) {
-            p5.ellipse(p5.virtualParticleShape[i].position.x, p5.virtualParticleShape[i].position.y, p5.virtualParticleShape[i].radius)
-            p5.virtualParticleShape[i].animate();
+        if (p5.virtualParticleShape.length > 0){
+            for (var i = 0; i < p5.virtualParticleShape.length; i++) {
+                p5.ellipse(p5.virtualParticleShape[i].position.x, p5.virtualParticleShape[i].position.y, p5.virtualParticleShape[i].moveSpeed);
+                p5.virtualParticleShape[i].animate();
+            }
         }
 
         // Partículas guardadas
-        for (let i = 0; i < p5.particleShapes.length; i++) {
-            for (let j = 0; j < p5.particleShapes[i].length; j++) {
+        for (var i = 0; i < p5.particleShapes.length; i++) {
+            for (var j = 0; j < p5.particleShapes[i].length; j++) {
                 // Dibuja la partícula
-                p5.ellipse(p5.particleShapes[i][j].position.x, p5.particleShapes[i][j].position.y, p5.particleShapes[i][j].radius)
+                p5.ellipse(p5.particleShapes[i][j].position.x, p5.particleShapes[i][j].position.y, p5.particleShapes[i][j].moveSpeed);
 
                 // Modifica las propiedades de la partícula para que en el siguiente "frame" se vea distinto
                 p5.particleShapes[i][j].animate();
@@ -85,6 +81,20 @@ export const Brush = (p5) => {
 
         // console.log(p5.particleShapes);
 
+        // Dibuja el cursor para hacer pruebas
+        p5.noStroke();
+        p5.fill("#f60");
+        p5.ellipse(Cursor.position.x, Cursor.position.y, 10);
+    }
+
+    p5.reset = () => {
+        p5.points = [];
+
+        p5.shapes = [];
+        p5.undoneShapes = [];
+        
+        p5.particleShapes = [];
+        p5.undoneParticleShapes = [];
     }
 
     p5.setup = () => {
@@ -113,6 +123,7 @@ export const Brush = (p5) => {
         p5.virtualShape.push(_mousePos);
     }
 
+
     p5.mouseDragged = throttle((e) => {
         // console.log("mouseDragged triggered");
 
@@ -128,19 +139,22 @@ export const Brush = (p5) => {
         p5.virtualShape.push(_mousePos);
 
         // Creación y configuración de partículas
-        let _particle = new Particle({
+        var _particle = new Particle({
             position: {
                 x: p5.mouseX,
-                y: p5.mouseY,
-            }
+                y: p5.mouseY
+            },
+
+            cursor: Cursor
         });
 
         // Guarda la partícula para ser dibujada constantemente
         p5.virtualParticleShape.push(_particle);
     }, 40);
 
+    
     p5.mouseReleased = () => {
-        // console.log("mouseReleased triggered", p5.points);
+        // console.log("mouseReleased triggered");
 
         let _mousePos = {
             x: p5.mouseX,
@@ -172,25 +186,12 @@ export const Brush = (p5) => {
     }
 
 
-    p5.reset = () => {
-        p5.points = [];
-
-        p5.shapes = [];
-        p5.undoneShapes = [];
-        
-        p5.particleShapes = [];
-        p5.undoneParticleShapes = [];
-    }
-
 
     p5.data = () => {
         let html = "";
-        for (let i = 0; i < p5.shapes.length; i++) {
-            let shape = p5.shapes[i];
-            for (let j = 0; j < shape.length; j++) {
-                let _point = shape[j];
-                html += "{x:" + _point.x + ",y:" + _point.y + "}"
-            }
+        for (var i = 0; i < p5.points.length; i++) {
+            let _point = p5.points[i];
+            html += "{x:" + _point.x + ",y:" + _point.y + ",time:t}"
         }
         return html;
     }
