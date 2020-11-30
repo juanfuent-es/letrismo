@@ -223,9 +223,12 @@ export const Brush = (p5) => {
 
     p5.data = () => {
         let html = "";
-        for (var i = 0; i < p5.points.length; i++) {
-            let _point = p5.points[i];
-            html += "{x:" + _point.x + ",y:" + _point.y + ",time:t}"
+        for (let i = 0; i < p5.shapes.length; i++) {
+            let shape = p5.shapes[i];
+            for (let j = 0; j < shape.length; j++) {
+                let _point = shape[j];
+                html += "{x:" + _point.x + ",y:" + _point.y + "}"
+            }
         }
         return html;
     }

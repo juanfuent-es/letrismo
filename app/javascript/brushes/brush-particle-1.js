@@ -21,6 +21,10 @@ export const Brush = (p5) => {
     p5.drawingShape = false; /* Bandera para detectar si el usuario creó un "shape" que debe ser guardado al hacer click o no */
     p5.drawLines = true; /* Bandera para mostrar/esconder el trazo básico de la forma y solo mostrar las partículas */
 
+    p5.updateAttr = (key, value) => {
+        return p5[key] = value;
+    }
+    
     p5.setup = () => {
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
     }
@@ -32,7 +36,7 @@ export const Brush = (p5) => {
 
         p5.clear();
         p5.noFill();
-        p5.stroke("#FFF");
+        p5.stroke(p5.stroke_color);
 
         // Previsualuzación de la línea que se está dibujando
         p5.beginShape();
@@ -58,7 +62,7 @@ export const Brush = (p5) => {
         
 
         // Operaciones para dibujar y animar las partículas
-        p5.stroke("#F6F");
+        p5.stroke(p5.stroke_color);
 
         // Partículas que se están creando mientras el usuario dibuja
         if (p5.virtualParticleShape.length > 0){
@@ -83,7 +87,7 @@ export const Brush = (p5) => {
 
         // Dibuja el cursor para hacer pruebas
         p5.noStroke();
-        p5.fill("#f60");
+        p5.fill(p5.fill_color);
         p5.ellipse(Cursor.position.x, Cursor.position.y, 10);
     }
 
@@ -189,9 +193,12 @@ export const Brush = (p5) => {
 
     p5.data = () => {
         let html = "";
-        for (var i = 0; i < p5.points.length; i++) {
-            let _point = p5.points[i];
-            html += "{x:" + _point.x + ",y:" + _point.y + ",time:t}"
+        for (let i = 0; i < p5.shapes.length; i++) {
+            let shape = p5.shapes[i];
+            for (let j = 0; j < shape.length; j++) {
+                let _point = shape[j];
+                html += "{x:" + _point.x + ",y:" + _point.y + "}"
+            }
         }
         return html;
     }

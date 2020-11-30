@@ -26,7 +26,7 @@ class LetrismsController < ApplicationController
 	private
 
 	def letrism_params
-		params.require(:letrism).permit(:chars, :paths, :img)
+		params.require(:letrism).permit(:chars, :paths, :img, :bg, :stroke, :fill)
 	end
 
 end
