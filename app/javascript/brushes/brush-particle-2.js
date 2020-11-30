@@ -16,6 +16,12 @@ export const Brush = (p5) => {
 
     p5.points = []; /* Necesario para previsualizar los trazos que se están dibujando porque "p5.shapes" se dibuja hasta que la forma se haya terminado */
 
+    // colors
+    p5.bg_color = "#000";
+    p5.stroke_color = "#FFF";
+    p5.fill_color = "#000";
+    // colors
+
     p5.virtualParticleShape = []; /* Para habilitar undo() y redo(), es necesario crear un "array" de partículas por cada trazo, este array comienza a recibir partículas cuando el usuario apoya el lápiz, luego se cierra al levantarlo, se inserta en "p5.particleShapes" y se limpia para recibir un trazo nuevo */
     p5.particleShapes = []; /* "Array" que almacena todos los "trazos" de partículas */
     p5.undoneParticleShapes = []; /* "Array" que almacena los "trazos" de partículas borrados al "undo()" */
@@ -23,18 +29,23 @@ export const Brush = (p5) => {
     p5.drawingShape = false; /* Bandera para detectar si el usuario creó un "shape" que debe ser guardado al hacer click o no */
     p5.drawLines = true; /* Bandera para mostrar/esconder el trazo básico de la forma y solo mostrar las partículas */
 
+    p5.updateAttr = (key, value) => {
+        return p5[key] = value;
+    }
+
     p5.setup = () => {
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
     }
 
     p5.draw = () => {
+        // p5.background(p5.bg_color);
         // Actualiza los valores de Cursor
         Cursor.update(p5.mouseX, p5.mouseY);
         // console.log(Cursor.position);
 
         // p5.clear();
         p5.noFill();
-        p5.stroke("#FFF");
+        p5.stroke(p5.stroke_color);
 
         // Previsualuzación de la línea que se está dibujando
         p5.beginShape();
@@ -60,7 +71,7 @@ export const Brush = (p5) => {
         
 
         // Operaciones para dibujar y animar las partículas
-        p5.stroke("#F6F");
+        p5.stroke(p5.stroke_color);
 
         // Partículas que se están creando mientras el usuario dibuja
         if (p5.virtualParticleShape.length > 0){
@@ -100,7 +111,7 @@ export const Brush = (p5) => {
 
         // Dibuja el cursor para hacer pruebas
         p5.noStroke();
-        p5.fill("#f60");
+        p5.fill(p5.fill_color);
         // p5.ellipse(Cursor.position.x, Cursor.position.y, 10);
         p5.push();
             p5.translate(Cursor.position.x, Cursor.position.y);

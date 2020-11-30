@@ -77,11 +77,7 @@ export default class Controls {
     }
 
     toggleXRay() {
-        if(this.stage.drawLines === true){
-            this.stage.drawLines = false;
-        } else if (this.stage.drawLines === false) {
-            this.stage.drawLines = true;
-        }
+        this.stage.drawLines = !this.stage.drawLines;
     }
 
     save() {
