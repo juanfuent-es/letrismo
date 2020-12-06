@@ -5,7 +5,11 @@ import p5 from 'p5';
 // import { Brush } from "brushes/brush"; /* Esqueleto de brush esencial */
 // import { Brush } from "brushes/brush-particle-0"; /* Esqueleto de brush con partícula(s) */
 // import { Brush } from "brushes/brush-particle-1";
+// import { Brush } from "brushes/brush-particle-2";
+// import { Brush } from "brushes/brush-particle-3";
 import { LightBrush } from "brushes/light";
+
+// import { Cursor } from "brushes/cursor";
 
 class App {
     constructor() {
@@ -23,6 +27,11 @@ class App {
             this.controls.save();
             this.preloader.show();
         });
+
+        // window.addEventListener('mousemove', throttle ((e) => {
+        //     console.log(Cursor.angle);
+        //     // console.log(Cursor.angle * 180 / Math.PI);
+        // }, 200));
     }
 
     loaded() {

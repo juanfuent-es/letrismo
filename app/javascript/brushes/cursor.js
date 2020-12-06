@@ -37,10 +37,10 @@ export const Cursor = {
 
     getRotation: function() {
         // this.angle = (Math.atan2(this.dy, this.dx) / Math.PI) * 180; /* Fórmula para calcular rotación en grados */
-        this.angle = Math.atan2(this.dy, this.dx); /* Fórmula para calcular rotación en radianes */
+        this.angle = Number( Math.atan2(this.dy, this.dx).toFixed(2) ); /* Fórmula para calcular rotación en radianes */
         // console.log(this.angle);
 
         this.position.rotation += (this.angle - this.position.rotation) * this.cof;
-        // console.log(this.position.rotation);
+        // console.log(this.position.rotation * 180 / Math.PI);
     }
 }

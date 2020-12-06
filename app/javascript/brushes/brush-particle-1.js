@@ -21,6 +21,14 @@ export const Brush = (p5) => {
     p5.drawingShape = false; /* Bandera para detectar si el usuario creó un "shape" que debe ser guardado al hacer click o no */
     p5.drawLines = true; /* Bandera para mostrar/esconder el trazo básico de la forma y solo mostrar las partículas */
 
+    // colors
+    p5.bg_color = "#000";
+    p5.skeleton_color = "#FFF";
+    p5.stroke_color = "#F6F";
+    p5.fill_color = "#000";
+    p5.preview_color = "#f60";
+    // colors
+
     p5.updateAttr = (key, value) => {
         return p5[key] = value;
     }
@@ -36,7 +44,7 @@ export const Brush = (p5) => {
 
         p5.clear();
         p5.noFill();
-        p5.stroke(p5.stroke_color);
+        p5.stroke(p5.skeleton_color);
 
         // Previsualuzación de la línea que se está dibujando
         p5.beginShape();
@@ -87,7 +95,7 @@ export const Brush = (p5) => {
 
         // Dibuja el cursor para hacer pruebas
         p5.noStroke();
-        p5.fill(p5.fill_color);
+        p5.fill(p5.preview_color);
         p5.ellipse(Cursor.position.x, Cursor.position.y, 10);
     }
 
