@@ -1,57 +1,76 @@
-/*
-    Brush que crea una línea infinita,
-    uniendo todos los trazos.
-*/
-
 export const Brush = (p5) => {
     p5.shapes = [];
-    p5.points = [];
+    p5.shape = [];
+    // colors
+    p5.bg_color = "#000";
+    p5.stroke_color = "#FFF";
+    p5.fill_color = "#000";
 
     p5.setup = () => {
-        p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+        p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL);
     }
 
     p5.draw = () => {
-        p5.clear();
+        p5.background(p5.bg_color);
         p5.noFill();
-        p5.stroke("#FFF");
-        p5.beginShape();
-        for (var i = 0; i < p5.points.length; i++) {
-            let p = p5.points[i];
-            p5.curveVertex(p.x, p.y);
+        p5.stroke(p5.stroke_color);
+        for (let i = 0; i < p5.shapes.length; i++) {
+            let shape = p5.shapes[i];
+            p5.beginShape();
+            for (let j = 0; j < shape.length; j++) {
+                let p = shape[j];
+                p5.curveVertex(p.x, p.y);
+            }
+            p5.endShape();
         }
-        p5.endShape();
     }
 
+    /* Se vacía el arreglo contenedor de shapes, y el contenedor del 'current shape'*/
     p5.reset = () => {
-        p5.points = [];
+        p5.shapes = [];
+        p5.shape = [];
     }
 
-    p5.setup = () => {
-        p5.createCanvas(p5.windowWidth, p5.windowHeight);
+    p5.updateAttr = (key, value) => {
+        return p5[key] = value;
     }
 
+    /* Actualiza tamaño del stage al tamaño de ventana */
     p5.windowResized = () => {
         p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
     }
 
     p5.mouseDragged = throttle((e) => {
-        p5.points.push({
-            x: p5.mouseX,
-            y: p5.mouseY
+        p5.shape.push({
+            x: p5.mouseX - p5.windowWidth / 2,
+            y: p5.mouseY - p5.windowHeight / 2
         });
     }, 40);
 
+    p5.mousePressed = () => {
+        p5.shapes.push(p5.shape);
+    }
+
+    p5.mouseReleased = () => {
+        p5.shape = [];
+    };
+
     p5.data = () => {
         let html = "";
-        for (var i = 0; i < p5.points.length; i++) {
-            let _point = p5.points[i];
-            html += "{x:" + _point.x + ",y:" + _point.y + ",time:t}"
+        for (let i = 0; i < p5.shapes.length; i++) {
+            let shape = p5.shapes[i];
+            let node = "[";
+            for (let j = 0; j < shape.length; j++) {
+                let _point = shape[j];
+                node += "{x:" + _point.x + ",y:" + _point.y + "}"
+            }
+            node += "]";
+            html += node;
         }
         return html;
     }
 
     p5.screenshot = () => {
-      return p5.canvas.toDataURL("image/png");
+        return p5.canvas.toDataURL("image/png");
     }
 }

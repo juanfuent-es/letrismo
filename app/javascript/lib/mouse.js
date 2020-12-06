@@ -1,5 +1,8 @@
+
 import Vector from "../lib/vector.js";
+
 const pxRatio = window.devicePixelRatio;
+
 export default class Mouse {
 	constructor() {
 		this.pos = new Vector(1, 1);

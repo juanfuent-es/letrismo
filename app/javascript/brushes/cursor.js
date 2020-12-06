@@ -1,18 +1,13 @@
-import p5 from "p5"
-
-
 /* Mouse virtualizado a.k.a. "Cursor" */
 /* para detectar velocidad, aceleración, orientación, etc. */
 
 export const Cursor = {
     cof: 0.1,
-    
     position: {
         x: window.innerWidth / 2,
         y: window.innerHeight / 2,
         rotation: 0
     },
-
     dx: 0,
     dy: 0,
     distance: 0,

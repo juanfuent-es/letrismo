@@ -8,7 +8,10 @@
   },
   "dependencies": {
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "4.3.0"
+    "@rails/webpacker": "4.3.0",
+    "lodash": "^4.17.20",
+    "lodash.merge": "^4.6.2",
+    "pressure": "^2.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
