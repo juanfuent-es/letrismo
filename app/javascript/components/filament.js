@@ -35,19 +35,22 @@ export default class Filament {
             let vtx = this.vertex[i];
             vtx.integration(this.guide.pos, movement);
             vtx.vel.multBy(0.5);
+            vtx.pos0.addTo(vtx.vel);
             vtx.pos.addTo(vtx.vel);
-            movement *= 0.99;
+            movement *= 0.999;
             this.guide = this.vertex[i];
         }
     }
 
     render(p5, t) {
-        p5.beginShape();
+        // p5.beginShape();
         for (let i = 0; i < this.vertex.length; i++) {
-            let p = this.vertex[i].pos;
-            p5.curveVertex(p.x, p.y);
+            let pos = this.vertex[i].pos;
+            let _x = Math.cos(t + i) + pos.x;
+            let _y = Math.sin(t + i) + pos.y;
+            p5.curveVertex(_x, _y);
         }
-        p5.endShape();
+        // p5.endShape();
     }
 
     die() {
