@@ -3,12 +3,11 @@ import Mouse from "../lib/mouse.js";
 let LIGHT = {
     bulb: [],
     light: [],
-    total_vertices: 20,
+    total_vertices: 30,
     filaments: 2, //[5, 10, 15, 20]
     current: null,
     movement: 0.35
 }
-const WIDTH = Number(window.location.search.split("width=")[1]) || 2;
 
 export const LightBrush = (p5) => {
     p5.mouse = new Mouse();
@@ -29,18 +28,18 @@ export const LightBrush = (p5) => {
 
     p5.draw = () => {
         let time = new Date().getTime() * 0.0001;
-        p5.background("rgba(21, 21, 18, 0.0001)");
+        // p5.background("rgba(21, 21, 18, 0.00)");
+        p5.background("rgba(0, 0, 0, 0.001)");
         for (let i = 0; i < LIGHT.bulb.length; i++) {
             let light = LIGHT.bulb[i];
             for (let j = 0; j < light.length; j++) {
                 const filament = light[j];
                 filament.update(p5.mouse, time);
 
-                let _weight = Math.min((Math.tan((time + j) * 10)) * 0.35, 0.1) + 0.1;
-
-                let _hue = ~~Math.abs(Math.sin(time + i) * 360);
+                let _weight = Math.max(0.2, Math.min(Math.abs(Math.tan((time + j) * 10)), 0.01));
+                let _hue = ~~Math.abs(Math.sin(time + i + j) * 360);
                 p5.strokeWeight(_weight);
-                p5.stroke(_hue, 100, ((j + 1) / light.length) * 100);
+                p5.stroke(_hue, 100, 100);
 
                 p5.beginShape();
                 filament.render(p5, time);
