@@ -1,71 +1,62 @@
-import Pressure from "pressure";
 import Filament from "../components/filament.js";
 import Mouse from "../lib/mouse.js";
-const TAU = Math.PI * 2;
 let LIGHT = {
     bulb: [],
     light: [],
-    total_vertices: 30,
-    filaments: 5, //[5, 10, 15, 20]
+    total_vertices: 20,
+    filaments: 2, //[5, 10, 15, 20]
     current: null,
-    movement: 0.35,
-    pressure: 0
+    movement: 0.35
 }
 const WIDTH = Number(window.location.search.split("width=")[1]) || 2;
-Pressure.set(document.body, {
-    change: function(force, event) {
-        LIGHT.pressure = force * WIDTH;
-    },
-    end: function() {
-        LIGHT.pressure = 0;
-    }
-});
 
 export const LightBrush = (p5) => {
     p5.mouse = new Mouse();
     p5.shapes = [];
-    p5.pressure = 0;
     p5.shape = [];
-    p5.friction = 0.1;
     // colors
-    p5.bg_color = "rgba(21, 21, 18, 0.001)";
+    p5.bg_color = "rgb(21, 21, 18)";
     p5.stroke_color = "#FFF";
     p5.fill_color = "#000";
 
     p5.setup = () => {
-        p5.colorMode(p5.HSB);
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight); //, p5.WEBGL
-        p5.background("rgb(21, 21, 18)");
+        p5.colorMode(p5.HSB);
+        p5.strokeCap(p5.ROUND);
+        p5.noFill();
+        p5.background(p5.bg_color);
     }
 
     p5.draw = () => {
-        p5.pressure += (LIGHT.pressure - p5.pressure) * p5.friction;
-        let time = new Date().getTime() * 0.001;
-        p5.background(p5.bg_color);
-        p5.noFill();
+        let time = new Date().getTime() * 0.0001;
+        p5.background("rgba(21, 21, 18, 0.0001)");
         for (let i = 0; i < LIGHT.bulb.length; i++) {
-            let _weight = ((i + 1) / LIGHT.total_vertices) * LIGHT.pressure;
             let light = LIGHT.bulb[i];
-            p5.strokeWeight(_weight);
             for (let j = 0; j < light.length; j++) {
-                let _h = ~~Math.abs(Math.sin(time + i - j) * 360);
-                let _s = ~~Math.abs(Math.cos(time - i + j) * 100);
-                let _a = (j / light.length);
                 const filament = light[j];
-                p5.stroke(_h, _s, 100, _a);
                 filament.update(p5.mouse, time);
+
+                let _weight = Math.min((Math.tan((time + j) * 10)) * 0.35, 0.1) + 0.1;
+
+                let _hue = ~~Math.abs(Math.sin(time + i) * 360);
+                p5.strokeWeight(_weight);
+                p5.stroke(_hue, 100, ((j + 1) / light.length) * 100);
+
+                p5.beginShape();
                 filament.render(p5, time);
+                p5.endShape();
             }
         }
     }
 
     /* Se vacía el arreglo contenedor de shapes, y el contenedor del 'current shape'*/
     p5.reset = () => {
-        p5.background("#000");
+        p5.background(p5.bg_color);
         p5.shapes = [];
         p5.shape = [];
-        p5.bulb = [];
-        p5.light = [];
+
+        LIGHT.bulb = [];
+        LIGHT.light = [];
     }
 
     p5.updateAttr = (key, value) => {
@@ -88,8 +79,8 @@ export const LightBrush = (p5) => {
         p5.shapes.push(p5.shape);
         for (let i = 0; i < LIGHT.filaments; i++) {
             const _filament = new Filament({
-                movement: (Math.sin(i * 3) * 0.1) + LIGHT.movement,
-                size: LIGHT.total_vertices,
+                movement: Math.abs(Math.sin(i * 3) * 0.1) + LIGHT.movement,
+                size: ~~((i + 1) / LIGHT.total_vertices),
                 position: {
                     x: p5.mouseX,
                     y: p5.mouseY
