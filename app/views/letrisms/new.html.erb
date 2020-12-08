@@ -1,1 +1,71 @@
 <%= render 'form', letrism: @letrism %>
+<div class="tool">
+	<div class="toolCheck">
+		<input type="checkbox" name="" id="toolCheckInput">
+		<label for="toolCheckInput">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.13 40.25"><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><path style="fill:#151512" d="M0,0V40.25H40.13V0ZM20.06,26.13a6,6,0,1,1,6-6A6,6,0,0,1,20.06,26.13Z"/><circle cx="20.06" cy="20.13" r="5"/></g></g></svg>
+		</label>
+		<div class="toolMenu">
+			<form>
+				<div class="closeBtn">
+					<button class="closeTool">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke:#fff;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke:#fff;stroke-miterlimit:10"/></g></g></svg>
+				</button>
+			</div>
+			<div class="slider"><p>Viscocity</p><input type="range" min="0" max="100" step="10" name="viscocity"></div>
+			<div class="slider"><p>Flow</p><input type="range" min="0" max="100" step="10" name="flow"></div>
+			<div class="slider">
+				<p>Color</p>
+				<div>
+					<p>R</p><input type="range" min="0" max="255" step="1" name="red">
+					<p>G</p><input type="range" min="0" max="255" step="1" name="green">
+					<p>B</p><input type="range" min="0" max="255" step="1" name="blue">
+				</div>
+			</div>
+			<div class="equills">
+				<p>eQuills</p>
+				<div>
+					<input type="radio" name="eQuills" value="1" id="equill1" checked>
+					<label for="equill1">1</label>
+				</div>
+				<div>
+					<input type="radio" name="eQuills" value="2" id="equill2">
+					<label for="equill2">2</label>
+				</div>
+			</div>
+			<div class="grids">
+				<p>Grids</p>
+				<div>
+					<input type="radio" name="grids" value="1" id="grid1">
+					<label for="grid1">1</label>
+				</div>
+				<div>
+					<input type="radio" name="grids" value="2" id="grid2">
+					<label for="grid2">2</label>
+				</div>
+				<div>
+					<input type="radio" name="grids" value="3" id="grid3">
+					<label for="grid3">3</label>
+				</div>
+				<div>
+					<input type="radio" name="grids" value="0" id="grid0" checked>
+					<label for="grid0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></label>
+				</div>
+			</div>
+			<div class="background">
+				<p>Background</p>
+				<div>
+					<input type="radio" name="background" value="1" id="back1" checked>
+					<label for="back1"></label>
+				</div>
+				<div>
+					<input type="radio" name="background" value="2" id="back2">
+					<label for="back2"></label>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="toolCheckWhite"></div>
+<div class="toolCheckRed"></div>
+</div>

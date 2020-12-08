@@ -11,10 +11,10 @@ let LIGHT = {
     movement: 0.35,
     pressure: 0
 }
-
+const WIDTH = Number(window.location.search.split("width=")[1]) || 2;
 Pressure.set(document.body, {
     change: function(force, event) {
-        LIGHT.pressure = force * 10;
+        LIGHT.pressure = (force * WIDTH) + 1;
     },
     end: function() {
         LIGHT.pressure = 0;
@@ -28,20 +28,20 @@ export const LightBrush = (p5) => {
     p5.shape = [];
     p5.friction = 0.1;
     // colors
-    p5.bg_color = "rgba(0,0,0,0.001)";
+    p5.bg_color = "rgb(21, 21, 18)";
     p5.stroke_color = "#FFF";
     p5.fill_color = "#000";
 
     p5.setup = () => {
         p5.colorMode(p5.HSB);
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight); //, p5.WEBGL
-        p5.background("#000");
+        p5.background(p5.bg_color);
     }
 
     p5.draw = () => {
         p5.pressure += (LIGHT.pressure - p5.pressure) * p5.friction;
         let time = new Date().getTime() * 0.001;
-        p5.background(p5.bg_color);
+        p5.background("rgba(21, 21, 18, 0.001)");
         p5.noFill();
         for (let i = 0; i < LIGHT.bulb.length; i++) {
             let _weight = ((i + 1) / LIGHT.total_vertices) * LIGHT.pressure;
@@ -61,7 +61,7 @@ export const LightBrush = (p5) => {
 
     /* Se vacía el arreglo contenedor de shapes, y el contenedor del 'current shape'*/
     p5.reset = () => {
-        p5.background("#000");
+        p5.background(p5.bg_color);
         p5.shapes = [];
         p5.shape = [];
         p5.bulb = [];

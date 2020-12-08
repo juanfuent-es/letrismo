@@ -2,7 +2,6 @@
 @import "mixins";
 
 @import "lib/normalize";
-@import "lib/skeleton";
 
 @import "default/*";
 @import "layout/*";
@@ -10,12 +9,12 @@
 @import "components/*";
 @import "views/*";
 
+
 body {
+	font-family: 'Noto Sans', sans-serif;
 	background-color: var(--bg-color);
 	color: var(--text-color);
 	overflow-x: hidden;
-}
-
-pre, code, .CodeMirror {
-	font-family: var(--code-font);
+	padding: 0;
+	margin: 0;
 }

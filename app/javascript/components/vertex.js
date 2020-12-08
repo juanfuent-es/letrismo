@@ -3,6 +3,7 @@ import Vector from "../math/vector.js";
 export default class Vertex {
 	constructor(x, y) {
 		this.pos = new Vector(x, y);
+		this.pos0 = new Vector(x, y);
 		this.vel = new Vector(0, 0);
 	}
 

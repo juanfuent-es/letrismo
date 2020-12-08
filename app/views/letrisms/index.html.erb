@@ -1,17 +1,53 @@
-<section class="container">
-  <h1>Letrismo</h1>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate ex exercitationem iure mollitia nisi assumenda quas praesentium laboriosam, laudantium, iste. Nemo nihil, sit corrupti animi obcaecati! Accusamus et consequuntur, autem.</p>
-  <ul>
-    <% @letrisms.each do |letrism| %>
-    <li>
-      <%= link_to letrism_path(letrism.slug) do %>
-      <%= image_tag letrism.img.thumb.url, width: 100 %>
-      <p>Por <%= letrism.user.email %></p>
-      <% end %>
-      <!-- <td><%= link_to 'Show', letrism %></td>
-      <td><%= link_to 'Edit', edit_letrism_path(letrism) %></td>
-      <td><%= link_to 'Destroy', letrism, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-    </li>
-    <% end %>
+<div class="menu">
+  <input type="checkbox" id="menuCheckInput">
+  <label for="menuCheckInput"></label>
+  <p class="title">
+    <span class="initial">T</span>
+    <span class="letter">h</span>
+    <span class="letter">e</span>
+    <span class="letter">&nbsp;</span>
+    <span class="initial">N</span>
+    <span class="letter">e</span>
+    <span class="letter">x</span>
+    <span class="letter">t</span>
+    <span class="letter">&nbsp;</span>
+    <span class="initial">C</span>
+    <span class="letter">a</span>
+    <span class="letter">l</span>
+    <span class="letter">l</span>
+    <span class="letter">i</span>
+    <span class="letter">g</span>
+    <span class="letter">r</span>
+    <span class="letter">a</span>
+    <span class="letter">p</span>
+    <span class="letter">h</span>
+    <span class="letter">y</span>
+  </p>
+  <ul class="nav">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/manifesto">Manifesto</a></li>
+    <li><a href="/draw">Escribir</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html">Ideas?</a></li>
   </ul>
-</section>
+</div>
+<div class="container" id="container">
+  <div class="containerGrid">
+    <ul>
+      <% @letrisms.take(8).each do |letrism| %>
+      <li>
+        <%= link_to letrism_path(letrism.slug) do %>
+        <%= image_tag letrism.img.thumb.url, width: 100 %>
+        <div><p>Por <%= letrism.user.email %></p></div>
+        <% end %>
+      </li>
+      <% end %>
+      <!-- ULTIMO DE LA GALLERIA DE ENTRADA -->
+      <li class="description">
+        <h1>TNC</h1>
+        <p>Mediante el uso de lenguajes de programación y en conjunto con Juan Fuentes, Andrew Alva y Eli Ramos, nos encontramos creando herramientas de escritura digitales que dejen marcas imposibles de crear en el mundo físico. Las hemos denominado <i><b>"equills"</b></i></p>
+        <a href="/login" title="Comenzar"><button>COMENZAR</button></a>
+      </li>
+    </ul>
+  </div>
+</div>
