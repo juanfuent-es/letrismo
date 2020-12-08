@@ -7,7 +7,8 @@ import p5 from 'p5';
 // import { Brush } from "brushes/brush-particle-1";
 // import { Brush } from "brushes/brush-particle-2";
 // import { Brush } from "brushes/brush-particle-3";
-import { LightBrush } from "brushes/light";
+import { Brush } from "brushes/brush-particle-4";
+// import { LightBrush } from "brushes/light";
 
 // import { Cursor } from "brushes/cursor";
 
@@ -15,8 +16,10 @@ class App {
     constructor() {
         this.preloader = new Preloader("preloader");
         if (window["letrism-form"]) {
-            console.log(LightBrush)
-            this.sketch = new p5(LightBrush);
+            // console.log(LightBrush)
+            // this.sketch = new p5(LightBrush);
+            this.sketch = new p5(Brush);
+
             this.controls = new Controls(this.sketch);
             this.events();
         }
