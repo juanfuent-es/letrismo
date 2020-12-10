@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   	
 	root 'letrisms#index'
 
-	get 'manifest' => 'static_pages#manifest'
+	get 'manifiesto' => 'static_pages#manifest'
 	get 'gallery' => 'static_pages#gallery'
-	get 'contact' => 'static_pages#contact'
-	get 'draw' => 'letrisms#new'
+	get 'contacto' => 'static_pages#contact'
+	get 'notebook' => 'letrisms#new'
 
 	# data
 	get "manifest.json" => "site_info#manifest"
