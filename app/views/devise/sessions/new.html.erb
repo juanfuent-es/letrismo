@@ -1,26 +1,29 @@
-<section class="container">
-  <div class="twelve-columns">
-    <h2>Iniciar Sesión</h2>
-  </div>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {:class => ""}) do |f| %>
-  <div class="row">
-    <div class="field six columns">
+<div class="logoContainer"><%= image_tag("equills.svg") %></div>
+<div class="formBox">
+  <h2>Iniciar Sesión</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {:class => "formContainer"}) do |f| %>
+    <div class="formInputs">
       <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "u-full-width" %>
-      <%= f.label :remember_me do %>
-      <%= f.check_box :remember_me %>
-      <span class="label-body">Recordar Sesión</span>
-      <% end %>
-    </div>
-    <div class="field six columns">
+      <!-- <label for="user_email">Email</label>
+      <input autofocus="autofocus" autocomplete="email" class="u-full-width" type="email" value="" name="user[email]" id="user_email"> -->
+      <!-- <label for="user_password">Password</label>
+      <input autocomplete="current-password" class="u-full-width" type="password" name="user[password]" id="user_password"> -->
       <%= f.label :password %>
+      <%= f.hidden_field :remember_me, value: true %>
       <%= f.password_field :password, autocomplete: "current-password", :class => "u-full-width" %>
-      <%= link_to "Olvidé mi contraseña", new_password_path(resource_name) %>
     </div>
-    <div class="actions twelve columns">
-      <%= f.submit "Iniciar Sesión", class: "button" %>
+    <!-- <div class="formBottom">
+      <label for="user_remember_me"><input name="user[remember_me]" type="hidden" value="0">
+      <input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
+      <span class="label-body">Recordar Sesión</span>
+    </label> -->
+    <!-- <input type="submit" name="commit" value="Iniciar Sesión" class="button" data-disable-with="Iniciar Sesión"> -->
+    <br>
+    <div class="formBottom">
+    <%= f.submit "Iniciar Sesión", class: "button" %>
+      <%= render "devise/shared/links" %>
     </div>
-    <%= render "devise/shared/links" %>
   </div>
-  <% end %>
-</section>
+<% end %>
+</div>

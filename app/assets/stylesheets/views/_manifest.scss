@@ -1,0 +1,52 @@
+#manifestoContainer {
+	display: grid;
+	align-items: center;
+	max-width: 550px;
+	text-align: justify;
+	padding: 5% 0 0 0;
+}
+
+#manifestoContainer p {
+	font-size: 1em;
+	color: #eae7e1;
+}
+
+.logoContainer {
+	max-width: 450px;
+	margin: 50px auto;
+	width: 100%;
+	img {
+		width: 100%;
+	}
+}
+
+@media(max-width:990px) {
+	#manifestoContainer {
+		padding: 10% 0 0 0;
+	}
+
+}
+
+@media(max-width:590px) {
+	#manifestoContainer {
+		padding: 25% 0 0 0;
+	}
+
+}
+
+@media(max-width:440px) {
+	#manifestoContainer {
+		padding: 40% 0 0 0;
+	}
+
+}
+
+.signatureContainer {
+	width: 100%;
+	text-align: right;
+}
+
+.signature {
+	width: 50px !important;
+	float: right;
+}
