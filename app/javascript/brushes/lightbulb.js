@@ -23,13 +23,13 @@ export const LightBrush = (p5) => {
         p5.colorMode(p5.HSB);
         p5.strokeCap(p5.ROUND);
         p5.noFill();
-        p5.background(p5.bg_color);
+        // p5.background(p5.bg_color);
     }
 
     p5.draw = () => {
         let time = new Date().getTime() * 0.0001;
         // p5.background("rgba(21, 21, 18, 0.00)");
-        p5.background("rgba(0, 0, 0, 0.001)");
+        // p5.background("rgba(0, 0, 0, 0.001)");
         for (let i = 0; i < LIGHT.bulb.length; i++) {
             let light = LIGHT.bulb[i];
             for (let j = 0; j < light.length; j++) {
@@ -50,7 +50,8 @@ export const LightBrush = (p5) => {
 
     /* Se vacía el arreglo contenedor de shapes, y el contenedor del 'current shape'*/
     p5.reset = () => {
-        p5.background(p5.bg_color);
+        // p5.background(p5.bg_color);
+        p5.clear();
         p5.shapes = [];
         p5.shape = [];
 

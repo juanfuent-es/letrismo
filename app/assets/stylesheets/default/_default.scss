@@ -3,6 +3,9 @@ html {
 	-moz-user-select: none;
 	user-select: none;
 }
+body {
+	line-height: 1.42em;
+}
 
 canvas {
 	position: fixed;

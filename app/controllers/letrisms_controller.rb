@@ -2,6 +2,11 @@ class LetrismsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def new
+		if params[:equill]
+			@eQuill = request.original_url.downcase.split("equill=")[1]
+		else
+			@eQuill = "0"
+		end
 		@letrism = Letrism.new
 	end
 

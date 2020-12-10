@@ -1,3 +1,45 @@
+body {
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+	transition: background 0.5s ease;
+	&[data-theme="dark"] {
+		background-color: #151512;
+		// background-image: asset-url("white-equills-guide-a.svg");
+		&[data-grid="grid-a"] {
+			background-image: asset-url("white-equills-guide-a.svg");
+		}
+		&[data-grid="grid-b"] {
+			background-image: asset-url("white-equills-guide-b.svg");
+		}
+		&[data-grid="grid-c"] {
+			background-image: asset-url("white-equills-guide-c.svg");
+		}
+		&[data-grid="grid-d"] {
+			// background-image: asset-url("white-equills-guide-d.svg");
+			background-image: none;
+		}
+	}
+	&[data-theme="light"] {
+		background-color: #eae7e1;
+		// background-image: asset-url("equills-guide-a.svg");
+		&[data-grid="grid-a"] {
+			background-image: asset-url("equills-guide-a.svg");
+		}
+		&[data-grid="grid-b"] {
+			background-image: asset-url("equills-guide-b.svg");
+		}
+		&[data-grid="grid-c"] {
+			background-image: asset-url("equills-guide-c.svg");
+		}
+		&[data-grid="grid-d"] {
+			background-image: none;
+			// background-image: asset-url("equills-guide-d.svg");
+		}
+	}
+	
+}
 .tool {
 	position: fixed;
 	bottom: 5%;
@@ -72,20 +114,18 @@
 }
 
 .toolMenu .closeTool {
-	width: 30px;
-	height: 30px;
+	width: 20px;
+	height: 20px;
 	background: none;
 	border: 0;
-}
-
-.toolMenu .closeTool:hover {
+	display: inline-block;
 	cursor: pointer;
+	svg {
+		width: 100%;
+		height: 100%;
+	}
 }
 
-.toolMenu .closeTool svg {
-	width: 100%;
-	height: 100%;
-}
 
 .toolMenu .slider {
 	display: grid;
@@ -213,9 +253,18 @@
 }
 
 .toolMenu .equills {
-	display: grid;
-	grid-template-columns: 70px 40px 40px;
-	padding: 20px 0;
+		// display: grid;
+		// grid-template-columns: 70px 40px 40px;
+		// padding: 20px 0;
+	width: 100%;
+	ul {
+		padding: 10px 0px;
+		margin: 0;
+		list-style: none;
+		li {
+			display: inline-block;
+		}
+	}
 }
 
 .toolMenu .equills p {
@@ -223,29 +272,44 @@
 	padding: 0;
 }
 
-.toolMenu .equills input[type="radio"] {
+input[type="radio"] {
 	display: none;
-}
-
-.toolMenu .equills input[type="radio"] ~ label {
-	font-size: 0.8em;
-	width: 20px;
-	height: 20px;
-	border-radius: 30px;
 	border: 1px solid #fff;
-	padding: 5px 10px;
-	transition: all 300ms ease-in;
+	& + label {
+		display: inline-block;
+		font-size: 0.8em;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		border: 2px solid #fff;
+		padding: 0;
+		transition: border 300ms ease-in;
+		cursor: pointer;
+		position: relative;
+		span {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+		&:hover {
+			border-color: red;
+		}
+	}
+
+	&:checked + label {
+		border-color: red;
+	}
+
+	&#back1 + label {
+		background-color: #eae7e1;
+	}
+	&#back2 + label {
+		background-color: #151512;
+	}
 }
 
-.toolMenu .equills input[type="radio"] ~ label:hover {
-	cursor: pointer;
-	background: red;
-}
 
-.toolMenu .equills input[type="radio"]:checked ~ label {
-	background: #fff;
-	color: #000;
-}
 
 .toolMenu .grids {
 	display: grid;
@@ -262,15 +326,15 @@
 	display: none;
 }
 
-.toolMenu .grids input[type="radio"] ~ label {
-	font-size: 0.8em;
-	width: 20px;
-	height: 20px;
-	border-radius: 30px;
-	border: 1px solid #fff;
-	padding: 5px 10px;
-	transition: all 300ms ease-in;
-}
+// .toolMenu .grids input[type="radio"] ~ label {
+// 	font-size: 0.8em;
+// 	width: 20px;
+// 	height: 20px;
+// 	border-radius: 30px;
+// 	border: 1px solid #fff;
+// 	padding: 5px 10px;
+// 	transition: all 300ms ease-in;
+// }
 
 .toolMenu .grids div:last-child input[type="radio"] ~ label {
 	font-size: 0.8em;
@@ -311,24 +375,24 @@
 	display: none;
 }
 
-.toolMenu .background input[type="radio"] ~ label {
-	width: 20px;
-	height: 20px;
-	border-radius: 20px;
-	border: 1px solid #fff;
-	padding: 2px 13px;
-	transition: all 300ms ease-in;
-}
+// .toolMenu .background input[type="radio"] ~ label {
+// 	width: 20px;
+// 	height: 20px;
+// 	border-radius: 20px;
+// 	border: 1px solid #fff;
+// 	padding: 2px 13px;
+// 	transition: all 300ms ease-in;
+// }
 
-.toolMenu .background input[type="radio"] ~ label:hover {
-	cursor: pointer;
-	background: red;
-}
+// .toolMenu .background input[type="radio"] ~ label:hover {
+// 	cursor: pointer;
+// 	background: red;
+// }
 
-.toolMenu .background input[type="radio"]:checked ~ label {
-	background: #fff;
-	color: #000;
-}
+// .toolMenu .background input[type="radio"]:checked ~ label {
+// 	background: #fff;
+// 	color: #000;
+// }
 
 form#letrism-form {
 	position: fixed;

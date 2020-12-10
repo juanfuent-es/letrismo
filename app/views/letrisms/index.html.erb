@@ -1,7 +1,7 @@
 <div class="container" id="container">
   <div class="containerGrid">
     <ul>
-      <% @letrisms.take(8).each do |letrism| %>
+      <% @letrisms.shuffle.take(8).each do |letrism| %>
       <li>
         <%= link_to letrism_path(letrism.slug) do %>
         <%= image_tag letrism.img.thumb.url, width: 100 %>
@@ -11,9 +11,9 @@
       <% end %>
       <!-- ULTIMO DE LA GALLERIA DE ENTRADA -->
       <li class="description">
-        <h1>TNC</h1>
-        <p>Mediante el uso de lenguajes de programación y en conjunto con Juan Fuentes, Andrew Alva y Eli Ramos, nos encontramos creando herramientas de escritura digitales que dejen marcas imposibles de crear en el mundo físico. Las hemos denominado <i><b>"equills"</b></i></p>
-        <a href="/login" title="Comenzar"><button>COMENZAR</button></a>
+        <h1><%= image_tag("equills.svg", title: "eQuills") %></h1>
+        <p>eQuills es el término que adoptamos para referirnos a las herramientas de escritura digital que desarrollamos con el objetivo de dejar marcas imposibles de crear en el mundo físico. Suena bien ¿Cierto? Pruébalo tú mismo.</p>
+        <a href="/notebook" title="Comenzar"><button>COMENZAR</button></a>
       </li>
     </ul>
   </div>

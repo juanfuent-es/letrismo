@@ -12,22 +12,22 @@ export default class Controls {
                     this.stage.reset();
                     break;
 
-                /* ENTER */
+                    /* ENTER */
                 case 13:
                     this.save();
                     break;
 
-                /* Flecha Izquierda */
+                    /* Flecha Izquierda */
                 case 37:
                     this.undo();
                     break;
 
-                /* Flecha Derecha */
+                    /* Flecha Derecha */
                 case 39:
                     this.redo();
                     break;
 
-                /* "x" */
+                    /* "x" */
                 case 88:
                     this.toggleXRay();
                     break;
@@ -49,6 +49,26 @@ export default class Controls {
                 this.stage.updateAttr(_key, _value);
             });
         }
+        // bg selector
+        let bgInputs = document.querySelectorAll(".bg-input");
+        for (let i = 0; i < bgInputs.length; i++) {
+            bgInputs[i].addEventListener("click", (e) => {
+                let theme = e.target.getAttribute("data-theme");
+                document.body.setAttribute("data-theme", theme);
+                let hex = e.target.getAttribute("data-hex");
+                window["letrism_bg"].value = hex;
+            });
+        }
+        // grid selector
+        let gridInput = document.querySelectorAll(".grid-input");
+        for (let i = 0; i < gridInput.length; i++) {
+            gridInput[i].addEventListener("click", (e) => {
+                let _grid = e.target.getAttribute("data-grid");
+                document.body.setAttribute("data-grid", _grid);
+            });
+        }
+
+        
     }
 
     undo() {

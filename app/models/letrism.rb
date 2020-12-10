@@ -1,5 +1,5 @@
 class Letrism < ApplicationRecord
-	validates_presence_of :img, :paths
+	validates_presence_of :img #, :paths
 	
 	before_save :set_slug
 	belongs_to :user

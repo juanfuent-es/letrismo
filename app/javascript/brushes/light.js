@@ -35,13 +35,13 @@ export const LightBrush = (p5) => {
     p5.setup = () => {
         p5.colorMode(p5.HSB);
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight); //, p5.WEBGL
-        p5.background("rgb(21, 21, 18)");
+        // p5.background("rgb(21, 21, 18)");
     }
 
     p5.draw = () => {
         p5.pressure += (LIGHT.pressure - p5.pressure) * p5.friction;
         let time = new Date().getTime() * 0.001;
-        p5.background(p5.bg_color);
+        // p5.background(p5.bg_color);
         p5.noFill();
         for (let i = 0; i < LIGHT.bulb.length; i++) {
             let _weight = ((i + 1) / LIGHT.total_vertices) * LIGHT.pressure;
@@ -61,7 +61,8 @@ export const LightBrush = (p5) => {
 
     /* Se vacía el arreglo contenedor de shapes, y el contenedor del 'current shape'*/
     p5.reset = () => {
-        p5.background("#000");
+        // p5.background("#000");
+        p5.clear();
         p5.shapes = [];
         p5.shape = [];
         p5.bulb = [];

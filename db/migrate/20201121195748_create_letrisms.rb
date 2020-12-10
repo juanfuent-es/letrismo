@@ -6,6 +6,11 @@ class CreateLetrisms < ActiveRecord::Migration[6.0]
       t.string :slug,    default: ""
       t.json :paths
       t.string :img, 		default: ""
+    
+      # t.string :bg,    default: "#151512"
+      # t.string :fill,    default: "#151512"
+      # t.string :stroke,    default: "#eae7e1"
+
       t.boolean :gallery, 	null: false, default: false
 
       t.timestamps

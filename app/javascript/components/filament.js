@@ -43,14 +43,14 @@ export default class Filament {
     }
 
     render(p5, t) {
-        // p5.beginShape();
+        p5.beginShape();
         for (let i = 0; i < this.vertex.length; i++) {
             let pos = this.vertex[i].pos;
-            let _x = Math.cos(t + i) + pos.x;
-            let _y = Math.sin(t + i) + pos.y;
-            p5.curveVertex(_x, _y);
+            // let _x = Math.cos(t + i) + pos.x;
+            // let _y = Math.sin(t + i) + pos.y;
+            p5.curveVertex(pos.x, pos.y);
         }
-        // p5.endShape();
+        p5.endShape();
     }
 
     die() {

@@ -5,7 +5,7 @@
 
 import { Particle } from "./particle";
 
-export const Brush = (p5) => {
+export const Brush0 = (p5) => {
     p5.shapes = [];
     p5.undoneShapes = []; /* Necesario para utilizar undo() y redo() o sea ctrl+z y ctrl+y (aunque los comandos son las flechas izquierda y derecha) */
     p5.virtualShape = []; /* Necesario para guardar las formas una vez que se levante el lápiz */
