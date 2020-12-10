@@ -3,15 +3,15 @@ export class Particle_Attracted {
 		this.velocity = {x: 0, y: 0};
 		this.acceleration = {x: 0, y: 0};
 		this.accelerationNormal = {x: 0, y: 0};
-		this.accelerationScale = .8;
+		this.accelerationScale = args.accelerationScale || .8;
 		this.anchor = args.anchor || {x: window.innerWidth/2, y: window.innerHeight/2 }
 		this.position = args.position || { 
-			x: this.anchor.x + (Math.random() * 400 - 200),
-			y: this.anchor.y + (Math.random() * 400 - 200)
+			x: this.anchor.x + (Math.random() * 150 - 75),
+			y: this.anchor.y + (Math.random() * 150 - 75)
 		};
 
 		this.radius = args.radius || 20;
-		this.limit = 10;
+		this.limit = args.limit || 10;
 	}
 
 	animate() {
@@ -27,11 +27,26 @@ export class Particle_Attracted {
 		this.velocity.y += this.accelerationNormal.y;
 
 		// limit
-		if (this.velocity.x > this.limit) this.velocity.x = this.limit;
-		if (this.velocity.y > this.limit) this.velocity.y = this.limit;
+		if (this.velocity.x > this.limit) {
+			this.velocity.x = this.limit;
+		} else if(this.velocity.x < -this.limit) {
+			this.velocity.x = -this.limit;
+		}
 
-		this.position.x += this.velocity.x * .4;
-		this.position.y += this.velocity.y * .4;
+		if (this.velocity.y > this.limit) {
+			this.velocity.y = this.limit;
+		} else if(this.velocity.y < -this.limit) {
+			this.velocity.y = -this.limit;
+		}
+
+
+		this.position.x += this.velocity.x;
+		this.position.y += this.velocity.y;
+	}
+
+	updateAnchor(_x, _y) {
+		this.anchor.x = _x;
+		this.anchor.y = _y;
 	}
 
 

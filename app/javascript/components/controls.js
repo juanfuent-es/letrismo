@@ -31,6 +31,11 @@ export default class Controls {
                 case 88:
                     this.toggleXRay();
                     break;
+
+                /* "barra espaciadora" */
+                case 32:
+                    if(this.disperse) this.disperse();
+                    break;
             }
         });
         // El dibujo de una forma requiere de 3 valores de color, background, relleno y stroke
@@ -78,6 +83,10 @@ export default class Controls {
 
     toggleXRay() {
         this.stage.drawLines = !this.stage.drawLines;
+    }
+
+    disperse() {
+        this.stage.disperse();
     }
 
     save() {

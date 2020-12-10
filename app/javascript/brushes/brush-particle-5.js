@@ -3,8 +3,8 @@
     en la posición de cada vértice guardado.
 */
 
-// import { Particle } from "./particle";
 import { Particle_Attracted } from "./particle-attracted";
+import { Particle } from "./particle";
 import { Cursor } from "./cursor";
 
 export const Brush = (p5) => {
@@ -13,9 +13,9 @@ export const Brush = (p5) => {
     p5.virtualShape = []; /* Necesario para guardar las formas una vez que se levante el lápiz */
     
     // colors
-    p5.bg_color = "#000";
+    p5.bg_color = "#151512";
     p5.stroke_color = "#FFF";
-    p5.fill_color = "#000";
+    p5.fill_color = "#151512";
     // colors
 
     p5.points = []; /* Necesario para previsualizar los trazos que se están dibujando porque "p5.shapes" se dibuja hasta que la forma se haya terminado */
@@ -27,8 +27,33 @@ export const Brush = (p5) => {
     p5.drawingShape = false; /* Bandera para detectar si el usuario creó un "shape" que debe ser guardado al hacer click o no */
     p5.drawLines = true; /* Bandera para mostrar/esconder el trazo básico de la forma y solo mostrar las partículas */
 
+    p5.filaments = [];
+    p5.filamentsCount = 3;
+    p5.filament = {
+        accelerationScale: .4,
+        radius: 16,
+        limit: 4
+    };
+
     p5.setup = () => {
-        p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+        p5.createCanvas(p5.windowWidth, p5.windowHeight);
+        p5.mouseX = window.innerWidth /2;
+        p5.mouseY = window.innerHeight /2;
+
+        for (var i = 0; i < p5.filamentsCount; i++) {
+            p5.filaments[i] = new Particle_Attracted({
+                radius: p5.filament.radius,
+                limit: p5.filament.limit,
+                accelerationScale: p5.filament.accelerationScale,
+
+                anchor: {
+                    x: p5.mouseX,
+                    y: p5.mouseY
+                }
+            });
+        }
+
+        console.log(p5.filaments);
     }
 
     p5.updateAttr = (key, value) => {
@@ -36,39 +61,54 @@ export const Brush = (p5) => {
     }
 
     p5.draw = () => {
-    	Cursor.update(p5.mouseX, p5.mouseY);
+        // Actualiza los valores de Cursor
+        Cursor.update(p5.mouseX, p5.mouseY);
 
-        p5.background(0, 20);
+        p5.clear();
         // p5.background(p5.bg_color);
-        p5.noFill();
-        p5.stroke(p5.stroke_color);
+        // p5.background(0, 20);
+        
+        // p5.noFill();
+        // p5.stroke(p5.stroke_color);
+        p5.fill(p5.stroke_color);
+        p5.stroke(p5.fill_color);
+
+
+        // Particulas de atraccion siempre presentes
+        for (var i = 0; i < p5.filaments.length; i++) {
+            p5.filaments[i].updateAnchor(p5.mouseX, p5.mouseY);
+            p5.filaments[i].animate(p5.mouseX, p5.mouseY);
+
+            p5.ellipse(p5.filaments[i].position.x, p5.filaments[i].position.y, p5.filaments[i].radius);
+        }
+
 
         // Previsualuzación de la línea que se está dibujando
-        p5.beginShape();
-        for (let i = 0; i < p5.points.length; i++) {
-            let p = p5.points[i];
-            p5.curveVertex(p.x, p.y);
-        }
-        p5.endShape();
+        // p5.beginShape();
+        // for (let i = 0; i < p5.points.length; i++) {
+        //     let p = p5.points[i];
+        //     p5.curveVertex(p.x, p.y);
+        // }
+        // p5.endShape();
 
 
         // Dibuja los "p5.shapes" guardados hasta el momento,
             // si es que el usuario decide verlos presionando "x"
-        if (p5.drawLines) {
-            for (let i = 0; i < p5.shapes.length; i++) {
-                p5.beginShape();
-                let shape = p5.shapes[i];
-                for (let j = 0; j < shape.length; j++) {
-                    let p = shape[j];
-                    p5.curveVertex(p.x, p.y);
-                }
-                p5.endShape();
-            }
-        }
+        // if (p5.drawLines) {
+        //     for (let i = 0; i < p5.shapes.length; i++) {
+        //         p5.beginShape();
+        //         let shape = p5.shapes[i];
+        //         for (let j = 0; j < shape.length; j++) {
+        //             let p = shape[j];
+        //             p5.curveVertex(p.x, p.y);
+        //         }
+        //         p5.endShape();
+        //     }
+        // }
         
 
         // Operaciones para dibujar y animar las partículas
-        p5.stroke(p5.stroke_color);
+        // p5.stroke(p5.stroke_color);
 
         // Partículas que se están creando mientras el usuario dibuja
         // if (p5.virtualParticleShape.length > 0) <- Se puede eliminar, el if consume más memoria que si hace la evaluación al ciclo en 0, simplemente lo saltaría
@@ -90,10 +130,6 @@ export const Brush = (p5) => {
 
         // console.log(p5.particleShapes);
 
-    }
-
-    p5.setup = () => {
-        p5.createCanvas(p5.windowWidth, p5.windowHeight);
     }
 
     p5.windowResized = () => {
@@ -133,28 +169,28 @@ export const Brush = (p5) => {
         p5.virtualShape.push(_mousePos);
 
         // Creación y configuración de partículas
-        let _particle = new Particle_Attracted({
-            radius: 16,
-            limit: 8,
-            anchor: {
-                x: p5.mouseX,
-                y: p5.mouseY,
-            },
+        for (var i = 0; i < p5.filaments.length; i++) {
+            let _particle = new Particle({
+                position: {
+                    x: p5.filaments[i].position.x,
+                    y: p5.filaments[i].position.y
+                },
+                mortality: true,
+                lifespan: 100
+            });
 
-            // position: {
-            // 	x: Cursor.position.x,
-            // 	y: Cursor.position.y
-            // }
+            // let _particle = new Particle_Attracted({
+            //     position: {
+            //         x: p5.filaments[i].position.x,
+            //         y: p5.filaments[i].position.y
+            //     }
+            // });
 
-            // position: {
-            // 	x: Cursor.position.x + (Math.random() * 50 - 25),
-            // 	y: Cursor.position.y + (Math.random() * 50 - 25)
-            // }
-        });
+            // Guarda la partícula para ser dibujada constantemente
+            p5.virtualParticleShape.push(_particle);
+        }
 
-        // Guarda la partícula para ser dibujada constantemente
-        p5.virtualParticleShape.push(_particle);
-    }, 40);
+    }, 80);
 
     p5.mouseReleased = () => {
         // console.log("mouseReleased triggered", p5.points);
@@ -186,11 +222,31 @@ export const Brush = (p5) => {
         p5.virtualParticleShape = [];
 
         p5.drawingShape = false;
+
+        console.log(p5.particleShapes);
+    }
+
+    p5.disperse = () => {
+        p5.filaments = [];
+
+        for (var i = 0; i < p5.filamentsCount; i++) {
+            p5.filaments[i] = new Particle_Attracted({
+                radius: p5.filament.radius,
+                limit: p5.filament.limit,
+                accelerationScale: p5.filament.accelerationScale,
+
+                anchor: {
+                    x: p5.mouseX,
+                    y: p5.mouseY
+                }
+            });
+        }
     }
 
 
     p5.reset = () => {
-        p5.clear();
+        p5.disperse();
+
         p5.points = [];
 
         p5.shapes = [];

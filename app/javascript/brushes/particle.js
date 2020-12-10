@@ -26,7 +26,7 @@ export class Particle {
 		this.rotationAmplitudeX = 0;
 		this.rotationAmplitudeY = 1;
 
-		this.lifespan = 500; /* el tiempo durante el cual vivirá un pincel, el número decrece a cada frame; 0 es igual a muerte */
+		this.lifespan = args.lifespan || 500; /* el tiempo durante el cual vivirá un pincel, el número decrece a cada frame; 0 es igual a muerte */
 		this.motionLife = 1;
 		this.mortality = args.mortality || false;
 
@@ -37,7 +37,7 @@ export class Particle {
 	animate() {
 		// console.log(this.lifespan);
 
-		if (this.lifespan >= 0) {
+		if (this.lifespan > 0) {
 			// this.position.x ++;
 
 			this.getRotationAmplitude();

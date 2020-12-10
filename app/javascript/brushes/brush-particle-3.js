@@ -175,6 +175,8 @@ export const Brush = (p5) => {
         p5.virtualParticleShape = [];
 
         p5.drawingShape = false;
+
+        console.log(p5.particleShapes);
     }
 
 
