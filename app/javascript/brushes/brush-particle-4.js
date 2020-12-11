@@ -135,7 +135,8 @@ export const Brush4 = (p5) => {
         // Creación y configuración de partículas
         let _particle = new Particle_Attracted({
             radius: 16,
-            limit: 8,
+            limit: 4,
+            // accelerationScale: .6,
             anchor: {
                 x: p5.mouseX,
                 y: p5.mouseY,
@@ -147,8 +148,8 @@ export const Brush4 = (p5) => {
             // }
 
             // position: {
-            // 	x: Cursor.position.x + (Math.random() * 50 - 25),
-            // 	y: Cursor.position.y + (Math.random() * 50 - 25)
+            // 	x: Cursor.position.x + (Math.random() * 300 - 150),
+            // 	y: Cursor.position.y + (Math.random() * 300 - 150)
             // }
         });
 
