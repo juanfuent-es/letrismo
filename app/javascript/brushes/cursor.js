@@ -11,6 +11,9 @@ export const Cursor = {
     dx: 0,
     dy: 0,
     distance: 0,
+    distanceTarget: 0,
+    distanceCOF: 0.5,
+    distanceLimit: 50,
     angle: 0,
 
     update: function(_x, _y) {
@@ -28,7 +31,12 @@ export const Cursor = {
         this.dy = _y - this.position.y;
 
         // Calcula la distancia total entre ambas coordenadas para ser usada después
-        this.distance = parseFloat( (Math.sqrt( (this.dx * this.dx) + (this.dy * this.dy) )).toFixed(2) );
+
+        this.distanceTarget = parseFloat( (Math.sqrt( (this.dx * this.dx) + (this.dy * this.dy) )).toFixed(2) );
+        this.distance += (this.distanceTarget - this.distance) * this.distanceCOF;
+        
+        // this.distance = Math.min(this.distanceLimit, parseFloat( (Math.sqrt( (this.dx * this.dx) + (this.dy * this.dy) )).toFixed(2) ));
+        
         // console.log("distance: " + this.distance);
         // console.log(this.distance);
         // console.log(_x + " - " + this.position.x);

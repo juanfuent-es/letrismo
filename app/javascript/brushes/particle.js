@@ -21,7 +21,7 @@ export class Particle {
 
 		this.frame = args.frame || 0;
 		this.motionFrequency = 0.16;
-		this.motionAmplitude = 3;
+		this.motionAmplitude = args.motionAmplitude || 3;
 		
 		this.rotationAmplitudeX = 0;
 		this.rotationAmplitudeY = 1;

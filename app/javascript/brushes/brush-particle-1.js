@@ -25,8 +25,8 @@ export const Brush1 = (p5) => {
     p5.bg_color = "#000";
     p5.skeleton_color = "#FFF";
     p5.stroke_color = "#F6F";
-    p5.fill_color = "#000";
-    p5.preview_color = "#f60";
+    p5.fill_color = "#FFF";
+    p5.preview_color = "#FFF";
     // colors
 
     p5.updateAttr = (key, value) => {
@@ -35,12 +35,24 @@ export const Brush1 = (p5) => {
     
     p5.setup = () => {
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+        p5.mouseX = window.innerWidth /2;
+        p5.mouseY = window.innerHeight /2;
+
+        p5.visualizer = new Particle({
+            position: {
+                x: p5.mouseX,
+                y: p5.mouseY
+            },
+
+            cursor: Cursor
+        });
     }
 
     p5.draw = () => {
         // Actualiza los valores de Cursor
         Cursor.update(p5.mouseX, p5.mouseY);
         // console.log(Cursor.position);
+        // console.log(Cursor.distance);
 
         p5.clear();
         p5.noFill();
@@ -70,7 +82,9 @@ export const Brush1 = (p5) => {
         
 
         // Operaciones para dibujar y animar las partículas
-        p5.stroke(p5.stroke_color);
+        // p5.stroke(p5.stroke_color);
+        p5.noStroke();
+        p5.fill(p5.fill_color);
 
         // Partículas que se están creando mientras el usuario dibuja
         if (p5.virtualParticleShape.length > 0){
@@ -96,7 +110,10 @@ export const Brush1 = (p5) => {
         // Dibuja el cursor para hacer pruebas
         p5.noStroke();
         p5.fill(p5.preview_color);
-        p5.ellipse(Cursor.position.x, Cursor.position.y, 10);
+
+        // p5.ellipse(p5.mouseX, p5.mouseY, Math.max(Cursor.distance, 10));
+        p5.ellipse(p5.mouseX, p5.mouseY, Cursor.distance);
+        p5.visualizer.animate();
     }
 
     p5.reset = () => {
@@ -107,10 +124,6 @@ export const Brush1 = (p5) => {
         
         p5.particleShapes = [];
         p5.undoneParticleShapes = [];
-    }
-
-    p5.setup = () => {
-        p5.createCanvas(p5.windowWidth, p5.windowHeight);
     }
 
     p5.windowResized = () => {
@@ -157,7 +170,9 @@ export const Brush1 = (p5) => {
                 y: p5.mouseY
             },
 
-            cursor: Cursor
+            cursor: Cursor,
+
+            // motionAmplitude: Math.max((Cursor.distance * 0.1), 3)
         });
 
         // Guarda la partícula para ser dibujada constantemente

@@ -111,8 +111,8 @@ export const Brush2 = (p5) => {
         // console.log(p5.particleShapes);
 
         // Dibuja el cursor para previsualizar lo que se va a pintar
-        p5.noStroke();
-        p5.fill(p5.preview_color);
+        // p5.noStroke();
+        // p5.fill(p5.preview_color);
         // p5.ellipse(p5.mouseX, p5.mouseY, 10);
         p5.push();
             p5.translate(p5.mouseX, p5.mouseY);
