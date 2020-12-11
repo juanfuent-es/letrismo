@@ -4,8 +4,8 @@
       <% @letrisms.shuffle.take(8).each do |letrism| %>
       <li>
         <%= link_to letrism_path(letrism.slug) do %>
-        <%= image_tag letrism.img.thumb.url, width: 100 %>
-        <div><p>Por <%= letrism.user.email %></p></div>
+        <%= image_tag letrism.img.thumb.url, width: 100, alt: letrism.user.username, :class => "letrism-thumb" %>
+        <div><p>Por <%= letrism.user.username %></p></div>
         <% end %>
       </li>
       <% end %>

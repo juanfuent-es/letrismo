@@ -54,6 +54,11 @@
 
 .containerGrid ul li img {
 	width: 100%;
+	.letrism-thumb {
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
 }
 
 .containerGrid ul li a {
@@ -142,6 +147,7 @@
 }
 
 .menu {
+	background-color: var(--bg-color);
 	position: fixed;
 	top: 5%;
 	right: 5%;
@@ -183,6 +189,7 @@
 }
 
 .menu .nav {
+	background-color: var(--bg-color);
 	opacity: 0;
 	transform: translate(50px, 0);
 	transition: all 300ms ease-in;

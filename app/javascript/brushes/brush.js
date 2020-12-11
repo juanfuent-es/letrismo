@@ -53,7 +53,7 @@ export const Brush = (p5) => {
 
     p5.mouseReleased = () => {
         p5.shape = [];
-    p5.showSaveBtn();
+        p5.showSaveBtn();
     };
 
     p5.hideSaveBtn = () => {

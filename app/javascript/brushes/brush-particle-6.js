@@ -211,7 +211,6 @@ export const Brush6 = (p5) => {
         p5.hideSaveBtn();
     }
 
-
     p5.data = () => {
         let html = "";
         for (let i = 0; i < p5.shapes.length; i++) {

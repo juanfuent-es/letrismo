@@ -5,23 +5,21 @@ class LetrismUploader < CarrierWave::Uploader::Base
 
   storage :file
 
-
   def store_dir
     "imgs/#{model.id}/"
   end
 
   version :full do
     def full_filename (for_file = model.source.file)
-      "#{model.slug}.png"
+      "#{model.slug}-full.png"
     end
   end
 
   version :large do
-    process convert: :jpg
     process resize_to_limit: [1000, 1000]
     process optimize: [{ quality: 80 }] if RUBY_PLATFORM =~ /x86_64-linux/
     def full_filename (for_file = model.source.file)
-      "#{model.slug}.jpg"
+      "#{model.slug}-large.png"
     end
   end
 
@@ -34,27 +32,10 @@ class LetrismUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process convert: :jpg
     process resize_to_limit: [320, 320]
     process optimize: [{ quality: 80 }] if RUBY_PLATFORM =~ /x86_64-linux/
     def full_filename (for_file = model.source.file)
-      "#{model.slug}_thumb.jpg"
-    end
-  end
-
-  def interlace(type)
-    manipulate! do |img|
-      img.interlace(type.to_s)
-      img = yield(img) if block_given?
-      img
-    end
-  end
-
-  def quality(percentage)
-    manipulate! do |img|
-      img.quality(percentage.to_s)
-      img = yield(img) if block_given?
-      img
+      "#{model.slug}-thumb.png"
     end
   end
 

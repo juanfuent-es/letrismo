@@ -3,7 +3,9 @@
 <section class="container">
 	<div class="logoContainer intro-item"><%= image_tag("equills.svg") %></div>
 	<div class="imgContainer intro-item">
-		<%= image_tag @letrism.img.url %>
+		<figure style="background-color: <%= @letrism.bg %>">
+			<%= image_tag @letrism.img.full.url %>
+		</figure>
 		<p>Obra por: <%= @letrism.user.username %></p>
 		<div class="socialContainer intro-item">
 			<div>
