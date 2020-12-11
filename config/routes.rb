@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  	resources :letrisms
 	devise_for :users
+	mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  	resources :letrisms
+
 	devise_scope :user do
 		get '/login' => 'devise/sessions#new'
 		get '/log_out' => 'devise/sessions#destroy'
@@ -10,7 +13,7 @@ Rails.application.routes.draw do
 	root 'letrisms#index'
 
 	get 'manifiesto' => 'static_pages#manifest'
-	get 'gallery' => 'static_pages#gallery'
+	get 'galeria' => 'static_pages#gallery'
 	get 'contacto' => 'static_pages#contact'
 	get 'notebook' => 'letrisms#new'
 

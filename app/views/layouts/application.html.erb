@@ -13,10 +13,6 @@
     <%= render "shared/metas" %>
     <%= render "shared/favicons" %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <!--
-        Datos estructurados
-        @see: https://developers.google.com/search/docs/guides/intro-structured-data?hl=es
-    -->
     <%= yield :jsonld %>
   </head>
   <body class="light-mode" data-theme="dark">

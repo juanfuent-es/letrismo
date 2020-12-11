@@ -5,4 +5,7 @@
 		<p>La galería está vacía</p>
 	<% else %>
 	<% end %>
+	<footer id="pagination-container">
+		<%= will_paginate @letrisms %>
+	</footer>
 </section>

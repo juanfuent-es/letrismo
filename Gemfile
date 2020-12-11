@@ -15,7 +15,8 @@ gem 'htmlcompressor', '~> 0.3.0'
 # assets
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
-
+gem 'rails_admin', '~> 2.0'
+gem 'will_paginate'
 # Procesamiento de imágenes
 gem 'carrierwave'
 gem 'carrierwave-base64'
