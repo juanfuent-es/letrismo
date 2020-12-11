@@ -4,23 +4,33 @@ export default class Preloader {
 		this.container = document.getElementById(containerId)
 	}
 
-	show() {
-		gsap.to(this.container, 0.3, {
+	show(callback) {
+		gsap.to(this.container, 0.35, {
 			ease: Power2.easeOut,
 			opacity: 1,
 			scaleX: 1,
 			scaleY: 1,
-			display: "block"
+			display: "block",
+			onComplete: () => {
+				if (callback) callback();
+			}
 		});
 	}
 
 	hide() {
-		gsap.to(this.container, 0.3, {
+		gsap.to(this.container, 0.45, {
 			ease: Power2.easeOut,
 			opacity: 0,
 			scaleX: 2,
 			scaleY: 2,
 			display: "none"
+		});
+		gsap.to(".intro-item", 0.45, {
+			ease: Power2.easeOut,
+			delay: 0.35,
+			stagger: 0.05,
+			opacity: 1,
+			y: 0
 		});
 	}
 }

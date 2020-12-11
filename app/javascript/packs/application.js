@@ -17,7 +17,6 @@ class App {
     constructor() {
         this.preloader = new Preloader("preloader");
         if (window["letrism-form"]) {
-            // console.log(LightBrush)
             switch(eQuill) {
                 case 0:
                     this.sketch = new p5(Brush0);
@@ -37,18 +36,27 @@ class App {
                 case 5:
                     this.sketch = new p5(LightBrush);
                 break;
+                default:
+                    this.sketch = new p5(LightBrush);
             }
-            // this.sketch = new p5(Brush);
-
             this.controls = new Controls(this.sketch);
-            this.events();
         }
+        this.events();
     }
 
     events() {
-        window["save-letrism"].addEventListener("click", () => {
-            this.controls.save();
-            this.preloader.show();
+        document.addEventListener('click', (event) => {
+            if (event.target.matches('.change-page')) {
+                event.preventDefault();
+                let href = event.target.getAttribute("href");
+                this.preloader.show((e) => {
+                    return window.location = href;
+                });
+            } else if (event.target.matches('#save-letrism')) {
+                event.preventDefault();
+                this.controls.save();
+                this.preloader.show();
+            }
         });
 
         // window.addEventListener('mousemove', throttle ((e) => {

@@ -1,11 +1,17 @@
-<section class="container" id="about-section">
-	<h1>Gallery</h1>
-	<hr>
-	<% if @letrisms.empty? %>
-		<p>La galería está vacía</p>
-	<% else %>
-	<% end %>
-	<footer id="pagination-container">
-		<%= will_paginate @letrisms %>
-	</footer>
-</section>
+<div class="container" id="container">
+  <div class="containerGrid">
+    <ul>
+      <% @letrisms.each do |letrism| %>
+      <li>
+        <%= link_to letrism_path(letrism.slug) do %>
+        <%= image_tag letrism.img.thumb.url, width: 100 %>
+        <div><p>Por <%= letrism.user.email %></p></div>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<footer id="pagination-container">
+	<%= will_paginate @letrisms %>
+</footer>
