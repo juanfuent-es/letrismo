@@ -3,8 +3,6 @@ class Letrism < ApplicationRecord
 	
 	before_save :set_slug
 	belongs_to :user
-	has_many :letrisms
-	accepts_nested_attributes_for :letrisms
 
 	mount_base64_uploader :img, LetrismUploader
 

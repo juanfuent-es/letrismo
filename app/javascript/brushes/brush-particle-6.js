@@ -18,8 +18,6 @@ export const Brush6 = (p5) => {
     p5.fill_color = "#151512";
     // colors
 
-
-
     p5.virtualParticleShape = []; /* Para habilitar undo() y redo(), es necesario crear un "array" de partículas por cada trazo, este array comienza a recibir partículas cuando el usuario apoya el lápiz, luego se cierra al levantarlo, se inserta en "p5.particleShapes" y se limpia para recibir un trazo nuevo */
     p5.particleShapes = []; /* "Array" que almacena todos los "trazos" de partículas */
     p5.undoneParticleShapes = []; /* "Array" que almacena los "trazos" de partículas borrados al "undo()" */
@@ -166,6 +164,25 @@ export const Brush6 = (p5) => {
         p5.virtualParticleShape = [];
 
         // console.log(p5.particleShapes);
+        p5.showSaveBtn();
+    };
+
+    p5.hideSaveBtn = () => {
+        gsap.to("#save-letrism", 0.6, {
+            ease: Power2.easeOut,
+            opacity: 0,
+            y: 15,
+            display: "none"
+        });
+    }
+
+    p5.showSaveBtn = () => {
+        gsap.to("#save-letrism", 0.6, {
+            ease: Power2.easeOut,
+            opacity: 1,
+            y: 0,
+            display: "block"
+        });
     }
 
     p5.disperse = () => {
@@ -191,6 +208,7 @@ export const Brush6 = (p5) => {
         
         p5.particleShapes = [];
         p5.undoneParticleShapes = [];
+        p5.hideSaveBtn();
     }
 
 

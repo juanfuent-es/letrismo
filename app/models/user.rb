@@ -6,5 +6,6 @@ class User < ApplicationRecord
 	validates_presence_of :username
 
 	has_many :letrisms
+	accepts_nested_attributes_for :letrisms, allow_destroy: true
 
 end

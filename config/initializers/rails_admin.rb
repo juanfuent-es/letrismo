@@ -8,9 +8,9 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
 
-  config.authorize_with do
-    redirect_to main_app.root_path unless current_user.admin?
-  end
+  # config.authorize_with do
+  #   redirect_to main_app.root_path unless current_user.admin?
+  # end
 
 
   ## == CancanCan ==
@@ -43,4 +43,22 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model User do
+    edit do
+      field :username
+      field :email
+      field :password
+      field :password_confirmation
+    end
+  end
+
+  config.model Letrism do
+    edit do
+      field :user
+      field :img
+      field :gallery
+    end
+  end
+
 end

@@ -124,6 +124,7 @@ export const Brush1 = (p5) => {
         
         p5.particleShapes = [];
         p5.undoneParticleShapes = [];
+        p5.hideSaveBtn();
     }
 
     p5.windowResized = () => {
@@ -210,9 +211,26 @@ export const Brush1 = (p5) => {
         p5.virtualParticleShape = [];
 
         p5.drawingShape = false;
+        p5.showSaveBtn();
+    };
+
+    p5.hideSaveBtn = () => {
+        gsap.to("#save-letrism", 0.6, {
+            ease: Power2.easeOut,
+            opacity: 0,
+            y: 15,
+            display: "none"
+        });
     }
 
-
+    p5.showSaveBtn = () => {
+        gsap.to("#save-letrism", 0.6, {
+            ease: Power2.easeOut,
+            opacity: 1,
+            y: 0,
+            display: "block"
+        });
+    }
 
     p5.data = () => {
         let html = "";

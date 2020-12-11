@@ -44,7 +44,7 @@ class App {
                 event.preventDefault();
                 let href = event.target.getAttribute("href");
                 this.preloader.show((e) => {
-                    return window.location = href;
+                    return window.location.href = href;
                 });
             } else if (event.target.matches('#save-letrism')) {
                 // event.preventDefault();

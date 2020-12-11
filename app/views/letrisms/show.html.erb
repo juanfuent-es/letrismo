@@ -1,14 +1,35 @@
+<% provide(:title, "por #{@letrism.user.username}") %>
+<% provide(:image, @letrism.img.full.url) %>
 <section class="container">
-	<%= image_tag @letrism.img.url %>
-	<h1>Letrismo de <%= @letrism.user.username %></h1>
-	<h3>Más de <%= @letrism.user.username %></h3>
-	<ul>
-		<% @letrism.user.letrisms.shuffle.take(3).each do |letrism| %>
-		<li>
-			<%= link_to letrism_path(letrism.slug) do %>
-				<%= image_tag letrism.img.thumb.url, width: 100 %>
-			<% end %>
-		</li>
-		<% end %>
-	</ul>
+	<div class="logoContainer intro-item"><%= image_tag("equills.svg") %></div>
+	<div class="imgContainer intro-item">
+		<%= image_tag @letrism.img.url %>
+		<p>Obra por: <%= @letrism.user.username %></p>
+		<div class="socialContainer intro-item">
+			<div>
+				<a href="http://www.facebook.com/sharer.php?u=https://equills.letrismo.com/letrisms/<%= @letrism.slug %>" target="_blank" title="Compartir en Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M20,0H0V20H8.27V13.2H5.46V10H8.27V7.56c0-2.77,1.65-4.31,4.18-4.31a17,17,0,0,1,2.48.22V6.19h-1.4a1.6,1.6,0,0,0-1.8,1.73V10H14.8l-.49,3.2H11.73V20H20Z" style="fill:#151512"/></svg>
+				</a>
+			</div>
+			<div>
+				<a href="https://twitter.com/intent/tweet?text=Letrismo de <%= @letrism.user.username %>&url=https://equills.letrismo.com/letrisms/<%= @letrism.slug %>" target="_blank" title="Compartir en Twitter">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M20,0H0V20H20ZM15.67,7.09c0,.13,0,.25,0,.38A8.27,8.27,0,0,1,7.35,15.8a8.29,8.29,0,0,1-4.5-1.31,6.17,6.17,0,0,0,.71,0A5.87,5.87,0,0,0,7.2,13.27a2.93,2.93,0,0,1-2.74-2,3.16,3.16,0,0,0,1.32-.05A2.93,2.93,0,0,1,3.44,8.31v0a2.93,2.93,0,0,0,1.32.37,2.92,2.92,0,0,1-1.3-2.44,2.89,2.89,0,0,1,.4-1.48,8.31,8.31,0,0,0,6,3.06,2.93,2.93,0,0,1,5-2.67,5.74,5.74,0,0,0,1.86-.71A2.92,2.92,0,0,1,15.46,6a5.83,5.83,0,0,0,1.69-.46A6.16,6.16,0,0,1,15.67,7.09Z" style="fill:#151512"/></svg>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="moreImages">
+		<p class="intro-item">Más de <%= @letrism.user.username %></p>
+		<div class="moreContainer intro-item">
+			<ul>
+				<% @letrism.user.letrisms.shuffle.take(6).each do |letrism| %>
+				<li>
+					<%= link_to letrism_path(letrism.slug), :class => "change-page" do %>
+					<%= image_tag letrism.img.thumb.url, width: 100 %>
+					<% end %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
 </section>

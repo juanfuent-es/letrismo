@@ -7,7 +7,13 @@ class LetrismUploader < CarrierWave::Uploader::Base
 
 
   def store_dir
-    "imgs/#{model.user.id}"
+    "imgs/#{model.id}/"
+  end
+
+  version :full do
+    def full_filename (for_file = model.source.file)
+      "#{model.slug}.png"
+    end
   end
 
   version :large do
