@@ -1,17 +1,17 @@
 <script>var eQuill = <%= @eQuill %>;</script>
 <%= render 'form', letrism: @letrism %>
-<button id="open-tools-btn">
+<button id="open-tools-btn" class="intro-item">
 	<span class="sr-only"></span>
 </button>
-<div class="toolMenu">
-	<div class="closeBtn">
+<div id="tools">
+	<div class="closeBtn tool-item">
 		<button id="close-tools-btn">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63"/></svg>
 		</button>
 	</div>
-	<div class="slider"><p>Viscocity</p><input type="range" min="0" max="100" step="10" name="viscocity"></div>
-	<div class="slider"><p>Flow</p><input type="range" min="0" max="100" step="10" name="flow"></div>
-	<div class="slider">
+	<div class="slider tool-item"><p>Viscocity</p><input type="range" min="0" max="100" step="10" name="viscocity"></div>
+	<div class="slider tool-item"><p>Flow</p><input type="range" min="0" max="100" step="10" name="flow"></div>
+	<div class="slider tool-item">
 		<p>Color</p>
 		<div>
 			<p>R</p><input type="range" min="0" max="255" step="1" name="red">
@@ -19,36 +19,36 @@
 			<p>B</p><input type="range" min="0" max="255" step="1" name="blue">
 		</div>
 	</div>
-	<div class="equills">
+	<div class="equills tool-item">
 		<p>eQuills</p>
 		<ul>
 			<li>
-				<a href="/notebook?equill=1">
+				<a href="/notebook?equill=1" title="eQuill #1" class="change-page">
 					<input type="radio" name="eQuills">
 					<label for="equill1"><span>1</span></label>
 				</a>
 			</li>
 			<li>
-				<a href="/notebook?equill=2">
+				<a href="/notebook?equill=2" title="eQuill #2" class="change-page">
 					<input type="radio" name="eQuills">
 					<label for="equill2"><span>2</span></label>
 				</a>
 			</li>
 			<li>
-				<a href="/notebook?equill=3">
+				<a href="/notebook?equill=3" title="eQuill #3" class="change-page">
 					<input type="radio" name="eQuills">
 					<label for="equill1"><span>3</span></label>
 				</a>
 			</li>
 			<li>
-				<a href="/notebook?equill=4">
+				<a href="/notebook?equill=4" title="eQuill #4" class="change-page">
 					<input type="radio" name="eQuills">
 					<label for="equill1"><span>4</span></label>
 				</a>
 			</li>
 		</ul>
 	</div>
-	<div class="grids">
+	<div class="grids tool-item">
 		<p>Grids</p>
 		<div>
 			<input type="radio" name="grids" value="1" id="grid1" data-grid="grid-a" checked class="grid-input">
@@ -68,7 +68,7 @@
 			<!-- <label for="grid0"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></span></label> -->
 		</div>
 	</div>
-	<div class="background">
+	<div class="background tool-item">
 		<p>Background</p>
 		<div>
 			<input type="radio" name="background" value="2" id="back2" checked class="bg-input" data-hex="#151512" data-theme="dark">

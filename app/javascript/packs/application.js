@@ -1,6 +1,7 @@
 require("@rails/ujs").start()
 import Preloader from "components/preloader";
 import Controls from "components/controls";
+import Tools from "components/tools";
 import p5 from 'p5';
 // import { Brush } from "brushes/brush"; /* Esqueleto de brush esencial */
 import { Brush0 } from "brushes/brush-particle-0"; /* Esqueleto de brush con partícula(s) */
@@ -40,6 +41,7 @@ class App {
                     this.sketch = new p5(LightBrush);
             }
             this.controls = new Controls(this.sketch);
+            this.tools = new Tools();
         }
         this.events();
     }
