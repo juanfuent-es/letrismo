@@ -1,16 +1,19 @@
-<div class="logoContainer"><%= image_tag("equills.svg") %></div>
-<div class="formBox">
+<div class="logoContainer intro-item"><%= image_tag("equills.svg") %></div>
+<div class="formBox intro-item">
+  <h2>Registrarse</h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "formContainer"}) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="formInputs">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "u-full-width" %>
-    <%= f.label :password, t(:password) %>
-    <%= f.password_field :password, autocomplete: "new-password", :class => "u-full-width" %>
-    <%= f.label :password_confirmation, t(:password_confirmation) %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "u-full-width" %>
+  <div class="formInputs intro-item">
+    <%= f.label :username, "Nickname" %>
+    <%= f.text_field :username, autofocus: true, autocomplete: "Nickname", required: true %>
+    <%= f.label :email, "Email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+    <%= f.label :password, "Contraseña" %>
+    <%= f.password_field :password, autocomplete: "new-password", required: true %>
+    <%= f.label :password_confirmation, "Confirmar Contraseña" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
   </div>
-  <div class="formBottom">
+  <div class="formBottom intro-item">
     <%= f.submit "Registrarse" %>
     <%= render "devise/shared/links" %>
   </div>

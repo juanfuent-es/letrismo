@@ -1,17 +1,17 @@
-<div class="logoContainer"><%= image_tag("equills.svg") %></div>
-<div class="formBox">
+<div class="logoContainer intro-item"><%= image_tag("equills.svg") %></div>
+<div class="formBox intro-item">
   <h2>Iniciar Sesión</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {:class => "formContainer"}) do |f| %>
-    <div class="formInputs">
+    <div class="formInputs intro-item">
       <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "u-full-width" %>
+      <%= f.email_field :email, autocomplete: "email", required: true %>
       <!-- <label for="user_email">Email</label>
       <input autofocus="autofocus" autocomplete="email" class="u-full-width" type="email" value="" name="user[email]" id="user_email"> -->
       <!-- <label for="user_password">Password</label>
       <input autocomplete="current-password" class="u-full-width" type="password" name="user[password]" id="user_password"> -->
       <%= f.label :password %>
       <%= f.hidden_field :remember_me, value: true %>
-      <%= f.password_field :password, autocomplete: "current-password", :class => "u-full-width" %>
+      <%= f.password_field :password, autocomplete: "current-password", required: true %>
     </div>
     <!-- <div class="formBottom">
       <label for="user_remember_me"><input name="user[remember_me]" type="hidden" value="0">
@@ -20,7 +20,7 @@
     </label> -->
     <!-- <input type="submit" name="commit" value="Iniciar Sesión" class="button" data-disable-with="Iniciar Sesión"> -->
     <br>
-    <div class="formBottom">
+    <div class="formBottom intro-item">
     <%= f.submit "Iniciar Sesión", class: "button" %>
       <%= render "devise/shared/links" %>
     </div>

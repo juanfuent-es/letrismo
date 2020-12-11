@@ -27,5 +27,10 @@
         <li><a href="/manifiesto" title="Manifiesto" class="change-page">Manifiesto</a></li>
         <li><a href="/notebook" title="Notebook" class="change-page">Notebook</a></li>
         <li><a href="/galeria" title="Galería" class="change-page">Galería</a></li>
+        <% if signed_in? %>
+        <li><a href="/log_out" title="Cerrar Sesión" class="change-page">Cerrar Sesión</a></li>
+        <% else %>        
+        <li><a href="/login" title="Iniciar Sesión" class="change-page">Iniciar Sesión</a></li>
+        <% end %>        
     </ul>
 </div>

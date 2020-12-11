@@ -1,103 +1,82 @@
 <script>var eQuill = <%= @eQuill %>;</script>
 <%= render 'form', letrism: @letrism %>
-<div class="tool">
-	<div class="toolCheck">
-		<input type="checkbox" name="" id="toolCheckInput">
-		<label for="toolCheckInput">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.13 40.25"><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><path style="fill:#151512" d="M0,0V40.25H40.13V0ZM20.06,26.13a6,6,0,1,1,6-6A6,6,0,0,1,20.06,26.13Z"/><circle cx="20.06" cy="20.13" r="5"/></g></g></svg>
-		</label>
-		<div class="toolMenu">
-			<form>
-				<div class="closeBtn">
-					<a class="closeTool" href="#">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke:#fff;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke:#fff;stroke-miterlimit:10"/></g></g></svg>
-				</a>
-			</div>
-			<div class="slider"><p>Viscocity</p><input type="range" min="0" max="100" step="10" name="viscocity"></div>
-			<div class="slider"><p>Flow</p><input type="range" min="0" max="100" step="10" name="flow"></div>
-			<div class="slider">
-				<p>Color</p>
-				<div>
-					<p>R</p><input type="range" min="0" max="255" step="1" name="red">
-					<p>G</p><input type="range" min="0" max="255" step="1" name="green">
-					<p>B</p><input type="range" min="0" max="255" step="1" name="blue">
-				</div>
-			</div>
-			<div class="equills">
-				<p>eQuills</p>
-				<ul>
-					<li>
-						<a href="/notebook?equill=0">
-							<input type="radio" name="eQuills">
-							<label for="equill1"><span>0</span></label>
-						</a>
-					</li>
-					<li>
-						<a href="/notebook?equill=1">
-							<input type="radio" name="eQuills">
-							<label for="equill1"><span>1</span></label>
-						</a>
-					</li>
-					<li>
-						<a href="/notebook?equill=2">
-							<input type="radio" name="eQuills">
-							<label for="equill2"><span>2</span></label>
-						</a>
-					</li>
-					<li>
-						<a href="/notebook?equill=3">
-							<input type="radio" name="eQuills">
-							<label for="equill1"><span>3</span></label>
-						</a>
-					</li>
-					<li>
-						<a href="/notebook?equill=4">
-							<input type="radio" name="eQuills">
-							<label for="equill1"><span>4</span></label>
-						</a>
-					</li>
-					<li>
-						<a href="/notebook?equill=5">
-							<input type="radio" name="eQuills">
-							<label for="equill1"><span>5</span></label>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<div class="grids">
-				<p>Grids</p>
-				<div>
-					<input type="radio" name="grids" value="1" id="grid1" data-grid="grid-a" checked class="grid-input">
-					<label for="grid1"><span>1</span></label>
-				</div>
-				<div>
-					<input type="radio" name="grids" value="2" id="grid2" data-grid="grid-b" class="grid-input">
-					<label for="grid2"><span>2</span></label>
-				</div>
-				<div>
-					<input type="radio" name="grids" value="3" id="grid3" data-grid="grid-c" class="grid-input">
-					<label for="grid3"><span>3</span></label>
-				</div>
-				<div>
-					<input type="radio" name="grids" value="0" id="grid0" data-grid="" class="grid-input">
-					<label for="grid0"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></span></label>
-					<!-- <label for="grid0"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></span></label> -->
-				</div>
-			</div>
-			<div class="background">
-				<p>Background</p>
-				<div>
-					<input type="radio" name="background" value="2" id="back2" checked class="bg-input" data-hex="#151512" data-theme="dark">
-					<label for="back2"></label>
-				</div>
-				<div>
-					<input type="radio" name="background" value="1" id="back1" class="bg-input" data-hex="#eae7e1" data-theme="light">
-					<label for="back1"></label>
-				</div>
-			</div>
-		</form>
+<button id="open-tools-btn">
+	<span class="sr-only"></span>
+</button>
+<div class="toolMenu">
+	<div class="closeBtn">
+		<button id="close-tools-btn">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63"/></svg>
+		</button>
 	</div>
-</div>
-<div class="toolCheckWhite"></div>
-<div class="toolCheckRed"></div>
+	<div class="slider"><p>Viscocity</p><input type="range" min="0" max="100" step="10" name="viscocity"></div>
+	<div class="slider"><p>Flow</p><input type="range" min="0" max="100" step="10" name="flow"></div>
+	<div class="slider">
+		<p>Color</p>
+		<div>
+			<p>R</p><input type="range" min="0" max="255" step="1" name="red">
+			<p>G</p><input type="range" min="0" max="255" step="1" name="green">
+			<p>B</p><input type="range" min="0" max="255" step="1" name="blue">
+		</div>
+	</div>
+	<div class="equills">
+		<p>eQuills</p>
+		<ul>
+			<li>
+				<a href="/notebook?equill=1">
+					<input type="radio" name="eQuills">
+					<label for="equill1"><span>1</span></label>
+				</a>
+			</li>
+			<li>
+				<a href="/notebook?equill=2">
+					<input type="radio" name="eQuills">
+					<label for="equill2"><span>2</span></label>
+				</a>
+			</li>
+			<li>
+				<a href="/notebook?equill=3">
+					<input type="radio" name="eQuills">
+					<label for="equill1"><span>3</span></label>
+				</a>
+			</li>
+			<li>
+				<a href="/notebook?equill=4">
+					<input type="radio" name="eQuills">
+					<label for="equill1"><span>4</span></label>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="grids">
+		<p>Grids</p>
+		<div>
+			<input type="radio" name="grids" value="1" id="grid1" data-grid="grid-a" checked class="grid-input">
+			<label for="grid1"><span>1</span></label>
+		</div>
+		<div>
+			<input type="radio" name="grids" value="2" id="grid2" data-grid="grid-b" class="grid-input">
+			<label for="grid2"><span>2</span></label>
+		</div>
+		<div>
+			<input type="radio" name="grids" value="3" id="grid3" data-grid="grid-c" class="grid-input">
+			<label for="grid3"><span>3</span></label>
+		</div>
+		<div>
+			<input type="radio" name="grids" value="0" id="grid0" data-grid="" class="grid-input">
+			<label for="grid0"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></span></label>
+			<!-- <label for="grid0"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></span></label> -->
+		</div>
+	</div>
+	<div class="background">
+		<p>Background</p>
+		<div>
+			<input type="radio" name="background" value="2" id="back2" checked class="bg-input" data-hex="#151512" data-theme="dark">
+			<label for="back2"></label>
+		</div>
+		<div>
+			<input type="radio" name="background" value="1" id="back1" class="bg-input" data-hex="#eae7e1" data-theme="light">
+			<label for="back1"></label>
+		</div>
+	</div>
 </div>
