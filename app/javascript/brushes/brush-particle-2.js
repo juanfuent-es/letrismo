@@ -237,6 +237,6 @@ export const Brush2 = (p5) => {
     }
 
     p5.screenshot = () => {
-      return p5.canvas.toDataURL("image/png");
+      return p5.canvas.canvas.toDataURL("image/png");
     }
 }

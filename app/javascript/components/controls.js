@@ -64,7 +64,7 @@ export default class Controls {
         for (let i = 0; i < gridInput.length; i++) {
             gridInput[i].addEventListener("click", (e) => {
                 let _grid = e.target.getAttribute("data-grid");
-                document.body.setAttribute("data-grid", _grid);
+                window["guides-layer"].setAttribute("data-grid", _grid);
             });
         }
 

@@ -4,11 +4,9 @@ import Controls from "components/controls";
 import Tools from "components/tools";
 import p5 from 'p5';
 // import { Brush } from "brushes/brush"; /* Esqueleto de brush esencial */
-import { Brush0 } from "brushes/brush-particle-0"; /* Esqueleto de brush con partícula(s) */
-import { Brush1 } from "brushes/brush-particle-1";
 import { Brush2 } from "brushes/brush-particle-2";
 import { Brush3 } from "brushes/brush-particle-3";
-import { Brush4 } from "brushes/brush-particle-4";
+import { Brush6 } from "brushes/brush-particle-6";
 import { LightBrush } from "brushes/light";
 // import { LightBrush } from "brushes/lightbulb";
 
@@ -20,21 +18,15 @@ class App {
         if (window["letrism-form"]) {
             switch(eQuill) {
                 case 0:
-                    this.sketch = new p5(Brush0);
+                    this.sketch = new p5(Brush6);
                 break;
                 case 1:
-                    this.sketch = new p5(Brush1);
-                break;
-                case 2:
                     this.sketch = new p5(Brush2);
                 break;
-                case 3:
+                case 2:
                     this.sketch = new p5(Brush3);
                 break;
-                case 4:
-                    this.sketch = new p5(Brush4);
-                break;
-                case 5:
+                case 3:
                     this.sketch = new p5(LightBrush);
                 break;
                 default:
@@ -55,7 +47,7 @@ class App {
                     return window.location = href;
                 });
             } else if (event.target.matches('#save-letrism')) {
-                event.preventDefault();
+                // event.preventDefault();
                 this.controls.save();
                 this.preloader.show();
             }

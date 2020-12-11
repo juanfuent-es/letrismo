@@ -1,13 +1,7 @@
 <section class="container">
-	<%= image_tag @letrism.img.large.url %>
-	<h1>Letrismo de <%= @letrism.user.email %></h1>
-	<p><%= @letrism.chars %></p>
-	<p>
-		<strong>Paths:</strong>
-		<%= @letrism.paths %>
-	</p>
-	<hr>
-	<h3>Más de <%= @letrism.user.email %></h3>
+	<%= image_tag @letrism.img.url %>
+	<h1>Letrismo de <%= @letrism.user.username %></h1>
+	<h3>Más de <%= @letrism.user.username %></h3>
 	<ul>
 		<% @letrism.user.letrisms.shuffle.take(3).each do |letrism| %>
 		<li>

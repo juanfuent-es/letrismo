@@ -4,19 +4,32 @@ body {
 	background-size: cover;
 	background-position: center;
 	transition: background 0.5s ease;
+	#guides-layer {
+		position: fixed;
+		z-index: 10;
+		pointer-events: none;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background-attachment: fixed;
+		background-size: cover;
+		background-position: center;
+		opacity: 0.35;
+	}
 	&[data-theme="dark"] {
 		background-color: #151512;
 		// background-image: asset-url("white-equills-guide-a.svg");
-		&[data-grid="grid-a"] {
+		#guides-layer[data-grid="grid-a"] {
 			background-image: asset-url("white-equills-guide-a.svg");
 		}
-		&[data-grid="grid-b"] {
+		#guides-layer[data-grid="grid-b"] {
 			background-image: asset-url("white-equills-guide-b.svg");
 		}
-		&[data-grid="grid-c"] {
+		#guides-layer[data-grid="grid-c"] {
 			background-image: asset-url("white-equills-guide-c.svg");
 		}
-		&[data-grid="grid-d"] {
+		#guides-layer[data-grid="grid-d"] {
 			// background-image: asset-url("white-equills-guide-d.svg");
 			background-image: none;
 		}
@@ -24,16 +37,16 @@ body {
 	&[data-theme="light"] {
 		background-color: #eae7e1;
 		// background-image: asset-url("equills-guide-a.svg");
-		&[data-grid="grid-a"] {
+		#guides-layer[data-grid="grid-a"] {
 			background-image: asset-url("equills-guide-a.svg");
 		}
-		&[data-grid="grid-b"] {
+		#guides-layer[data-grid="grid-b"] {
 			background-image: asset-url("equills-guide-b.svg");
 		}
-		&[data-grid="grid-c"] {
+		#guides-layer[data-grid="grid-c"] {
 			background-image: asset-url("equills-guide-c.svg");
 		}
-		&[data-grid="grid-d"] {
+		#guides-layer[data-grid="grid-d"] {
 			background-image: none;
 			// background-image: asset-url("equills-guide-d.svg");
 		}
@@ -224,6 +237,12 @@ body {
 		}
 		a {
 			padding: 0px 10px;
+			&.active,
+			&:hover {
+				label {
+					border-color: red;
+				}
+			}
 		}
 	}
 }
@@ -347,11 +366,6 @@ button#close-tools-btn {
 	background: red;
 }
 
-#tools .grids input[type="radio"]:checked ~ label {
-	background: #fff;
-	color: #000;
-}
-
 #tools .grids input[type="radio"]:checked ~ label svg {
 	stroke: #000;
 }
@@ -382,7 +396,26 @@ form#letrism-form {
 	.field {
 		float: left;
 	}
-
+	input[type="submit"] {
+		position: fixed;
+		right: 5%;
+		bottom: 5%;
+		border: none;
+		background-color: transparent;
+		outline: none;
+		color: white;
+		padding: 5px 10px;
+		border-radius: 10px;
+		text-transform: uppercase;
+		cursor: pointer;
+		transform: translate(0px, 15px);
+		transition: color 200ms ease;
+		opacity: 0;
+		display: none;
+		&:hover {
+			color: red;
+		}
+	}
 }
 
 .modal {

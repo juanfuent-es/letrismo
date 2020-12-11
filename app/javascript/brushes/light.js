@@ -1,17 +1,16 @@
 import Pressure from "pressure";
 import Filament from "../components/filament.js";
 import Mouse from "../lib/mouse.js";
-const TAU = Math.PI * 2;
 let LIGHT = {
     bulb: [],
     light: [],
     total_vertices: 30,
-    filaments: 5, //[5, 10, 15, 20]
+    filaments: 3, //[5, 10, 15, 20]
     current: null,
-    movement: 0.35,
+    flow: 0.35,
     pressure: 0
 }
-const WIDTH = Number(window.location.search.split("width=")[1]) || 2;
+const WIDTH = Number(window.location.search.split("width=")[1]) || 0.35;
 Pressure.set(document.body, {
     change: function(force, event) {
         LIGHT.pressure = force * WIDTH;
@@ -28,31 +27,41 @@ export const LightBrush = (p5) => {
     p5.shape = [];
     p5.friction = 0.1;
     // colors
-    p5.bg_color = "rgba(21, 21, 18, 0.001)";
     p5.stroke_color = "#FFF";
-    p5.fill_color = "#000";
 
     p5.setup = () => {
         p5.colorMode(p5.HSB);
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight); //, p5.WEBGL
+        p5.events();
         // p5.background("rgb(21, 21, 18)");
     }
 
+    p5.events = () => {
+        window["flow-input"].addEventListener("change", (e) => {
+            LIGHT.flow = parseFloat(window["flow-input"].value);
+        });
+
+        window["layers-input"].addEventListener("change", (e) => {
+            LIGHT.filaments = parseFloat(window["layers-input"].value);
+        });
+    }
+
+
     p5.draw = () => {
-        p5.pressure += (LIGHT.pressure - p5.pressure) * p5.friction;
+        // p5.pressure += (LIGHT.pressure - p5.pressure) * p5.friction;
         let time = new Date().getTime() * 0.001;
-        // p5.background(p5.bg_color);
         p5.noFill();
         for (let i = 0; i < LIGHT.bulb.length; i++) {
-            let _weight = ((i + 1) / LIGHT.total_vertices) * LIGHT.pressure;
+            // let _weight = ((i + 1) / LIGHT.total_vertices) * LIGHT.pressure;
             let light = LIGHT.bulb[i];
-            p5.strokeWeight(_weight);
             for (let j = 0; j < light.length; j++) {
                 let _h = ~~Math.abs(Math.sin(time + i - j) * 360);
                 let _s = ~~Math.abs(Math.cos(time - i + j) * 100);
-                let _a = (j / light.length);
+                let _percent = ((j + 1) / light.length);
                 const filament = light[j];
-                p5.stroke(_h, _s, 100, _a);
+                let _weight = _percent * LIGHT.pressure;
+                p5.strokeWeight(_weight);
+                p5.stroke(_h, _s, 100, _percent);
                 filament.update(p5.mouse, time);
                 filament.render(p5, time);
             }
@@ -65,8 +74,9 @@ export const LightBrush = (p5) => {
         p5.clear();
         p5.shapes = [];
         p5.shape = [];
-        p5.bulb = [];
-        p5.light = [];
+        LIGHT.bulb = [];
+        LIGHT.light = [];
+        p5.hideSaveBtn();
     }
 
     p5.updateAttr = (key, value) => {
@@ -87,9 +97,10 @@ export const LightBrush = (p5) => {
 
     p5.mousePressed = () => {
         p5.shapes.push(p5.shape);
+        LIGHT.filaments = parseInt(window["layers-input"].value);
         for (let i = 0; i < LIGHT.filaments; i++) {
             const _filament = new Filament({
-                movement: (Math.sin(i * 3) * 0.1) + LIGHT.movement,
+                movement: (Math.sin(i * 3) * 0.1) + LIGHT.flow,
                 size: LIGHT.total_vertices,
                 position: {
                     x: p5.mouseX,
@@ -107,7 +118,26 @@ export const LightBrush = (p5) => {
             LIGHT.light[i].die();
         }
         LIGHT.light = [];
+        p5.showSaveBtn();
     };
+
+    p5.hideSaveBtn = () => {
+        gsap.to("#save-letrism", 0.6, {
+            ease: Power2.easeOut,
+            opacity: 0,
+            y: 15,
+            display: "none"
+        });
+    }
+
+    p5.showSaveBtn = () => {
+        gsap.to("#save-letrism", 0.6, {
+            ease: Power2.easeOut,
+            opacity: 1,
+            y: 0,
+            display: "block"
+        });
+    }
 
     p5.data = () => {
         let html = "";
@@ -125,6 +155,6 @@ export const LightBrush = (p5) => {
     }
 
     p5.screenshot = () => {
-        return p5.canvas.toDataURL("image/png");
+        return p5.canvas.canvas.toDataURL("image/png");
     }
 }

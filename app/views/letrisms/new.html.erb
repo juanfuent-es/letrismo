@@ -10,38 +10,39 @@
 		</button>
 	</div>
 	<div class="slider tool-item"><p>Viscocity</p><input type="range" min="0" max="100" step="10" name="viscocity"></div>
-	<div class="slider tool-item"><p>Flow</p><input type="range" min="0" max="100" step="10" name="flow"></div>
-	<div class="slider tool-item">
+	<div class="slider tool-item"><p>Flow</p><input type="range" min="0.2" max="0.4" step="0.05" value="0.35" id="flow-input"></div>
+	<div class="slider tool-item"><p>Layers</p><input type="range" min="1" max="5" step="1" value="3" id="layers-input"></div>
+	<!-- <div class="slider tool-item">
 		<p>Color</p>
 		<div>
 			<p>R</p><input type="range" min="0" max="255" step="1" name="red">
 			<p>G</p><input type="range" min="0" max="255" step="1" name="green">
 			<p>B</p><input type="range" min="0" max="255" step="1" name="blue">
 		</div>
-	</div>
+	</div> -->
 	<div class="equills tool-item">
 		<p>eQuills</p>
 		<ul>
 			<li>
-				<a href="/notebook?equill=1" title="eQuill #1" class="change-page">
+				<a href="/notebook?equill=1" title="eQuill #1" class="<%= 'active' if @eQuill == "1" %> change-page">
 					<input type="radio" name="eQuills">
 					<label for="equill1"><span>1</span></label>
 				</a>
 			</li>
 			<li>
-				<a href="/notebook?equill=2" title="eQuill #2" class="change-page">
+				<a href="/notebook?equill=2" title="eQuill #2" class="<%= 'active' if @eQuill == "2" %> change-page">
 					<input type="radio" name="eQuills">
 					<label for="equill2"><span>2</span></label>
 				</a>
 			</li>
 			<li>
-				<a href="/notebook?equill=3" title="eQuill #3" class="change-page">
+				<a href="/notebook?equill=3" title="eQuill #3" class="<%= 'active' if @eQuill == "3" %> change-page">
 					<input type="radio" name="eQuills">
 					<label for="equill1"><span>3</span></label>
 				</a>
 			</li>
 			<li>
-				<a href="/notebook?equill=4" title="eQuill #4" class="change-page">
+				<a href="/notebook?equill=4" title="eQuill #4" class="<%= 'active' if @eQuill == "4" %> change-page">
 					<input type="radio" name="eQuills">
 					<label for="equill1"><span>4</span></label>
 				</a>

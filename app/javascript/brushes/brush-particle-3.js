@@ -12,7 +12,7 @@ export const Brush3 = (p5) => {
     p5.virtualShape = []; /* Necesario para guardar las formas una vez que se levante el lápiz */
     
     // colors
-    p5.bg_color = "#000";
+    p5.bg_color = "rgb(21, 21, 18)";
     p5.stroke_color = "#FFF";
     p5.fill_color = "#000";
     // colors

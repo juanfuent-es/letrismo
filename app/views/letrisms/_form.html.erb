@@ -1,4 +1,4 @@
-<%= form_for(letrism, html: { :class => "row", id: "letrism-form" }) do |f| %>
+<%= form_for(letrism, html: { :class => "", id: "letrism-form" }) do |f| %>
 	<% if letrism.errors.any? %>
 		<p>Escribe algo antes de guardar!</p>
 	<% end %>
@@ -7,6 +7,6 @@
 	<%= f.hidden_field :stroke, :class => "change-color-input", data: { key: "stroke_color" } %>
 	<%= f.hidden_field :fill, :class => "change-color-input", data: { key: "fill_color" } %>
 	<%= f.hidden_field :img %>
-	<!-- <div class="field"><%= f.text_field :chars, placeholder: "¿Qué escribiste?" %></div> -->
 	<div class="field"><%= f.submit "Guardar", id: "save-letrism" %></div>
 <% end %>
+<div id="guides-layer"></div>
