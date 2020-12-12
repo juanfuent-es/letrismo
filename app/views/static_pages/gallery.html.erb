@@ -9,7 +9,7 @@
       <li>
         <%= link_to letrism_path(letrism.slug) do %>
         <%= image_tag letrism.img.thumb.url, width: 100 %>
-        <div><p>Por <%= letrism.user.email %></p></div>
+        <div><p>Por <%= letrism.user.username %></p></div>
         <% end %>
       </li>
       <% end %>

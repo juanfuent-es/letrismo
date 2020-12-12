@@ -26,12 +26,12 @@ module ApplicationHelper
 	end
 
 	def meta_image image
-		_url = image.empty? ? "/static/letrismo-share.png" : image
+		_url = image.empty? ? "/eQuills-share-b.png" : image
 		return "#{request.protocol}#{request.host_with_port}#{_url}"
 	end
 
 	def meta_description description
-		return description.empty? ? "" : description
+		return description.empty? ? "eQuills es el término que adoptamos para referirnos a las herramientas de escritura digital que desarrollamos con el objetivo de dejar marcas imposibles de crear en el mundo físico. Suena bien ¿Cierto? Pruébalo tú mismo." : description
 	end
 
 	def meta_keys keys

@@ -47,7 +47,6 @@ class App {
                     return window.location.href = href;
                 });
             } else if (event.target.matches('#save-letrism')) {
-                // event.preventDefault();
                 this.controls.save();
                 this.preloader.show();
             }
