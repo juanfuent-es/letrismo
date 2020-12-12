@@ -30,6 +30,8 @@ export const Brush1 = (p5) => {
     p5.preview_color = "#FFF";
     // colors
 
+    p5.motionAmplitude = 3;
+
     p5.updateAttr = (key, value) => {
         return p5[key] = value;
     }
@@ -46,6 +48,53 @@ export const Brush1 = (p5) => {
             },
 
             cursor: Cursor
+        });
+
+        p5.events();
+    }
+
+    p5.events = () => {
+        window["flow-input"].addEventListener("change", (e) => {
+            // console.log(parseFloat(window["flow-input"].value));
+            switch (parseFloat(window["flow-input"].value)) {
+                case .2:
+                    Cursor.distanceCOF = .01;
+                    break;
+                case .25:
+                    Cursor.distanceCOF = .1;
+                    break;
+                case .3:
+                    Cursor.distanceCOF = .5;
+                    break;
+                case .35:
+                    Cursor.distanceCOF = .75;
+                    break;
+                case .4:
+                    Cursor.distanceCOF = 1;
+                    break;
+            }
+        });
+
+        window["layers-input"].addEventListener("change", (e) => {
+            // console.log(parseFloat(window["layers-input"].value));
+            
+            switch (parseFloat(window["layers-input"].value)) {
+                case 1:
+                    p5.motionAmplitude = .8;
+                    break;
+                case 2:
+                    p5.motionAmplitude = 1.5;
+                    break;
+                case 3:
+                    p5.motionAmplitude = 3;
+                    break;
+                case 4:
+                    p5.motionAmplitude = 6;
+                    break;
+                case 5:
+                    p5.motionAmplitude = 10;
+                    break;
+            }
         });
     }
 
@@ -173,6 +222,8 @@ export const Brush1 = (p5) => {
             },
 
             cursor: Cursor,
+
+            motionAmplitude: p5.motionAmplitude
 
             // motionAmplitude: Math.max((Cursor.distance * 0.1), 3)
         });

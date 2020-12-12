@@ -13,7 +13,7 @@ export const Cursor = {
     distance: 0,
     distanceTarget: 0,
     distanceCOF: 0.5,
-    distanceLimit: 50,
+    distanceLimit: 1,
     angle: 0,
 
     update: function(_x, _y) {

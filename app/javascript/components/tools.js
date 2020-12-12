@@ -17,6 +17,7 @@ export default class Tools {
                 console.log(this.stage)
                 this.stage.rgb[_index] = e.target.value;
                 this.stage.stroke_color = "rgb(" + this.stage.rgb.join(",") + ")";
+                this.stage.fill_color = "rgb(" + this.stage.rgb.join(",") + ")";
         		window["rgb-sample"].style.backgroundColor = this.stage.stroke_color;
             });
         }

@@ -24,6 +24,9 @@ export const Brush2 = (p5) => {
     p5.preview_color = "#f60";
     // colors
 
+    p5.motionAmplitude = 3;
+    p5.speedMorphScale = 5;
+
     p5.virtualParticleShape = []; /* Para habilitar undo() y redo(), es necesario crear un "array" de partículas por cada trazo, este array comienza a recibir partículas cuando el usuario apoya el lápiz, luego se cierra al levantarlo, se inserta en "p5.particleShapes" y se limpia para recibir un trazo nuevo */
     p5.particleShapes = []; /* "Array" que almacena todos los "trazos" de partículas */
     p5.undoneParticleShapes = []; /* "Array" que almacena los "trazos" de partículas borrados al "undo()" */
@@ -38,6 +41,53 @@ export const Brush2 = (p5) => {
     p5.setup = () => {
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
         // p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight, WEBGL);
+
+        p5.events();
+    }
+
+    p5.events = () => {
+        window["flow-input"].addEventListener("change", (e) => {
+            // console.log(parseFloat(window["flow-input"].value));
+            switch (parseFloat(window["flow-input"].value)) {
+                case .2:
+                    p5.speedMorphScale = 0.1;
+                    break;
+                case .25:
+                    p5.speedMorphScale = 2;
+                    break;
+                case .3:
+                    p5.speedMorphScale = 5;
+                    break;
+                case .35:
+                    p5.speedMorphScale = 10;
+                    break;
+                case .4:
+                    p5.speedMorphScale = 20;
+                    break;
+            }
+        });
+
+        window["layers-input"].addEventListener("change", (e) => {
+            // console.log(parseFloat(window["layers-input"].value));
+            
+            switch (parseFloat(window["layers-input"].value)) {
+                case 1:
+                    p5.motionAmplitude = .8;
+                    break;
+                case 2:
+                    p5.motionAmplitude = 1.5;
+                    break;
+                case 3:
+                    p5.motionAmplitude = 3;
+                    break;
+                case 4:
+                    p5.motionAmplitude = 6;
+                    break;
+                case 5:
+                    p5.motionAmplitude = 10;
+                    break;
+            }
+        });
     }
 
     p5.draw = () => {
@@ -134,10 +184,6 @@ export const Brush2 = (p5) => {
         p5.hideSaveBtn();
     }
 
-    p5.setup = () => {
-        p5.createCanvas(p5.windowWidth, p5.windowHeight);
-    }
-
     p5.windowResized = () => {
         p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
     }
@@ -184,7 +230,10 @@ export const Brush2 = (p5) => {
 
             cursor: Cursor,
 
-            mortality: true
+            mortality: true,
+
+            motionAmplitude: p5.motionAmplitude,
+            speedMorphScale: p5.speedMorphScale
         });
 
         // Guarda la partícula para ser dibujada constantemente

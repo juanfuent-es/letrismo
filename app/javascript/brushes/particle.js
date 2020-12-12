@@ -17,10 +17,10 @@ export class Particle {
 		this.height = 1;
 		this.baseSize = 20;
 		this.speedMorph = 1;
-		this.speedMorphScale = 5;
+		this.speedMorphScale = args.speedMorphScale || 5;
 
 		this.frame = args.frame || 0;
-		this.motionFrequency = 0.16;
+		this.motionFrequency = args.motionFrequency || 0.16;
 		this.motionAmplitude = args.motionAmplitude || 3;
 		
 		this.rotationAmplitudeX = 0;

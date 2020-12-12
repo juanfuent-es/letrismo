@@ -54,7 +54,22 @@ export const Brush6 = (p5) => {
             });
         }
 
+        p5.events();
         // console.log(p5.filaments);
+    }
+
+    p5.events = () => {
+        window["flow-input"].addEventListener("change", (e) => {
+            for (var i = 0; i < p5.filaments.length; i++) {
+                p5.filaments[i].limit = parseFloat(window["flow-input"].value) * 30;
+                // console.log(p5.filaments[i].limit);
+            }
+        });
+
+        window["layers-input"].addEventListener("change", (e) => {
+            p5.filamentsCount = parseFloat(window["layers-input"].value) * 2;
+            p5.disperse();
+        });
     }
 
     p5.updateAttr = (key, value) => {

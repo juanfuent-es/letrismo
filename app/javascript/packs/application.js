@@ -4,8 +4,8 @@ import Controls from "components/controls";
 import Tools from "components/tools";
 import p5 from 'p5';
 // import { Brush } from "brushes/brush"; /* Esqueleto de brush esencial */
+import { Brush1 } from "brushes/brush-particle-1";
 import { Brush2 } from "brushes/brush-particle-2";
-import { Brush3 } from "brushes/brush-particle-3";
 import { Brush6 } from "brushes/brush-particle-6";
 import { LightBrush } from "brushes/light";
 import { Bulb } from "brushes/bulb";
@@ -22,10 +22,10 @@ class App {
                     this.sketch = new p5(Brush6);
                 break;
                 case 1:
-                    this.sketch = new p5(Brush2);
+                    this.sketch = new p5(Brush1);
                 break;
                 case 2:
-                    this.sketch = new p5(Brush3);
+                    this.sketch = new p5(Brush2);
                 break;
                 case 3:
                     this.sketch = new p5(LightBrush);
