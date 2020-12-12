@@ -8,7 +8,8 @@ import { Brush2 } from "brushes/brush-particle-2";
 import { Brush3 } from "brushes/brush-particle-3";
 import { Brush6 } from "brushes/brush-particle-6";
 import { LightBrush } from "brushes/light";
-// import { LightBrush } from "brushes/lightbulb";
+import { Bulb } from "brushes/bulb";
+// import { LightBulb } from "brushes/lightbulb";
 
 // import { Cursor } from "brushes/cursor";
 
@@ -29,8 +30,9 @@ class App {
                 case 3:
                     this.sketch = new p5(LightBrush);
                 break;
-                default:
-                    this.sketch = new p5(LightBrush);
+                case 4:
+                    this.sketch = new p5(Bulb);
+                break;
             }
             this.controls = new Controls(this.sketch);
             this.tools = new Tools(this.sketch);

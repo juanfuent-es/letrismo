@@ -1,15 +1,15 @@
-import Filament from "../components/filament.js";
+import Needle from "../components/needle.js";
 import Mouse from "../lib/mouse.js";
 let LIGHT = {
     bulb: [],
     light: [],
-    total_vertices: 50,
+    total_vertices: 10,
     filaments: 10, //[5, 10, 15, 20]
     current: null,
-    movement: 0.35
+    movement: 0.3
 }
 
-export const LightBulb = (p5) => {
+export const Bulb = (p5) => {
     p5.mouse = new Mouse();
     p5.shapes = [];
     p5.shape = [];
@@ -23,7 +23,9 @@ export const LightBulb = (p5) => {
         p5.colorMode(p5.HSB);
         p5.strokeCap(p5.ROUND);
         p5.noFill();
+        // p5.background(p5.bg_color);
         p5.events();
+        // p5.background("rgb(21, 21, 18)");
     }
 
     p5.events = () => {
@@ -37,7 +39,7 @@ export const LightBulb = (p5) => {
     }
 
     p5.draw = () => {
-        let time = new Date().getTime() * 0.0001;
+        let time = new Date().getTime() / 1000;
         // p5.background("rgba(21, 21, 18, 0.00)");
         // p5.background("rgba(0, 0, 0, 0.001)");
         for (let i = 0; i < LIGHT.bulb.length; i++) {
@@ -45,11 +47,10 @@ export const LightBulb = (p5) => {
             for (let j = 0; j < light.length; j++) {
                 const filament = light[j];
                 filament.update(p5.mouse, time);
-
-                let _weight = Math.max(0.2, Math.min(Math.abs(Math.tan((time + j) * 10)), 0.01));
-                let _hue = ~~Math.abs(Math.sin(time + i + j) * 360);
-                p5.strokeWeight(_weight);
-                p5.stroke(_hue, 100, 100);
+                p5.strokeWeight(0.5);
+                let hsl = filament.hsl;
+                console.log(hsl)
+                p5.stroke(hsl[0], hsl[1], hsl[2]);
 
                 filament.render(p5, time);
             }
@@ -87,7 +88,7 @@ export const LightBulb = (p5) => {
     p5.mousePressed = () => {
         p5.shapes.push(p5.shape);
         for (let i = 0; i < LIGHT.filaments; i++) {
-            const _filament = new Filament({
+            const _needle = new Needle({
                 movement: Math.abs(Math.sin(i * 3) * 0.1) + LIGHT.movement,
                 size: ~~((i + 1) / LIGHT.total_vertices),
                 position: {
@@ -95,18 +96,9 @@ export const LightBulb = (p5) => {
                     y: p5.mouseY
                 }
             });
-            LIGHT.light.push(_filament);
+            LIGHT.light.push(_needle);
         }
         LIGHT.bulb.push(LIGHT.light);
-    }
-
-    p5.mouseReleased = () => {
-        p5.shape = [];
-        for (var i = 0; i < LIGHT.light.length; i++) {
-            LIGHT.light[i].die();
-        }
-        LIGHT.light = [];
-        p5.showSaveBtn();
     };
 
     p5.hideSaveBtn = () => {
@@ -126,6 +118,16 @@ export const LightBulb = (p5) => {
             display: "block"
         });
     }
+
+
+    p5.mouseReleased = () => {
+        p5.shape = [];
+        for (var i = 0; i < LIGHT.light.length; i++) {
+            LIGHT.light[i].die();
+        }
+        LIGHT.light = [];
+        p5.showSaveBtn();
+    };
 
     p5.data = () => {
         let html = "";
