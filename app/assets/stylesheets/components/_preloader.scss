@@ -11,6 +11,9 @@
 		image: asset-url("letrismo-logo.svg");
 		repeat: no-repeat;
 		position: center;
-		size: 200px auto;
+		size: 35% auto;
+	}
+	@include desktop {
+		background-size: 200px auto;
 	}
 }

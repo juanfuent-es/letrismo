@@ -5,6 +5,9 @@ export default class Controls {
     }
 
     events() {
+        window["clear-btn"].addEventListener("click", (e) => {
+            this.stage.reset();
+        });
         window.addEventListener("keyup", (e) => {
             switch (e.keyCode) {
                 /* ESC */

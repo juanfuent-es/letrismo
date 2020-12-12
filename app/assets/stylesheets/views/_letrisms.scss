@@ -313,6 +313,23 @@ button#open-tools-btn {
 	    border-color: red;
     }
 }
+button#clear-btn {
+	position: fixed;
+	top: 5%;
+	left: 5%;
+	border: none;
+	outline: none;
+	background: none;
+	color: white;
+	text-transform: uppercase;
+	z-index: 10;
+	cursor: pointer;
+	transition: color 200ms ease;
+	&:focus,
+	&:hover {
+		color: red;
+	}
+}
 button#close-tools-btn {
 	bottom: 0;
 	left: 0;
