@@ -284,6 +284,8 @@ export const Brush2 = (p5) => {
     }
 
     p5.showSaveBtn = () => {
+        window["letrism_img"].value = this.screenshot();
+        window["letrism_paths"].value = this.data();
         gsap.to("#save-letrism", 0.6, {
             ease: Power2.easeOut,
             opacity: 1,

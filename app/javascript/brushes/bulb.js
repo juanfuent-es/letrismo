@@ -49,7 +49,6 @@ export const Bulb = (p5) => {
                 filament.update(p5.mouse, time);
                 p5.strokeWeight(0.5);
                 let hsl = filament.hsl;
-                console.log(hsl)
                 p5.stroke(hsl[0], hsl[1], hsl[2]);
 
                 filament.render(p5, time);
@@ -117,6 +116,8 @@ export const Bulb = (p5) => {
             y: 0,
             display: "block"
         });
+        window["letrism_img"].value = this.screenshot();
+        window["letrism_paths"].value = this.data();
     }
 
 

@@ -14,7 +14,6 @@ export default class Tools {
         for (let i = 0; i < changeColorInputs.length; i++) {
             changeColorInputs[i].addEventListener("change", (e) => {
                 let _index = parseInt(e.target.getAttribute("data-index"));
-                console.log(this.stage)
                 this.stage.rgb[_index] = e.target.value;
                 this.stage.stroke_color = "rgb(" + this.stage.rgb.join(",") + ")";
                 this.stage.fill_color = "rgb(" + this.stage.rgb.join(",") + ")";

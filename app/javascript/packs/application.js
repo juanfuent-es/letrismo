@@ -49,7 +49,7 @@ class App {
                     return window.location.href = href;
                 });
             } else if (event.target.matches('#save-letrism')) {
-                this.controls.save();
+                // this.controls.save();
                 this.preloader.show();
             }
         });

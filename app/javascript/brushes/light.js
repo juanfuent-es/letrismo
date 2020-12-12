@@ -138,6 +138,8 @@ export const LightBrush = (p5) => {
             y: 0,
             display: "block"
         });
+        window["letrism_img"].value = this.screenshot();
+        window["letrism_paths"].value = this.data();    
     }
 
     p5.data = () => {
