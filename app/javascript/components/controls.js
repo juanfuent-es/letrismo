@@ -11,44 +11,28 @@ export default class Controls {
                 case 27:
                     this.stage.reset();
                     break;
-
                     /* ENTER */
                 case 13:
                     this.save();
                     break;
-
                     /* Flecha Izquierda */
                 case 37:
                     this.undo();
                     break;
-
                     /* Flecha Derecha */
                 case 39:
                     this.redo();
                     break;
-
                     /* "x" */
                 case 88:
                     this.toggleXRay();
                     break;
-
                 /* "barra espaciadora" */
                 case 32:
                     if(this.disperse) this.disperse();
                     break;
             }
         });
-        // El dibujo de una forma requiere de 3 valores de color, background, relleno y stroke
-        let changeColorInputs = document.querySelectorAll(".change-color-input");
-        // Se asigna evento a los inputs de cambio de valor, el evento se dispara al cambiar de valor
-        for (let i = 0; i < changeColorInputs.length; i++) {
-            changeColorInputs[i].addEventListener("change", (e) => {
-                let _key = e.target.getAttribute("data-key");
-                let _value = e.target.value;
-                // Cada input tiene un valor clave {'key'}, y un valor asignado {'value'};
-                this.stage.updateAttr(_key, _value);
-            });
-        }
         // bg selector
         let bgInputs = document.querySelectorAll(".bg-input");
         for (let i = 0; i < bgInputs.length; i++) {
@@ -57,6 +41,7 @@ export default class Controls {
                 document.body.setAttribute("data-theme", theme);
                 let hex = e.target.getAttribute("data-hex");
                 window["letrism_bg"].value = hex;
+                this.stage.bg_color = _value;
             });
         }
         // grid selector

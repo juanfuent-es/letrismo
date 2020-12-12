@@ -23,6 +23,7 @@ export const Brush1 = (p5) => {
 
     // colors
     p5.bg_color = "#000";
+    p5.rgb = [255,255,255];
     p5.skeleton_color = "#FFF";
     p5.stroke_color = "#F6F";
     p5.fill_color = "#FFF";

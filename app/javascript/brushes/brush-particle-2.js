@@ -20,6 +20,7 @@ export const Brush2 = (p5) => {
     p5.bg_color = "#000";
     p5.stroke_color = "#FFF";
     p5.fill_color = "#000";
+    p5.rgb = [255,255,255];
     p5.preview_color = "#f60";
     // colors
 

@@ -28,6 +28,7 @@ export const LightBrush = (p5) => {
     p5.friction = 0.1;
     // colors
     p5.stroke_color = "#FFF";
+    p5.bg_color = "#151512";
 
     p5.setup = () => {
         p5.colorMode(p5.HSB);
@@ -70,7 +71,7 @@ export const LightBrush = (p5) => {
 
     /* Se vacía el arreglo contenedor de shapes, y el contenedor del 'current shape'*/
     p5.reset = () => {
-        // p5.background("#000");
+        // p5.background(p5.bg_color);
         p5.clear();
         p5.shapes = [];
         p5.shape = [];

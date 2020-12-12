@@ -33,7 +33,7 @@ class App {
                     this.sketch = new p5(LightBrush);
             }
             this.controls = new Controls(this.sketch);
-            this.tools = new Tools();
+            this.tools = new Tools(this.sketch);
         }
         this.events();
     }

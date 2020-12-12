@@ -16,6 +16,7 @@ export const Brush4 = (p5) => {
     p5.bg_color = "#000";
     p5.stroke_color = "#FFF";
     p5.fill_color = "#000";
+    p5.rgb = [255,255,255];
     // colors
 
     p5.points = []; /* Necesario para previsualizar los trazos que se están dibujando porque "p5.shapes" se dibuja hasta que la forma se haya terminado */
