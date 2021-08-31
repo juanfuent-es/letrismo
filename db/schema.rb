@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_062819) do
     t.boolean "gallery", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "bg", default: ""
+    t.string "bg", default: "#151512"
     t.string "fill", default: ""
     t.string "stroke", default: ""
     t.index ["user_id"], name: "index_letrisms_on_user_id"

@@ -11,6 +11,7 @@
 	$ rake db:migrate
 	$ rails s
 ```
+* (Asegurate de haber iniciado un server con mysql antes de correr `rails s`. El comando para hacerlo en mac es `mysql.server start`
 
 # Base de datos
 La configuración de base de datos está en 
@@ -60,3 +61,15 @@ Utilice los siguientes métodos por cada vista de acción para asignación de me
 <% provide(:description, "Lorem ipsum dolor sit amet...") %>
 
 Hay un ejemplo dentro de la vista home en views/statics.
+
+# Stackoverflow soluciones a problemas comunes
+
+Si tienes problemas haciendo bundle install instalando la gema mysql2, prueba los siguientes links segun lo que aparezca en tu terminal (mac):
+
+Para:
+```
+ld: library not found for -lzstd
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+puedes consultar este [link](https://stackoverflow.com/questions/67840691/ld-library-not-found-for-lzstd-while-bundle-install-for-mysql2-gem-ruby-on-mac)
+

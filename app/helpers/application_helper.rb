@@ -5,9 +5,9 @@ module ApplicationHelper
 	end
 
 	def full_title title
-		base_title = 'Letrismo'
+		base_title = 'eQuills'
 		if title.empty?
-			base_title
+			"#{base_title} | Letrismo"
 		else
 			"#{base_title} #{title}"
 		end
