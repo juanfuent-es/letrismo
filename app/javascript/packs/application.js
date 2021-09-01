@@ -2,6 +2,7 @@ require("@rails/ujs").start()
 import Preloader from "components/preloader";
 import Controls from "components/controls";
 import Tools from "components/tools";
+import ToolBar from "components/toolbar";
 import p5 from 'p5';
 // import { Brush } from "brushes/brush"; /* Esqueleto de brush esencial */
 import { Brush1 } from "brushes/brush-particle-1";
@@ -62,6 +63,7 @@ class App {
 
     loaded() {
         this.preloader.hide();
+        this.toolbar = new ToolBar({parent: this});
     }
 
 }

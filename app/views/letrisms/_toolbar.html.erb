@@ -1,4 +1,4 @@
-<div id="Toolbar">
+<div id="ToolBar">
     <!-- nav menu --small verion -->
     <nav class="nav-menu">
         <%= link_to root_path do %>
@@ -16,10 +16,44 @@
 
     <div class="tools-wrapper">
         <!-- tool structure -->
-        <div class="tool-container">
-            <div class="tool__icon"></div>
+        <div class="Tool">
+            <span class="Tool__hit"></span>
 
-            <div class="tool__modal-wrapper"></div>
+            <div class="Tool__icon-container">
+                <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
+            </div>
+
+            <div class="Tool__modal-container hide">
+                <div class="Tool__modal-arrow"></div>
+                <div class="Tool__modal-wrapper"></div>
+            </div>
         </div>
+        
+        
+        <div class="Tool">
+            <span class="Tool__hit"></span>
+
+            <div class="Tool__icon-container">
+                <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
+            </div>
+
+            <div class="Tool__modal-container hide">
+                <div class="Tool__modal-arrow"></div>
+                <div class="Tool__modal-wrapper"></div>
+            </div>
+        </div>
+        <div class="Tool">
+            <span class="Tool__hit"></span>
+
+            <div class="Tool__icon-container">
+                <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
+            </div>
+
+            <div class="Tool__modal-container hide">
+                <div class="Tool__modal-arrow"></div>
+                <div class="Tool__modal-wrapper"></div>
+            </div>
+        </div>
+
     </div>
 </div>

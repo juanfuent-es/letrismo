@@ -1,14 +1,23 @@
-#Toolbar{
+#ToolBar{
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 40px;
-    background-color: rgba(255,0,0, .3);
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--test-bg);
+
+    *{
+        box-sizing: border-box;
+    }
 
     .nav-menu{
         display: flex;
         align-items: center;
+        height: 100%;
 
         a{
             display: flex;
@@ -52,5 +61,82 @@
                 background-color: var(--text-color);
             }
         }
+    }
+
+    .tools-wrapper{
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        & > *{
+            margin: 0 10px;
+        }
+    }
+}
+
+.Tool{
+    position: relative;
+    width: 40px;
+    height: 40px;
+
+    &__hit{
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        z-index: 9;
+        
+        &:hover{
+            background-color: rgba(0,0,0, .5);
+        }
+    }
+
+    &__icon-container{
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 4px;
+        pointer-events: none;
+    }
+
+    &__icon{
+        position: relative;
+        width: 100%;
+    }
+
+    &__modal-container{
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+
+        &.hide{
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    &__modal-arrow{
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate3d(-50%, 0, 0);
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+        border-bottom-color: #fff;
+    }
+
+    &__modal-wrapper{
+        position: fixed;
+        top: 40px;
+        right: 20px;
+        width: 400px;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: var(--test-bg2);
     }
 }
