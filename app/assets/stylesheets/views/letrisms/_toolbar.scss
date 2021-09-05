@@ -134,7 +134,7 @@
         position: fixed;
         top: 40px;
         right: 20px;
-        width: 500px;
+        width: 550px;
         padding-top: 10px;
         // border: 1px solid var(--test-bg2);
     }
@@ -142,7 +142,7 @@
     &__modal-wrapper{
         position: relative;
         width: 100%;
-        padding: 15px;
+        padding: 10px 0 30px;
         border-radius: 10px;
         background-color: $tools-bg;
         -webkit-backdrop-filter: blur(10px);
@@ -152,6 +152,7 @@
     &__title-wrapper{
         position: relative;
         width: 100%;
+        padding: 15px 20px 0;
         margin-bottom: 30px;
         display: flex;
         align-items: center;
@@ -166,6 +167,7 @@
     &__contribute{
         width: 30px;
         height: 30px;
+        margin-right: 20px;
         border: 1px solid white;
         cursor: pointer;
     }
@@ -179,7 +181,7 @@
 
     &__index-panel{
         position: relative;
-        width: 40%;
+        width: 42%;
         flex-shrink: 0;
         padding: 0 10px 0 0;
     }
@@ -187,18 +189,24 @@
     &__list-item{
         position: relative;
         list-style-type: none;
-        padding: 10px 0;
         margin: 0;
-
-        &:first-child{
-            padding-top: 0;
-        }
 
         a{
             display: flex;
             align-items: center;
+            padding: 10px 0 10px 20px;
             text-decoration: none;
             color: inherit;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+
+            &:hover{
+                background-color: rgba(0,0,0, .2);
+
+                .Tool__list-item__icon {
+                    color: #1978F7;
+                }
+            }
         }
 
         &__icon{
@@ -207,45 +215,91 @@
             margin-right: 10px;
         }
         &__name{
+            font-size: 16px;
             font-weight: 300;
+            margin-left: 10px;
         }
+    }
+
+    &__info-panel{
+        padding-right: 5px;
     }
 
     &__equill-preview{
         position: relative;
         width: 100%;
-        padding: 10px;
+        padding: 12px 10px 10px;
         border-radius: 5px;
-        background-color: rgba(0,0,0, 1);
+        background-color: rgba(25,25,25, .5);
+        // background-color: black;
+
+        &__header{
+            display: flex;
+            margin-bottom: 10px;
+
+            &__title{
+                // font-weight: 300;
+                font-size: 14px;
+                line-height: 21px;
+            }
+
+            &__subtitle{
+                line-height: 21px;
+                margin-left: .5em;
+            }
+        }
     }
 
     &__equill-description{
         position: relative;
         width: 100%;
-        padding: 10px;
+        padding: 10px 25px 10px 10px;
         font-size: 12px;
 
-        .family{
-            font-family: $secondary-font;
-            opacity: 0.5;
-        }
-
-        .difficulty{
+        .intro{
             margin-bottom: 10px;
         }
 
-        h5{
-            font-size: 14px;
-            margin-top: 20px;
-            opacity: .5;
-        }
+        .biblio{
+            text-indent: 20px;
+            margin-bottom: 5px;
 
-        li{
-            list-style-type: disc;
+            &:first-child:before{
+                content: '— ';
+                display: inline-block;
+                position: relative;
+                text-indent: 0;
+            }
         }
 
         &__properties{
-            // opacity: .5;
+            margin-top: 20px;
+        }
+    }
+
+    &__label {
+        opacity: 0.3;
+        font-family: $secondary-font;
+        font-size: 12px;
+        font-style: italic;
+        font-weight: 300;
+    }
+
+    &__concept{
+        opacity: 0.6;
+        // text-transform: uppercase;
+        font-family: $secondary-font;
+        font-size: 12px;
+        font-style: italic;
+        // font-weight: 600;
+    }
+
+    &__text-list{
+        padding-left: 20px;
+        // list-style-type: disc;
+
+        &__item{
+            list-style-type: disc;
         }
     }
 }

@@ -69,57 +69,72 @@
 
                             <div class="Tool__info-panel">
                                 <div class="Tool__equill-preview">
-                                    <h4>Cadena</h4>
+                                    <div class="Tool__equill-preview__header">
+                                        <h4 class="Tool__equill-preview__header__title">Cadena</h4>
+                                        <div class="Tool__equill-preview__header__subtitle">
+                                            <span class="Tool__label">fam.</span>
+                                            <span class="Tool__concept">Partículas.</span>
+                                        </div>
+                                    </div>
                                     <%= image_tag("equills-previews/cadena.png", :class => "Tool__equill-stroke") %>
                                 </div>
 
                                 <div class="Tool__equill-description">
-                                    <p class="family">
-                                        <i>fam.</i>
-                                        Partículas.
-                                    </p>
-                                    <p class="difficulty">
-                                        <strong>Dificultad: Alta.</strong>
+                                    <p class='intro'>
+                                        <span class="Tool__label">Dificultad:</span>
+                                        <span class="Tool__concept">Alta.</span>
                                     </p>
 
-                                    <p>
-                                        Este eQuill consta de partículas en movimiento que estan rodeando el cursor de forma aleatoria como si fueran un "enjambre". Al presionar para realizar un trazo, las particulas quedaran "ancladas" a una posicion y lentamente perderan velocidad hasta quedar quietas.
-                                    </p>
+                                    <div class="body">
+                                        <p class="biblio">
+                                            eQuill de partículas en movimiento perpetuo que estan rodeando el cursor de forma aleatoria como si fueran un "enjambre".
+                                        </p>
 
-                                    <h5>Propiedades variables</h5>
-                                    <ul class="Tool__equill-description__properties">
-                                        <li>Cantidad de particulas(de 2 a 5)</li>
-                                        <li>Aceleración</li>
-                                    </ul>
+                                        <p class="biblio">
+                                            Al presionar para realizar un trazo, las particulas quedaran "ancladas" a una posicion y lentamente perderan velocidad hasta quedar quietas.
+                                        </p>
+                                    </div>
+
+                                    <div class="Tool__equill-description__properties">
+                                        <h5 class="Tool__label">Propiedades variables</h5>
+                                        <ul class="Tool__text-list">
+                                            <li class="Tool__text-list__item">Cantidad de particulas(de 2 a 5)</li>
+                                            <li class="Tool__text-list__item">Aceleración</li>
+                                        </ul>
+                                    </div>
                                     
-                                    <h5>Atajos de teclado</h5>
-                                    <ul class="Tool__equill-description__properties">
-                                        <li>
-                                            Deshacer
-                                            <span class="command">
-                                                Presiona la flecha 
-                                                <strong>izquierda </strong>
-                                                en tu teclado
-                                            </span>
-                                        </li>
+                                    <div class="Tool__equill-description__properties">
+                                        <h5 class="Tool__label">Atajos de teclado</h5>
+                                        <ul class="Tool__text-list">
+                                            <li class="Tool__text-list__item">
+                                                Deshacer
+                                                <span class="command">
+                                                    Presiona la flecha 
+                                                    <strong>izquierda </strong>
+                                                    en tu teclado
+                                                </span>
+                                            </li>
 
-                                        <li>
-                                            Rehacer
-                                            <span class="command">
-                                                Presiona la flecha 
-                                                <strong>derecha </strong>
-                                                en tu teclado
-                                            </span>
-                                        </li>
-                                        <li>
-                                            Reiniciar posicion de las particulas
-                                            <span class="command">
-                                                Presiona la  
-                                                <strong>barra espaciadora </strong>
-                                                en tu teclado
-                                            </span>
-                                        </li>
-                                    </ul>
+                                            <li class="Tool__text-list__item">
+                                                Rehacer
+                                                <span class="command">
+                                                    Presiona la flecha 
+                                                    <strong>derecha </strong>
+                                                    en tu teclado
+                                                </span>
+                                            </li>
+                                            <li class="Tool__text-list__item">
+                                                Reiniciar posicion de las particulas
+                                                <span class="command">
+                                                    Presiona la  
+                                                    <strong>barra espaciadora </strong>
+                                                    en tu teclado
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
