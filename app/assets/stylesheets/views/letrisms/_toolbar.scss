@@ -223,18 +223,29 @@
         position: relative;
         width: 100%;
         padding: 10px;
+        font-size: 12px;
 
         .family{
             font-family: $secondary-font;
             opacity: 0.5;
         }
 
+        .difficulty{
+            margin-bottom: 10px;
+        }
+
         h5{
+            font-size: 14px;
             margin-top: 20px;
+            opacity: .5;
         }
 
         li{
             list-style-type: disc;
+        }
+
+        &__properties{
+            // opacity: .5;
         }
     }
 }
