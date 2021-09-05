@@ -64,7 +64,7 @@ Hay un ejemplo dentro de la vista home en views/statics.
 
 # Stackoverflow soluciones a problemas comunes
 
-Si tienes problemas haciendo bundle install instalando la gema mysql2, prueba los siguientes links segun lo que aparezca en tu terminal (mac):
+* Si tienes problemas haciendo bundle install instalando la gema mysql2, prueba los siguientes links segun lo que aparezca en tu terminal (mac):
 
 Para:
 ```
@@ -73,3 +73,4 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 puedes consultar este [link](https://stackoverflow.com/questions/67840691/ld-library-not-found-for-lzstd-while-bundle-install-for-mysql2-gem-ruby-on-mac)
 
+* Si tienes problemas en terminal/consola haciendo `yarn install` puede ser que tu version de `node` sea "demasiado" avanzada, en mi caso usaba `node 16.1.0` y tuve que bajar a `node 14.17.3` para que funcionara (macOS Big Sur 11.4 chip M1)

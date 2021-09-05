@@ -15,7 +15,7 @@
     </nav>
 
     <div class="tools-wrapper">
-        <!-- tool structure -->
+        <!-- eQuill selector -->
         <div class="Tool">
             <span class="Tool__hit"></span>
 
@@ -23,13 +23,113 @@
                 <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
             </div>
 
-            <div class="Tool__modal-container hide">
+            <!-- <div class="Tool__modal-container hide"> -->
+            <div class="Tool__modal-container">
                 <div class="Tool__modal-arrow"></div>
-                <div class="Tool__modal-wrapper"></div>
+                <div class="Tool__modal-hit">
+                    <div class="Tool__modal-wrapper">
+                        <header class="Tool__title-wrapper">
+                            <h2 class="Tool__title">eQuills Library</h2>
+                            <button class="Tool__contribute"></button> <!-- trigger modal to redirect to discord if clicked -->
+                        </header>
+
+                        <div class="Tool__panels-wrapper">
+                            <ul class="Tool__index-panel">
+                                <li class="Tool__list-item">
+                                    <a href="#">
+                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
+                                        <h3 class="Tool__list-item__name">Cadena</h3>
+                                    </a>
+                                </li>
+                                <li class="Tool__list-item">
+                                    <a href="#">
+                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
+                                        <h3 class="Tool__list-item__name">Espuma</h3>
+                                    </a>
+                                </li>
+                                <li class="Tool__list-item">
+                                    <a href="#">
+                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
+                                        <h3 class="Tool__list-item__name">Slinky</h3>
+                                    </a>
+                                </li>
+                                <li class="Tool__list-item">
+                                    <a href="#">
+                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
+                                        <h3 class="Tool__list-item__name">Light Brush</h3>
+                                    </a>
+                                </li>
+                                <li class="Tool__list-item">
+                                    <a href="#">
+                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
+                                        <h3 class="Tool__list-item__name">Bulb</h3>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="Tool__info-panel">
+                                <div class="Tool__equill-preview">
+                                    <h4>Cadena</h4>
+                                    <%= image_tag("equills-previews/cadena.png", :class => "Tool__equill-stroke") %>
+                                </div>
+
+                                <div class="Tool__equill-description">
+                                    <p class="family">
+                                        <i>fam.</i>
+                                        Partículas
+                                    </p>
+                                    <p class="difficulty">
+                                        <strong>Dificultad. Alta.</strong>
+                                    </p>
+
+                                    <p>
+                                        Este eQuill consta de partículas en movimiento que estan rodeando el cursor de forma aleatoria como si fueran un "enjambre". Al presionar para realizar un trazo, las particulas quedaran "ancladas" a una posicion y lentamente perderan velocidad hasta quedar quietas.
+                                    </p>
+
+                                    <h5>Propiedades</h5>
+                                    <ul class="Tool__equill-description__properties">
+                                        <li>Cantidad de particulas variable (de 2 a 5)</li>
+                                        <li>Aceleracion variable</li>
+                                    </ul>
+                                    
+                                    <h5>Atajos de teclado</h5>
+                                    <ul class="Tool__equill-description__properties">
+                                        <li>
+                                            Deshacer
+                                            <span class="command">
+                                                Presiona la flecha 
+                                                <strong>izquierda </strong>
+                                                en tu teclado
+                                            </span>
+                                        </li>
+
+                                        <li>
+                                            Rehacer
+                                            <span class="command">
+                                                Presiona la flecha 
+                                                <strong>derecha </strong>
+                                                en tu teclado
+                                            </span>
+                                        </li>
+                                        <li>
+                                            Reiniciar posicion de las particulas
+                                            <span class="command">
+                                                Presiona la  
+                                                <strong>barra espaciadora </strong>
+                                                en tu teclado
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
         
+        <!-- eQuill settings (of chosen one only) -->
         <div class="Tool">
             <span class="Tool__hit"></span>
 
@@ -39,9 +139,13 @@
 
             <div class="Tool__modal-container hide">
                 <div class="Tool__modal-arrow"></div>
-                <div class="Tool__modal-wrapper"></div>
+                <div class="Tool__modal-hit">
+                    <div class="Tool__modal-wrapper"></div>
+                </div>
             </div>
         </div>
+
+        <!-- Canvas settings -->
         <div class="Tool">
             <span class="Tool__hit"></span>
 
@@ -51,9 +155,26 @@
 
             <div class="Tool__modal-container hide">
                 <div class="Tool__modal-arrow"></div>
-                <div class="Tool__modal-wrapper"></div>
+                <div class="Tool__modal-hit">
+                    <div class="Tool__modal-wrapper"></div>
+                </div>
             </div>
         </div>
 
+        <!-- Color Swatch -->
+        <div class="Tool">
+            <span class="Tool__hit"></span>
+
+            <div class="Tool__icon-container">
+                <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
+            </div>
+
+            <div class="Tool__modal-container hide">
+                <div class="Tool__modal-arrow"></div>
+                <div class="Tool__modal-hit">
+                    <div class="Tool__modal-wrapper"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

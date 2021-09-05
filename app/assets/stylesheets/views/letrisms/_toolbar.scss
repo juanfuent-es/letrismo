@@ -8,7 +8,7 @@
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    background-color: var(--test-bg);
+    background-color: #202020;
 
     *{
         box-sizing: border-box;
@@ -121,22 +121,120 @@
 
     &__modal-arrow{
         position: absolute;
-        top: 100%;
+        top: calc(100% - 10px);
         left: 50%;
         transform: translate3d(-50%, 0, 0);
         width: 0;
         height: 0;
         border: 10px solid transparent;
-        border-bottom-color: #fff;
+        border-bottom-color: $tools-bg;
     }
 
-    &__modal-wrapper{
+    &__modal-hit{
         position: fixed;
         top: 40px;
         right: 20px;
-        width: 400px;
+        width: 500px;
+        padding-top: 10px;
+        // border: 1px solid var(--test-bg2);
+    }
+
+    &__modal-wrapper{
+        position: relative;
+        width: 100%;
         padding: 15px;
         border-radius: 10px;
-        background-color: var(--test-bg2);
+        background-color: $tools-bg;
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+
+    &__title-wrapper{
+        position: relative;
+        width: 100%;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__title{
+        margin: 0;
+        font-weight: 500;
+    }
+
+    &__contribute{
+        width: 30px;
+        height: 30px;
+        border: 1px solid white;
+        cursor: pointer;
+    }
+
+    &__panels-wrapper{
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    &__index-panel{
+        position: relative;
+        width: 40%;
+        flex-shrink: 0;
+        padding: 0 10px 0 0;
+    }
+
+    &__list-item{
+        position: relative;
+        list-style-type: none;
+        padding: 10px 0;
+        margin: 0;
+
+        &:first-child{
+            padding-top: 0;
+        }
+
+        a{
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        &__icon{
+            position: relative;
+            width: 20px;
+            margin-right: 10px;
+        }
+        &__name{
+            font-weight: 300;
+        }
+    }
+
+    &__equill-preview{
+        position: relative;
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: rgba(0,0,0, 1);
+    }
+
+    &__equill-description{
+        position: relative;
+        width: 100%;
+        padding: 10px;
+
+        .family{
+            font-family: $secondary-font;
+            opacity: 0.5;
+        }
+
+        h5{
+            margin-top: 20px;
+        }
+
+        li{
+            list-style-type: disc;
+        }
     }
 }
