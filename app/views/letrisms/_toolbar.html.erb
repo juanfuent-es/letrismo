@@ -29,8 +29,8 @@
                 <div class="Tool__modal-hit">
                     <div class="Tool__modal-wrapper">
                         <header class="Tool__title-wrapper">
-                            <h2 class="Tool__title">eQuills Library</h2>
-                            <button class="Tool__contribute"></button> <!-- trigger modal to redirect to discord if clicked -->
+                            <h2 class="Tool__title">Libreria de eQuills</h2>
+                            <button class="Tool__contribute">+</button> <!-- trigger modal to redirect to discord if clicked -->
                         </header>
 
                         <div class="Tool__panels-wrapper">
@@ -70,13 +70,18 @@
                             <div class="Tool__info-panel">
                                 <div class="Tool__equill-preview">
                                     <div class="Tool__equill-preview__header">
-                                        <h4 class="Tool__equill-preview__header__title">Cadena</h4>
-                                        <div class="Tool__equill-preview__header__subtitle">
-                                            <span class="Tool__label">fam.</span>
-                                            <span class="Tool__concept">Partículas.</span>
+                                        <div class="Tool__equill-preview__header__text">
+                                            <h4 class="Tool__equill-preview__header__title">Cadena</h4>
+                                            <div class="Tool__equill-preview__header__subtitle">
+                                                <span class="Tool__label">fam.</span>
+                                                <span class="Tool__concept">Partículas.</span>
+                                            </div>
                                         </div>
+
+                                        <button class="Tool__equill-preview__header__btn">Usar</button>
                                     </div>
-                                    <%= image_tag("equills-previews/cadena.png", :class => "Tool__equill-stroke") %>
+
+                                    <%= image_tag("equills-previews/cadena.png", :class => "Tool__equill-preview__stroke") %>
                                 </div>
 
                                 <div class="Tool__equill-description">
@@ -91,45 +96,33 @@
                                         </p>
 
                                         <p class="biblio">
-                                            Al presionar para realizar un trazo, las particulas quedaran "ancladas" a una posicion y lentamente perderan velocidad hasta quedar quietas.
+                                            Al presionar para realizar un trazo, las partículas quedaran "ancladas" a una posicion y lentamente perderan velocidad hasta quedar quietas.
                                         </p>
                                     </div>
 
                                     <div class="Tool__equill-description__properties">
                                         <h5 class="Tool__label">Propiedades variables</h5>
                                         <ul class="Tool__text-list">
-                                            <li class="Tool__text-list__item">Cantidad de particulas(de 2 a 5)</li>
+                                            <li class="Tool__text-list__item">Cantidad de partículas(de 2 a 5)</li>
                                             <li class="Tool__text-list__item">Aceleración</li>
                                         </ul>
                                     </div>
                                     
                                     <div class="Tool__equill-description__properties">
                                         <h5 class="Tool__label">Atajos de teclado</h5>
-                                        <ul class="Tool__text-list">
-                                            <li class="Tool__text-list__item">
-                                                Deshacer
-                                                <span class="command">
-                                                    Presiona la flecha 
-                                                    <strong>izquierda </strong>
-                                                    en tu teclado
-                                                </span>
+                                        <ul class="Tool__table-list">
+                                            <li class="Tool__table-list__item">
+                                                <span class="Tool__command">Deshacer</span>
+                                                <span class="Tool__key">←</span>
                                             </li>
 
-                                            <li class="Tool__text-list__item">
-                                                Rehacer
-                                                <span class="command">
-                                                    Presiona la flecha 
-                                                    <strong>derecha </strong>
-                                                    en tu teclado
-                                                </span>
+                                            <li class="Tool__table-list__item">
+                                                <span class="Tool__command">Rehacer</span>
+                                                <span class="Tool__key">→</span>
                                             </li>
-                                            <li class="Tool__text-list__item">
-                                                Reiniciar posicion de las particulas
-                                                <span class="command">
-                                                    Presiona la  
-                                                    <strong>barra espaciadora </strong>
-                                                    en tu teclado
-                                                </span>
+                                            <li class="Tool__table-list__item">
+                                                <span class="Tool__command">Reposicionar partículas</span>
+                                                <span class="Tool__key">Spacebar</span>
                                             </li>
                                         </ul>
                                     </div>
