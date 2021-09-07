@@ -13,16 +13,7 @@
 		</button>
 	</div>
 	<!-- <div class="slider tool-item"><p>Viscocity</p><input type="range" min="0" max="100" step="10" name="viscocity" class="styled-slider"></div> -->
-	<% if @eQuill != "3" && @eQuill != "4" %>
-	<div class="slider tool-item">
-		<p>Color <span id="rgb-sample"></span></p>
-		<div>
-			<p>R</p><input type="range" min="0" max="255" value="255" step="1" id="red-channel" class="channel-input styled-slider" data-index="0">
-			<p>G</p><input type="range" min="0" max="255" value="255" step="1" id="green-channel" class="channel-input styled-slider" data-index="1">
-			<p>B</p><input type="range" min="0" max="255" value="255" step="1" id="blue-channel" class="channel-input styled-slider" data-index="2">
-		</div>
-	</div>
-	<% end %>
+
 	<div class="equills tool-item">
 		<p>eQuills</p>
 		<ul>
@@ -57,36 +48,5 @@
 				</a>
 			</li>
 		</ul>
-	</div>
-	<div class="grids tool-item">
-		<p>Grids</p>
-		<div>
-			<input type="radio" name="grids" value="1" id="grid1" data-grid="grid-a" checked class="grid-input">
-			<label for="grid1"><span>1</span></label>
-		</div>
-		<div>
-			<input type="radio" name="grids" value="2" id="grid2" data-grid="grid-b" class="grid-input">
-			<label for="grid2"><span>2</span></label>
-		</div>
-		<div>
-			<input type="radio" name="grids" value="3" id="grid3" data-grid="grid-c" class="grid-input">
-			<label for="grid3"><span>3</span></label>
-		</div>
-		<div>
-			<input type="radio" name="grids" value="0" id="grid0" data-grid="" class="grid-input">
-			<label for="grid0"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></span></label>
-			<!-- <label for="grid0"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></span></label> -->
-		</div>
-	</div>
-	<div class="background tool-item">
-		<p>Background</p>
-		<div>
-			<input type="radio" name="background" value="2" id="back2" checked class="bg-input" data-hex="#151512" data-theme="dark">
-			<label for="back2"></label>
-		</div>
-		<div>
-			<input type="radio" name="background" value="1" id="back1" class="bg-input" data-hex="#eae7e1" data-theme="light">
-			<label for="back1"></label>
-		</div>
 	</div>
 </div>

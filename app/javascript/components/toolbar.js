@@ -51,6 +51,21 @@ export default class ToolBar {
             const tool = _this.tools[i];
             tool.querySelector('.Tool__hit').addEventListener('click', _this.handleToolClick.bind(_this));
         }
+
+        // El dibujo de una forma requiere de 3 valores de color, background, relleno y stroke
+        let changeColorInputs = document.querySelectorAll(".channel-input");
+        // Se asigna evento a los inputs de cambio de valor, el evento se dispara al cambiar de valor
+        for (let i = 0; i < changeColorInputs.length; i++) {
+            changeColorInputs[i].addEventListener("change", (e) => {
+                let _index = parseInt(e.target.getAttribute("data-index"));
+                this.stage.rgb[_index] = e.target.value;
+                this.stage.stroke_color = "rgb(" + this.stage.rgb.join(",") + ")";
+                this.stage.fill_color = "rgb(" + this.stage.rgb.join(",") + ")";
+        		window["rgb-sample"].style.backgroundColor = this.stage.stroke_color;
+            });
+        }
+
+
         this.stage.canvas.elt.addEventListener('mouseenter', _this.handleCanvasMouseEnter.bind(_this));
     }
 

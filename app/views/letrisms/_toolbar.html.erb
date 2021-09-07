@@ -104,6 +104,7 @@
                                         <ul class="Tool__text-list">
                                             <li class="Tool__text-list__item">Cantidad de partículas(de 2 a 5)</li>
                                             <li class="Tool__text-list__item">Aceleración</li>
+                                            <li class="Tool__text-list__item">Color de trazo</li>
                                         </ul>
                                     </div>
                                     
@@ -147,8 +148,7 @@
                 <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
             </div>
 
-            <!-- <div class="Tool__modal-container hide"> -->
-            <div class="Tool__modal-container">
+            <div class="Tool__modal-container hide">
                 <div class="Tool__modal-arrow"></div>
                 <div class="Tool__modal-inner-container">
                     <div class="Tool__modal-wrapper">
@@ -177,17 +177,15 @@
 
                         <div class="Tool__panels-wrapper">
                             <div class="Tool__settings-panel">
-                                <% if true %>
-                                <div class="">
-                                    <p>Flow</p>
+                                <p class="Tool__settings-panel__property">Flow</p>
+                                <div class="Tool__settings-panel__input-wrap">
                                     <input type="range" min="0.2" max="0.4" step="0.05" value="0.35" id="flow-input" class="styled-slider">
                                 </div>
 
-                                <div class="">
-                                    <p>Layers</p>
+                                <p class="Tool__settings-panel__property">Layers</p>
+                                <div class="Tool__settings-panel__input-wrap">
                                     <input type="range" min="1" max="5" step="1" value="3" id="layers-input" class="styled-slider">
                                 </div>
-                                <% end %>
                             </div>
                         </div>
                     </div>
@@ -203,24 +201,66 @@
                 <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
             </div>
 
-            <div class="Tool__modal-container hide">
+            <!-- <div class="Tool__modal-container hide"> -->
+            <div class="Tool__modal-container">
                 <div class="Tool__modal-arrow"></div>
                 <div class="Tool__modal-inner-container">
                     <div class="Tool__modal-wrapper">
                         <header class="Tool__header-wrapper">
                             <h2 class="Tool__header">Canvas</h2>
                         </header>
+
+
+                        <div class="Tool__panels-wrapper">
+                            <div class="Tool__settings-panel">
+                                <!-- <div class="grids tool-item"> -->
+                                <p class="Tool__settings-panel__property">Grids</p>
+                                <div class="Tool__settings-panel__inline-options">
+                                    <div class="Tool__settings-panel__input-wrap">
+                                        <input type="radio" name="grids" value="1" id="grid1" data-grid="grid-a" checked class="grid-input">
+                                        <label for="grid1"><span>1</span></label>
+                                    </div>
+                                    <div class="Tool__settings-panel__input-wrap">
+                                        <input type="radio" name="grids" value="2" id="grid2" data-grid="grid-b" class="grid-input">
+                                        <label for="grid2"><span>2</span></label>
+                                    </div>
+                                    <div class="Tool__settings-panel__input-wrap">
+                                        <input type="radio" name="grids" value="3" id="grid3" data-grid="grid-c" class="grid-input">
+                                        <label for="grid3"><span>3</span></label>
+                                    </div>
+                                    <div class="Tool__settings-panel__input-wrap">
+                                        <input type="radio" name="grids" value="0" id="grid0" data-grid="" class="grid-input">
+                                        <label for="grid0"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></span></label>
+                                        <!-- <label for="grid0"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></span></label> -->
+                                    </div>
+                                </div>
+
+                                <!-- <div class="background tool-item"> -->
+                                <p class="Tool__settings-panel__property">Background</p>
+                                <div class="Tool__settings-panel__inline-options">
+                                    <div class="Tool__settings-panel__input-wrap">
+                                        <input type="radio" name="background" value="2" id="back2" checked class="bg-input" data-hex="#151512" data-theme="dark">
+                                        <label for="back2"></label>
+                                    </div>
+                                    <div class="Tool__settings-panel__input-wrap">
+                                        <input type="radio" name="background" value="1" id="back1" class="bg-input" data-hex="#eae7e1" data-theme="light">
+                                        <label for="back1"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Color Swatch -->
+        <% if @eQuill != "3" && @eQuill != "4" %>
         <div class="Tool">
             <span class="Tool__hit"></span>
 
             <div class="Tool__icon-container">
-                <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
+                <div id="rgb-sample" class="Tool__swatch"></div>
             </div>
 
             <div class="Tool__modal-container hide">
@@ -230,9 +270,34 @@
                         <header class="Tool__header-wrapper">
                             <h2 class="Tool__header">Color de Trazo</h2>
                         </header>
+
+                        <div class="Tool__panels-wrapper">
+                            <div class="Tool__settings-panel">
+
+                                <!-- <div class="tool-item"> -->
+                                <div>
+                                    <div>
+                                        <p>R</p>
+                                        <input type="range" min="0" max="255" value="255" step="1" id="red-channel" class="channel-input styled-slider" data-index="0">
+                                    </div>
+
+                                    <div>
+                                        <p>G</p>
+                                        <input type="range" min="0" max="255" value="255" step="1" id="green-channel" class="channel-input styled-slider" data-index="1">
+                                    </div>
+
+                                    <div>
+                                        <p>B</p>
+                                        <input type="range" min="0" max="255" value="255" step="1" id="blue-channel" class="channel-input styled-slider" data-index="2">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <% end %>
     </div>
 </div>

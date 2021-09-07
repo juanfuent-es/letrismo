@@ -8,18 +8,7 @@ export default class Tools {
     events() {
         window["open-tools-btn"].addEventListener("click", () => this.show());
         window["close-tools-btn"].addEventListener("click", () => this.hide());
-        // El dibujo de una forma requiere de 3 valores de color, background, relleno y stroke
-        let changeColorInputs = document.querySelectorAll(".channel-input");
-        // Se asigna evento a los inputs de cambio de valor, el evento se dispara al cambiar de valor
-        for (let i = 0; i < changeColorInputs.length; i++) {
-            changeColorInputs[i].addEventListener("change", (e) => {
-                let _index = parseInt(e.target.getAttribute("data-index"));
-                this.stage.rgb[_index] = e.target.value;
-                this.stage.stroke_color = "rgb(" + this.stage.rgb.join(",") + ")";
-                this.stage.fill_color = "rgb(" + this.stage.rgb.join(",") + ")";
-        		window["rgb-sample"].style.backgroundColor = this.stage.stroke_color;
-            });
-        }
+
 
     }
 
