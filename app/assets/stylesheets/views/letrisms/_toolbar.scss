@@ -149,6 +149,9 @@
         width: 100%;
         padding: 10px 0 30px;
         border-radius: 10px;
+
+        // temporal style until finishing Tool migration into Toolbar
+        background-color: $toolbar-bg;
         // background-color: $tools-bg;
         // -webkit-backdrop-filter: blur(10px);
         // backdrop-filter: blur(10px);
@@ -387,6 +390,6 @@
     &__settings-panel{
         position: relative;
         width: 100%;
-        padding: 20px;
+        padding: 0 20px;
     }
 }

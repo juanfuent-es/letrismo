@@ -177,16 +177,15 @@
 
                         <div class="Tool__panels-wrapper">
                             <div class="Tool__settings-panel">
-                                <% if false %>
-                                <div id="tools">
-                                    <div class="closeBtn tool-item">
-                                        <button id="close-tools-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63"/></svg>
-                                        </button>
-                                    </div>
+                                <% if true %>
+                                <div class="">
+                                    <p>Flow</p>
+                                    <input type="range" min="0.2" max="0.4" step="0.05" value="0.35" id="flow-input" class="styled-slider">
+                                </div>
 
-                                    <div class="slider tool-item"><p>Flow</p><input type="range" min="0.2" max="0.4" step="0.05" value="0.35" id="flow-input"></div>
-	                                <div class="slider tool-item"><p>Layers</p><input type="range" min="1" max="5" step="1" value="3" id="layers-input"></div>
+                                <div class="">
+                                    <p>Layers</p>
+                                    <input type="range" min="1" max="5" step="1" value="3" id="layers-input" class="styled-slider">
                                 </div>
                                 <% end %>
                             </div>
@@ -207,7 +206,11 @@
             <div class="Tool__modal-container hide">
                 <div class="Tool__modal-arrow"></div>
                 <div class="Tool__modal-inner-container">
-                    <div class="Tool__modal-wrapper"></div>
+                    <div class="Tool__modal-wrapper">
+                        <header class="Tool__header-wrapper">
+                            <h2 class="Tool__header">Canvas</h2>
+                        </header>
+                    </div>
                 </div>
             </div>
         </div>
@@ -223,7 +226,11 @@
             <div class="Tool__modal-container hide">
                 <div class="Tool__modal-arrow"></div>
                 <div class="Tool__modal-inner-container">
-                    <div class="Tool__modal-wrapper"></div>
+                    <div class="Tool__modal-wrapper">
+                        <header class="Tool__header-wrapper">
+                            <h2 class="Tool__header">Color de Trazo</h2>
+                        </header>
+                    </div>
                 </div>
             </div>
         </div>
