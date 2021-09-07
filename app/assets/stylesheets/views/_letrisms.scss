@@ -96,16 +96,170 @@ body {
     transform: translate(0px, 15px);
 	display: none;
 	position: fixed;
-	padding: 10px;
+	padding: 8px;
 	background: var(--bg-color);
 	z-index: 10;
 	bottom: 5%;
 	left: 5%;
+	background-color: $tools-bg;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+
+	input[type=range].styled-slider {
+		cursor: pointer;
+		height: 2px;
+		-webkit-appearance: none;
+		background: none;
+
+		/*progress support*/
+		--range: calc(var(--max) - var(--min));
+		--ratio: calc((var(--value) - var(--min)) / var(--range));
+		--sx: calc(0.5 * 8px + var(--ratio) * (100% - 8px));
+
+		/*webkit*/
+		&::-webkit-slider-thumb {
+			width: 8px;
+			height: 8px;
+			border-radius: 8px;
+			background: $active-color;
+			border: none;
+			box-shadow: 0 0 2px black;
+			margin-top: calc(max((2px - 1px - 1px) * 0.5,0px) - 6px * 0.5);
+			-webkit-appearance: none;
+			transition: transform .2s ease-out;
+		}
+		
+		&::-webkit-slider-runnable-track {
+			height: 2px;
+			border-radius: 2px;
+			border: none;
+			box-shadow: none;
+			background: linear-gradient($active-color,$active-color) 0/var(--sx) 100% no-repeat, $input-range-bg;
+		}
+
+		// mozilla
+		&::-moz-range-thumb {
+			width: 8px;
+			height: 8px;
+			border-radius: 8px;
+			background: $active-color;
+			border: none;
+			box-shadow: 0 0 2px black;
+		}
+
+		&::-moz-range-track {
+			height: 4px;
+			border-radius: 2px;
+			border: none;
+			box-shadow: none;
+			background: linear-gradient($active-color,$active-color) 0/var(--sx) 100% no-repeat, $input-range-bg;
+		}
+
+		// ms
+		&::-ms-fill-upper {
+			background: $input-range-bg;
+			border-color: $input-range-bg;
+		}
+		&::-ms-fill-lower {
+			height: 8px;
+			border-radius: 0.5em 0 0 0.5em;
+			margin: -1px 0 -1px -1px;
+			background: $active-color;
+			border: none;
+			border-right-width: 0;
+		}
+		&::-ms-thumb {
+			width: 8px;
+			height: 8px;
+			border-radius: 8px;
+			background: $active-color;
+			border: none;
+			box-shadow: 0 0 2px black;
+			margin-top: 0;
+			box-sizing: border-box;
+		}
+		&::-ms-track {
+			height: 2px;
+			border-radius: 2px;
+			background: $input-range-bg;
+			border: none;
+			box-shadow: none;
+			box-sizing: border-box;
+		}
+
+
+		
+		&:focus {
+			outline: none;
+		}
+
+		&:hover{
+			/*webkit*/
+			&::-webkit-slider-thumb{
+				background: $active-color;
+				transform: scale(1.5);
+			}
+			&::-webkit-slider-runnable-track {
+				background: linear-gradient($active-color,$active-color) 0/var(--sx) 100% no-repeat, $input-range-bg--hover;
+			}
+
+			// mozilla
+			&::-moz-range-thumb {
+				background: $active-color;
+				transform: scale(1.5);
+			}
+			&::-moz-range-track {
+				background: linear-gradient($active-color,$active-color) 0/var(--sx) 100% no-repeat, $input-range-bg--hover;
+			}
+
+			// ms
+			&::-ms-thumb {
+				background: $active-color;
+			}
+			&::-ms-fill-lower {
+				background: $active-color;
+			}
+			&::-ms-fill-upper {
+				background: $input-range-bg--hover;
+			}
+		}
+
+		&:active{
+			/*webkit*/
+			&::-webkit-slider-thumb{
+				background: $active-color;
+				transform: scale(2);
+			}
+			&::-webkit-slider-runnable-track {
+				background: linear-gradient($active-color--focus,$active-color--focus) 0/var(--sx) 100% no-repeat, $input-range-bg--hover;
+			}
+
+			// mozilla
+			&::-moz-range-thumb {
+				background: $active-color;
+				transform: scale(2);
+			}
+			&::-moz-range-track {
+				background: linear-gradient($active-color--focus,$active-color--focus) 0/var(--sx) 100% no-repeat, $input-range-bg--hover;
+			}
+
+			// ms
+			&::-ms-thumb {
+				background: $active-color;
+			}
+			&::-ms-fill-lower {
+				background: $active-color--focus;
+			}
+			&::-ms-fill-upper {
+				background: $input-range-bg--hover;
+			}
+		}
+	}
 }
 
 .tool-item {
 	opacity: 0;
-    transform: translate(0px, -10px);
+    transform: translate(0px, -8px);
 }
 
 #tools .slider {
@@ -128,6 +282,7 @@ body {
 	padding: 0;
 }
 
+/*
 #tools input[type=range] {
 	-webkit-appearance: none;
 	margin: 18px 0;
@@ -139,9 +294,9 @@ body {
 	outline: none;
 }
 
-/*	EXPLORER */
+//	EXPLORER //
 
-/*SLIDER MIDDLE LINE CURSOR POINTER*/
+//SLIDER MIDDLE LINE CURSOR POINTER//
 #tools input[type=range]::-webkit-slider-runnable-track {
 	width: 100%;
 	height: 5px;
@@ -150,7 +305,7 @@ body {
 	border: 0px;
 }
 
-/*SLIDER EMBOLO EXPLORER*/
+//SLIDER EMBOLO EXPLORER//
 #tools	input[type=range]::-webkit-slider-thumb {
 	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 	border: 1px solid #000000;
@@ -163,21 +318,21 @@ body {
 	margin-top: -14px;
 }
 
-/*SLIDER MIDDLE THIN LINE eXPLORER*/
+//SLIDER MIDDLE THIN LINE eXPLORER//
 #tools	input[type=range]:focus::-webkit-slider-runnable-track {
 	background: #fff;
 }
 
-/*mozilla */
+//mozilla //
 
-/*SLIDER MIDDLE LINE CURSOR POINTER*/
+//SLIDER MIDDLE LINE CURSOR POINTER//
 #tools	input[type=range]::-moz-range-track {
 	width: 100%;
-	height: 10px;
+	height: 8px;
 	cursor: pointer;
 }
 
-/*SLIDER EMBOLO MOZILLA*/
+//SLIDER EMBOLO MOZILLA//
 #tools	input[type=range]::-moz-range-thumb {
 	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 	border: 1px solid #000000;
@@ -198,9 +353,9 @@ body {
 	color: transparent;
 }
 
-/*mozilla */
+//mozilla //
 
-/*SLIDER MIDDLE LINE CURSOR POINTER*/
+//SLIDER MIDDLE LINE CURSOR POINTER//
 #tools	input[type=range]::-ms-fill-lower {
 	background: #2a6495;
 	border: 0.2px solid #010101;
@@ -232,18 +387,19 @@ body {
 #tools	input[type=range]:focus::-ms-fill-upper {
 	background: #fff;
 }
+*/
 
 #tools .equills {
 	width: 100%;
 	ul {
-		padding: 10px 0px;
+		padding: 8px 0px;
 		margin: 0;
 		list-style: none;
 		li {
 			display: inline-block;
 		}
 		a {
-			padding: 0px 10px;
+			padding: 0px 8px;
 			&.active,
 			&:hover {
 				label {
@@ -381,8 +537,8 @@ button#close-tools-btn {
 
 #tools .grids input[type="radio"] ~ label svg {
 	stroke: #fff;
-	width: 10px;
-	height: 10px;
+	width: 8px;
+	height: 8px;
 }
 
 #tools .grids input[type="radio"] ~ label:hover {
@@ -428,8 +584,8 @@ form#letrism-form {
 		background-color: transparent;
 		outline: none;
 		color: white;
-		padding: 5px 10px;
-		border-radius: 10px;
+		padding: 5px 8px;
+		border-radius: 8px;
 		text-transform: uppercase;
 		cursor: pointer;
 		transform: translate(0px, 15px);

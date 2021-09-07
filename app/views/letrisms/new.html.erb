@@ -12,16 +12,16 @@
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63"/></svg>
 		</button>
 	</div>
-	<!-- <div class="slider tool-item"><p>Viscocity</p><input type="range" min="0" max="100" step="10" name="viscocity"></div> -->
-	<div class="slider tool-item"><p>Flow</p><input type="range" min="0.2" max="0.4" step="0.05" value="0.35" id="flow-input"></div>
-	<div class="slider tool-item"><p>Layers</p><input type="range" min="1" max="5" step="1" value="3" id="layers-input"></div>
+	<!-- <div class="slider tool-item"><p>Viscocity</p><input type="range" min="0" max="100" step="10" name="viscocity" class="styled-slider"></div> -->
+	<div class="slider tool-item"><p>Flow</p><input type="range" min="0.2" max="0.4" step="0.05" value="0.35" id="flow-input" class="styled-slider"></div>
+	<div class="slider tool-item"><p>Layers</p><input type="range" min="1" max="5" step="1" value="3" id="layers-input" class="styled-slider"></div>
 	<% if @eQuill != "3" && @eQuill != "4" %>
 	<div class="slider tool-item">
 		<p>Color <span id="rgb-sample"></span></p>
 		<div>
-			<p>R</p><input type="range" min="0" max="255" value="255" step="1" id="red-channel" class="channel-input" data-index="0">
-			<p>G</p><input type="range" min="0" max="255" value="255" step="1" id="green-channel" class="channel-input" data-index="1">
-			<p>B</p><input type="range" min="0" max="255" value="255" step="1" id="blue-channel" class="channel-input" data-index="2">
+			<p>R</p><input type="range" min="0" max="255" value="255" step="1" id="red-channel" class="channel-input styled-slider" data-index="0">
+			<p>G</p><input type="range" min="0" max="255" value="255" step="1" id="green-channel" class="channel-input styled-slider" data-index="1">
+			<p>B</p><input type="range" min="0" max="255" value="255" step="1" id="blue-channel" class="channel-input styled-slider" data-index="2">
 		</div>
 	</div>
 	<% end %>

@@ -1,7 +1,11 @@
 export default class ToolBar {
     constructor({parent}) {
+        this.isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+        this.isIE = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
+
         this.stage = parent.sketch;
         this.getElements();
+        this.setStyles();
         this.events();
     }
 
@@ -16,6 +20,19 @@ export default class ToolBar {
         let tools = this.container.querySelectorAll('.Tool');
         for (let i = 0; i < tools.length; i++) {
             this.tools.push(tools[i]);
+        }
+    }
+
+    setStyles() {
+        if (this.isFirefox || this.isIE) for (let el of document.querySelectorAll('#tools, .Tools__modal-wrapper')) {
+            el.classList.add('firefox-bg');
+        }
+
+        for (let e of document.querySelectorAll('input[type="range"].styled-slider')) {
+            e.style.setProperty('--value', e.value);
+            e.style.setProperty('--min', e.min == '' ? '0' : e.min);
+            e.style.setProperty('--max', e.max == '' ? '100' : e.max);
+            e.addEventListener('input', () => e.style.setProperty('--value', e.value));
         }
     }
 

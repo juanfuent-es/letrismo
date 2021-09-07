@@ -11,10 +11,13 @@
 }
 
 $toolbar-bg: #202020;
-$tools-bg: rgba(60,60,60, .5);
+$tools-bg: rgba(43,43,43, .6);
 
 $primary-font: Helvetica, sans-serif;
 $secondary-font: Georgia, serif;
 
 $active-color: #D8FF3A;
-// $active-color: #1A79F9;
+$active-color--focus: #829b21;
+// $active-color--focus: #1A79F9;
+$input-range-bg: rgb(75,75,75);
+$input-range-bg--hover: rgb(110,110,110);
