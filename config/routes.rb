@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 	get 'galeria' => 'static_pages#gallery'
 	get 'contacto' => 'static_pages#contact'
 	get 'notebook' => 'letrisms#new'
+	get 'brushes' => 'letrisms#new'
+	get 'brush/:id' => 'letrisms#new'
 
 	# data
 	get "manifest.json" => "site_info#manifest"

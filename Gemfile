@@ -21,7 +21,7 @@ gem 'will_paginate'
 gem 'carrierwave'
 gem 'carrierwave-base64'
 gem 'carrierwave-imageoptimizer'
-gem 'rmagick', '~> 2.15.4'
+gem 'rmagick' #, '~> 2.15.4'
 gem 'mini_magick' #, '~> 4.8'
 
 if RUBY_PLATFORM =~ /x86_64-linux/
@@ -37,4 +37,4 @@ gem 'font-awesome-sass', '~> 5.13.0'
 
 # consola en browser
 gem 'web-console', '>= 3.3.0', group: :development
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] #

@@ -61,4 +61,31 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Brush do
+    edit do
+      field :name do 
+        label "Nombre"
+      end
+      field :thumb do
+        label "Miniatura"
+      end
+      field :dificulty, :enum do
+        label "Dificultad"
+        searchable false
+        enum do
+          ["Baja", "Media", "Alta"]
+        end
+      end
+      field :description do
+        label "Descripción"
+      end
+      field :family do
+        label "Familia"
+      end
+      field :properties do
+        label "Propiedades"
+      end
+    end
+  end
+
 end

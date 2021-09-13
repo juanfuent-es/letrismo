@@ -28,42 +28,20 @@
                 <div class="Tool__modal-inner-container two-sides">
                     <div class="Tool__modal-wrapper">
                         <header class="Tool__header-wrapper">
-                            <h2 class="Tool__header">Libreria de eQuills</h2>
+                            <h2 class="Tool__header">Librería de eQuills</h2>
                             <button class="Tool__contribute">+</button> <!-- trigger modal to redirect to discord if clicked -->
                         </header>
 
                         <div class="Tool__panels-wrapper">
                             <ul class="Tool__index-panel">
+                                <% Brush.all.order(name: :asc).each do |brush| %>
                                 <li class="Tool__list-item">
-                                    <a href="#">
+                                    <%= link_to "/brush/#{brush.slug}" do %>
                                         <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
-                                        <h3 class="Tool__list-item__name">Cadena</h3>
-                                    </a>
+                                        <h3 class="Tool__list-item__name"><%= brush.name %></h3>
+                                    <% end %>
                                 </li>
-                                <li class="Tool__list-item">
-                                    <a href="#">
-                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
-                                        <h3 class="Tool__list-item__name">Espuma</h3>
-                                    </a>
-                                </li>
-                                <li class="Tool__list-item">
-                                    <a href="#">
-                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
-                                        <h3 class="Tool__list-item__name">Slinky</h3>
-                                    </a>
-                                </li>
-                                <li class="Tool__list-item">
-                                    <a href="#">
-                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
-                                        <h3 class="Tool__list-item__name">Light Brush</h3>
-                                    </a>
-                                </li>
-                                <li class="Tool__list-item">
-                                    <a href="#">
-                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
-                                        <h3 class="Tool__list-item__name">Bulb</h3>
-                                    </a>
-                                </li>
+                                <% end %>
                             </ul>
 
                             <div class="Tool__info-panel">

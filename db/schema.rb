@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_062819) do
+ActiveRecord::Schema.define(version: 2021_09_13_054517) do
+
+  create_table "brushes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", default: ""
+    t.string "dificulty", default: ""
+    t.string "thumb", default: ""
+    t.string "slug", default: ""
+    t.string "family", default: ""
+    t.text "properties"
+    t.text "description"
+  end
 
   create_table "letrisms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -24,6 +34,8 @@ ActiveRecord::Schema.define(version: 2020_12_11_062819) do
     t.string "bg", default: "#151512"
     t.string "fill", default: ""
     t.string "stroke", default: ""
+    t.bigint "brush_id", null: false
+    t.index ["brush_id"], name: "index_letrisms_on_brush_id"
     t.index ["user_id"], name: "index_letrisms_on_user_id"
   end
 
@@ -59,5 +71,6 @@ ActiveRecord::Schema.define(version: 2020_12_11_062819) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "letrisms", "brushes"
   add_foreign_key "letrisms", "users"
 end
