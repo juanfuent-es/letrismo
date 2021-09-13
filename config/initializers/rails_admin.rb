@@ -76,13 +76,13 @@ RailsAdmin.config do |config|
           ["Baja", "Media", "Alta"]
         end
       end
-      field :description do
-        label "Descripción"
-      end
       field :family do
         label "Familia"
       end
-      field :properties do
+      field :description, :froala do
+        label "Descripción"
+      end
+      field :properties, :froala do
         label "Propiedades"
       end
     end

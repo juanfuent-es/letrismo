@@ -23,7 +23,7 @@ gem 'carrierwave-base64'
 gem 'carrierwave-imageoptimizer'
 gem 'rmagick' #, '~> 2.15.4'
 gem 'mini_magick' #, '~> 4.8'
-
+gem "wysiwyg-rails"
 if RUBY_PLATFORM =~ /x86_64-linux/
 	gem 'webp-ffi'
 	gem 'mini_racer', platforms: :ruby
