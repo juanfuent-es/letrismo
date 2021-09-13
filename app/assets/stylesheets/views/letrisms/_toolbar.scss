@@ -245,6 +245,10 @@
                     color: #1978F7;
                 }
             }
+
+            *{
+                pointer-events: none;
+            }
         }
 
         &__icon{
@@ -260,7 +264,18 @@
     }
 
     &__info-panel{
+        position: relative;
+        width: 100%;
         padding-right: 5px;
+    }
+
+    &__equill-info-wrapper{
+        position: relative;
+        width: 100%;
+
+        &.hide{
+            display: none;
+        }
     }
 
     &__equill-preview{
@@ -297,6 +312,11 @@
                 border: 1px solid black;
                 background-color: #fff;
                 cursor: pointer;
+                &:disabled{
+                    pointer-events: none;
+                    color: #fff;
+                    background: rgba(255,255,255, .05);
+                }
             }
         }
 

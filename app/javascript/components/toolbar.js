@@ -12,6 +12,8 @@ export default class ToolBar {
     getElements() {
         this.container = window['ToolBar'];
         this.modals = this.container.querySelectorAll('.Tool__modal-container');
+        this.panelInfoSwitches = this.container.querySelectorAll('.Tool__show-equill-info');
+        this.eQuillsInfoWrappers = this.container.querySelectorAll('.Tool__equill-info-wrapper');
         this.getTools();
     }
 
@@ -43,6 +45,13 @@ export default class ToolBar {
         }
     }
 
+    hideAllEquillsInfo() {
+        var _this = this;
+        for (const wrapper of _this.eQuillsInfoWrappers) {
+            wrapper.classList.add('hide');
+        }
+    }
+
     // Event handlers
     events() {
         var _this = this;
@@ -50,6 +59,10 @@ export default class ToolBar {
         for (let i = 0; i < _this.tools.length; i++) {
             const tool = _this.tools[i];
             tool.querySelector('.Tool__hit').addEventListener('click', _this.handleToolClick.bind(_this));
+        }
+
+        for (const control of _this.panelInfoSwitches) {
+            control.addEventListener('click', _this.handlePanelInfoSwitchClick.bind(_this));
         }
 
         // El dibujo de una forma requiere de 3 valores de color, background, relleno y stroke
@@ -70,9 +83,22 @@ export default class ToolBar {
     }
 
     handleToolClick(e) {
-        this.closeModals();
         let toolIndex = this.tools.indexOf(e.target.parentNode);
-        this.modals[toolIndex].classList.remove('hide');
+
+        let wasOpen = this.modals[toolIndex].classList['value'].indexOf('hide') >= 0;
+        this.closeModals();
+
+        if (wasOpen) {
+            this.modals[toolIndex].classList.remove('hide');
+        } else {
+            this.modals[toolIndex].classList.add('hide');
+        }
+    }
+
+    handlePanelInfoSwitchClick(e) {
+        this.hideAllEquillsInfo();
+        let equillId = e.target.getAttribute('data-equill');
+        this.eQuillsInfoWrappers[equillId].classList.remove('hide');
     }
 
     handleCanvasMouseEnter() {
