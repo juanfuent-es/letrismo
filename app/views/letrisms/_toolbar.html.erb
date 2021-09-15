@@ -35,19 +35,27 @@
 
                         <div class="Tool__panels-wrapper">
                             <ul class="Tool__index-panel">
-                                <% Brush.all.order(name: :asc).each do |brush| %>
+                                <!-- Contenido falso de muestra. BORRAR despues de terminar implementacion -->
                                 <li class="Tool__list-item">
-                                    <%= link_to "/brush/#{brush.slug}" do %>
+                                    <button class="Tool__show-equill-info" data-equill="0">
+                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
+                                        <h3 class="Tool__list-item__name">Cadena</h3>
+                                    </button>
+                                </li>
+
+                                <% Brush.all.order(name: :asc).each_with_index do |brush, index| %>
+                                <li class="Tool__list-item">
+                                    <button class="Tool__show-equill-info" data-equill='<%= index + 1 %>'> <!-- BORRAR "+ 1" despues de terminar implementacion -->
                                         <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
                                         <h3 class="Tool__list-item__name"><%= brush.name %></h3>
-                                    <% end %>
+                                    </button>
                                 </li>
                                 <% end %>
                             </ul>
 
                             <div class="Tool__info-panel">
-                                <!-- TODO: Refactorizar para obtener informacion de las clases que contienen cada eQuill (Brush) -->
-                                <div id="equill-0" class="Tool__equill-info-wrapper">
+                                <!-- Contenido falso de muestra. BORRAR despues de terminar implementacion -->
+                                <div id="equill-info-muestra" class="Tool__equill-info-wrapper">
                                     <div class="Tool__equill-preview">
                                         <div class="Tool__equill-preview__header">
                                             <div class="Tool__equill-preview__header__text">
@@ -59,7 +67,7 @@
                                             </div>
 
                                             <% if @eQuill == "0" %>
-                                            <button disabled class="Tool__equill-preview__header__btn">Usando</button>
+                                            <button disabled class="Tool__equill-preview__header__btn">En uso</button>
                                             <% else %>
                                             <button class="Tool__equill-preview__header__btn">Usar</button>
                                             <% end %>
@@ -116,21 +124,24 @@
                                     </div>
                                 </div>
 
-                                <div id="equill-1" class="Tool__equill-info-wrapper hide">
+                                <% Brush.all.order(name: :asc).each_with_index do |brush, index| %>
+                                <div id="equill-info-<%= index %>" class="Tool__equill-info-wrapper <%= index == 0 ? '' : 'hide' %>">
                                     <div class="Tool__equill-preview">
                                         <div class="Tool__equill-preview__header">
                                             <div class="Tool__equill-preview__header__text">
-                                                <h4 class="Tool__equill-preview__header__title">Espuma</h4>
+                                                <h4 class="Tool__equill-preview__header__title"><%= brush.name %></h4>
                                                 <div class="Tool__equill-preview__header__subtitle">
                                                     <span class="Tool__label">fam.</span>
-                                                    <span class="Tool__concept">Partículas.</span>
+                                                    <span class="Tool__concept"><%= brush.family %>.</span>
                                                 </div>
                                             </div>
 
-                                            <% if @eQuill == "1" %>
-                                            <button disabled class="Tool__equill-preview__header__btn">Usando</button>
+                                            <% if brush.slug == request.original_url.downcase.split("brush/")[1] %>
+                                                <button disabled class="Tool__equill-preview__header__btn">En uso</button>
                                             <% else %>
-                                            <button class="Tool__equill-preview__header__btn">Usar</button>
+                                                <%= link_to "/brush/#{brush.slug}", :class=> "Tool__equill-preview__header__btn" do %>
+                                                    <span>Usar</span>
+                                                <% end %>
                                             <% end %>
                                         </div>
 
@@ -140,12 +151,12 @@
                                     <div class="Tool__equill-description">
                                         <p class='intro'>
                                             <span class="Tool__label">Dificultad:</span>
-                                            <span class="Tool__concept">Baja.</span>
+                                            <span class="Tool__concept"><%= brush.dificulty %>.</span>
                                         </p>
 
                                         <div class="body">
                                             <p class="biblio">
-                                                TBD
+                                                <%= brush.description %>
                                             </p>
                                         </div>
 
@@ -176,189 +187,7 @@
 
                                     </div>
                                 </div>
-
-                                <div id="equill-2" class="Tool__equill-info-wrapper hide">
-                                    <div class="Tool__equill-preview">
-                                        <div class="Tool__equill-preview__header">
-                                            <div class="Tool__equill-preview__header__text">
-                                                <h4 class="Tool__equill-preview__header__title">Slinky</h4>
-                                                <div class="Tool__equill-preview__header__subtitle">
-                                                    <span class="Tool__label">fam.</span>
-                                                    <span class="Tool__concept">Partículas.</span>
-                                                </div>
-                                            </div>
-
-                                            <% if @eQuill == "2" %>
-                                            <button disabled class="Tool__equill-preview__header__btn">Usando</button>
-                                            <% else %>
-                                            <button class="Tool__equill-preview__header__btn">Usar</button>
-                                            <% end %>
-                                        </div>
-
-                                        <%= image_tag("equills-previews/placeholder.png", :class => "Tool__equill-preview__stroke") %>
-                                    </div>
-
-                                    <div class="Tool__equill-description">
-                                        <p class='intro'>
-                                            <span class="Tool__label">Dificultad:</span>
-                                            <span class="Tool__concept">Baja.</span>
-                                        </p>
-
-                                        <div class="body">
-                                            <p class="biblio">
-                                                TBD
-                                            </p>
-                                        </div>
-
-                                        <div class="Tool__equill-description__properties">
-                                            <h5 class="Tool__label">Propiedades variables</h5>
-                                            <ul class="Tool__text-list">
-                                                <li class="Tool__text-list__item">TBD</li>
-                                                <li class="Tool__text-list__item">TBD</li>
-                                                <li class="Tool__text-list__item">TBD</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="Tool__equill-description__properties">
-                                            <h5 class="Tool__label">Atajos de teclado</h5>
-                                            <ul class="Tool__table-list">
-                                                <li class="Tool__table-list__item">
-                                                    <span class="Tool__command">Deshacer</span>
-                                                    <span class="Tool__key">←</span>
-                                                </li>
-
-                                                <li class="Tool__table-list__item">
-                                                    <span class="Tool__command">Rehacer</span>
-                                                    <span class="Tool__key">→</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                                <div id="equill-3" class="Tool__equill-info-wrapper hide">
-                                    <div class="Tool__equill-preview">
-                                        <div class="Tool__equill-preview__header">
-                                            <div class="Tool__equill-preview__header__text">
-                                                <h4 class="Tool__equill-preview__header__title">Light Brush</h4>
-                                                <div class="Tool__equill-preview__header__subtitle">
-                                                    <span class="Tool__label">fam.</span>
-                                                    <span class="Tool__concept">Filamentos.</span>
-                                                </div>
-                                            </div>
-
-                                            <% if @eQuill == "3" %>
-                                            <button disabled class="Tool__equill-preview__header__btn">Usando</button>
-                                            <% else %>
-                                            <button class="Tool__equill-preview__header__btn">Usar</button>
-                                            <% end %>
-                                        </div>
-
-                                        <%= image_tag("equills-previews/placeholder.png", :class => "Tool__equill-preview__stroke") %>
-                                    </div>
-
-                                    <div class="Tool__equill-description">
-                                        <p class='intro'>
-                                            <span class="Tool__label">Dificultad:</span>
-                                            <span class="Tool__concept">Alta.</span>
-                                        </p>
-
-                                        <div class="body">
-                                            <p class="biblio">
-                                                TBD
-                                            </p>
-                                        </div>
-
-                                        <div class="Tool__equill-description__properties">
-                                            <h5 class="Tool__label">Propiedades variables</h5>
-                                            <ul class="Tool__text-list">
-                                                <li class="Tool__text-list__item">TBD</li>
-                                                <li class="Tool__text-list__item">TBD</li>
-                                                <li class="Tool__text-list__item">TBD</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="Tool__equill-description__properties">
-                                            <h5 class="Tool__label">Atajos de teclado</h5>
-                                            <ul class="Tool__table-list">
-                                                <li class="Tool__table-list__item">
-                                                    <span class="Tool__command">Deshacer</span>
-                                                    <span class="Tool__key">←</span>
-                                                </li>
-
-                                                <li class="Tool__table-list__item">
-                                                    <span class="Tool__command">Rehacer</span>
-                                                    <span class="Tool__key">→</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                                <div id="equill-4" class="Tool__equill-info-wrapper hide">
-                                    <div class="Tool__equill-preview">
-                                        <div class="Tool__equill-preview__header">
-                                            <div class="Tool__equill-preview__header__text">
-                                                <h4 class="Tool__equill-preview__header__title">Bulb</h4>
-                                                <div class="Tool__equill-preview__header__subtitle">
-                                                    <span class="Tool__label">fam.</span>
-                                                    <span class="Tool__concept">Filamentos.</span>
-                                                </div>
-                                            </div>
-
-                                            <% if @eQuill == "4" %>
-                                            <button disabled class="Tool__equill-preview__header__btn">Usando</button>
-                                            <% else %>
-                                            <button class="Tool__equill-preview__header__btn">Usar</button>
-                                            <% end %>
-                                        </div>
-
-                                        <%= image_tag("equills-previews/placeholder.png", :class => "Tool__equill-preview__stroke") %>
-                                    </div>
-
-                                    <div class="Tool__equill-description">
-                                        <p class='intro'>
-                                            <span class="Tool__label">Dificultad:</span>
-                                            <span class="Tool__concept">Alta.</span>
-                                        </p>
-
-                                        <div class="body">
-                                            <p class="biblio">
-                                                TBD
-                                            </p>
-                                        </div>
-
-                                        <div class="Tool__equill-description__properties">
-                                            <h5 class="Tool__label">Propiedades variables</h5>
-                                            <ul class="Tool__text-list">
-                                                <li class="Tool__text-list__item">TBD</li>
-                                                <li class="Tool__text-list__item">TBD</li>
-                                                <li class="Tool__text-list__item">TBD</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="Tool__equill-description__properties">
-                                            <h5 class="Tool__label">Atajos de teclado</h5>
-                                            <ul class="Tool__table-list">
-                                                <li class="Tool__table-list__item">
-                                                    <span class="Tool__command">Deshacer</span>
-                                                    <span class="Tool__key">←</span>
-                                                </li>
-
-                                                <li class="Tool__table-list__item">
-                                                    <span class="Tool__command">Rehacer</span>
-                                                    <span class="Tool__key">→</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
+                                <% end %>
                             </div>
                         </div>
                     </div>
