@@ -199,8 +199,8 @@ export const Brush6 = (p5) => {
             y: 0,
             display: "block"
         });
-        window["letrism_img"].value = this.screenshot();
-        window["letrism_paths"].value = this.data();
+        window["letrism_img"].value = p5.screenshot();
+        window["letrism_paths"].value = p5.data();
     }
 
     p5.disperse = () => {
@@ -242,6 +242,10 @@ export const Brush6 = (p5) => {
     }
 
     p5.screenshot = () => {
-      return p5.canvas.toDataURL("image/png");
+        if (p5.canvas.elt) {
+            return p5.canvas.elt.toDataURL("image/png");
+        } else {
+            return p5.canvas.toDataURL("image/png");
+        }
     }
 }
