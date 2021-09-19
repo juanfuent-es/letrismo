@@ -23,8 +23,8 @@
                 <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
             </div>
 
-            <!-- <div class="Tool__modal-container hide"> -->
-            <div class="Tool__modal-container">
+            <!-- <div class="Tool__modal-container"> -->
+            <div class="Tool__modal-container hide">
                 <div class="Tool__modal-arrow"></div>
                 <div class="Tool__modal-inner-container two-sides">
                     <div class="Tool__modal-wrapper">
@@ -260,8 +260,8 @@
                 <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
             </div>
 
-            <!-- <div class="Tool__modal-container"> -->
-            <div class="Tool__modal-container hide">
+            <!-- <div class="Tool__modal-container hide"> -->
+            <div class="Tool__modal-container">
                 <div class="Tool__modal-arrow"></div>
                 <div class="Tool__modal-inner-container">
                     <div class="Tool__modal-wrapper">
@@ -295,15 +295,23 @@
                                 </div>
 
                                 <!-- <div class="background tool-item"> -->
-                                <p class="Tool__settings-panel__property">Background</p>
+                                <p class="Tool__settings-panel__property">Color de fondo</p>
                                 <div class="Tool__settings-panel__inline-options">
-                                    <div class="Tool__settings-panel__input-wrap">
-                                        <input type="radio" name="background" value="2" id="back2" checked class="bg-input" data-hex="#151512" data-theme="dark">
-                                        <label for="back2"></label>
-                                    </div>
-                                    <div class="Tool__settings-panel__input-wrap">
-                                        <input type="radio" name="background" value="1" id="back1" class="bg-input" data-hex="#eae7e1" data-theme="light">
-                                        <label for="back1"></label>
+                                    <div class="Tool__settings-panel__input-wrap full-width">
+                                        <div class="Tool__text-toggle">
+                                            <div class="Tool__text-toggle__active-bg-wrap">
+                                                <span class="Tool__text-toggle__active-bg-wrap__element two-options"></span>
+                                            </div>
+
+                                            <div class="Tool__text-toggle__options-wrap">
+                                                <div class="Tool__text-toggle__option bg-input active" data-hex="#151512" data-theme="dark" data-option-index="0">
+                                                    <span class="Tool__text-toggle__option__label">Oscuro</span>
+                                                </div>
+                                                <div class="Tool__text-toggle__option bg-input" data-hex="#eae7e1" data-theme="light" data-option-index="1">
+                                                    <span class="Tool__text-toggle__option__label">Claro</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
