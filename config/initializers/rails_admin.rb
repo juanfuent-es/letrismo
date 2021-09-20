@@ -108,16 +108,19 @@ RailsAdmin.config do |config|
 
   config.model Equill do
     edit do
-      field :name do 
+      field :name do
         label "Nombre"
+      end
+      field :preview do
+        label "Vista Previa 1200x630"
       end
       field :thumb do
         label "Clase para icono"
       end
-      field :preview do
-        label "Vista Previa"
-      end
       field :properties do
+        label "Propiedades"
+      end
+      field :shortcuts do
         label "Propiedades"
       end
       field :dificulty, :enum do
