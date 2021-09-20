@@ -14,6 +14,7 @@ export default class ToolBar {
         this.modals = this.container.querySelectorAll('.Tool__modal-container');
         this.panelInfoSwitches = this.container.querySelectorAll('.Tool__show-equill-info');
         this.eQuillsInfoWrappers = this.container.querySelectorAll('.Tool__equill-info-wrapper');
+        this.textToggles = this.container.querySelectorAll('.Tool__text-toggle');
         this.getTools();
     }
 
@@ -78,8 +79,19 @@ export default class ToolBar {
             });
         }
 
+        _this.initTextTogglesListener();
 
         this.stage.canvas.elt.addEventListener('mouseenter', _this.handleCanvasMouseEnter.bind(_this));
+    }
+
+    initTextTogglesListener() {
+        var _this = this;
+        for (let i = 0; i < _this.textToggles.length; i++) {
+            const options = _this.textToggles[i].querySelectorAll('.Tool__text-toggle__option');
+            for (const option of options) {
+                option.addEventListener( 'click', _this.handleTextToggleClick.bind(_this) );
+            }
+        }
     }
 
     handleToolClick(e) {
@@ -103,5 +115,28 @@ export default class ToolBar {
 
     handleCanvasMouseEnter() {
         this.closeModals();
+    }
+
+    handleTextToggleClick(e) {
+        let theme = e.target.getAttribute("data-theme");
+        document.body.setAttribute("data-theme", theme);
+
+        let hex = e.target.getAttribute("data-hex");
+        window["letrism_bg"].value = hex;
+        this.stage.bg_color = hex;
+
+        let posIndex = e.target.getAttribute("data-option-index");
+
+        let toggleBg = e.target.parentNode.parentNode.querySelector('.Tool__text-toggle__active-bg-wrap__element');
+        gsap.to(toggleBg, 0.3, {
+            ease: Power2.easeOut,
+            x: `${100 * posIndex}%`
+        });
+
+        let options = e.target.parentNode.children;
+        for (const option of options) {
+            option.classList.remove('active');
+        }
+        options[posIndex].classList.add('active');
     }
 }

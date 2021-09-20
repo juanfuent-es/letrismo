@@ -36,17 +36,6 @@ export default class Controls {
                     break;
             }
         });
-        // bg selector
-        let bgInputs = document.querySelectorAll(".bg-input");
-        for (let i = 0; i < bgInputs.length; i++) {
-            bgInputs[i].addEventListener("click", (e) => {
-                let theme = e.target.getAttribute("data-theme");
-                document.body.setAttribute("data-theme", theme);
-                let hex = e.target.getAttribute("data-hex");
-                window["letrism_bg"].value = hex;
-                this.stage.bg_color = _value;
-            });
-        }
         // grid selector
         let gridInput = document.querySelectorAll(".grid-input");
         for (let i = 0; i < gridInput.length; i++) {
