@@ -1,5 +1,6 @@
 export default class ToolBar {
     constructor({parent}) {
+        if (!window['ToolBar']) return;
         this.isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
         this.isIE = navigator.userAgent.toLowerCase().indexOf('MSIE') > -1;
 

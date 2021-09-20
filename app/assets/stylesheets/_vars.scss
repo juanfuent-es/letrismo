@@ -10,11 +10,19 @@
 	--test-bg2: rgba(0, 255,0, .3);
 }
 
+$primary-font: Helvetica, sans-serif;
+$secondary-font: Georgia, serif;
+
+
+// Text Colors
+$active-text: #fff;
+$inactive-text: #5e5e5e;
+
+
+//////// Toolbar
 $toolbar-bg: #202020;
 $tools-bg: rgba(43,43,43, .6);
 
-$primary-font: Helvetica, sans-serif;
-$secondary-font: Georgia, serif;
 
 $active-color: #1A79F9;
 $active-color--focus: #124991;
@@ -22,3 +30,14 @@ $active-color--focus: #124991;
 // $active-color--focus: #829b21;
 $input-range-bg: rgb(75,75,75);
 $input-range-bg--hover: rgb(110,110,110);
+
+
+//////// Side menu
+$sidemenu-bg-color: #000;
+$sidemenu-text-color: #fff;
+
+
+//////// Eases
+$easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+$easeInOut: cubic-bezier(.73,0,.15,1);

@@ -1,5 +1,6 @@
 require("@rails/ujs").start()
 import Preloader from "components/preloader";
+import { Side_Menu } from "components/side-menu";
 import Controls from "components/controls";
 import Tools from "components/tools";
 import ToolBar from "components/toolbar";
@@ -38,6 +39,7 @@ class App {
             this.controls = new Controls(this.sketch);
             this.tools = new Tools(this.sketch);
         }
+        Side_Menu.init();
         this.events();
     }
 

@@ -1,0 +1,106 @@
+<section id="side-menu" class="<%= 'mobile-menu' if isMobile %>">
+	<span class="_close-overlay side-menu-trigger"></span>
+
+	<div class="inner-wrap">
+		<button class="close-btn side-menu-trigger link-inner-underline link-inner-underline--white h5 cascade-mask">
+			<span class="side-menu-item __wrap">
+				<%= t(:close) %>
+			</span>
+		</button>
+		
+		<nav class="center-wrap">
+			<ul class="pages-wrap">
+				<li>
+					<a href="/" title="Inicio" class="page-nav change-page">
+						<span class="index h5 cascade-mask">
+							<span class="side-menu-item">01</span>
+						</span>
+
+						<p class="title h1 cascade-mask">
+							<span class="side-menu-item">
+								Inicio
+							</span>
+						</p>
+					</a>
+				</li>
+
+				<li><a href="/manifiesto" title="Manifiesto" class="page-nav change-page">
+				<span class="index h5 cascade-mask">
+					<span class="side-menu-item">02</span>
+				</span>
+
+				<p class="title h1 cascade-mask">
+					<span class="side-menu-item">
+						Manifiesto
+					</span>
+				</p>
+				</a></li>
+
+				<li><a href="/notebook" title="Notebook" class="page-nav change-page">
+				<span class="index h5 cascade-mask">
+					<span class="side-menu-item">03</span>
+				</span>
+
+				<p class="title h1 cascade-mask">
+					<span class="side-menu-item">
+						Notebook
+					</span>
+				</p>
+				</a></li>
+
+				<li><a href="/galeria" title="Galería" class="page-nav change-page">
+				<span class="index h5 cascade-mask">
+					<span class="side-menu-item">04</span>
+				</span>
+
+				<p class="title h1 cascade-mask">
+					<span class="side-menu-item">
+						Galería
+					</span>
+				</p>
+				</a></li>
+
+				<% if signed_in? %>
+				<li><a href="/log_out" title="Cerrar Sesión" class="page-nav change-page">
+				<span class="index h5 cascade-mask">
+					<span class="side-menu-item">05</span>
+				</span>
+
+				<p class="title h1 cascade-mask">
+					<span class="side-menu-item">
+						Cerrar Sesión
+					</span>
+				</p>
+				</a></li>
+				<% else %>        
+				<li><a href="/login" title="Iniciar Sesión" class="page-nav change-page">
+				<span class="index h5 cascade-mask">
+					<span class="side-menu-item">06</span>
+				</span>
+
+				<p class="title h1 cascade-mask">
+					<span class="side-menu-item">
+						Iniciar Sesión
+					</span>
+				</p>
+				</a></li>
+				<% end %>    
+			</ul>
+		</nav>
+		
+		<footer class="copyright">
+			<p class="p3 cascade-mask">
+				<span class="side-menu-item">
+					eQuills | La Nueva Caligrafía
+				</span>
+			</p>
+			
+			<p class="p3 cascade-mask">
+				<span class="side-menu-item">
+					Letrismo ® <%= Date.today.year %>
+				</span>
+			</p>
+
+		</footer>
+	</div>
+</section>
