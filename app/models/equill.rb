@@ -1,8 +1,11 @@
-class Brush < ApplicationRecord
+class Equill < ApplicationRecord
 
     before_save :set_slug
 	mount_uploader :thumb, BrushUploader
+	mount_uploader :preview, PreviewUploader
 
+	has_many :letrisms
+	has_many :properties
 	validates_uniqueness_of :name
 	validates_presence_of :name
 

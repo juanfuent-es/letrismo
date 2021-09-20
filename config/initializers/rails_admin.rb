@@ -61,13 +61,16 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model Brush do
+  config.model Equill do
     edit do
       field :name do 
         label "Nombre"
       end
       field :thumb do
         label "Miniatura"
+      end
+      field :preview do
+        label "Vista Previa"
       end
       field :dificulty, :enum do
         label "Dificultad"
@@ -76,8 +79,11 @@ RailsAdmin.config do |config|
           ["Baja", "Media", "Alta"]
         end
       end
-      field :family do
-        label "Familia"
+      field :code do
+        label "Código"
+      end
+      field :libraries do
+        label "Librerías"
       end
       field :description, :froala do
         label "Descripción"

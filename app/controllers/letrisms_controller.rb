@@ -8,6 +8,10 @@ class LetrismsController < ApplicationController
 			@eQuill = "0"
 		end
 		@letrism = Letrism.new
+		if params[:id]
+			@equill = Equill.find_by_slug(params[:id])
+			@letrism = Letrism.new(equill_id: @equill.id)
+		end
 	end
 
 	def index
@@ -31,7 +35,7 @@ class LetrismsController < ApplicationController
 	private
 
 	def letrism_params
-		params.require(:letrism).permit(:chars, :paths, :img, :bg, :stroke, :fill)
+		params.require(:letrism).permit(:chars, :paths, :img, :bg, :stroke, :fill, :equill_id)
 	end
 
 end

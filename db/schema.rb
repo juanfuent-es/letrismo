@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2021_09_13_054517) do
 
-  create_table "brushes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "equills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", default: ""
-    t.string "dificulty", default: ""
+    t.string "dificulty", default: "Media"
     t.string "thumb", default: ""
+    t.string "preview", default: ""
     t.string "slug", default: ""
     t.string "family", default: ""
+    t.text "code"
+    t.text "libraries"
     t.text "properties"
     t.text "description"
   end
@@ -34,8 +37,8 @@ ActiveRecord::Schema.define(version: 2021_09_13_054517) do
     t.string "bg", default: "#151512"
     t.string "fill", default: ""
     t.string "stroke", default: ""
-    t.bigint "brush_id", null: false
-    t.index ["brush_id"], name: "index_letrisms_on_brush_id"
+    t.bigint "equill_id", null: false
+    t.index ["equill_id"], name: "index_letrisms_on_equill_id"
     t.index ["user_id"], name: "index_letrisms_on_user_id"
   end
 
@@ -71,6 +74,6 @@ ActiveRecord::Schema.define(version: 2021_09_13_054517) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "letrisms", "brushes"
+  add_foreign_key "letrisms", "equills"
   add_foreign_key "letrisms", "users"
 end

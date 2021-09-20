@@ -1,7 +1,7 @@
 class Letrism < ApplicationRecord
 	validates_presence_of :img #, :paths
-	
 	before_save :set_slug
+	belongs_to :equill
 	belongs_to :user
 
 	mount_base64_uploader :img, LetrismUploader

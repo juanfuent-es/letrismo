@@ -35,128 +35,51 @@
 
                         <div class="Tool__panels-wrapper">
                             <ul class="Tool__index-panel">
-                                <!-- Contenido falso de muestra. BORRAR despues de terminar implementacion -->
+                                <% Equill.all.order(name: :asc).each_with_index do |equill, index| %>
                                 <li class="Tool__list-item">
-                                    <button class="Tool__show-equill-info" data-equill="0">
-                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
-                                        <h3 class="Tool__list-item__name">Cadena</h3>
-                                    </button>
-                                </li>
-
-                                <% Brush.all.order(name: :asc).each_with_index do |brush, index| %>
-                                <li class="Tool__list-item">
-                                    <button class="Tool__show-equill-info" data-equill='<%= index + 1 %>'> <!-- BORRAR "+ 1" despues de terminar implementacion -->
-                                        <%= image_tag("letrismo-logo.svg", :class => "Tool__list-item__icon") %>
-                                        <h3 class="Tool__list-item__name"><%= brush.name %></h3>
-                                    </button>
+                                    <a href="/equill/<%= equill.slug %>" title="<%= equill.name %>" class="Tool__show-equill-info" data-equill='<%= index + 1 %>'>
+                                        <%= image_tag(equill.thumb.present? ? equill.thumb.url : "letrismo-logo.svg", :class => "Tool__list-item__icon") %>
+                                        <h3 class="Tool__list-item__name"><%= equill.name %></h3>
+                                    </a>
                                 </li>
                                 <% end %>
                             </ul>
 
                             <div class="Tool__info-panel">
-                                <!-- Contenido falso de muestra. BORRAR despues de terminar implementacion -->
-                                <div id="equill-info-muestra" class="Tool__equill-info-wrapper">
-                                    <div class="Tool__equill-preview">
-                                        <div class="Tool__equill-preview__header">
-                                            <div class="Tool__equill-preview__header__text">
-                                                <h4 class="Tool__equill-preview__header__title">Cadena</h4>
-                                                <div class="Tool__equill-preview__header__subtitle">
-                                                    <span class="Tool__label">fam.</span>
-                                                    <span class="Tool__concept">Partículas.</span>
-                                                </div>
-                                            </div>
 
-                                            <% if @eQuill == "0" %>
-                                            <button disabled class="Tool__equill-preview__header__btn">En uso</button>
-                                            <% else %>
-                                            <button class="Tool__equill-preview__header__btn">Usar</button>
-                                            <% end %>
-                                        </div>
-
-                                        <%= image_tag("equills-previews/cadena.png", :class => "Tool__equill-preview__stroke") %>
-                                    </div>
-
-                                    <div class="Tool__equill-description">
-                                        <p class='intro'>
-                                            <span class="Tool__label">Dificultad:</span>
-                                            <span class="Tool__concept">Alta.</span>
-                                        </p>
-
-                                        <div class="body">
-                                            <p class="biblio">
-                                                eQuill de partículas en movimiento perpetuo que estan rodeando el cursor de forma aleatoria como si fueran un "enjambre".
-                                            </p>
-
-                                            <p class="biblio">
-                                                Al presionar para realizar un trazo, las partículas quedaran "ancladas" a una posicion y lentamente perderan velocidad hasta quedar quietas.
-                                            </p>
-                                        </div>
-
-                                        <div class="Tool__equill-description__properties">
-                                            <h5 class="Tool__label">Propiedades variables</h5>
-                                            <ul class="Tool__text-list">
-                                                <li class="Tool__text-list__item">Cantidad de partículas(de 2 a 5)</li>
-                                                <li class="Tool__text-list__item">Aceleración</li>
-                                                <li class="Tool__text-list__item">Color de trazo</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="Tool__equill-description__properties">
-                                            <h5 class="Tool__label">Atajos de teclado</h5>
-                                            <ul class="Tool__table-list">
-                                                <li class="Tool__table-list__item">
-                                                    <span class="Tool__command">Deshacer</span>
-                                                    <span class="Tool__key">←</span>
-                                                </li>
-
-                                                <li class="Tool__table-list__item">
-                                                    <span class="Tool__command">Rehacer</span>
-                                                    <span class="Tool__key">→</span>
-                                                </li>
-                                                <li class="Tool__table-list__item">
-                                                    <span class="Tool__command">Reposicionar partículas</span>
-                                                    <span class="Tool__key">Spacebar</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                                <% Brush.all.order(name: :asc).each_with_index do |brush, index| %>
+                                <% Equill.all.order(name: :asc).each_with_index do |equill, index| %>
                                 <div id="equill-info-<%= index %>" class="Tool__equill-info-wrapper <%= index == 0 ? '' : 'hide' %>">
                                     <div class="Tool__equill-preview">
                                         <div class="Tool__equill-preview__header">
                                             <div class="Tool__equill-preview__header__text">
-                                                <h4 class="Tool__equill-preview__header__title"><%= brush.name %></h4>
+                                                <h4 class="Tool__equill-preview__header__title"><%= equill.name %></h4>
                                                 <div class="Tool__equill-preview__header__subtitle">
                                                     <span class="Tool__label">fam.</span>
-                                                    <span class="Tool__concept"><%= brush.family %>.</span>
+                                                    <span class="Tool__concept"><%= equill.family %>.</span>
                                                 </div>
                                             </div>
 
-                                            <% if brush.slug == request.original_url.downcase.split("brush/")[1] %>
+                                            <% if @equill == equill %>
                                                 <button disabled class="Tool__equill-preview__header__btn">En uso</button>
                                             <% else %>
-                                                <%= link_to "/brush/#{brush.slug}", :class=> "Tool__equill-preview__header__btn" do %>
+                                                <%= link_to "/equill/#{equill.slug}", :class=> "Tool__equill-preview__header__btn" do %>
                                                     <span>Usar</span>
                                                 <% end %>
                                             <% end %>
                                         </div>
 
-                                        <%= image_tag("equills-previews/placeholder.png", :class => "Tool__equill-preview__stroke") %>
+                                        <%= image_tag(equill.preview.url, :class => "Tool__equill-preview__stroke") %>
                                     </div>
 
                                     <div class="Tool__equill-description">
                                         <p class='intro'>
                                             <span class="Tool__label">Dificultad:</span>
-                                            <span class="Tool__concept"><%= brush.dificulty %>.</span>
+                                            <span class="Tool__concept"><%= equill.dificulty %>.</span>
                                         </p>
 
                                         <div class="body">
                                             <p class="biblio">
-                                                <%= brush.description %>
+                                                <%= equill.description %>
                                             </p>
                                         </div>
 
