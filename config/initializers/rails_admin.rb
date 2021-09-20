@@ -61,16 +61,64 @@ RailsAdmin.config do |config|
     end
   end
 
+
+  config.model Letrism do
+    edit do
+      field :user
+      field :img
+      field :gallery
+    end
+  end
+
+  config.model Property do 
+    field :name do 
+      label "Nombre para usuario"
+    end
+    field :key do 
+      label "key: nombre de variable en clase"
+    end
+    field :tipo, :enum do 
+      label "Tipo"
+      searchable false
+      enum do
+        ["Boolean", "Float", "Integer"]
+      end
+    end
+    field :min do 
+      label "Valor mínimo"
+    end
+    field :max do 
+      label "Valor máximo"
+    end
+    field :step do
+      label "Step: valor de incremento/decremento"
+    end
+  end
+
+  config.model Shortcut do
+    edit do
+      field :name do 
+        label "Nombre"
+      end
+      field :unicode do
+        label "Unicode"
+      end
+    end
+  end
+
   config.model Equill do
     edit do
       field :name do 
         label "Nombre"
       end
       field :thumb do
-        label "Miniatura"
+        label "Clase para icono"
       end
       field :preview do
         label "Vista Previa"
+      end
+      field :properties do
+        label "Propiedades"
       end
       field :dificulty, :enum do
         label "Dificultad"
@@ -79,17 +127,20 @@ RailsAdmin.config do |config|
           ["Baja", "Media", "Alta"]
         end
       end
-      field :code do
-        label "Código"
+      field :html do
+        label "HTML"
+      end
+      field :js do
+        label "JS"
+      end
+      field :css do
+        label "CSS"
       end
       field :libraries do
         label "Librerías"
       end
       field :description, :froala do
         label "Descripción"
-      end
-      field :properties, :froala do
-        label "Propiedades"
       end
     end
   end

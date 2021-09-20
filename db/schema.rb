@@ -10,18 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_054517) do
+ActiveRecord::Schema.define(version: 2021_09_20_031813) do
 
   create_table "equills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", default: ""
     t.string "dificulty", default: "Media"
+    t.string "icon", default: ""
     t.string "thumb", default: ""
     t.string "preview", default: ""
     t.string "slug", default: ""
     t.string "family", default: ""
-    t.text "code"
+    t.text "js"
+    t.text "css"
+    t.text "html"
     t.text "libraries"
-    t.text "properties"
     t.text "description"
   end
 
@@ -40,6 +42,28 @@ ActiveRecord::Schema.define(version: 2021_09_13_054517) do
     t.bigint "equill_id", null: false
     t.index ["equill_id"], name: "index_letrisms_on_equill_id"
     t.index ["user_id"], name: "index_letrisms_on_user_id"
+  end
+
+  create_table "properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "key", default: "", null: false
+    t.string "tipo", default: "float"
+    t.float "min", default: 0.0, null: false
+    t.float "max", default: 0.0, null: false
+    t.float "step", default: 0.0, null: false
+    t.bigint "equill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["equill_id"], name: "index_properties_on_equill_id"
+  end
+
+  create_table "shortcuts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "equill_id", null: false
+    t.string "name", default: ""
+    t.string "unicode", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["equill_id"], name: "index_shortcuts_on_equill_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -76,4 +100,6 @@ ActiveRecord::Schema.define(version: 2021_09_13_054517) do
 
   add_foreign_key "letrisms", "equills"
   add_foreign_key "letrisms", "users"
+  add_foreign_key "properties", "equills"
+  add_foreign_key "shortcuts", "equills"
 end

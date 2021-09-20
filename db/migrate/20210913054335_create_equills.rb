@@ -8,9 +8,10 @@ class CreateEquills < ActiveRecord::Migration[6.0]
       t.string :preview,    default: ""
       t.string :slug,       default: ""
       t.string :family,     default: ""
-      t.text :code
+      t.text :js
+      t.text :css
+      t.text :html
       t.text :libraries
-      t.text :properties
       t.text :description
 
     end

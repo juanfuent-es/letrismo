@@ -1,11 +1,14 @@
 class Equill < ApplicationRecord
 
     before_save :set_slug
-	mount_uploader :thumb, BrushUploader
 	mount_uploader :preview, PreviewUploader
 
 	has_many :letrisms
 	has_many :properties
+	has_many :shortcuts
+	accepts_nested_attributes_for :properties, allow_destroy: true
+	accepts_nested_attributes_for :shortcuts, allow_destroy: true
+
 	validates_uniqueness_of :name
 	validates_presence_of :name
 
