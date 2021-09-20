@@ -37,7 +37,7 @@ export const Brush6 = (p5) => {
 
 
     p5.setup = () => {
-        p5.createCanvas(p5.windowWidth, p5.windowHeight);
+        p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
         p5.mouseX = window.innerWidth /2;
         p5.mouseY = window.innerHeight /2;
 
