@@ -13,7 +13,7 @@
         </button>
     </nav>
 
-    <% if request.env['PATH_INFO'].split('/').join.downcase == 'notebook' %>
+    <% if request.env['PATH_INFO'].split('/').join.downcase == 'notebook' || request.env['PATH_INFO'].split('/').join.downcase.include?('equill') %>
     <%= render "letrisms/toolbar" %>
     <% end %>
 </div>
