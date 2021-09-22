@@ -83,6 +83,7 @@ export default class ToolBar {
         _this.initTextTogglesListener();
 
         this.stage?.canvas?.elt.addEventListener('mouseenter', _this.handleCanvasMouseEnter.bind(_this));
+        this.stage?.canvas?.elt.addEventListener('mouseleave', _this.handleCanvasMouseLeave.bind(_this));
     }
 
     initTextTogglesListener() {
@@ -116,6 +117,11 @@ export default class ToolBar {
 
     handleCanvasMouseEnter() {
         this.closeModals();
+        this.stage.preventDraw = false;
+    }
+
+    handleCanvasMouseLeave(e) {
+        this.stage.preventDraw = true;
     }
 
     handleTextToggleClick(e) {

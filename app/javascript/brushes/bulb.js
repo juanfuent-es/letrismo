@@ -18,6 +18,8 @@ export const Bulb = (p5) => {
     p5.stroke_color = "#FFF";
     p5.fill_color = "#000";
 
+    p5.preventDraw = false;
+
     p5.setup = () => {
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight); //, p5.WEBGL
         p5.colorMode(p5.HSB);
@@ -78,6 +80,7 @@ export const Bulb = (p5) => {
     }
 
     p5.mouseDragged = throttle((e) => {
+        if (p5.preventDraw) return;
         p5.shape.push({
             x: p5.mouseX, // - p5.windowWidth / 2,
             y: p5.mouseY // - p5.windowHeight / 2
@@ -85,6 +88,7 @@ export const Bulb = (p5) => {
     }, 40);
 
     p5.mousePressed = () => {
+        if (p5.preventDraw) return;
         p5.shapes.push(p5.shape);
         for (let i = 0; i < LIGHT.filaments; i++) {
             const _needle = new Needle({
@@ -116,12 +120,13 @@ export const Bulb = (p5) => {
             y: 0,
             display: "block"
         });
-        window["letrism_img"].value = this.screenshot();
-        window["letrism_paths"].value = this.data();
+        window["letrism_img"].value = p5.screenshot();
+        window["letrism_paths"].value = p5.data();
     }
 
 
     p5.mouseReleased = () => {
+        if (p5.preventDraw) return;
         p5.shape = [];
         for (var i = 0; i < LIGHT.light.length; i++) {
             LIGHT.light[i].die();
@@ -146,6 +151,10 @@ export const Bulb = (p5) => {
     }
 
     p5.screenshot = () => {
-        return p5.canvas.toDataURL("image/png");
+        if (p5.canvas.elt) {
+            return p5.canvas.elt.toDataURL("image/png");
+        } else {
+            return p5.canvas.toDataURL("image/png");
+        }
     }
 }

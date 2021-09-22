@@ -35,6 +35,7 @@ export const Brush6 = (p5) => {
     p5.proximityRate = 1;
     p5.proximityCounter = 0;
 
+    p5.preventDraw = false;
 
     p5.setup = () => {
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
@@ -123,6 +124,7 @@ export const Brush6 = (p5) => {
         // console.log(p5.particleShapes);
 
         if (p5.mouseIsPressed && p5.proximityRate == p5.proximityCounter) {
+            if (p5.preventDraw) return;
         	// Creación y configuración de partículas
 	        for (var i = 0; i < p5.filaments.length; i++) {
 	            let _particle = new Particle({
@@ -163,6 +165,7 @@ export const Brush6 = (p5) => {
 
     p5.mouseReleased = () => {
         // console.log("mouseReleased triggered", p5.points);
+        if (p5.preventDraw) return;
 
         let _mousePos = {
             x: p5.mouseX,

@@ -32,6 +32,8 @@ export const Brush1 = (p5) => {
 
     p5.motionAmplitude = 3;
 
+    p5.preventDraw = false;
+
     p5.updateAttr = (key, value) => {
         return p5[key] = value;
     }
@@ -187,6 +189,7 @@ export const Brush1 = (p5) => {
     /////////////////////////////////////////////////////////
     p5.mousePressed = () => {
         // console.log("mousePressed triggered");
+        if (p5.preventDraw) return;
         let _mousePos = {
             x: p5.mouseX,
             y: p5.mouseY
@@ -202,6 +205,7 @@ export const Brush1 = (p5) => {
 
     p5.mouseDragged = throttle((e) => {
         // console.log("mouseDragged triggered");
+        if (p5.preventDraw) return;
 
         p5.drawingShape = true;
 
@@ -235,6 +239,7 @@ export const Brush1 = (p5) => {
     
     p5.mouseReleased = () => {
         // console.log("mouseReleased triggered");
+        if (p5.preventDraw) return;
 
         let _mousePos = {
             x: p5.mouseX,

@@ -34,6 +34,8 @@ export const Brush2 = (p5) => {
     p5.drawingShape = false; /* Bandera para detectar si el usuario creó un "shape" que debe ser guardado al hacer click o no */
     p5.drawLines = true; /* Bandera para mostrar/esconder el trazo básico de la forma y solo mostrar las partículas */
 
+    p5.preventDraw = false;
+
     p5.updateAttr = (key, value) => {
         return p5[key] = value;
     }
@@ -194,6 +196,7 @@ export const Brush2 = (p5) => {
     /////////////////////////////////////////////////////////
     p5.mousePressed = () => {
         // console.log("mousePressed triggered");
+        if (p5.preventDraw) return;
         let _mousePos = {
             x: p5.mouseX,
             y: p5.mouseY
@@ -209,6 +212,7 @@ export const Brush2 = (p5) => {
 
     p5.mouseDragged = throttle((e) => {
         // console.log("mouseDragged triggered");
+        if (p5.preventDraw) return;
 
         p5.drawingShape = true;
 
@@ -243,6 +247,7 @@ export const Brush2 = (p5) => {
     
     p5.mouseReleased = () => {
         // console.log("mouseReleased triggered");
+        if (p5.preventDraw) return;
 
         let _mousePos = {
             x: p5.mouseX,

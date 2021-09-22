@@ -30,6 +30,8 @@ export const LightBrush = (p5) => {
     p5.stroke_color = "#FFF";
     p5.bg_color = "#151512";
 
+    p5.preventDraw = false;
+
     p5.setup = () => {
         p5.colorMode(p5.HSB);
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight); //, p5.WEBGL
@@ -90,6 +92,7 @@ export const LightBrush = (p5) => {
     }
 
     p5.mouseDragged = throttle((e) => {
+        if (p5.preventDraw) return;
         p5.shape.push({
             x: p5.mouseX, // - p5.windowWidth / 2,
             y: p5.mouseY // - p5.windowHeight / 2
@@ -97,6 +100,7 @@ export const LightBrush = (p5) => {
     }, 40);
 
     p5.mousePressed = () => {
+        if (p5.preventDraw) return;
         p5.shapes.push(p5.shape);
         LIGHT.filaments = parseInt(window["layers-input"].value);
         for (let i = 0; i < LIGHT.filaments; i++) {
@@ -114,6 +118,7 @@ export const LightBrush = (p5) => {
     }
 
     p5.mouseReleased = () => {
+        if (p5.preventDraw) return;
         p5.shape = [];
         for (var i = 0; i < LIGHT.light.length; i++) {
             LIGHT.light[i].die();
@@ -138,8 +143,8 @@ export const LightBrush = (p5) => {
             y: 0,
             display: "block"
         });
-        window["letrism_img"].value = this.screenshot();
-        window["letrism_paths"].value = this.data();    
+        window["letrism_img"].value = p5.screenshot();
+        window["letrism_paths"].value = p5.data();    
     }
 
     p5.data = () => {
