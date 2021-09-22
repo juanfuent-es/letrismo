@@ -1,0 +1,19 @@
+<div id="TopNav">
+    <nav class="nav-menu">
+        <%= link_to root_path do %>
+            <%= image_tag("letrismo-logo.svg", :class => "letrismo-logo") %>
+            <h1 class="page-title">eQuills</h1>
+        <% end %>
+
+
+        <button class="burger-btn side-menu-trigger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+    </nav>
+
+    <% if request.env['PATH_INFO'].split('/').join.downcase == 'notebook' %>
+    <%= render "letrisms/toolbar" %>
+    <% end %>
+</div>

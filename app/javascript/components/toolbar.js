@@ -82,7 +82,7 @@ export default class ToolBar {
 
         _this.initTextTogglesListener();
 
-        this.stage.canvas.elt.addEventListener('mouseenter', _this.handleCanvasMouseEnter.bind(_this));
+        this.stage?.canvas?.elt.addEventListener('mouseenter', _this.handleCanvasMouseEnter.bind(_this));
     }
 
     initTextTogglesListener() {
