@@ -18,7 +18,11 @@
     position: relative;
     width: 40px;
     height: 40px;
-
+    /* 
+    * REVIEW
+    * La primer regla de buena práctica que me vi escrita por Homer en Foo era,
+    * Acciones van en botones, links son anclas, ningún otro tag es justificable
+    */
     button.Tool__btn {
         position: absolute;
         top: 0; left: 0;
@@ -27,6 +31,15 @@
         cursor: pointer;
         z-index: 9;
         color: #FFF;
+        transition: background 350ms ease;
+        /*
+        * REVIEW
+        * En tu js se está cachando el evento data-target para saber cuál modal mostrar
+        * Un problema común en eventos click y lectura de atributos es, que si das click al elemento que pusiste el evento, PERO,
+        * este a su vez tiene más nodos html dentro, e.target (Tu elemento deseado) puede traer falsos positivos.
+        * En este caso, el link tiene un 'i' para los iconos dentro, por lo tanto, algunas ocasiones se detectará el click en el tag 'i', no en 'button'
+        * Y de esta manera puedes perder mucho tiempo encontrando porque no puedes acceder a tu "data-target" (El atributo que escribí yo en este caso)
+        */
         & > * {
             pointer-events: none;
         }
