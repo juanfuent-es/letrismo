@@ -63,6 +63,7 @@ export const Brush6 = (p5) => {
         window["flow-input"].addEventListener("change", (e) => {
             for (var i = 0; i < p5.filaments.length; i++) {
                 p5.filaments[i].limit = parseFloat(window["flow-input"].value) * 30;
+                p5.filament.limit = parseFloat(window["flow-input"].value) * 30;
                 // console.log(p5.filaments[i].limit);
             }
         });
