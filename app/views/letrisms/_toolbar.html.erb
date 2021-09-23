@@ -161,6 +161,14 @@
                             <div class="Tool__settings-panel__input-wrap">
                                 <input type="range" min="1" max="5" step="1" value="3" id="layers-input" class="styled-slider">
                             </div>
+
+
+                            <% if @equill.slug == "portal" %>
+                                <p class="Tool__settings-panel__property">Duración del vaivén</p>
+                                <div class="Tool__settings-panel__input-wrap">
+                                    <input type="range" min="0" max="6" step="1" value="3" id="mortality-input" class="styled-slider">
+                                </div>
+                            <% end %>
                         </div>
                     </div>
                 </div>

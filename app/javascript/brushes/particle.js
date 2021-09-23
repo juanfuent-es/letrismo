@@ -29,6 +29,7 @@ export class Particle {
 		this.lifespan = args.lifespan || 500; /* el tiempo durante el cual vivirá un pincel, el número decrece a cada frame; 0 es igual a muerte */
 		this.motionLife = 1;
 		this.mortality = args.mortality || false;
+		this.deathSpeed = args.deathSpeed || 1;
 
 		this.getSpeedMorph();
 		this.applySpeedMorph();
@@ -76,7 +77,7 @@ export class Particle {
 	fadeAnimation() {
 		this.motionLife -= (this.motionLife / this.lifespan);
 
-		this.lifespan--;
+		this.lifespan -= this.deathSpeed;
 		// console.log(this.lifespan);
 	}
 

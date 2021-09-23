@@ -26,6 +26,7 @@ export const Brush2 = (p5) => {
 
     p5.motionAmplitude = 3;
     p5.speedMorphScale = 5;
+    p5.mortality = true;
 
     p5.virtualParticleShape = []; /* Para habilitar undo() y redo(), es necesario crear un "array" de partículas por cada trazo, este array comienza a recibir partículas cuando el usuario apoya el lápiz, luego se cierra al levantarlo, se inserta en "p5.particleShapes" y se limpia para recibir un trazo nuevo */
     p5.particleShapes = []; /* "Array" que almacena todos los "trazos" de partículas */
@@ -90,6 +91,17 @@ export const Brush2 = (p5) => {
                     break;
             }
         });
+
+        if (window["mortality-input"]) {
+            window["mortality-input"].addEventListener("change", (e) => {
+                let setMinimum = Math.max(0.2, parseFloat(window["mortality-input"].value));
+                let pow = Math.pow(setMinimum, 3);
+                let rangeValue = 1 / pow;
+                
+                p5.deathSpeed = rangeValue;
+                p5.mortality = (setMinimum >= 6) ? false : true;
+            });
+        }
     }
 
     p5.draw = () => {
@@ -247,7 +259,8 @@ export const Brush2 = (p5) => {
 
             cursor: Cursor,
 
-            mortality: true,
+            mortality: p5.mortality,
+            deathSpeed: p5.deathSpeed,
 
             motionAmplitude: p5.motionAmplitude,
             speedMorphScale: p5.speedMorphScale
