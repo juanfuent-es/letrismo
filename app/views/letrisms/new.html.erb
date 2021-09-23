@@ -1,3 +1,7 @@
-<% provide(:title, "Nuevo #{@equill.name}") %>
+<% provide(:title, "Nuevo") %>
+<script>var eQuill = '<%= @equill.slug %>';</script>
 <%= render 'form', letrism: @letrism %>
 <button id="clear-btn" class="intro-item">Borrar</button>
+<button id="open-tools-btn" class="intro-item">
+	<span class="sr-only"></span>
+</button>

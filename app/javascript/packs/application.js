@@ -17,6 +17,29 @@ import { Bulb } from "brushes/bulb";
 class App {
     constructor() {
         this.preloader = new Preloader("preloader");
+        if (window["letrism-form"]) {
+            switch(eQuill) {
+                case "enjambre":
+                    this.sketch = new p5(Brush6);
+                break;
+                case "espuma":
+                    this.sketch = new p5(Brush1);
+                break;
+                case "portal":
+                    this.sketch = new p5(Brush2);
+                break;
+                case "bulbo":
+                    this.sketch = new p5(LightBrush);
+                break;
+                case "esgrafiado":
+                    this.sketch = new p5(Bulb);
+                break;
+                case "acorde":
+                    this.sketch = new p5(Bulb);
+                break;
+            }
+            this.controls = new Controls(this.sketch);
+        }
         Side_Menu.init();
         this.events();
     }

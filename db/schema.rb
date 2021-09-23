@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_031813) do
   create_table "properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "key", default: "", null: false
-    t.string "tipo", default: "float"
+    t.string "tipo", default: "Float"
     t.float "min", default: 0.0, null: false
     t.float "max", default: 0.0, null: false
     t.float "step", default: 0.0, null: false

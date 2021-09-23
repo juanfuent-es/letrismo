@@ -21,7 +21,7 @@
                         <ul class="Tool__index-panel">
                             <% Equill.all.order(name: :asc).each_with_index do |equill, index| %>
                             <li class="Tool__list-item">
-                                <a href="#" title="<%= equill.name %>" class="Tool__show-equill-info" data-equill='<%= index + 1 %>'>
+                                <a href="#" title="<%= equill.name %>" class="Tool__show-equill-info" data-equill='<%= index %>'>
                                     <%= image_tag(equill.thumb.present? ? equill.thumb.url : "letrismo-logo.svg", :class => "Tool__list-item__icon") %>
                                     <h3 class="Tool__list-item__name"><%= equill.name %></h3>
                                 </a>
@@ -32,7 +32,7 @@
                         <div class="Tool__info-panel">
 
                             <% Equill.all.order(name: :asc).each_with_index do |equill, index| %>
-                            <div id="equill-info-<%= index %>" class="Tool__equill-info-wrapper <%= index == 0 ? '' : 'hide' %>">
+                            <div id="equill-info-<%= index %>" class="Tool__equill-info-wrapper <%= 'hide' if @equill != equill %>">
                                 <div class="Tool__equill-preview">
                                     <div class="Tool__equill-preview__header">
                                         <div class="Tool__equill-preview__header__text">
@@ -46,7 +46,7 @@
                                         <% if @equill == equill %>
                                             <button disabled class="active Tool__equill-preview__header__btn">En uso</button>
                                         <% else %>
-                                            <%= link_to "/equill/#{equill.slug}", :class=> "Tool__equill-preview__header__btn" do %>
+                                            <%= link_to "/notebook/#{equill.slug}", :class=> "Tool__equill-preview__header__btn" do %>
                                                 <span>Usar</span>
                                             <% end %>
                                         <% end %>
