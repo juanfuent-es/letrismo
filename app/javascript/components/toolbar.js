@@ -45,6 +45,9 @@ export default class ToolBar {
         for (const wrapper of _this.eQuillsInfoWrappers) {
             wrapper.classList.add('hide');
         }
+        for (const switchEl of _this.panelInfoSwitches) {
+            switchEl.classList.remove('showing');
+        }
     }
 
     // Event handlers
@@ -136,6 +139,7 @@ export default class ToolBar {
         this.hideAllEquillsInfo();
         let equillId = e.target.getAttribute('data-equill');
         this.eQuillsInfoWrappers[equillId].classList.remove('hide');
+        this.panelInfoSwitches[equillId].classList.add('showing');
     }
 
     handleCanvasMouseEnter() {

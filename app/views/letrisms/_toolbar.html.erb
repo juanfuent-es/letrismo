@@ -25,7 +25,7 @@
                         <ul class="Tool__index-panel">
                             <% Equill.all.order(name: :asc).each_with_index do |equill, index| %>
                             <li class="Tool__list-item">
-                                <a href="#" title="<%= equill.name %>" class="Tool__show-equill-info <%= 'active' if @equill == equill %>" data-equill='<%= index %>'>
+                                <a href="#" title="<%= equill.name %>" class="Tool__show-equill-info <%= 'active showing' if @equill == equill %>" data-equill='<%= index %>'>
                                     <i class="icon <%= equill.slug %> Tool__list-item__icon"></i>
                                     <h3 class="Tool__list-item__name"><%= equill.name %></h3>
                                 </a>
@@ -182,7 +182,7 @@
         <span class="Tool__hit"></span>
 
         <button class="Tool__btn" aria-label="Renglones Guía" data-target="#guides-modal">
-            <i class="icon guia_renglones Tool__icon"></i>
+            <i class="icon lienzo Tool__icon"></i>
         </button>
 
         <div class="Tool__modal-container" id="guides-modal">
@@ -201,17 +201,17 @@
                             <div class="Tool__settings-panel__inline-options">
                                 <div class="Tool__settings-panel__input-wrap">
                                     <button class="grid-btn" id="grid1" data-grid="grid-a"  aria-label="Guía a 45° grados">
-                                        <i class="icon Tool__icon guia_45"></i>
+                                        <i class="icon Tool__icon guia_renglones"></i>
                                     </button>
                                 </div>
                                 <div class="Tool__settings-panel__input-wrap">
                                     <button class="grid-btn" id="grid2" data-grid="grid-b" aria-label="Guía a 75° grados">
-                                        <i class="icon Tool__icon guia_75"></i>
+                                        <i class="icon Tool__icon guia_45"></i>
                                     </button>
                                 </div>
                                 <div class="Tool__settings-panel__input-wrap">
                                     <button class="grid-btn" id="grid3" data-grid="grid-c" aria-label="Guía a 105° grados">
-                                        <i class="icon Tool__icon guia_105"></i>
+                                        <i class="icon Tool__icon guia_75"></i>
                                     </button>
                                 </div>
                                 <div class="Tool__settings-panel__input-wrap">
