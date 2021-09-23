@@ -4,7 +4,7 @@
         <span class="Tool__hit"></span>
 
         <div class="Tool__icon-container">
-            <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
+            <i class="icon libreria Tool__icon"></i>
         </div>
 
         <!-- <div class="Tool__modal-container"> -->
@@ -22,7 +22,7 @@
                             <% Equill.all.order(name: :asc).each_with_index do |equill, index| %>
                             <li class="Tool__list-item">
                                 <a href="#" title="<%= equill.name %>" class="Tool__show-equill-info <%= 'active' if @equill == equill %>" data-equill='<%= index %>'>
-                                    <%= image_tag(equill.thumb.present? ? equill.thumb.url : "letrismo-logo.svg", :class => "Tool__list-item__icon") %>
+                                    <i class="icon <%= equill.slug %> Tool__list-item__icon"></i>
                                     <h3 class="Tool__list-item__name"><%= equill.name %></h3>
                                 </a>
                             </li>
@@ -113,7 +113,7 @@
         <% end %>
 
         <div class="Tool__icon-container">
-            <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
+            <i class="icon propiedades Tool__list-item__icon"></i>
         </div>
 
         <div class="Tool__modal-container hide">
@@ -124,7 +124,7 @@
                         <h2 class="Tool__header">Propiedades</h2>
                         
                         <div class="Tool__header-equill">
-                            <%= image_tag("letrismo-logo.svg", :class => "Tool__header-equill__icon") %>
+                            <i class="icon propiedades Tool__header-equill__icon"></i>
                             <h3 class="Tool__header-equill__name">
                                 <% if @eQuill == "0" %>
                                 Cadena
@@ -166,7 +166,7 @@
         <span class="Tool__hit"></span>
 
         <div class="Tool__icon-container">
-            <%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %>
+            <i class="icon guia_renglones Tool__icon"></i>
         </div>
 
         <!-- <div class="Tool__modal-container hide"> -->
@@ -231,7 +231,7 @@
     </div>
 
     <!-- Color Swatch -->
-    <% if @eQuill != "3" && @eQuill != "4" %>
+    <% if @equill.slug != "bulbo" && @equill.slug != "esgrafiado" %>
     <div class="Tool">
         <span class="Tool__hit"></span>
 
