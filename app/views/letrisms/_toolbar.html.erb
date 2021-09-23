@@ -1,14 +1,17 @@
 <div id="ToolBar" class="tools-wrapper">
-    <!-- eQuill selector -->
+    <!-- q selector -->
     <div class="Tool">
-        <span class="Tool__hit"></span>
-
-        <div class="Tool__icon-container">
+        <!--
+            Te quité el span (<span class="Tool__hit">) y agregué botón por cuestión de accesibilidad, los span no son accesibles por teclado (Navegación por Tab)
+            La buena práctica para acciones js son los botones, modifiqué igual tu css para empatarlo :p
+            Aria-label en botón según mozilla: https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute
+            El atributo aria-label se utiliza para definir una cadena que etiqueta el elemento actual. Úselo en los casos en que no haya una etiqueta de texto visible.
+        -->
+        <button class="Tool__btn" aria-label="Librería" data-target="#library-modal">
             <i class="icon libreria Tool__icon"></i>
-        </div>
+        </button>
 
-        <!-- <div class="Tool__modal-container"> -->
-        <div class="Tool__modal-container hide">
+        <div class="Tool__modal-container" id="library-modal">
             <div class="Tool__modal-arrow"></div>
             <div class="Tool__modal-inner-container two-sides">
                 <div class="Tool__modal-wrapper">
@@ -105,18 +108,18 @@
     </div>
     
     
-    <!-- eQuill settings (of chosen one only) -->
+    <!-- q settings (of chosen one only) -->
     <div class="Tool">
         <span class="Tool__hit"></span>
         <% if false %>
         <span id="open-tools-btn" class="Tool__hit"></span>
         <% end %>
 
-        <div class="Tool__icon-container">
-            <i class="icon propiedades Tool__list-item__icon"></i>
-        </div>
+        <button class="Tool__btn" aria-label="Propiedades" data-target="#properties-modal">
+            <i class="icon propiedades"></i>
+        </button>
 
-        <div class="Tool__modal-container hide">
+        <div class="Tool__modal-container" id="properties-modal">
             <div class="Tool__modal-arrow"></div>
             <div class="Tool__modal-inner-container">
                 <div class="Tool__modal-wrapper">
@@ -124,21 +127,9 @@
                         <h2 class="Tool__header">Propiedades</h2>
                         
                         <div class="Tool__header-equill">
-                            <i class="icon propiedades Tool__header-equill__icon"></i>
+                            <i class="icon <%= @equill.slug %> Tool__header-equill__icon"></i>
                             <h3 class="Tool__header-equill__name">
-                                <% if @eQuill == "0" %>
-                                Cadena
-                                <% elsif @eQuill == "1" %>
-                                Espuma
-                                <% elsif @eQuill == "2" %>
-                                Slinky
-                                <% elsif @eQuill == "3" %>
-                                Light Brush
-                                <% elsif @eQuill == "4" %>
-                                Bulb
-                                <% else %>
-                                Indefinido
-                                <% end %>
+                                <%= @equill.name %>
                             </h3>
                         </div>
                     </header>
@@ -165,12 +156,11 @@
     <div class="Tool">
         <span class="Tool__hit"></span>
 
-        <div class="Tool__icon-container">
+        <button class="Tool__btn" aria-label="Renglones Guía" data-target="#guides-modal">
             <i class="icon guia_renglones Tool__icon"></i>
-        </div>
+        </button>
 
-        <!-- <div class="Tool__modal-container hide"> -->
-        <div class="Tool__modal-container">
+        <div class="Tool__modal-container" id="guides-modal">
             <div class="Tool__modal-arrow"></div>
             <div class="Tool__modal-inner-container">
                 <div class="Tool__modal-wrapper">
@@ -233,13 +223,12 @@
     <!-- Color Swatch -->
     <% if @equill.slug != "bulbo" && @equill.slug != "esgrafiado" %>
     <div class="Tool">
-        <span class="Tool__hit"></span>
 
-        <div class="Tool__icon-container">
+        <button class="Tool__btn" aria-label="Color" data-target="#color-modal">
             <div id="rgb-sample" class="Tool__swatch"></div>
-        </div>
+        </button>
 
-        <div class="Tool__modal-container hide">
+        <div class="Tool__modal-container" id="color-modal">
             <div class="Tool__modal-arrow"></div>
             <div class="Tool__modal-inner-container">
                 <div class="Tool__modal-wrapper">

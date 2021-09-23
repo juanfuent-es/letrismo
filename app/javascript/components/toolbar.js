@@ -40,13 +40,6 @@ export default class ToolBar {
         }
     }
 
-    closeModals() {
-        for (let i = 0; i < this.modals.length; i++) {
-            const modal = this.modals[i];
-            modal.classList.add('hide');
-        }
-    }
-
     hideAllEquillsInfo() {
         var _this = this;
         for (const wrapper of _this.eQuillsInfoWrappers) {
@@ -60,7 +53,7 @@ export default class ToolBar {
 
         for (let i = 0; i < _this.tools.length; i++) {
             const tool = _this.tools[i];
-            tool.querySelector('.Tool__hit').addEventListener('click', _this.handleToolClick.bind(_this));
+            tool.querySelector('.Tool__btn').addEventListener('click', _this.handleToolClick.bind(_this));
         }
 
         for (const control of _this.panelInfoSwitches) {
@@ -96,17 +89,47 @@ export default class ToolBar {
         }
     }
 
+    /*
+    * GETTER para acceder al modal abierto, en teoría sólo debería haber uno
+    * Si todas los métodos de abajo funcionan a la perfección nunca debería haber abierto más de uno
+    * En caso de que no exista uno activo devuelve falso
+    */
+    get modalActive() {
+        return document.querySelector(".Tool__modal-container.active")
+    }
+
     handleToolClick(e) {
-        let toolIndex = this.tools.indexOf(e.target.parentNode);
-
-        let wasOpen = this.modals[toolIndex].classList['value'].indexOf('hide') >= 0;
-        this.closeModals();
-
-        if (wasOpen) {
-            this.modals[toolIndex].classList.remove('hide');
-        } else {
-            this.modals[toolIndex].classList.add('hide');
+        this.closeModal(this.modalActive) // Mandar cerrar primero el probable modal abierto
+        /* REVIEW
+        * Es más fácil seleccionar por un atributo data o algo específico en el dom que por índices
+        * Aparte que para dar mantenimiento futuro es más entendible, créeme, te lo agradecerás
+        */
+        let target = e.target.getAttribute("data-target")
+        let modal = document.querySelector(target)
+        if (this.isModalActive(modal)) return this.closeModal(modal)
+        else return this.openModal(modal)
+    }
+    
+    isModalActive(_modal) {
+        if (_modal) {
+            return _modal.classList['value'].indexOf('active') >= 0
         }
+        return false
+    }
+
+    openModal(_modal) {
+        if (_modal) {
+            if (!this.isModalActive(_modal)) return _modal.classList.add('active');
+        }
+        return false
+    }
+
+    /* Este pequeño método */
+    closeModal(_modal) {
+        if (_modal) {
+            if (this.isModalActive(_modal)) return _modal.classList.remove("active")
+        }
+        return false
     }
 
     handlePanelInfoSwitchClick(e) {
@@ -116,7 +139,7 @@ export default class ToolBar {
     }
 
     handleCanvasMouseEnter() {
-        this.closeModals();
+        this.closeModal(this.modalActive)
         this.stage.preventDraw = false;
     }
 

@@ -22,84 +22,20 @@
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-
-	&.letrismo-logo:before {
-		content: "\e900";
-		color: #fff;
-	}
-
-	&.acorde:before {
-		content: "\e901";
-		color: #fcfced;
-	}
-
-	&.bulbo:before {
-		content: "\e902";
-		color: #fcfced;
-	}
-
-	&.descartar:before {
-		content: "\e903";
-		color: #fcfced;
-	}
-
-	&.enjambre:before {
-		content: "\e904";
-		color: #fcfced;
-	}
-
-	&.esgrafiado:before {
-		content: "\e905";
-		color: #fcfced;
-	}
-
-	&.espuma:before {
-		content: "\e906";
-		color: #fcfced;
-	}
-
-	&.guardar:before {
-		content: "\e907";
-		color: #fcfced;
-	}
-
-	&.guia_45:before {
-		content: "\e908";
-		color: #fcfced;
-	}
-
-	&.guia_75:before {
-		content: "\e909";
-		color: #fcfced;
-	}
-
-	&.guia_105:before {
-		content: "\e90a";
-		color: #fcfced;
-	}
-
-	&.guia_renglones:before {
-		content: "\e90b";
-		color: #fcfced;
-	}
-
-	&.libreria:before {
-		content: "\e90c";
-		color: #fcfced;
-	}
-
-	&.lienzo:before {
-		content: "\e90d";
-		color: #fcfced;
-	}
-
-	&.portal:before {
-		content: "\e90e";
-		color: #fcfced;
-	}
-
-	&.propiedades:before {
-		content: "\e90f";
-		color: #fcfced;
-	}
+	&.letrismo-logo:before { content: "\e900"; }
+	&.acorde:before { content: "\e901"; }
+	&.bulbo:before { content: "\e902"; }
+	&.descartar:before { content: "\e903"; }
+	&.enjambre:before { content: "\e904"; }
+	&.esgrafiado:before { content: "\e905"; }
+	&.espuma:before { content: "\e906"; }
+	&.guardar:before { content: "\e907"; }
+	&.guia_45:before { content: "\e908"; }
+	&.guia_75:before { content: "\e909"; }
+	&.guia_105:before { content: "\e90a"; }
+	&.guia_renglones:before { content: "\e90b"; }
+	&.libreria:before { content: "\e90c"; }
+	&.lienzo:before { content: "\e90d"; }
+	&.portal:before { content: "\e90e"; }
+	&.propiedades:before { content: "\e90f"; }
 }

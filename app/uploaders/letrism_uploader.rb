@@ -1,7 +1,6 @@
 class LetrismUploader < CarrierWave::Uploader::Base
   include CarrierWave::ImageOptimizer if RUBY_PLATFORM =~ /x86_64-linux/
   include CarrierWave::MiniMagick
-  include WebPConverter if RUBY_PLATFORM =~ /x86_64-linux/
 
   storage :file
 
