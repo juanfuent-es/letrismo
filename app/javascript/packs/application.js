@@ -10,6 +10,7 @@ import { Brush2 } from "brushes/brush-particle-2";
 import { Brush6 } from "brushes/brush-particle-6";
 import { LightBrush } from "brushes/light";
 import { Bulb } from "brushes/bulb";
+import { Acorde } from "brushes/bulb";
 // import { LightBulb } from "brushes/lightbulb";
 
 // import { Cursor } from "brushes/cursor";
@@ -35,7 +36,7 @@ class App {
                     this.sketch = new p5(Bulb);
                 break;
                 case "acorde":
-                    this.sketch = new p5(Bulb);
+                    this.sketch = new p5(Acorde);
                 break;
             }
             this.controls = new Controls(this.sketch);

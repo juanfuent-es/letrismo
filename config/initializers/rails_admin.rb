@@ -114,9 +114,12 @@ RailsAdmin.config do |config|
       field :preview do
         label "Vista Previa 1200x630"
       end
-      field :thumb do
-        label "Clase para icono"
+      field :description do
+        label "Descripción"
       end
+      # field :thumb do
+      #   label "Clase para icono"
+      # end
       field :properties do
         label "Propiedades"
       end
@@ -147,9 +150,6 @@ RailsAdmin.config do |config|
       end
       field :libraries do
         label "Librerías"
-      end
-      field :description, :froala do
-        label "Descripción"
       end
     end
   end

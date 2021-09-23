@@ -1,5 +1,9 @@
 <% provide(:title, "Nuevo") %>
 <script>var eQuill = '<%= @equill.slug %>';</script>
+<style>
+<%= @equill.css %>
+</style>
+<% if !@equill.html.blank? %><%= @equill.html.try(:html_safe) %><% end %>
 <%= render 'form', letrism: @letrism %>
 <button id="clear-btn" class="intro-item">Borrar</button>
 <button id="open-tools-btn" class="intro-item">
