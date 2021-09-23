@@ -55,7 +55,9 @@
                                             <% end %>
                                         <% end %>
                                     </div>
+                                    <% if equill.preview.present? %>
                                     <%= image_tag(equill.preview.thumb.url, :class => "Tool__equill-preview__stroke") %>
+                                    <% end %>
                                 </div>
 
                                 
