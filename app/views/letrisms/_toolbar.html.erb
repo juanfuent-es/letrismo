@@ -25,7 +25,7 @@
                         <ul class="Tool__index-panel">
                             <% Equill.all.order(name: :asc).each_with_index do |equill, index| %>
                             <li class="Tool__list-item">
-                                <a href="#" title="<%= equill.name %>" class="Tool__show-equill-info <%= 'active' if @equill == equill %>" data-equill='<%= index %>'>
+                                <a href="#" title="<%= equill.name %>" class="Tool__show-equill-info <%= 'active showing' if @equill == equill %>" data-equill='<%= index %>'>
                                     <i class="icon <%= equill.slug %> Tool__list-item__icon"></i>
                                     <h3 class="Tool__list-item__name"><%= equill.name %></h3>
                                 </a>
@@ -138,15 +138,39 @@
 
                     <div class="Tool__panels-wrapper">
                         <div class="Tool__settings-panel">
-                            <p class="Tool__settings-panel__property"><%= @equill.param_1 %></p>
+                            <p class="Tool__settings-panel__property">
+                                <% if @equill.slug == "enjambre" %>
+                                    Velocidad
+                                <% elsif @equill.slug == "espuma" || @equill.slug == "portal" %>
+                                    Aceleración de grosor
+                                <% else %>
+                                    <%= @equill.param_1 %>
+                                <% end %>
+                            </p>
                             <div class="Tool__settings-panel__input-wrap">
                                 <input type="range" min="0.2" max="0.4" step="0.05" value="0.35" id="flow-input" class="styled-slider">
                             </div>
 
-                            <p class="Tool__settings-panel__property"><%= @equill.param_2 %></p>
+                            <p class="Tool__settings-panel__property">
+                                <% if @equill.slug == "enjambre" %>
+                                    Cantidad de partículas
+                                <% elsif @equill.slug == "espuma" || @equill.slug == "portal" %>
+                                    Escala del vaivén
+                                <% else %>
+                                    <%= @equill.param_2 %>
+                                <% end %>
+                            </p>
                             <div class="Tool__settings-panel__input-wrap">
                                 <input type="range" min="1" max="5" step="1" value="3" id="layers-input" class="styled-slider">
                             </div>
+
+
+                            <% if @equill.slug == "portal" %>
+                                <p class="Tool__settings-panel__property">Duración del vaivén</p>
+                                <div class="Tool__settings-panel__input-wrap">
+                                    <input type="range" min="0" max="6" step="1" value="3" id="mortality-input" class="styled-slider">
+                                </div>
+                            <% end %>
                         </div>
                     </div>
                 </div>
@@ -160,7 +184,7 @@
         <span class="Tool__hit"></span>
 
         <button class="Tool__btn" aria-label="Renglones Guía" data-target="#guides-modal">
-            <i class="icon guia_renglones Tool__icon"></i>
+            <i class="icon lienzo Tool__icon"></i>
         </button>
 
         <div class="Tool__modal-container" id="guides-modal">
@@ -179,17 +203,17 @@
                             <div class="Tool__settings-panel__inline-options">
                                 <div class="Tool__settings-panel__input-wrap">
                                     <button class="grid-btn" id="grid1" data-grid="grid-a"  aria-label="Guía a 45° grados">
-                                        <i class="icon Tool__icon guia_45"></i>
+                                        <i class="icon Tool__icon guia_renglones"></i>
                                     </button>
                                 </div>
                                 <div class="Tool__settings-panel__input-wrap">
                                     <button class="grid-btn" id="grid2" data-grid="grid-b" aria-label="Guía a 75° grados">
-                                        <i class="icon Tool__icon guia_75"></i>
+                                        <i class="icon Tool__icon guia_45"></i>
                                     </button>
                                 </div>
                                 <div class="Tool__settings-panel__input-wrap">
                                     <button class="grid-btn" id="grid3" data-grid="grid-c" aria-label="Guía a 105° grados">
-                                        <i class="icon Tool__icon guia_105"></i>
+                                        <i class="icon Tool__icon guia_75"></i>
                                     </button>
                                 </div>
                                 <div class="Tool__settings-panel__input-wrap">
