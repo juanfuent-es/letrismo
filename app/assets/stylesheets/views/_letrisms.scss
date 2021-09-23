@@ -309,10 +309,11 @@ button#open-tools-btn {
 }
 button#clear-btn {
 	position: fixed;
-	top: 60px;
+	bottom: 5%;
 	left: 5%;
 	border: none;
 	outline: none;
+	padding: 5px 8px;
 	background: none;
 	color: white;
 	text-transform: uppercase;
