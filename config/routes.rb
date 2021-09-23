@@ -10,13 +10,13 @@ Rails.application.routes.draw do
 		get '/log_out' => 'devise/sessions#destroy'
 	end
   	
-	root 'letrisms#index'
+	root 'static_pages#index'
 
 	get 'manifiesto' => 'static_pages#manifest'
 	get 'galeria' => 'static_pages#gallery'
 	get 'contacto' => 'static_pages#contact'
 	get 'notebook' => 'letrisms#new'
-	get 'equill/:id' => 'letrisms#new'
+	get 'notebook/:id' => 'letrisms#new'
 	get 'equills' => 'equills#index'
 
 	# data

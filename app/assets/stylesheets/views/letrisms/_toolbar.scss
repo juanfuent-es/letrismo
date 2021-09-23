@@ -177,6 +177,8 @@
             transition: color .4s ease-out;
             cursor: pointer;
 
+            &.active,
+            &:focus,
             &:hover{
                 color: rgba(255,255,255, 1);
                 background-color: rgba(0,0,0, .2);

@@ -1,5 +1,9 @@
 class StaticPagesController < ApplicationController
 
+  def index 
+    @letrisms = Letrism.all
+  end
+
   def home
   end
 

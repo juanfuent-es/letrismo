@@ -19,24 +19,6 @@ class App {
     constructor() {
         this.preloader = new Preloader("preloader");
         if (window["letrism-form"]) {
-            switch(eQuill) {
-                case 0:
-                    this.sketch = new p5(Brush6);
-                break;
-                case 1:
-                    this.sketch = new p5(Brush1);
-                break;
-                case 2:
-                    this.sketch = new p5(Brush2);
-                break;
-                case 3:
-                    this.sketch = new p5(LightBrush);
-                break;
-                case 4:
-                    this.sketch = new p5(Bulb);
-                break;
-            }
-            this.controls = new Controls(this.sketch);
             this.tools = new Tools(this.sketch);
         }
         Side_Menu.init();
