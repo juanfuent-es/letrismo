@@ -2,8 +2,12 @@ class LetrismsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def new
-		@equill = Equill.find_by_slug(params[:id])
-		@letrism = Letrism.new(equill_id: @equill.id)
+		if params[:id]
+			@equill = Equill.find_by_slug(params[:id])
+			@letrism = Letrism.new(equill_id: @equill.id)
+		else
+			redirect_to "/"
+		end
 	end
 
 	def index

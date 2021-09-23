@@ -107,7 +107,7 @@
         </div>
     </div>
     
-    
+    <% if @equill.slug != "acorde" %>
     <!-- q settings (of chosen one only) -->
     <div class="Tool">
         <span class="Tool__hit"></span>
@@ -151,7 +151,8 @@
             </div>
         </div>
     </div>
-
+    <% end %>
+    <% if @equill.slug != "acorde" %>
     <!-- Canvas settings -->
     <div class="Tool">
         <span class="Tool__hit"></span>
@@ -225,9 +226,9 @@
             </div>
         </div>
     </div>
-
+    <% end %>
     <!-- Color Swatch -->
-    <% if @equill.slug != "bulbo" && @equill.slug != "esgrafiado" %>
+    <% if @equill.slug != "bulbo" && @equill.slug != "esgrafiado" && @equill.slug != "acorde" %>
     <div class="Tool">
 
         <button class="Tool__btn" aria-label="Color" data-target="#color-modal">

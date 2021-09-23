@@ -1,11 +1,22 @@
-<% provide(:title, "Nuevo") %>
+<% provide(:title, "#{@equill.name} Nuevo Letrismo") %>
 <script>var eQuill = '<%= @equill.slug %>';</script>
-<style>
-<%= @equill.css %>
-</style>
-<% if !@equill.html.blank? %><%= @equill.html.try(:html_safe) %><% end %>
 <%= render 'form', letrism: @letrism %>
 <button id="clear-btn" class="intro-item">Borrar</button>
 <button id="open-tools-btn" class="intro-item">
 	<span class="sr-only"></span>
 </button>
+
+<style>
+<%= @equill.css %>
+</style>
+<% if !@equill.html.blank? %>
+	<div id="equill-html"><%= @equill.html.try(:html_safe) %></div>
+<% end %>
+<% if !@equill.libraries.blank? %>
+<%= @equill.libraries.try(:html_safe) %>
+<% end %>
+<% if !@equill.js.blank? %>
+<script>
+<%= @equill.js.try(:html_safe) %>
+</script>
+<% end %>

@@ -56,6 +56,7 @@ RailsAdmin.config do |config|
   config.model Letrism do
     edit do
       field :user
+      field :equill
       field :img
       field :gallery
     end

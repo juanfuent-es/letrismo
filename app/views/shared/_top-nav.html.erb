@@ -13,5 +13,5 @@
         </button>
     </nav>
 
-    <%= render "letrisms/toolbar" if params[:controller] == "letrisms" %>
+    <%= render "letrisms/toolbar" if params[:controller] == "letrisms" && params[:action] != "show" %>
 </div>

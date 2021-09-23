@@ -1,4 +1,5 @@
-<% provide(:title, "por #{@letrism.user.username}") %>
+<% provide(:title, "Letrismo por #{@letrism.user.username}") %>
+<% provide(:description, "#{@letrism.equill.description}") %>
 <% provide(:image, @letrism.img.full.url) %>
 <section class="container">
 	<div class="logoContainer intro-item"><%= image_tag("equills.svg") %></div>
