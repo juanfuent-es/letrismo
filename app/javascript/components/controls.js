@@ -37,7 +37,7 @@ export default class Controls {
             }
         });
         // grid selector
-        let gridInput = document.querySelectorAll(".grid-input");
+        let gridInput = document.querySelectorAll(".grid-btn");
         for (let i = 0; i < gridInput.length; i++) {
             gridInput[i].addEventListener("click", (e) => {
                 let _grid = e.target.getAttribute("data-grid");

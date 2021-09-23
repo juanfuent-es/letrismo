@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_031813) do
     t.string "bg", default: "#151512"
     t.string "fill", default: ""
     t.string "stroke", default: ""
-    t.bigint "equill_id", null: false
+    t.integer "equill_id"
     t.index ["equill_id"], name: "index_letrisms_on_equill_id"
     t.index ["user_id"], name: "index_letrisms_on_user_id"
   end
@@ -100,7 +100,6 @@ ActiveRecord::Schema.define(version: 2021_09_20_031813) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "letrisms", "equills"
   add_foreign_key "letrisms", "users"
   add_foreign_key "properties", "equills"
   add_foreign_key "shortcuts", "equills"

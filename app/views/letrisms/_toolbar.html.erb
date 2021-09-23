@@ -55,8 +55,7 @@
                                             <% end %>
                                         <% end %>
                                     </div>
-
-                                    <%= image_tag(equill.preview.url, :class => "Tool__equill-preview__stroke") %>
+                                    <%= image_tag(equill.preview.thumb.url, :class => "Tool__equill-preview__stroke") %>
                                 </div>
 
                                 
@@ -176,21 +175,27 @@
                             <p class="Tool__settings-panel__property">Guías</p>
                             <div class="Tool__settings-panel__inline-options">
                                 <div class="Tool__settings-panel__input-wrap">
-                                    <input type="radio" name="grids" value="1" id="grid1" data-grid="grid-a" checked class="grid-input">
-                                    <label for="grid1"><span><%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %></span></label>
+                                    <button class="grid-btn" id="grid1" data-grid="grid-a"  aria-label="Guía a 45° grados">
+                                        <i class="icon Tool__icon guia_45"></i>
+                                    </button>
                                 </div>
                                 <div class="Tool__settings-panel__input-wrap">
-                                    <input type="radio" name="grids" value="2" id="grid2" data-grid="grid-b" class="grid-input">
-                                    <label for="grid2"><span><%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %></span></label>
+                                    <button class="grid-btn" id="grid2" data-grid="grid-b" aria-label="Guía a 75° grados">
+                                        <i class="icon Tool__icon guia_75"></i>
+                                    </button>
                                 </div>
                                 <div class="Tool__settings-panel__input-wrap">
-                                    <input type="radio" name="grids" value="3" id="grid3" data-grid="grid-c" class="grid-input">
-                                    <label for="grid3"><span><%= image_tag("letrismo-logo.svg", :class => "Tool__icon") %></span></label>
+                                    <button class="grid-btn" id="grid3" data-grid="grid-c" aria-label="Guía a 105° grados">
+                                        <i class="icon Tool__icon guia_105"></i>
+                                    </button>
                                 </div>
                                 <div class="Tool__settings-panel__input-wrap">
-                                    <input type="radio" name="grids" value="0" id="grid0" data-grid="" class="grid-input">
-                                    <label for="grid0"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></span></label>
-                                    <!-- <label for="grid0"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98"><title>letrismo-close_1</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><line x1="0.35" y1="0.35" x2="18.63" y2="18.63" style="fill:none;stroke-miterlimit:10"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63" style="fill:none;stroke-miterlimit:10"/></g></g></svg></span></label> -->
+                                    <button class="grid-btn" id="grid0" data-grid="" aria-label="Eliminar Guía">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.98 18.98">
+                                        <line x1="0.35" y1="0.35" x2="18.63" y2="18.63"/><line x1="18.63" y1="0.35" x2="0.35" y2="18.63"/>
+                                        </svg>
+                                    </button>
+
                                 </div>
                             </div>
 

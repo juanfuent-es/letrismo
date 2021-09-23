@@ -39,6 +39,7 @@
         * este a su vez tiene más nodos html dentro, e.target (Tu elemento deseado) puede traer falsos positivos.
         * En este caso, el link tiene un 'i' para los iconos dentro, por lo tanto, algunas ocasiones se detectará el click en el tag 'i', no en 'button'
         * Y de esta manera puedes perder mucho tiempo encontrando porque no puedes acceder a tu "data-target" (El atributo que escribí yo en este caso)
+        * En resumen, de esta manera permites el click en el elemento, pero no en sus hijos
         */
         & > * {
             pointer-events: none;
@@ -472,5 +473,36 @@
                 text-align: center;
             }
         }
+    }
+}
+
+
+button.grid-btn {
+    border: 1px solid white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    padding: 1px;
+    overflow: hidden;
+    cursor: pointer;
+    stroke: #FFF;
+    i {
+        pointer-events: none;
+    }
+    &:hover,
+    &:focus {
+        background-color: #fff;
+        color: #000;
+        stroke: #000;
+    }
+    &#grid0 {
+        svg {
+            width: 20px;
+        }
+    }
+    &#grid1 {
+        font-size: 12px;
     }
 }
