@@ -74,25 +74,25 @@ RailsAdmin.config do |config|
     field :name do 
       label "Nombre para usuario"
     end
-    field :key do 
-      label "key: nombre de variable en clase"
-    end
-    field :tipo, :enum do 
-      label "Tipo"
-      searchable false
-      enum do
-        ["Boolean", "Float", "Integer"]
-      end
-    end
-    field :min do 
-      label "Valor mínimo"
-    end
-    field :max do 
-      label "Valor máximo"
-    end
-    field :step do
-      label "Step: valor de incremento/decremento"
-    end
+    # field :key do 
+    #   label "key: nombre de variable en clase"
+    # end
+    # field :tipo, :enum do 
+    #   label "Tipo"
+    #   searchable false
+    #   enum do
+    #     ["Boolean", "Float", "Integer"]
+    #   end
+    # end
+    # field :min do 
+    #   label "Valor mínimo"
+    # end
+    # field :max do 
+    #   label "Valor máximo"
+    # end
+    # field :step do
+    #   label "Step: valor de incremento/decremento"
+    # end
   end
 
   config.model Shortcut do
@@ -121,7 +121,7 @@ RailsAdmin.config do |config|
         label "Propiedades"
       end
       field :shortcuts do
-        label "Propiedades"
+        label "Atajos"
       end
       field :dificulty, :enum do
         label "Dificultad"

@@ -21,7 +21,7 @@
                         <ul class="Tool__index-panel">
                             <% Equill.all.order(name: :asc).each_with_index do |equill, index| %>
                             <li class="Tool__list-item">
-                                <a href="#" title="<%= equill.name %>" class="Tool__show-equill-info" data-equill='<%= index %>'>
+                                <a href="#" title="<%= equill.name %>" class="Tool__show-equill-info <%= 'active' if @equill == equill %>" data-equill='<%= index %>'>
                                     <%= image_tag(equill.thumb.present? ? equill.thumb.url : "letrismo-logo.svg", :class => "Tool__list-item__icon") %>
                                     <h3 class="Tool__list-item__name"><%= equill.name %></h3>
                                 </a>
@@ -55,6 +55,7 @@
                                     <%= image_tag(equill.preview.url, :class => "Tool__equill-preview__stroke") %>
                                 </div>
 
+                                
                                 <div class="Tool__equill-description">
                                     <p class='intro'>
                                         <span class="Tool__label">Dificultad:</span>
@@ -63,33 +64,34 @@
 
                                     <div class="body">
                                         <p class="biblio">
-                                            <%= equill.description %>
+                                            <%= equill.description.try(:html_safe) %>
                                         </p>
                                     </div>
 
-                                    <div class="Tool__equill-description__properties">
-                                        <h5 class="Tool__label">Propiedades variables</h5>
-                                        <ul class="Tool__text-list">
-                                            <li class="Tool__text-list__item">TBD</li>
-                                            <li class="Tool__text-list__item">TBD</li>
-                                            <li class="Tool__text-list__item">TBD</li>
-                                        </ul>
-                                    </div>
+                                    <% if !equill.properties.empty? %>
+                                        <div class="Tool__equill-description__properties">
+                                            <h5 class="Tool__label">Propiedades variables</h5>
+                                            <ul class="Tool__text-list">
+                                                <% equill.properties.each do |prop| %>
+                                                    <li class="Tool__text-list__item"><%= prop.name %></li>
+                                                <% end %>
+                                            </ul>
+                                        </div>
+                                    <% end %>
                                     
-                                    <div class="Tool__equill-description__properties">
-                                        <h5 class="Tool__label">Atajos de teclado</h5>
-                                        <ul class="Tool__table-list">
-                                            <li class="Tool__table-list__item">
-                                                <span class="Tool__command">Deshacer</span>
-                                                <span class="Tool__key">←</span>
-                                            </li>
-
-                                            <li class="Tool__table-list__item">
-                                                <span class="Tool__command">Rehacer</span>
-                                                <span class="Tool__key">→</span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <% if !equill.shortcuts.empty? %>
+                                        <div class="Tool__equill-description__properties">
+                                            <h5 class="Tool__label">Atajos de teclado</h5>
+                                            <ul class="Tool__table-list">
+                                                <% equill.shortcuts.each do |shortcut| %>
+                                                    <li class="Tool__table-list__item">
+                                                        <span class="Tool__command"><%= shortcut.name %></span>
+                                                        <span class="Tool__key"><%= shortcut.unicode %></span>
+                                                    </li>
+                                                <% end %>
+                                            </ul>
+                                        </div>
+                                    <% end %>
 
 
                                 </div>
