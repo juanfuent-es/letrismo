@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2021_09_20_031813) do
     t.string "preview", default: ""
     t.string "slug", default: ""
     t.string "family", default: ""
+    t.string "param_1", default: "Flow"
+    t.string "param_2", default: "Layers"
     t.text "js"
     t.text "css"
     t.text "html"

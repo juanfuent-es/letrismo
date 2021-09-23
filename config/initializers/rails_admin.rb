@@ -120,6 +120,12 @@ RailsAdmin.config do |config|
       field :properties do
         label "Propiedades"
       end
+      field :param_1 do
+        label "Nombre Parámetro 1"
+      end
+      field :param_2 do
+        label "Nombre Parámetro 2"
+      end
       field :shortcuts do
         label "Atajos"
       end
