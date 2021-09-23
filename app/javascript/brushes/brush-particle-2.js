@@ -164,13 +164,26 @@ export const Brush2 = (p5) => {
         // console.log(p5.particleShapes);
 
         // Dibuja el cursor para previsualizar lo que se va a pintar
+        let _preview = new Particle({
+            position: {
+                x: p5.mouseX,
+                y: p5.mouseY
+            },
+
+            cursor: Cursor,
+
+            mortality: true,
+
+            motionAmplitude: p5.motionAmplitude,
+            speedMorphScale: p5.speedMorphScale
+        });
         // p5.noStroke();
         // p5.fill(p5.preview_color);
         // p5.ellipse(p5.mouseX, p5.mouseY, 10);
         p5.push();
             p5.translate(p5.mouseX, p5.mouseY);
-            p5.rotate(Cursor.angle);
-            p5.ellipse(0, 0, 20, Math.max(Cursor.distance, 20) );
+            p5.rotate(_preview.rotation);
+            p5.ellipse(0, 0, _preview.height, _preview.width );
             // p5.ellipse(0, 0, Cursor.distance, 10);
         p5.pop();
     }
@@ -278,6 +291,10 @@ export const Brush2 = (p5) => {
         p5.drawingShape = false;
         p5.showSaveBtn();
     };
+
+    p5.speedMorphedHeight = () => {
+
+    }
 
     p5.hideSaveBtn = () => {
         gsap.to("#save-letrism", 0.6, {
