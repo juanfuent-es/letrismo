@@ -2,7 +2,6 @@ require("@rails/ujs").start()
 import Preloader from "components/preloader";
 import { Side_Menu } from "components/side-menu";
 import Controls from "components/controls";
-import Tools from "components/tools";
 import ToolBar from "components/toolbar";
 import p5 from 'p5';
 // import { Brush } from "brushes/brush"; /* Esqueleto de brush esencial */
@@ -18,9 +17,6 @@ import { Bulb } from "brushes/bulb";
 class App {
     constructor() {
         this.preloader = new Preloader("preloader");
-        if (window["letrism-form"]) {
-            this.tools = new Tools(this.sketch);
-        }
         Side_Menu.init();
         this.events();
     }
