@@ -347,6 +347,28 @@ button#close-tools-btn {
 		}
 	}
 }
+button.bottom-action{
+	position: fixed;
+	margin: auto;
+	bottom: 5%;
+	// left: 5%;
+	border: none;
+	outline: none;
+	padding: 5px 8px;
+	background: none;
+	color: white;
+	text-transform: uppercase;
+	z-index: 10;
+	cursor: pointer;
+	transition: color 200ms ease;
+	&:focus,
+	&:hover {
+		color: red;
+	}
+
+	&#download-tif{ left: 20%;}
+	&#download-jpg{ left: 40%;}
+}
 
 #tools .closeBtn {
 	width: 100%;

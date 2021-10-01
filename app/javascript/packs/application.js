@@ -39,7 +39,11 @@ class App {
                 //     this.sketch = new p5(Acorde);
                 // break;
             }
-            if (this.sketch) this.controls = new Controls(this.sketch);
+            if (this.sketch) {
+                this.controls = new Controls(this.sketch);
+                this.sketch.pixelDensity(3); // for p5 Community Book only
+                console.log(this.sketch);
+            }
         }
         Side_Menu.init();
         this.events();
