@@ -114,6 +114,7 @@ function setup() {
     cnv.mousePressed(playOscillator);
     cnv.touchStarted(playOscillator);
 
+    pixelDensity(3); // for p5 Community Book only
     noStroke();
 
     buttonRecord = createButton('Record');

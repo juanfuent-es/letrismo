@@ -8,6 +8,12 @@ export default class Controls {
         window["clear-btn"].addEventListener("click", (e) => {
             this.stage.reset();
         });
+        window["download-tif"].addEventListener("click", (e) => {
+            this.stage.saveCanvas('00-equill-tif', 'tif');
+        });
+        window["download-jpg"].addEventListener("click", (e) => {
+            this.stage.saveCanvas('00-equill-jpg', 'jpg');
+        });
         window.addEventListener("keyup", (e) => {
             switch (e.keyCode) {
                 /* ESC */
