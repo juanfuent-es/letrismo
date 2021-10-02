@@ -50,7 +50,7 @@
                                         <% if @equill == equill %>
                                             <button disabled class="active Tool__equill-preview__header__btn">En uso</button>
                                         <% else %>
-                                            <%= link_to "/notebook/#{equill.slug}", :class=> "Tool__equill-preview__header__btn" do %>
+                                            <%= link_to "/notebook/#{equill.slug}", :class=> "Tool__equill-preview__header__btn change-page" do %>
                                                 <span>Usar</span>
                                             <% end %>
                                         <% end %>
