@@ -3,7 +3,7 @@ import Preloader from "components/preloader";
 import { Side_Menu } from "components/side-menu";
 import Controls from "components/controls";
 import ToolBar from "components/toolbar";
-import p5 from 'p5';
+import _P5 from 'p5';
 // import { Brush } from "brushes/brush"; /* Esqueleto de brush esencial */
 import { Brush1 } from "brushes/brush-particle-1";
 import { Brush2 } from "brushes/brush-particle-2";
@@ -21,27 +21,27 @@ class App {
         if (window["letrism-form"]) {
             switch(eQuill) {
                 case "enjambre":
-                    this.sketch = new p5(Brush6);
+                    this.sketch = new _P5(Brush6);
                 break;
                 case "espuma":
-                    this.sketch = new p5(Brush1);
+                    this.sketch = new _P5(Brush1);
                 break;
                 case "portal":
-                    this.sketch = new p5(Brush2);
+                    this.sketch = new _P5(Brush2);
                 break;
                 case "bulbo":
-                    this.sketch = new p5(LightBrush);
+                    this.sketch = new _P5(LightBrush);
                 break;
                 case "esgrafiado":
-                    this.sketch = new p5(Bulb);
+                    this.sketch = new _P5(Bulb);
                 break;
                 // case "acorde":
-                //     this.sketch = new p5(Acorde);
+                //     this.sketch = new _P5(Acorde);
                 // break;
             }
             if (this.sketch) {
                 this.controls = new Controls(this.sketch);
-                this.sketch.pixelDensity(3); // for p5 Community Book only
+                this.sketch.pixelDensity(3); // for _P5 Community Book only
                 console.log(this.sketch);
             }
         }

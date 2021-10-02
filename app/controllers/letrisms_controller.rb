@@ -11,7 +11,7 @@ class LetrismsController < ApplicationController
 	end
 
 	def index
-		@letrisms = Letrism.all
+		@letrisms = Letrism.active
 	end
 
 	def show

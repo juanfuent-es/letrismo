@@ -152,6 +152,9 @@ RailsAdmin.config do |config|
       field :libraries do
         label "Librerías"
       end
+      field :name do
+        label "Público"
+      end
     end
   end
 
