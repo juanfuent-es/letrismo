@@ -9,10 +9,10 @@ export default class Controls {
             this.stage.reset();
         });
         window["download-tif"].addEventListener("click", (e) => {
-            this.stage.saveCanvas('00-equill-tif', 'tif');
+            this.stage.saveCanvas('00-equill', 'tif');
         });
         window["download-jpg"].addEventListener("click", (e) => {
-            this.stage.saveCanvas('00-equill-jpg', 'jpg');
+            this.stage.saveCanvas('00-equill', 'jpg');
         });
         window.addEventListener("keyup", (e) => {
             switch (e.keyCode) {

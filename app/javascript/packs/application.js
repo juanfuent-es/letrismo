@@ -9,7 +9,7 @@ import { Brush1 } from "brushes/brush-particle-1";
 import { Brush2 } from "brushes/brush-particle-2";
 import { Brush6 } from "brushes/brush-particle-6";
 import { LightBrush } from "brushes/light";
-import { Bulb } from "brushes/bulb";
+import { Sgraffito } from "brushes/sgraffito";
 // import { Acorde } from "brushes/bulb";
 // import { LightBulb } from "brushes/lightbulb";
 
@@ -33,7 +33,7 @@ class App {
                     this.sketch = new _P5(LightBrush);
                 break;
                 case "esgrafiado":
-                    this.sketch = new _P5(Bulb);
+                    this.sketch = new _P5(Sgraffito);
                 break;
                 // case "acorde":
                 //     this.sketch = new _P5(Acorde);
@@ -41,8 +41,7 @@ class App {
             }
             if (this.sketch) {
                 this.controls = new Controls(this.sketch);
-                this.sketch.pixelDensity(3); // for _P5 Community Book only
-                console.log(this.sketch);
+                this.sketch.pixelDensity(2); // for _P5 Community Book only
             }
         }
         Side_Menu.init();

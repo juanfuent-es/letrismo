@@ -9,7 +9,7 @@ let LIGHT = {
     movement: 0.3
 }
 
-export const Bulb = (p5) => {
+export const Sgraffito = (p5) => {
     p5.mouse = new Mouse();
     p5.shapes = [];
     p5.shape = [];
