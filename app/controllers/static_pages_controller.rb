@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def index 
-    @equill = Equill.all.shuffle.first
+    @equill = Equill.active.shuffle.first
     @letrisms = Letrism.all
   end
 

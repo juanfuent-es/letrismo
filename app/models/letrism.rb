@@ -6,8 +6,6 @@ class Letrism < ApplicationRecord
 
 	mount_base64_uploader :img, LetrismUploader
 
-	scope :active, -> { where(:public => true) }
-
 	private
 
 	def set_slug

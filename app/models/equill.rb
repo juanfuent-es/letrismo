@@ -12,6 +12,8 @@ class Equill < ApplicationRecord
 	validates_uniqueness_of :name
 	validates_presence_of :name
 
+	scope :active, -> { where(:public => true) }
+
 	private
 
 	def set_slug

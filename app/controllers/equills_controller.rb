@@ -2,7 +2,7 @@ class EquillsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
-		@equills = Equill.all
+		@equills = Equill.active
 	end
 
     def show
