@@ -41,7 +41,7 @@ class App {
             }
             if (this.sketch) {
                 this.controls = new Controls(this.sketch);
-                this.sketch.pixelDensity(2); // for _P5 Community Book only
+                // this.sketch.pixelDensity(2); // for _P5 Community Book only
             }
         }
         Side_Menu.init();
