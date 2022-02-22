@@ -31,7 +31,7 @@
         cursor: pointer;
         z-index: 9;
         color: #FFF;
-        transition: background 350ms ease;
+        transition: all 350ms ease;
         /*
         * REVIEW
         * En tu js se está cachando el evento data-target para saber cuál modal mostrar
@@ -45,8 +45,19 @@
             pointer-events: none;
         }
         &:hover,
-        &:focus {
+        &:focus,
+        &.active {
             background-color: rgba(0,0,0, .5);
+            border-radius: 50%;
+        }
+
+        &.active {
+            color: $active-color;
+
+            .Tool__swatch:before{
+                transition: all .2s ease-out;
+                border-color: $active-color;
+            }
         }
     }
 
@@ -77,7 +88,7 @@
     &__modal-arrow{
         z-index: 1;
         position: absolute;
-        top: calc(100% - 10px);
+        top: calc(100% - 5px);
         left: 50%;
         transform: translate3d(-50%, 0, 0);
         width: 0;
@@ -88,7 +99,7 @@
 
     &__modal-inner-container{
         position: fixed;
-        top: 40px;
+        top: 50px;
         right: 0;
         width: 310px;
         padding-top: 10px;
@@ -202,8 +213,6 @@
             }
 
             &.active{
-                color: rgba(255,255,255, 1);
-
                 .Tool__list-item__icon {
                     color: #1978F7;
                 }
@@ -246,7 +255,7 @@
         width: 100%;
         padding: 12px 10px 10px;
         border-radius: 5px;
-        background-color: rgba(25,25,25, .5);
+        background-color: rgba(0,0,0, .2);
         // background-color: black;
 
         &__header{
@@ -270,7 +279,7 @@
 
             &__btn{
                 height: 28px;
-                line-height: 1.75em;
+                line-height: 1.85em;
                 font-size: 14px;
                 padding: 0 30px;
                 border-radius: 5px;
@@ -279,10 +288,16 @@
                 color: #000;
                 cursor: pointer;
                 text-decoration: none;
+                transition: all .1s ease-out;
                 &:disabled{
                     pointer-events: none;
                     color: #fff;
                     background: rgba(255,255,255, .05);
+                }
+                &:hover, &:focus{
+                    transition: all .2s ease-out;
+                    background-color: $active-color;
+                    color: #fff;
                 }
             }
         }
@@ -416,10 +431,23 @@
         margin: auto;
         top: 0; bottom: 0;
         left: 0; right: 0;
-        width: 80%;
-        height: 80%;
+        width: 58%;
+        height: 58%;
         border-radius: 50%;
         background: #fff;
+
+        &:before{
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: calc(100% + 6px);
+            height: calc(100% + 6px);
+            border-radius: 50%;
+            border: 2px solid;
+            border-color: rgba(255,255,255, .2);
+            transition: all .1s ease-out;
+        }
     }
 
 

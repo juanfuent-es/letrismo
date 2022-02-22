@@ -50,6 +50,23 @@ body {
 			background-image: none;
 			// background-image: asset-url("equills-guide-d.svg");
 		}
+
+		button.bottom-action,
+		form#letrism-form input[type="submit"] {
+			color: var(--bg-color);
+
+			&:hover {
+				color: $active-color;
+			}
+		}
+		
+		button#clear-btn {
+			color: var(--bg-color);
+
+			&:hover {
+				color: red;
+			}
+		}
 	}
 	
 }
@@ -375,7 +392,7 @@ button.bottom-action{
 	transition: color 200ms ease;
 	&:focus,
 	&:hover {
-		color: red;
+		color: $active-color;
 	}
 
 	&#download-tif{
@@ -486,7 +503,7 @@ form#letrism-form {
 		opacity: 0;
 		display: none;
 		&:hover {
-			color: red;
+			color: $active-color;
 		}
 	}
 }

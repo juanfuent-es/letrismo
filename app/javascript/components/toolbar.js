@@ -102,7 +102,8 @@ export default class ToolBar {
     }
 
     handleToolClick(e) {
-        this.closeModal(this.modalActive) // Mandar cerrar primero el probable modal abierto
+        let prevModalActive = this.modalActive;
+        this.closeModal(prevModalActive) // Mandar cerrar primero el probable modal abierto
         /* REVIEW
         * Es más fácil seleccionar por un atributo data o algo específico en el dom que por índices
         * Aparte que para dar mantenimiento futuro es más entendible, créeme, te lo agradecerás
@@ -110,7 +111,7 @@ export default class ToolBar {
         let target = e.target.getAttribute("data-target")
         let modal = document.querySelector(target)
         if (this.isModalActive(modal)) return this.closeModal(modal)
-        else return this.openModal(modal)
+        else if (prevModalActive != modal) return this.openModal(modal, e.target)
     }
     
     isModalActive(_modal) {
@@ -120,9 +121,12 @@ export default class ToolBar {
         return false
     }
 
-    openModal(_modal) {
+    openModal(_modal, _icon) {
         if (_modal) {
-            if (!this.isModalActive(_modal)) return _modal.classList.add('active');
+            if (!this.isModalActive(_modal)) {
+                if (_icon) _icon.classList.add('active');
+                return _modal.classList.add('active');
+            }
         }
         return false
     }
@@ -130,7 +134,12 @@ export default class ToolBar {
     /* Este pequeño método */
     closeModal(_modal) {
         if (_modal) {
-            if (this.isModalActive(_modal)) return _modal.classList.remove("active")
+            if (this.isModalActive(_modal)) {
+                document.activeElement.blur()
+                let toolButtons = this.container.querySelectorAll('.Tool__btn');
+                toolButtons.forEach( btn => btn.classList.remove('active') );
+                return _modal.classList.remove("active")
+            }
         }
         return false
     }
