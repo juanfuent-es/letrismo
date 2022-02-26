@@ -30,7 +30,7 @@
         height: 100%;
         cursor: pointer;
         z-index: 9;
-        color: #FFF;
+        color: var(--icon-color);
         transition: all 350ms ease;
         /*
         * REVIEW
@@ -49,6 +49,7 @@
         &.active {
             background-color: rgba(0,0,0, .5);
             border-radius: 50%;
+            color: var(--text-color);
         }
 
         &.active {
