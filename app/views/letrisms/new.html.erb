@@ -3,14 +3,35 @@
 <%= render 'form', letrism: @letrism %>
 <button id="clear-btn" class="intro-item">
 	<%= show_svg("equills-descartar.svg") %>
+
+	<div class="Tooltip top middle-hor">
+		<div class="Tooltip__animation">
+			<div class="Tooltip__box">Borrar</div>
+			<span class="Tooltip__arrow"></span>
+		</div>
+	</div>
 </button>
 
 <button id="download-tif" class="intro-item bottom-action">
 	<%= show_svg("equills-descargar-tif.svg") %>
+
+	<div class="Tooltip top middle-hor">
+		<div class="Tooltip__animation">
+			<div class="Tooltip__box">Descargar trazo .tif</div>
+			<span class="Tooltip__arrow"></span>
+		</div>
+	</div>
 </button>
 
 <button id="download-jpg" class="intro-item bottom-action">
 	<%= show_svg("equills-descargar-jpg.svg") %>
+
+	<div class="Tooltip top middle-hor">
+		<div class="Tooltip__animation">
+			<div class="Tooltip__box">Descargar trazo .jpg</div>
+			<span class="Tooltip__arrow"></span>
+		</div>
+	</div>
 </button>
 
 <style>

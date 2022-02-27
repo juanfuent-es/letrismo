@@ -1,0 +1,104 @@
+$tooltip-bg: #5e5e5edd;
+$tooltip-color: #fff;
+$tooltip-arrowSize: 5px;
+
+:root {
+    --tooltip-margin: 20px;
+}
+
+.Tooltip{
+    position: absolute;
+    margin: auto;
+    pointer-events: none;
+
+    &__animation{
+        opacity: 0;
+        transition: all .2s $easeOutCubic;
+    }
+
+    &__arrow{
+        position: absolute;
+        margin: auto;
+        width: 0;
+        height: 0;
+        border: $tooltip-arrowSize * 2 solid transparent;
+    }
+
+    &__box{
+        padding: 7px 12px;
+        background-color: $tooltip-bg;
+        white-space: nowrap;
+        border-radius: 5px;
+        color: $tooltip-color;
+
+        @include desktop {
+            padding: 10px 20px;
+        }
+    }
+
+    &.top {
+        bottom: calc(100% + var(--tooltip-margin));
+        
+        .Tooltip__animation{transform: translate3d(0, 10px, 0);}
+
+        .Tooltip__arrow {
+            top: 100%;
+            border-top-color: $tooltip-bg;
+        }
+    }
+    &.bottom {
+        top: calc(100% + var(--tooltip-margin));
+        
+        .Tooltip__animation{transform: translate3d(0, -10px, 0);}
+
+        .Tooltip__arrow {
+            bottom: 100%;
+            border-bottom-color: $tooltip-bg;
+        }
+    }
+    &.left {
+        right: calc(100% + var(--tooltip-margin));
+        
+        .Tooltip__animation{transform: translate3d(-10px, 0, 0);}
+
+        .Tooltip__arrow {
+            left: 100%;
+            border-left-color: $tooltip-bg;
+        }
+    }
+    &.right {
+        left: calc(100% + var(--tooltip-margin));
+        
+        .Tooltip__animation{transform: translate3d(10px, 0, 0);}
+
+        .Tooltip__arrow {
+            right: 100%;
+            border-right-color: $tooltip-bg;
+        }
+    }
+
+    &.middle-hor {
+        left: 50%;
+        transform: translate3d(-50%, 0, 0);
+
+        .Tooltip__arrow {
+            left: 50%;
+            transform: translate3d(-50%, 0, 0);
+        }
+    }
+    &.middle-vert {
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+
+        .Tooltip__arrow {
+            top: 50%;
+            transform: translate3d(0, -50%, 0);
+        }
+    }
+
+    &.show .Tooltip__animation{
+        transition: all .4s $easeOutCubic;
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
