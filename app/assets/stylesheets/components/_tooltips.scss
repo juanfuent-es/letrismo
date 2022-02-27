@@ -1,4 +1,4 @@
-$tooltip-bg: #5e5e5edd;
+$tooltip-bg: #333;
 $tooltip-color: #fff;
 $tooltip-arrowSize: 5px;
 
@@ -21,7 +21,21 @@ $tooltip-arrowSize: 5px;
         margin: auto;
         width: 0;
         height: 0;
-        border: $tooltip-arrowSize * 2 solid transparent;
+        // border: $tooltip-arrowSize * 2 solid transparent;
+        width: $tooltip-arrowSize * 2;
+        height: $tooltip-arrowSize * 2;
+        border-radius: 50%;
+        background-color: $tooltip-bg;
+
+        &:after{
+            content: '';
+            position: absolute;
+            margin: auto;
+            width: 50%;
+            height: 50%;
+            border-radius: 50%;
+            background-color: $tooltip-bg;
+        }
     }
 
     &__box{
@@ -30,11 +44,11 @@ $tooltip-arrowSize: 5px;
         white-space: nowrap;
         border-radius: 5px;
         color: $tooltip-color;
-        font-size: 1rem;
+        font-size: .8rem;
         text-transform: none;
 
         @include desktop {
-            padding: 10px 20px;
+            padding: 12px 24px;
         }
     }
 
@@ -44,8 +58,13 @@ $tooltip-arrowSize: 5px;
         .Tooltip__animation{transform: translate3d(0, 10px, 0);}
 
         .Tooltip__arrow {
-            top: 100%;
+            top: calc(100% - 3px);
             border-top-color: $tooltip-bg;
+
+            &:after {
+                top: calc(100% + 3px);
+                left: 0; right: 0;
+            }
         }
     }
     &.bottom {
@@ -54,28 +73,43 @@ $tooltip-arrowSize: 5px;
         .Tooltip__animation{transform: translate3d(0, -10px, 0);}
 
         .Tooltip__arrow {
-            bottom: 100%;
+            bottom: calc(100% - 3px);
             border-bottom-color: $tooltip-bg;
+
+            &:after {
+                bottom: calc(100% + 3px);
+                left: 0; right: 0;
+            }
         }
     }
     &.left {
         right: calc(100% + var(--tooltip-margin));
         
-        .Tooltip__animation{transform: translate3d(-10px, 0, 0);}
+        .Tooltip__animation{transform: translate3d(10px, 0, 0);}
 
         .Tooltip__arrow {
-            left: 100%;
+            left: calc(100% - 3px);
             border-left-color: $tooltip-bg;
+
+            &:after {
+                left: calc(100% + 3px);
+                top: 0; bottom: 0;
+            }
         }
     }
     &.right {
         left: calc(100% + var(--tooltip-margin));
         
-        .Tooltip__animation{transform: translate3d(10px, 0, 0);}
+        .Tooltip__animation{transform: translate3d(-10px, 0, 0);}
 
         .Tooltip__arrow {
-            right: 100%;
+            right: calc(100% - 3px);
             border-right-color: $tooltip-bg;
+
+            &:after {
+                right: calc(100% + 3px);
+                top: 0; bottom: 0;
+            }
         }
     }
 
