@@ -30,6 +30,8 @@ $tooltip-arrowSize: 5px;
         white-space: nowrap;
         border-radius: 5px;
         color: $tooltip-color;
+        font-size: 1rem;
+        text-transform: none;
 
         @include desktop {
             padding: 10px 20px;
