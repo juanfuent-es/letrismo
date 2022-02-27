@@ -16,6 +16,8 @@ export default class ToolBar {
         this.panelInfoSwitches = this.container.querySelectorAll('.Tool__show-equill-info');
         this.eQuillsInfoWrappers = this.container.querySelectorAll('.Tool__equill-info-wrapper');
         this.textToggles = this.container.querySelectorAll('.Tool__text-toggle');
+        this.eQuillsDescriptions = this.container.querySelectorAll('.Tool__equill-description');
+        this.scrollingPanels = this.container.querySelectorAll('.Tool__Panel');
         this.getTools();
     }
 
@@ -61,6 +63,14 @@ export default class ToolBar {
 
         for (const control of _this.panelInfoSwitches) {
             control.addEventListener('click', _this.handlePanelInfoSwitchClick.bind(_this));
+        }
+
+        for (const description of _this.eQuillsDescriptions) {
+            description.addEventListener('scroll', _this.handleEquillDescriptionScroll.bind(_this));
+        }
+
+        for (const panel of _this.scrollingPanels) {
+            panel.addEventListener('scroll', _this.handlePanelScroll.bind(_this));
         }
 
         // El dibujo de una forma requiere de 3 valores de color, background, relleno y stroke
@@ -125,6 +135,7 @@ export default class ToolBar {
         if (_modal) {
             if (!this.isModalActive(_modal)) {
                 if (_icon) _icon.classList.add('active');
+                this.setScrollPointers(_modal);
                 return _modal.classList.add('active');
             }
         }
@@ -181,5 +192,39 @@ export default class ToolBar {
             option.classList.remove('active');
         }
         options[posIndex].classList.add('active');
+    }
+
+    handleEquillDescriptionScroll(e) {
+        let container = e.target.parentNode;
+
+        if (e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight) {
+            container.classList.add('bottom-reached');
+        } else {
+            container.classList.remove('bottom-reached');
+        }
+    }
+
+    handlePanelScroll(e) {
+        let panel = e.target;
+        panel.classList.remove('scrollPointer');
+    }
+
+    setScrollPointers(target) {
+        let panels = target.getElementsByClassName('Tool__Panel');
+        if (!panels.length) return;
+
+        window.requestAnimationFrame(_ => {
+            for (const panel of panels) {
+                panel.scrollTop = 0;
+                panel.classList.remove('scrollPointer');
+    
+                let scrollable = panel.offsetHeight < panel.scrollHeight;
+                if (scrollable) {
+                    window.requestAnimationFrame(_ => {
+                        panel.classList.add('scrollPointer');
+                    });
+                }
+            }
+        });
     }
 }

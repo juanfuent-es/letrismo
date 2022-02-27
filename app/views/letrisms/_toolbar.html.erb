@@ -31,7 +31,7 @@
                     </header>
 
                     <div class="Tool__panels-wrapper">
-                        <ul class="Tool__index-panel">
+                        <ul class="Tool__index-panel Tool__Panel">
                             <% Equill.active.order(name: :asc).each_with_index do |equill, index| %>
                             <li class="Tool__list-item">
                                 <a href="#" title="<%= equill.name %>" class="Tool__show-equill-info <%= 'active showing' if @equill == equill %>" data-equill='<%= index %>'>
@@ -42,7 +42,7 @@
                             <% end %>
                         </ul>
 
-                        <div class="Tool__info-panel">
+                        <div class="Tool__info-panel Tool__Panel">
 
                             <% Equill.active.order(name: :asc).each_with_index do |equill, index| %>
                             <div id="equill-info-<%= index %>" class="Tool__equill-info-wrapper <%= 'hide' if @equill != equill %>">
@@ -146,7 +146,7 @@
                     </header>
 
                     <div class="Tool__panels-wrapper">
-                        <div class="Tool__settings-panel">
+                        <div class="Tool__settings-panel Tool__Panel">
                             <p class="Tool__settings-panel__property">
                                 <% if @equill.slug == "enjambre" %>
                                     Velocidad
@@ -206,7 +206,7 @@
 
 
                     <div class="Tool__panels-wrapper">
-                        <div class="Tool__settings-panel">
+                        <div class="Tool__settings-panel Tool__Panel">
                             <!-- <div class="grids tool-item"> -->
                             <p class="Tool__settings-panel__property">Guías</p>
                             <div class="Tool__settings-panel__inline-options">
@@ -279,7 +279,7 @@
                     </header>
 
                     <div class="Tool__panels-wrapper">
-                        <div class="Tool__settings-panel">
+                        <div class="Tool__settings-panel Tool__Panel">
 
                             <!-- <div class="tool-item"> -->
                             <div>

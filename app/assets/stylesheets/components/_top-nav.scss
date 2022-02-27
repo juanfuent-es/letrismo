@@ -11,6 +11,10 @@
     justify-content: space-between;
     background-color: $toolbar-bg;
 
+    @include smallMobile {
+        padding: 0 10px;
+    }
+
     *{
         box-sizing: border-box;
     }
@@ -34,6 +38,10 @@
         }
 
         .page-title{
+            @include smallMobile {
+                display: none;
+            }
+
             font-size: 16px;
         }
 
@@ -53,6 +61,12 @@
             -moz-appearance: none;
             appearance: none;
             cursor: pointer;
+
+            @include smallMobile {
+                width: 40px;
+                padding: 15px 7px 14px;
+                margin-left: 10px;
+            }
 
             .line{
                 position: relative;
