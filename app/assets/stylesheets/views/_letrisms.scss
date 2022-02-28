@@ -326,10 +326,10 @@ button#open-tools-btn {
 }
 button#clear-btn {
 	position: fixed;
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 	bottom: 5%;
-	left: 5%;
+	left: 3%;
 	border: none;
 	outline: none;
 	padding: 5px;
@@ -342,6 +342,12 @@ button#clear-btn {
 	&:focus,
 	&:hover {
 		color: red;
+	}
+
+	@include desktop {
+		width: 50px;
+		height: 50px;
+		left: 5%;
 	}
 
 	svg{
@@ -376,12 +382,11 @@ button#close-tools-btn {
 button.bottom-action{
 	position: fixed;
 	margin: auto;
-	bottom: 5%;
-	// left: 5%;
+	bottom: 4.4%;
 	border: none;
 	outline: none;
-	width: 50px;
-	height: 50px;
+	width: 45px;
+	height: 45px;
 	padding: 5px;
 	background: none;
 	color: white;
@@ -397,14 +402,18 @@ button.bottom-action{
 
 	&#download-tif{
 		left: 0;
-		right: 80px;
+		right: 60px;
 	}
 	&#download-jpg{
-		left: 80px;
+		left: 60px;
 		right: 0;
 	}
 
 	@include desktop {
+		width: 50px;
+		height: 50px;
+		bottom: 5%;
+
 		&#download-tif{
 			right: 120px;
 		}
@@ -488,20 +497,28 @@ form#letrism-form {
 	}
 	input[type="submit"] {
 		position: fixed;
-		right: 5%;
-		bottom: 6%;
+		right: 2%;
+		bottom: 5.7%;
 		border: none;
 		background-color: transparent;
 		outline: none;
 		color: white;
 		padding: 5px 8px;
 		border-radius: 8px;
+		font-size: .9rem;
 		text-transform: uppercase;
 		cursor: pointer;
 		transform: translate(0px, 15px);
 		transition: color 200ms ease;
 		opacity: 0;
 		display: none;
+
+		@include desktop {
+			right: 5%;
+			bottom: 6%;
+			font-size: 1rem;
+		}
+
 		&:hover {
 			color: $active-color;
 		}
