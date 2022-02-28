@@ -39,6 +39,8 @@ export default class ToolBar {
             e.style.setProperty('--max', e.max == '' ? '100' : e.max);
             e.addEventListener('input', () => e.style.setProperty('--value', e.value));
         }
+
+        document.body.style.overflow = 'hidden';
     }
 
     hideAllEquillsInfo() {
