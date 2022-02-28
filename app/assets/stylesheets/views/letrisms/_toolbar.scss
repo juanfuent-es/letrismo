@@ -126,7 +126,7 @@
     &__modal-wrapper{
         position: relative;
         width: 100%;
-        padding: 10px 0 30px;
+        padding: 5px 0 20px;
         border-radius: 10px;
 
         // temporal style until finishing Tool migration into Toolbar
@@ -135,16 +135,25 @@
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         box-shadow: 0 15px 15px 0 rgba(0,0,0, .25);
+
+        @include desktop {
+            padding: 10px 0 30px;
+        }
     }
 
     &__header-wrapper{
         position: relative;
         width: 100%;
-        padding: 15px 20px 0;
-        margin-bottom: 30px;
+        padding: 10px 15px 0;
+        margin-bottom: 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @include desktop {
+            padding: 15px 20px 0;
+            margin-bottom: 30px;
+        }
     }
 
     &__header{
@@ -179,11 +188,14 @@
         justify-content: center;
         width: 30px;
         height: 30px;
-        margin-right: 20px;
         font-size: 36px;
         font-weight: 100;
         color: #fff;
         cursor: pointer;
+
+        @include desktop {
+            margin-right: 10px;
+        }
     }
 
     &__panels-wrapper{
@@ -196,12 +208,12 @@
     //////////////////////////////////////////////////////
     // eQuills all panels
     &__Panel {
-        @include mobile {
+        // @include mobile {
             max-height: 60vh;
             overflow: hidden scroll;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
-        }
+        // }
 
         &:before {
             content: '';
@@ -323,32 +335,8 @@
         position: relative;
         width: 100%;
 
-        &:after {
-            content: '';
-            pointer-events: none;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background: rgb(0,0,0);
-            background: linear-gradient(0deg, rgba(0,0,0,0.33) 0%, rgba(0,0,0,0) 100%);
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-
-            @include mobile {
-                display: none;
-            }
-        }
-
         &.hide{
             display: none;
-        }
-
-        &.bottom-reached{
-            &:after {
-                display: none;
-            }
         }
     }
 
@@ -418,14 +406,6 @@
         padding: 5px 25px 10px 10px;
         margin-top: 10px;
         font-size: 12px;
-
-        @include desktop {
-            max-height: 170px;
-        }
-
-        @include retina {
-            max-height: 460px;
-        }
 
         .intro{
             margin-bottom: 10px;
