@@ -33,7 +33,7 @@ export const Brush2 = (p5) => {
     p5.undoneParticleShapes = []; /* "Array" que almacena los "trazos" de partículas borrados al "undo()" */
 
     p5.drawingShape = false; /* Bandera para detectar si el usuario creó un "shape" que debe ser guardado al hacer click o no */
-    p5.drawLines = true; /* Bandera para mostrar/esconder el trazo básico de la forma y solo mostrar las partículas */
+    p5.drawLines = false; /* Bandera para mostrar/esconder el trazo básico de la forma y solo mostrar las partículas */
 
     p5.preventDraw = false;
 
