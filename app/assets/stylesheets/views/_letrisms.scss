@@ -53,18 +53,22 @@ body {
 
 		button.bottom-action,
 		form#letrism-form input[type="submit"] {
-			color: var(--bg-color);
+			background: rgba(234, 231, 225, .8);
+			color: rgba(37, 36, 33, 0.8);
 
 			&:hover {
-				color: $active-color;
+				color: black;
+				svg {color: black;}
 			}
 		}
 		
 		button#clear-btn {
-			color: var(--bg-color);
+			background: rgba(234, 231, 225, .8);
+			color: rgba(37, 36, 33, 0.8);
 
 			&:hover {
-				color: red;
+				color: black;
+				svg {color: black;}
 			}
 		}
 	}
@@ -331,30 +335,35 @@ button#clear-btn {
 	bottom: 5%;
 	left: 3%;
 	border: none;
+	border-radius: 10px;
 	outline: none;
-	padding: 5px;
-	background: none;
-	color: white;
+	padding: 2px;
+	background: rgba(0,0,0, .8);
+	color: var(--icon-color);
 	text-transform: uppercase;
 	z-index: 10;
 	cursor: pointer;
-	transition: color 200ms ease;
 	&:focus,
 	&:hover {
-		color: red;
+		svg {
+			color: var(--text-color);
+		}
 	}
 
 	@include desktop {
 		width: 50px;
 		height: 50px;
+		padding: 5px;
 		left: 5%;
 	}
 
 	svg{
 		width: 100%;
 		height: 100%;
-		border: 2px solid currentColor;
 		border-radius: 50%;
+		transition: all 200ms ease;
+		// border: 2px solid currentColor;
+		// box-sizing: border-box;
 	}
 }
 button#close-tools-btn {
@@ -382,22 +391,26 @@ button#close-tools-btn {
 button.bottom-action{
 	position: fixed;
 	margin: auto;
-	bottom: 4.4%;
+	bottom: 5%;
 	border: none;
 	outline: none;
-	width: 45px;
-	height: 45px;
-	padding: 5px;
-	background: none;
-	color: white;
-	fill: white;
+	width: 40px;
+	height: 40px;
+	padding: 6px;
+	background: rgba(0,0,0, .8);
+	border-radius: 10px;
+	color: var(--icon-color);
+	fill: var(--icon-color);
 	text-transform: uppercase;
 	z-index: 10;
 	cursor: pointer;
-	transition: color 200ms ease;
+
 	&:focus,
 	&:hover {
-		color: $active-color;
+		svg {
+			color: var(--text-color);
+			fill: var(--text-color);
+		}
 	}
 
 	&#download-tif{
@@ -413,6 +426,7 @@ button.bottom-action{
 		width: 50px;
 		height: 50px;
 		bottom: 5%;
+		padding: 9px;
 
 		&#download-tif{
 			right: 120px;
@@ -425,7 +439,11 @@ button.bottom-action{
 	svg{
 		width: 100%;
 		height: 100%;
+		transition: all 200ms ease;
 	}
+}
+
+.bottom-actions-wrap {
 }
 
 #tools .closeBtn {
@@ -496,31 +514,32 @@ form#letrism-form {
 		float: left;
 	}
 	input[type="submit"] {
+		height: 40px;
 		position: fixed;
 		right: 2%;
-		bottom: 5.7%;
+		bottom: 5%;
 		border: none;
-		background-color: transparent;
+		background-color: rgba(0,0,0, .8);
 		outline: none;
-		color: white;
-		padding: 5px 8px;
-		border-radius: 8px;
+		color: var(--icon-color);
+		padding: 12px 15px;
+		border-radius: 10px;
 		font-size: .9rem;
 		text-transform: uppercase;
 		cursor: pointer;
 		transform: translate(0px, 15px);
-		transition: color 200ms ease;
+		transition: all 200ms ease;
 		opacity: 0;
 		display: none;
 
 		@include desktop {
 			right: 5%;
-			bottom: 6%;
-			font-size: 1rem;
+			height: 40px;
+			padding: 12px 25px;
 		}
 
 		&:hover {
-			color: $active-color;
+			color: var(--text-color);
 		}
 	}
 }
