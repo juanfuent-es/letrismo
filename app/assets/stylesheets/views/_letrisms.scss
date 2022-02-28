@@ -443,7 +443,12 @@ button.bottom-action{
 	}
 }
 
-.bottom-actions-wrap {
+#equill-bottom-actions {
+	position: fixed;
+	bottom: 5%;
+	width: 100%;
+	transform: translate3d(0, 15px, 0);
+	opacity: 0;
 }
 
 #tools .closeBtn {

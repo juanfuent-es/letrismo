@@ -192,7 +192,7 @@ export const Brush4 = (p5) => {
     };
 
     p5.hideSaveBtn = () => {
-        gsap.to("#save-letrism", 0.6, {
+        gsap.to("#save-letrism, #equill-bottom-actions", 0.6, {
             ease: Power2.easeOut,
             opacity: 0,
             y: 15,
@@ -201,7 +201,7 @@ export const Brush4 = (p5) => {
     }
 
     p5.showSaveBtn = () => {
-        gsap.to("#save-letrism", 0.6, {
+        gsap.to("#save-letrism, #equill-bottom-actions", 0.6, {
             ease: Power2.easeOut,
             opacity: 1,
             y: 0,
