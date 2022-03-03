@@ -1,3 +1,6 @@
+import 'math/math.js'
+import 'core/utils.js'
+
 require("@rails/ujs").start()
 import Preloader from "components/preloader";
 import { Side_Menu } from "components/side-menu";
@@ -16,9 +19,14 @@ import { Sgraffito } from "brushes/sgraffito";
 
 // import { Cursor } from "brushes/cursor";
 
+import Home from "views/home";
+
 class App {
     constructor() {
+        this.is_root = location.pathname == '/';
         this.preloader = new Preloader("preloader");
+        this.views = [];
+
         if (window["letrism-form"]) {
             switch(eQuill) {
                 case "enjambre":
@@ -46,6 +54,7 @@ class App {
             }
         }
         Side_Menu.init();
+        this.HomeInit();
         this.events();
     }
 
@@ -73,6 +82,13 @@ class App {
         this.preloader.hide();
         this.toolbar = new ToolBar({parent: this});
         new Tooltips();
+    }
+
+    HomeInit() {
+        var _this = this;
+        if (!_this.is_root) return;
+
+        _this.views.push( new Home({ parent: _this }) );
     }
 
 }
