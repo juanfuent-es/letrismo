@@ -25,7 +25,6 @@ import * as dat from 'dat.gui'
     function updateWindowSize() {
         Utils.sizes.width = window.innerWidth;
         Utils.sizes.height = window.innerHeight;
-        console.log('updated sizes', Utils.sizes);
     }
 
     Utils.resizeCallbacks.push(updateWindowSize);
