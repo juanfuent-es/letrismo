@@ -20,3 +20,18 @@
     </ul>
   </div>
 </div>
+
+
+<script>
+  var letrisms = [
+      <% @letrisms.each do |letrism| %>
+        {
+          url: `<% letrism.img.medium.url %>`,
+          size: `<% letrism.img.medium %>`,
+        }
+      <% end %>
+    ]
+  var letrismsTotal = <%= @letrisms.count %>
+  console.log(letrisms)
+  console.log(letrismsTotal)
+</script>

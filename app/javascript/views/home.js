@@ -125,8 +125,43 @@ export default class Home {
         _this.loadingManager =  new THREE.LoadingManager()
         _this.textureLoader = new THREE.TextureLoader(_this.loadingManager)
         _this.thumbnails = document.getElementsByClassName('letrism-thumb');
-        let thumbSrc = _this.thumbnails[0].getAttribute('src');
-        _this.texture1 = _this.textureLoader.load(thumbSrc)
+        let thumbSize = _this.thumbnails[0];
+        let thumbSrc = letrisms[0].src;
+        _this.texture1 = _this.textureLoader.load(thumbSrc);
+
+
+        letrisms.forEach(letrism => {
+            loadImage(letrism);
+        });
+
+        function loadImage(letrism) {
+            var src = letrism.src
+            var img = new Image()
+            console.log('loading image');
+            img.onload = function() {
+                var w = img.width
+                var h = img.height
+
+                let ratio = h / w
+                let scale = 2
+
+                var mesh = new THREE.Mesh(
+                    new THREE.PlaneGeometry(scale, scale * ratio),
+                    material
+                );
+
+                _this.texture1 = _this.textureLoader.load(img.src)
+                mesh.material.uniforms.tMap1.value = _this.texture1
+                
+                console.log(mesh);
+                
+                
+                _this.scene.add(mesh)
+            }
+
+            img.src = src
+            console.log(img.src);
+        }
  
  
          /**
@@ -191,8 +226,8 @@ export default class Home {
          scene1Controller.uRipples = scene1Debugger.add(material.uniforms.uRipples, 'value').min(1).max(30).step(1).name('uRipples');
  
  
-         const mesh = new THREE.Mesh(geometry, material)
-         _this.scene.add(mesh)
+        //  const mesh = new THREE.Mesh(geometry, material)
+        //  _this.scene.add(mesh)
  
  
          /**

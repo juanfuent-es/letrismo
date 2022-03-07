@@ -22,6 +22,14 @@ class LetrismUploader < CarrierWave::Uploader::Base
     end
   end
 
+  version :medium do
+    process resize_to_limit: [600, 600]
+    process optimize: [{ quality: 80 }] if RUBY_PLATFORM =~ /x86_64-linux/
+    def full_filename (for_file = model.source.file)
+      "#{model.slug}-medium.png"
+    end
+  end
+
   version :thumb do
     process resize_to_limit: [320, 320]
     process optimize: [{ quality: 80 }] if RUBY_PLATFORM =~ /x86_64-linux/
