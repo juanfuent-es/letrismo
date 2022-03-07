@@ -1,4 +1,4 @@
-export const PX_RATIO = window.devicePixelRatio;
+export const PX_RATIO = Math.min(window.devicePixelRatio, 2);
 
 import * as dat from 'dat.gui'
 
@@ -6,30 +6,57 @@ import * as dat from 'dat.gui'
     window.Utils = {};
 
     Utils.gui = new dat.GUI();
-    // dat.GUI.toggleHide();
+    dat.GUI.toggleHide();
     Utils.debugger = {};
 
-    Utils.sizes = {
-        width: window.innerWidth,
-        height: window.innerHeight
-    };
-
     Utils.resizeCallbacks = [];
-
     function handleResize() {
         Utils.resizeCallbacks.forEach(cb => {
             cb();
         });
     }
 
-    function updateWindowSize() {
-        Utils.sizes.width = window.innerWidth;
-        Utils.sizes.height = window.innerHeight;
-    }
+    window.addEventListener( 'resize', debounce(handleResize, 100) );
 
+
+
+    //////* Screen size *//////
+    Utils.screenSize = {};
+    Utils.PX_RATIO = window.devicePixelRatio;
+
+    function updateWindowSize() {
+        Utils.screenSize.width = window.innerWidth;
+        Utils.screenSize.height = window.innerHeight;
+    }
+    updateWindowSize();
     Utils.resizeCallbacks.push(updateWindowSize);
 
-    window.addEventListener( 'resize', debounce(handleResize, 100) );
+
+
+    //////* Mouse/cursor handler *//////
+    Utils.mouseMoveCallbacks = [];
+
+    function handleMouseMove(e) {
+        Utils.mouseMoveCallbacks.forEach(cb => { cb(e) });
+    }
+
+    window.addEventListener( 'mousemove', throttle(handleMouseMove, 10) )
+
+    //////* Cursor *//////
+    Utils.cursor = {
+        screenPos: {x: window.innerWidth / 2, y: window.innerHeight / 2},
+        glPos: {x: 0, y: 0}
+    }
+
+    function updateCursor(e) {
+        Utils.cursor.screenPos.x = e.clientX * Utils.PX_RATIO;
+        Utils.cursor.screenPos.y = e.clientY * Utils.PX_RATIO;
+
+        Utils.cursor.glPos.x = ((e.clientX / Utils.screenSize.width) * 2)  - 1;
+        Utils.cursor.glPos.y = 1 - ((e.clientY / Utils.screenSize.height) * 2);
+    }
+
+    Utils.mouseMoveCallbacks.push(updateCursor);
 
     // window.capturer = new CCapture( {
     //     framerate: 60,

@@ -3,14 +3,7 @@
 
   <div class="containerGrid">
     <ul>
-      <% @letrisms.shuffle.take(8).each do |letrism| %>
-      <li>
-        <%= link_to letrism_path(letrism.slug) do %>
-        <%= image_tag letrism.img.thumb.url, width: 100, alt: letrism.user.username, :class => "letrism-thumb" %>
-        <div><p>Por <%= letrism.user.username %></p></div>
-        <% end %>
-      </li>
-      <% end %>
+      
       <!-- ULTIMO DE LA GALLERIA DE ENTRADA -->
       <li class="description">
         <h1 class="intro-item"><%= image_tag("equills.svg", title: "eQuills") %></h1>
@@ -29,10 +22,8 @@
           src: `<%= letrism.img.medium.url %>`,
           href: `<%= letrism_path(letrism.slug) %>`,
           author: `<%= letrism.user.username %>`,
-        }
+        },
       <% end %>
     ]
   var letrismsTotal = <%= @letrisms.count %>
-  console.log(letrisms)
-  console.log(letrismsTotal)
 </script>

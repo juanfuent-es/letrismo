@@ -1,3 +1,4 @@
+window.devicePixelRatio = Math.min(window.devicePixelRatio, 2);
 import 'math/math.js'
 import 'core/utils.js'
 
