@@ -336,7 +336,6 @@ export default class Home {
          */
         _this.loadingManager =  new THREE.LoadingManager()
         _this.textureLoader = new THREE.TextureLoader(_this.loadingManager)
-        _this.texture1 = _this.textureLoader.load('img/map2.jpg')
 
 
         /**
