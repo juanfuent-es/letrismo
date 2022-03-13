@@ -1,8 +1,9 @@
 source 'http://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| "https://github.com/juanfuent-es/letrismo" }
 
-gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
-gem 'mysql2'
+gem 'rails' #, '~> 6.0.2', '>= 6.0.2.1'
+# gem 'mysql2'
+gem "sqlite3"
 
 # server
 gem 'puma', '~> 4.1'
@@ -11,7 +12,6 @@ gem 'bootsnap', require: false
 
 # compress, optimization
 gem 'htmlcompressor', '~> 0.3.0'
-gem "sqlite3"
 # assets
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
@@ -37,4 +37,4 @@ gem 'font-awesome-sass', '~> 5.13.0'
 
 # consola en browser
 gem 'web-console', '>= 3.3.0', group: :development
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] #
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] 

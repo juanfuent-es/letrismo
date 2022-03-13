@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_10_02_032224) do
 
-  create_table "equills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "equills", force: :cascade do |t|
     t.string "name", default: ""
     t.string "dificulty", default: "Media"
     t.string "icon", default: ""
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2021_10_02_032224) do
     t.boolean "public", default: false
   end
 
-  create_table "letrisms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "letrisms", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "chars", default: ""
     t.string "slug", default: ""
     t.json "paths"
@@ -47,21 +47,21 @@ ActiveRecord::Schema.define(version: 2021_10_02_032224) do
     t.index ["user_id"], name: "index_letrisms_on_user_id"
   end
 
-  create_table "properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "properties", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "key", default: "", null: false
     t.string "tipo", default: "Float"
     t.float "min", default: 0.0, null: false
     t.float "max", default: 0.0, null: false
     t.float "step", default: 0.0, null: false
-    t.bigint "equill_id", null: false
+    t.integer "equill_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["equill_id"], name: "index_properties_on_equill_id"
   end
 
-  create_table "shortcuts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "equill_id", null: false
+  create_table "shortcuts", force: :cascade do |t|
+    t.integer "equill_id", null: false
     t.string "name", default: ""
     t.string "unicode", default: ""
     t.datetime "created_at", precision: 6, null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_10_02_032224) do
     t.index ["equill_id"], name: "index_shortcuts_on_equill_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "avatar", default: ""

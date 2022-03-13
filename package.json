@@ -2,6 +2,7 @@
   "name": "www",
   "private": true,
   "scripts": {
+    "start": "npm run dev",
     "dev": "ruby ./bin/webpack-dev-server",
     "watch": "ruby ./bin/webpack --watch --colors --progress",
     "build": "./bin/webpack"
