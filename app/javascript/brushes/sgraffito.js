@@ -32,7 +32,7 @@ export const Sgraffito = (p5) => {
 
     p5.events = () => {
         window["flow-input"].addEventListener("change", (e) => {
-            LIGHT.flow = parseFloat(window["flow-input"].value);
+            LIGHT.movement = parseFloat(window["flow-input"].value);
         });
 
         window["layers-input"].addEventListener("change", (e) => {
@@ -49,7 +49,6 @@ export const Sgraffito = (p5) => {
             for (let j = 0; j < light.length; j++) {
                 const filament = light[j];
                 filament.update(p5.mouse, time);
-                p5.strokeWeight(0.5);
                 let hsl = filament.hsl;
                 p5.stroke(hsl[0], hsl[1], hsl[2]);
 

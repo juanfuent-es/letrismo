@@ -11,7 +11,7 @@ gem 'bootsnap', require: false
 
 # compress, optimization
 gem 'htmlcompressor', '~> 0.3.0'
-
+gem "sqlite3"
 # assets
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'

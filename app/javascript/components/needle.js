@@ -51,12 +51,12 @@ export default class Needle {
     }
 
     render(p5, t) {
+        p5.curveTightness(-1);
         p5.beginShape();
+        p5.strokeWeight(0.1);
         for (let i = 0; i < this.vertex.length; i++) {
             let pos = this.vertex[i].pos;
-            // let _x = Math.cos(t + i) + pos.x;
-            // let _y = Math.sin(t + i) + pos.y;
-            p5.curveVertex(pos.x, pos.y);
+            p5.vertex(pos.x, pos.y);
         }
         p5.endShape();
     }
