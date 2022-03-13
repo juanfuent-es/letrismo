@@ -1,20 +1,29 @@
-<div class="container" id="container">
+<div class="container home-container" id="container">
+  <canvas class="webgl"></canvas>
+
   <div class="containerGrid">
     <ul>
-      <% @letrisms.shuffle.take(8).each do |letrism| %>
-      <li>
-        <%= link_to letrism_path(letrism.slug) do %>
-        <%= image_tag letrism.img.thumb.url, width: 100, alt: letrism.user.username, :class => "letrism-thumb" %>
-        <div><p>Por <%= letrism.user.username %></p></div>
-        <% end %>
-      </li>
-      <% end %>
+      
       <!-- ULTIMO DE LA GALLERIA DE ENTRADA -->
       <li class="description">
         <h1 class="intro-item"><%= image_tag("equills.svg", title: "eQuills") %></h1>
         <p class="intro-item">eQuills es el término que adoptamos para referirnos a las herramientas de escritura digital que desarrollamos con el objetivo de dejar marcas imposibles de crear en el mundo físico. Suena bien ¿Cierto? Pruébalo tú mismo.</p>
-        <a href="/notebook" title="Comenzar" class="change-page intro-item"><button>COMENZAR</button></a>
+        <a href="/notebook/<%= @equill.slug %>" title="Comenzar" class="change-page intro-item"><button>COMENZAR</button></a>
       </li>
     </ul>
   </div>
 </div>
+
+
+<script>
+  var letrisms = [
+      <% @letrisms.each do |letrism| %>
+        {
+          src: `<%= letrism.img.medium.url %>`,
+          href: `<%= letrism_path(letrism.slug) %>`,
+          author: `<%= letrism.user.username %>`,
+        },
+      <% end %>
+    ]
+  var letrismsTotal = <%= @letrisms.count %>
+</script>

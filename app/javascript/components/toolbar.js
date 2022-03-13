@@ -16,6 +16,7 @@ export default class ToolBar {
         this.panelInfoSwitches = this.container.querySelectorAll('.Tool__show-equill-info');
         this.eQuillsInfoWrappers = this.container.querySelectorAll('.Tool__equill-info-wrapper');
         this.textToggles = this.container.querySelectorAll('.Tool__text-toggle');
+        this.scrollingPanels = this.container.querySelectorAll('.Tool__Panel');
         this.getTools();
     }
 
@@ -38,6 +39,8 @@ export default class ToolBar {
             e.style.setProperty('--max', e.max == '' ? '100' : e.max);
             e.addEventListener('input', () => e.style.setProperty('--value', e.value));
         }
+
+        document.body.style.overflow = 'hidden';
     }
 
     hideAllEquillsInfo() {
@@ -63,6 +66,10 @@ export default class ToolBar {
             control.addEventListener('click', _this.handlePanelInfoSwitchClick.bind(_this));
         }
 
+        for (const panel of _this.scrollingPanels) {
+            panel.addEventListener('scroll', _this.handlePanelScroll.bind(_this));
+        }
+
         // El dibujo de una forma requiere de 3 valores de color, background, relleno y stroke
         let changeColorInputs = document.querySelectorAll(".channel-input");
         // Se asigna evento a los inputs de cambio de valor, el evento se dispara al cambiar de valor
@@ -78,8 +85,15 @@ export default class ToolBar {
 
         _this.initTextTogglesListener();
 
-        this.stage?.canvas?.elt.addEventListener('mouseenter', _this.handleCanvasMouseEnter.bind(_this));
-        this.stage?.canvas?.elt.addEventListener('mouseleave', _this.handleCanvasMouseLeave.bind(_this));
+        if (this.stage && this.stage.canvas) {
+            if (this.stage.canvas.elt) {
+                this.stage.canvas.elt.addEventListener('mouseenter', _this.handleCanvasMouseEnter.bind(_this));
+                this.stage.canvas.elt.addEventListener('mouseleave', _this.handleCanvasMouseLeave.bind(_this));
+            } else {
+                this.stage.canvas.addEventListener('mouseenter', _this.handleCanvasMouseEnter.bind(_this));
+                this.stage.canvas.addEventListener('mouseleave', _this.handleCanvasMouseLeave.bind(_this));
+            }
+        }
     }
 
     initTextTogglesListener() {
@@ -102,7 +116,8 @@ export default class ToolBar {
     }
 
     handleToolClick(e) {
-        this.closeModal(this.modalActive) // Mandar cerrar primero el probable modal abierto
+        let prevModalActive = this.modalActive;
+        this.closeModal(prevModalActive) // Mandar cerrar primero el probable modal abierto
         /* REVIEW
         * Es más fácil seleccionar por un atributo data o algo específico en el dom que por índices
         * Aparte que para dar mantenimiento futuro es más entendible, créeme, te lo agradecerás
@@ -110,7 +125,7 @@ export default class ToolBar {
         let target = e.target.getAttribute("data-target")
         let modal = document.querySelector(target)
         if (this.isModalActive(modal)) return this.closeModal(modal)
-        else return this.openModal(modal)
+        else if (prevModalActive != modal) return this.openModal(modal, e.target)
     }
     
     isModalActive(_modal) {
@@ -120,9 +135,13 @@ export default class ToolBar {
         return false
     }
 
-    openModal(_modal) {
+    openModal(_modal, _icon) {
         if (_modal) {
-            if (!this.isModalActive(_modal)) return _modal.classList.add('active');
+            if (!this.isModalActive(_modal)) {
+                if (_icon) _icon.classList.add('active');
+                this.setScrollPointers(_modal);
+                return _modal.classList.add('active');
+            }
         }
         return false
     }
@@ -130,7 +149,12 @@ export default class ToolBar {
     /* Este pequeño método */
     closeModal(_modal) {
         if (_modal) {
-            if (this.isModalActive(_modal)) return _modal.classList.remove("active")
+            if (this.isModalActive(_modal)) {
+                document.activeElement.blur()
+                let toolButtons = this.container.querySelectorAll('.Tool__btn');
+                toolButtons.forEach( btn => btn.classList.remove('active') );
+                return _modal.classList.remove("active")
+            }
         }
         return false
     }
@@ -140,6 +164,9 @@ export default class ToolBar {
         let equillId = e.target.getAttribute('data-equill');
         this.eQuillsInfoWrappers[equillId].classList.remove('hide');
         this.panelInfoSwitches[equillId].classList.add('showing');
+
+        let modal = this.modalActive;
+        if (modal) this.setScrollPointers(modal);
     }
 
     handleCanvasMouseEnter() {
@@ -172,5 +199,29 @@ export default class ToolBar {
             option.classList.remove('active');
         }
         options[posIndex].classList.add('active');
+    }
+
+    handlePanelScroll(e) {
+        let panel = e.target;
+        panel.classList.remove('scrollPointer');
+    }
+
+    setScrollPointers(target) {
+        let panels = target.getElementsByClassName('Tool__Panel');
+        if (!panels.length) return;
+
+        window.requestAnimationFrame(_ => {
+            for (const panel of panels) {
+                panel.scrollTop = 0;
+                panel.classList.remove('scrollPointer');
+    
+                let scrollable = panel.offsetHeight < panel.scrollHeight;
+                if (scrollable) {
+                    window.requestAnimationFrame(_ => {
+                        panel.classList.add('scrollPointer');
+                    });
+                }
+            }
+        });
     }
 }

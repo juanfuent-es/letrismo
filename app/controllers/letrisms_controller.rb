@@ -11,7 +11,9 @@ class LetrismsController < ApplicationController
 	end
 
 	def index
-		@letrisms = Letrism.all
+		# @letrisms = Letrism.all
+		@letrisms = Letrism.all.shuffle.take(6)
+		@equill = Equill.active.shuffle.first
 	end
 
 	def show

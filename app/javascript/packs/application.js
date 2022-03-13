@@ -1,8 +1,13 @@
+window.devicePixelRatio = Math.min(window.devicePixelRatio, 2);
+import 'math/math.js'
+import 'core/utils.js'
+
 require("@rails/ujs").start()
 import Preloader from "components/preloader";
 import { Side_Menu } from "components/side-menu";
 import Controls from "components/controls";
 import ToolBar from "components/toolbar";
+import Tooltips from "components/tooltips";
 import _P5 from 'p5';
 // import { Brush } from "brushes/brush"; /* Esqueleto de brush esencial */
 import { Brush1 } from "brushes/brush-particle-1";
@@ -15,9 +20,14 @@ import { Sgraffito } from "brushes/sgraffito";
 
 // import { Cursor } from "brushes/cursor";
 
+import Home from "views/home";
+
 class App {
     constructor() {
+        this.is_root = location.pathname == '/';
         this.preloader = new Preloader("preloader");
+        this.views = [];
+
         if (window["letrism-form"]) {
             switch(eQuill) {
                 case "enjambre":
@@ -41,10 +51,11 @@ class App {
             }
             if (this.sketch) {
                 this.controls = new Controls(this.sketch);
-                this.sketch.pixelDensity(2); // for _P5 Community Book only
+                // this.sketch.pixelDensity(2); // for _P5 Community Book only
             }
         }
         Side_Menu.init();
+        this.HomeInit();
         this.events();
     }
 
@@ -71,6 +82,14 @@ class App {
     loaded() {
         this.preloader.hide();
         this.toolbar = new ToolBar({parent: this});
+        new Tooltips();
+    }
+
+    HomeInit() {
+        var _this = this;
+        if (!_this.is_root) return;
+
+        _this.views.push( new Home({ parent: _this }) );
     }
 
 }

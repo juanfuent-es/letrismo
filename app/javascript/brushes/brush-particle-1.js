@@ -19,7 +19,7 @@ export const Brush1 = (p5) => {
     p5.undoneParticleShapes = []; /* "Array" que almacena los "trazos" de partículas borrados al "undo()" */
 
     p5.drawingShape = false; /* Bandera para detectar si el usuario creó un "shape" que debe ser guardado al hacer click o no */
-    p5.drawLines = true; /* Bandera para mostrar/esconder el trazo básico de la forma y solo mostrar las partículas */
+    p5.drawLines = false; /* Bandera para mostrar/esconder el trazo básico de la forma y solo mostrar las partículas */
 
     // colors
     p5.bg_color = "#000";
@@ -272,7 +272,7 @@ export const Brush1 = (p5) => {
     };
 
     p5.hideSaveBtn = () => {
-        gsap.to("#save-letrism", 0.6, {
+        gsap.to("#save-letrism, #equill-bottom-actions", 0.6, {
             ease: Power2.easeOut,
             opacity: 0,
             y: 15,
@@ -281,7 +281,7 @@ export const Brush1 = (p5) => {
     }
 
     p5.showSaveBtn = () => {
-        gsap.to("#save-letrism", 0.6, {
+        gsap.to("#save-letrism, #equill-bottom-actions", 0.6, {
             ease: Power2.easeOut,
             opacity: 1,
             y: 0,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_031813) do
+ActiveRecord::Schema.define(version: 2021_10_02_032224) do
 
   create_table "equills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", default: ""
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_031813) do
     t.text "html"
     t.text "libraries"
     t.text "description"
+    t.boolean "public", default: false
   end
 
   create_table "letrisms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|

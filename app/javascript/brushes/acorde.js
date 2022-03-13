@@ -174,7 +174,7 @@ function mouseReleased() {
     _osc.stop();
     playing = false;
     window["letrism_img"].value = cnv.canvas.toDataURL("image/png");
-    gsap.to("#save-letrism", 0.6, {
+    gsap.to("#save-letrism, #equill-bottom-actions", 0.6, {
         ease: Power2.easeOut,
         opacity: 1,
         y: 0,

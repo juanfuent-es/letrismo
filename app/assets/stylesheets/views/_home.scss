@@ -1,11 +1,25 @@
 .home-container{
 	.description {
+		padding: 40px;
+		background: rgba(0,0,0, .2);
+		border-radius: 20px;
+		backdrop-filter: blur(20px);
+
 		h1{
 			margin-bottom: 30px !important;
+
+			img {
+				max-width: 330px;
+			}
 		}
 
 		a{
 			margin-top: 50px;
+
+			&:hover button{
+				background-color: #fff;
+				color: #151512;
+			}
 		}
 	}
 }
@@ -27,7 +41,7 @@
 	height: 100vh;
 	display: grid;
 	list-style: none;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: 30% 40% 30%;
 	grid-template-rows: 30% 40% 30%;
 	margin: 0;
 	padding: 0;
@@ -127,7 +141,7 @@
 
 	.containerGrid ul {
 		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: 15% 15% 40% 15% 15%;
+		grid-template-rows: 5% 15% 60% 15% 15%;
 	}
 
 	.containerGrid ul li div {
