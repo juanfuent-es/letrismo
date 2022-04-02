@@ -1,6 +1,7 @@
 export const Brush = (p5) => {
     p5.shapes = [];
     p5.shape = [];
+    p5.undoneShapes = []; /* Necesario para utilizar undo() y redo() o sea ctrl+z y ctrl+y (aunque los comandos son las flechas izquierda y derecha) */
     // colors
     p5.bg_color = "#000";
     p5.stroke_color = "#FFF";
@@ -45,7 +46,7 @@ export const Brush = (p5) => {
             x: p5.mouseX - p5.windowWidth / 2,
             y: p5.mouseY - p5.windowHeight / 2
         });
-    }, 40);
+    }, 10);
 
     p5.mousePressed = () => {
         p5.shapes.push(p5.shape);
@@ -72,8 +73,8 @@ export const Brush = (p5) => {
             y: 0,
             display: "block"
         });
-        window["letrism_img"].value = this.screenshot();
-        window["letrism_paths"].value = this.data();    
+        window["letrism_img"].value = p5.screenshot();
+        window["letrism_paths"].value = p5.data();    
     }
 
     p5.data = () => {
@@ -92,6 +93,10 @@ export const Brush = (p5) => {
     }
 
     p5.screenshot = () => {
-        return p5.canvas.toDataURL("image/png");
+        if (p5.canvas.elt) {
+            return p5.canvas.elt.toDataURL("image/png");
+        } else {
+            return p5.canvas.toDataURL("image/png");
+        }
     }
 }
