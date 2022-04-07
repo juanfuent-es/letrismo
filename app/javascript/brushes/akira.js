@@ -5,7 +5,7 @@
 
 import { Particle } from "./particle";
 
-export const Brush0 = (p5) => {
+export const Akira = (p5) => {
     p5.shapes = [];
     p5.undoneShapes = []; /* Necesario para utilizar undo() y redo() o sea ctrl+z y ctrl+y (aunque los comandos son las flechas izquierda y derecha) */
     p5.virtualShape = []; /* Necesario para guardar las formas una vez que se levante el lápiz */
@@ -24,7 +24,7 @@ export const Brush0 = (p5) => {
     p5.undoneParticleShapes = []; /* "Array" que almacena los "trazos" de partículas borrados al "undo()" */
 
     p5.drawingShape = false; /* Bandera para detectar si el usuario creó un "shape" que debe ser guardado al hacer click o no */
-    p5.drawLines = true; /* Bandera para mostrar/esconder el trazo básico de la forma y solo mostrar las partículas */
+    p5.drawLines = false; /* Bandera para mostrar/esconder el trazo básico de la forma y solo mostrar las partículas */
 
     p5.preventDraw = false; /* Bandera para prevenir trazos mientras interactuas con el menu */
 
