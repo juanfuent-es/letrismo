@@ -171,6 +171,28 @@ export const Brush0 = (p5) => {
         p5.virtualParticleShape = [];
 
         p5.drawingShape = false;
+
+        p5.showSaveBtn();
+    }
+
+    p5.hideSaveBtn = () => {
+        gsap.to("#save-letrism, #equill-bottom-actions", 0.6, {
+            ease: Power2.easeOut,
+            opacity: 0,
+            y: 15,
+            display: "none"
+        });
+    }
+
+    p5.showSaveBtn = () => {
+        gsap.to("#save-letrism, #equill-bottom-actions", 0.6, {
+            ease: Power2.easeOut,
+            opacity: 1,
+            y: 0,
+            display: "block"
+        });
+        window["letrism_img"].value = p5.screenshot();
+        window["letrism_paths"].value = p5.data();
     }
 
 
@@ -198,6 +220,10 @@ export const Brush0 = (p5) => {
     }
 
     p5.screenshot = () => {
-      return p5.canvas.toDataURL("image/png");
+        if (p5.canvas.elt) {
+            return p5.canvas.elt.toDataURL("image/png");
+        } else {
+            return p5.canvas.toDataURL("image/png");
+        }
     }
 }

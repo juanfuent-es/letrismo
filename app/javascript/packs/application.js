@@ -9,7 +9,9 @@ import Controls from "components/controls";
 import ToolBar from "components/toolbar";
 import Tooltips from "components/tooltips";
 import _P5 from 'p5';
+
 // import { Brush } from "brushes/brush"; /* Esqueleto de brush esencial */
+// import { Brush0 } from "brushes/brush-particle-0"; /* Esqueleto de brush de particulas */
 import { Brush1 } from "brushes/brush-particle-1";
 import { Brush2 } from "brushes/brush-particle-2";
 import { Brush6 } from "brushes/brush-particle-6";
@@ -47,7 +49,7 @@ class App {
                     this.sketch = new _P5(Sgraffito);
                 break;
                 case "akira":
-                    this.sketch = new _P5(Akira);
+                    this.sketch = new _P5(Brush0);
                 break;
                 // case "acorde":
                 //     this.sketch = new _P5(Acorde);
