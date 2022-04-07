@@ -74,3 +74,42 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 puedes consultar este [link](https://stackoverflow.com/questions/67840691/ld-library-not-found-for-lzstd-while-bundle-install-for-mysql2-gem-ruby-on-mac)
 
 * Si tienes problemas en terminal/consola haciendo `yarn install` puede ser que tu version de `node` sea "demasiado" avanzada, en mi caso usaba `node 16.1.0` y tuve que bajar a `node 14.17.3` para que funcionara (macOS Big Sur 11.4 chip M1)
+
+# Como crear un eQuill
+## La clase base (brush.js)
+Clona el archivo `brush.js` localizado en `app/javascript/brushes/` y utiliza sus metodos como base para desarrollar tu eQuill, brush.js es el ejemplo basico para realizar trazos y guardar coordenadas que seran dibujadas por medio de las funciones `beginShape()` y `endShape()` de p5.
+
+Alternativamente, contamos con otra clase base inspirada en particulas llamada `brush-particle-0.js` con un `array` extra para guardar tus particulas y renderizarlas con nuevas propiedades en cada `frame` para animarlas.
+
+Estos son solo ejemplos funcionales para demostrar el funcionamiento de los metodos basicos de p5 a los que tenemos acceso desde la clase y que estan conectados con algunos controles.
+### Metodos y Controles recomendados
+
+| Metodos                   | Descripcion                   |
+| ------------------------- | ----------------------------- |
+| p5.setup()                | Lorem                         |
+| p5.updateAttr(key, value) | Lorem                         |
+| p5.draw()                 | Lorem                         |
+| p5.windowResized()        | Lorem                         |
+| p5.mousePressed()         | Lorem                         |
+| p5.mouseDragged()         | Lorem                         |
+| p5.mouseReleased()        | Lorem                         |
+| p5.reset()                | Lorem                         |
+| p5.data()                 | Lorem                         |
+| p5.screenshot()           | Lorem                         |
+
+| Controles (keycode)       | Descripcion                   |
+| ------------------------- | ----------------------------- |
+| ESC (27)                  | Lorem                         |
+| ENTER (13)                | Lorem                         |
+| Flecha Izquierda (37)     | Lorem                         |
+| Flecha Derecha (39)       | Lorem                         |
+| "x" (88)                  | Lorem                         |
+| Barra espaciadora (32)    | Lorem                         |
+
+
+## Importa tu eQuill dentro de application.js
+Una vez que hayas terminado tu eQuill, importalo dentro de application.js en las primeras lineas del archivo asi como los otros eQuills ya existentes como `LightBrush` o `Sgraffito`.
+
+Dentro del constructor, la funcion `switch()` esta conectada a la `url`, por lo que para acceder a tu equill dentro de la plataforma tendras que usar el `string` definido en esta funcion; por ejemplo el eQuill LightBrush es cargado cuando se entra a la ruta `https://equills.letrismo.com/notebook/bulbo`.
+## Crea el eQuill en el /admin del sitio
+Pide a un administrador que registre el eQuill en la plataforma utilizando el CMS dentro de `https://equills.letrismo.com/admin/equill`. El administrador unicamente tiene que asegurarse de que el nombre del equill coincida con el `string` definido en el switch cuando lo cree por primera vez. (O Juan debe permitir que se actualice el `slug` :p)
