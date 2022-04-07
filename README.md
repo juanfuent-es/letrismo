@@ -87,6 +87,7 @@ Estos son solo ejemplos funcionales para demostrar el funcionamiento de los meto
 | Metodos                   | Descripcion                   |
 | ------------------------- | ----------------------------- |
 | p5.setup()                | Lorem                         |
+| p5.events(key, value)     | Lorem                         |
 | p5.updateAttr(key, value) | Lorem                         |
 | p5.draw()                 | Lorem                         |
 | p5.windowResized()        | Lorem                         |
@@ -111,5 +112,22 @@ Estos son solo ejemplos funcionales para demostrar el funcionamiento de los meto
 Una vez que hayas terminado tu eQuill, importalo dentro de application.js en las primeras lineas del archivo asi como los otros eQuills ya existentes como `LightBrush` o `Sgraffito`.
 
 Dentro del constructor, la funcion `switch()` esta conectada a la `url`, por lo que para acceder a tu equill dentro de la plataforma tendras que usar el `string` definido en esta funcion; por ejemplo el eQuill LightBrush es cargado cuando se entra a la ruta `https://equills.letrismo.com/notebook/bulbo`.
+
+
+## Conecta tu eQuill con el panel en Toolbar
+Dentro de tu nuevo eQuill, busca el `slider` o el `input` en el DOM que hayas decidido utilizar para actualizar las variables de tu eQuill y usa un `eventListener` para conectarlo; puedes definir esta logica dentro del metodo `p5.events()` para seguir la convencion que hemos establecido hasta ahora.
+
+Dentro del archivo `_toolbar.html.erb` podras ver los `sliders` definidos hasta ahora, asi como textos especificos y sliders extra definidos por eQuill. Si quisieras agregar mas `sliders` que modifiquen tu nuevo eQuill, crea un condicional que identifique el slug de tu eQuill y agrega la configuracion dentro, por ejemplo como lo hace el eQuill "Portal":
+
+```ruby
+<% if @equill.slug == "portal" %>
+    <p class="Tool__settings-panel__property">Duración del vaivén</p>
+    <div class="Tool__settings-panel__input-wrap">
+        <input type="range" min="0" max="6" step="1" value="3" id="mortality-input" class="styled-slider">
+    </div>
+<% end %>
+```
+
+
 ## Crea el eQuill en el /admin del sitio
 Pide a un administrador que registre el eQuill en la plataforma utilizando el CMS dentro de `https://equills.letrismo.com/admin/equill`. El administrador unicamente tiene que asegurarse de que el nombre del equill coincida con el `string` definido en el switch cuando lo cree por primera vez. (O Juan debe permitir que se actualice el `slug` :p)
