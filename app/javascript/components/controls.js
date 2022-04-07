@@ -20,19 +20,19 @@ export default class Controls {
                 case 27:
                     this.stage.reset();
                     break;
-                    /* ENTER */
+                /* ENTER */
                 case 13:
                     this.save();
                     break;
-                    /* Flecha Izquierda */
+                /* Flecha Izquierda */
                 case 37:
                     this.undo();
                     break;
-                    /* Flecha Derecha */
+                /* Flecha Derecha */
                 case 39:
                     this.redo();
                     break;
-                    /* "x" */
+                /* "x" */
                 case 88:
                     this.toggleXRay();
                     break;
