@@ -15,6 +15,7 @@ import { Brush2 } from "brushes/brush-particle-2";
 import { Brush6 } from "brushes/brush-particle-6";
 import { LightBrush } from "brushes/light";
 import { Sgraffito } from "brushes/sgraffito";
+import { Akira } from "brushes/akira";
 // import { Acorde } from "brushes/bulb";
 // import { LightBulb } from "brushes/lightbulb";
 
@@ -44,6 +45,9 @@ class App {
                 break;
                 case "esgrafiado":
                     this.sketch = new _P5(Sgraffito);
+                break;
+                case "akira":
+                    this.sketch = new _P5(Akira);
                 break;
                 // case "acorde":
                 //     this.sketch = new _P5(Acorde);
