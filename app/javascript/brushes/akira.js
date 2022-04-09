@@ -3,7 +3,10 @@
     en la posición de cada vértice guardado.
 */
 
+import { Particle_Attracted } from "./particle-attracted";
+import { Particle_Rotating } from "./particle--rotating";
 import { Particle } from "./particle";
+import { Cursor } from "./cursor";
 
 export const Akira = (p5) => {
     p5.shapes = [];
@@ -28,8 +31,38 @@ export const Akira = (p5) => {
 
     p5.preventDraw = false; /* Bandera para prevenir trazos mientras interactuas con el menu */
 
+
+    /* Akira variables */
+    p5.filaments = [];
+    p5.filamentsCount = 5;
+    p5.filament = {
+        speed: 0.4,
+        radius: 16,
+    };
+
     p5.setup = () => {
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+        p5.mouseX = window.innerWidth /2;
+        p5.mouseY = window.innerHeight /2;
+
+        for (var i = 0; i < p5.filamentsCount; i++) {
+            p5.filaments[i] = new Particle_Rotating({
+                radius: p5.filament.radius,
+                limit: p5.filament.limit,
+                accelerationScale: p5.filament.accelerationScale,
+
+                anchor: {
+                    x: p5.mouseX,
+                    y: p5.mouseY
+                }
+            });
+        }
+
+        p5.events();
+    }
+
+    p5.events = () => {
+        // Hook up the Toolbar UI with the brush using listeners
     }
 
     p5.updateAttr = (key, value) => {
@@ -48,6 +81,16 @@ export const Akira = (p5) => {
             p5.curveVertex(p.x, p.y);
         }
         p5.endShape();
+
+
+        // Particulas de previsualizacion siempre presentes
+        // son las que dan origen al trazo/particulas a almacenar
+        for (var i = 0; i < p5.filaments.length; i++) {
+            p5.filaments[i].updateAnchor(p5.mouseX, p5.mouseY);
+            p5.filaments[i].animate(p5.mouseX, p5.mouseY);
+
+            p5.ellipse(p5.filaments[i].position.x, p5.filaments[i].position.y, p5.filaments[i].radius);
+        }
 
 
         // Dibuja los "p5.shapes" guardados hasta el momento,
@@ -171,6 +214,28 @@ export const Akira = (p5) => {
         p5.virtualParticleShape = [];
 
         p5.drawingShape = false;
+
+        p5.showSaveBtn();
+    }
+
+    p5.hideSaveBtn = () => {
+        gsap.to("#save-letrism, #equill-bottom-actions", 0.6, {
+            ease: Power2.easeOut,
+            opacity: 0,
+            y: 15,
+            display: "none"
+        });
+    }
+
+    p5.showSaveBtn = () => {
+        gsap.to("#save-letrism, #equill-bottom-actions", 0.6, {
+            ease: Power2.easeOut,
+            opacity: 1,
+            y: 0,
+            display: "block"
+        });
+        window["letrism_img"].value = p5.screenshot();
+        window["letrism_paths"].value = p5.data();
     }
 
 
@@ -198,6 +263,10 @@ export const Akira = (p5) => {
     }
 
     p5.screenshot = () => {
-      return p5.canvas.toDataURL("image/png");
+        if (p5.canvas.elt) {
+            return p5.canvas.elt.toDataURL("image/png");
+        } else {
+            return p5.canvas.toDataURL("image/png");
+        }
     }
 }

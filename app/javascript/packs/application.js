@@ -49,7 +49,7 @@ class App {
                     this.sketch = new _P5(Sgraffito);
                 break;
                 case "akira":
-                    this.sketch = new _P5(Brush0);
+                    this.sketch = new _P5(Akira);
                 break;
                 // case "acorde":
                 //     this.sketch = new _P5(Acorde);
