@@ -128,6 +128,21 @@ Dentro del archivo `_toolbar.html.erb` podras ver los `sliders` definidos hasta 
 <% end %>
 ```
 
+### Paneles de propiedades por defecto (Toolbar)
+De momento se cuenta con 2 `input range` por defecto para manipular cada eQuill, sus `ids` son:
+* flow-input
+* layers-input
+
+Pero puedes customizar tanto su `etiqueta` de texto como los valores `min`, `max` y `step` del input. referenciando directamente al input de la siguiente manera:
+```js
+  window["flow-input"].min = 1;
+  window["flow-input"].max = 20;
+  window["flow-input"].step = 0.5;
+  window["flow-input"].style.cssText = `--value:${window["flow-input"].value}; --min:${window["flow-input"].min}; --max:${window["flow-input"].max};`;
+```
+
+Nota que el css en linea tambien tiene que actualizarse con los nuevos valores de min, max y value para que la `barra` del rango se coloree correctamente.
+
 
 ## Crea el eQuill en el /admin del sitio
 Pide a un administrador que registre el eQuill en la plataforma utilizando el CMS dentro de `https://equills.letrismo.com/admin/equill`. El administrador unicamente tiene que asegurarse de que el nombre del equill coincida con el `string` definido en el switch cuando lo cree por primera vez. (O Juan debe permitir que se actualice el `slug` :p)
