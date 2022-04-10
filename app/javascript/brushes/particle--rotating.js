@@ -7,13 +7,14 @@ export class Particle_Rotating {
 		
 		this.position = { x: this.anchor.x, y: this.anchor.y };
 		this.angle = args.angle || 0; /* posicion alrededor del cursor medido en radianes */
+		this.frame = 0;
 	}
 
 	animate() {
-		this.position.x = this.anchor.x + ( this.circlingRadius * Math.sin(this.angle * this.velocity.x) );
-		this.position.y = this.anchor.y + ( this.circlingRadius * Math.cos(this.angle * this.velocity.y) );
+		this.position.x = this.anchor.x + ( this.circlingRadius * Math.sin(this.frame * this.velocity.x + this.angle) );
+		this.position.y = this.anchor.y + ( this.circlingRadius * Math.cos(this.frame * this.velocity.y + this.angle) );
 
-		this.angle -= 0.05;
+		this.frame -= 0.05;
 	}
 
 	updateAnchor(_x, _y) {
