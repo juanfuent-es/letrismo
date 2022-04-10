@@ -32,6 +32,16 @@ export const Brush0 = (p5) => {
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
     }
 
+    p5.events = () => {
+        /* 2 sliders por default agregados al Toolbar UI en la vista "notebook" */
+        window["flow-input"].addEventListener("change", (e) => {
+            // p5.filament.property = parseFloat(window["flow-input"].value) * 30;
+        });
+        window["layers-input"].addEventListener("change", (e) => {
+            // p5.filamentsCount = parseFloat(window["layers-input"].value) * 2;
+        });
+    }
+
     p5.updateAttr = (key, value) => {
         return p5[key] = value;
     }
