@@ -36,33 +36,76 @@ export const Akira = (p5) => {
     p5.filaments = [];
     p5.filamentsCount = 5;
     p5.filament = {
-        speed: 0.4,
+        velocity: {x: 1, y: 1},
         radius: 16,
+        circlingRadius: 50,
+        strokeWeight: 1,
     };
+
+    p5.setCursorPrview = () => {
+        p5.filaments = [];
+
+        for (var i = 0; i < p5.filamentsCount; i++) {
+            p5.filaments[i] = new Particle_Rotating({
+                anchor: {
+                    x: p5.mouseX,
+                    y: p5.mouseY
+                },
+
+                velocity: {
+                    x: p5.filament.velocity.x,
+                    y: p5.filament.velocity.y
+                },
+
+                circlingRadius: p5.filament.circlingRadius,
+                angle: ( (Math.PI * 2) / p5.filamentsCount ) * i
+            });
+        }
+    }
 
     p5.setup = () => {
         p5.canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight);
         p5.mouseX = window.innerWidth /2;
         p5.mouseY = window.innerHeight /2;
 
-        for (var i = 0; i < p5.filamentsCount; i++) {
-            p5.filaments[i] = new Particle_Rotating({
-                radius: p5.filament.radius,
-                limit: p5.filament.limit,
-                accelerationScale: p5.filament.accelerationScale,
-
-                anchor: {
-                    x: p5.mouseX,
-                    y: p5.mouseY
-                }
-            });
-        }
+        p5.setCursorPrview();
 
         p5.events();
     }
 
     p5.events = () => {
-        // Hook up the Toolbar UI with the brush using listeners
+        // circling radius
+        window["flow-input"].min = 1;
+        window["flow-input"].max = 100;
+        window["flow-input"].step = 5;
+        window["flow-input"].style.cssText = `--value:${window["flow-input"].value}; --min:${window["flow-input"].min}; --max:${window["flow-input"].max};`;
+        window["flow-input"].addEventListener("change", (e) => {
+            p5.filament.circlingRadius = parseFloat(window["flow-input"].value);
+            p5.setCursorPrview();
+        });
+
+        // particles amount
+        window["layers-input"].addEventListener("change", (e) => {
+            p5.filamentsCount = parseFloat(window["layers-input"].value) * 3;
+            p5.setCursorPrview();
+        });
+        
+        
+        // rotation speed
+        window["velocityX-input"].addEventListener("change", (e) => {
+            p5.filament.velocity.x = parseFloat(window["velocityX-input"].value);
+            p5.setCursorPrview();
+        });
+        window["velocityY-input"].addEventListener("change", (e) => {
+            p5.filament.velocity.y = parseFloat(window["velocityY-input"].value);
+            p5.setCursorPrview();
+        });
+        
+        // stroke width
+        window["strokeWeight-input"].addEventListener("change", (e) => {
+            p5.filament.strokeWeight = parseFloat(window["strokeWeight-input"].value);
+            // p5.setCursorPrview();
+        });
     }
 
     p5.updateAttr = (key, value) => {
@@ -73,6 +116,7 @@ export const Akira = (p5) => {
         p5.background(p5.bg_color);
         p5.noFill();
         p5.stroke(p5.stroke_color);
+        p5.strokeWeight(p5.filament.strokeWeight);
 
         // Previsualuzación de la línea que se está dibujando
         p5.beginShape();

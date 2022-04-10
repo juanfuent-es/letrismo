@@ -27,6 +27,7 @@ import Home from "views/home";
 
 class App {
     constructor() {
+        window.cBrush = this;
         this.is_root = location.pathname == '/';
         this.preloader = new Preloader("preloader");
         this.views = [];

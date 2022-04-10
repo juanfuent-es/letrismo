@@ -6,11 +6,14 @@ export default class Tooltips {
     }
 
     getElements() {
+        var _this = this;
+
         this.tooltipsTriggers = [];
         this.tooltips = document.getElementsByClassName('Tooltip');
-        this.tooltips.forEach(tooltip => {
-            this.tooltipsTriggers.push(tooltip.parentNode)
-        });
+        for (let i = 0; i < _this.tooltips.length; i++) {
+            _this.tooltipsTriggers.push(_this.tooltips[i].parentNode);
+            
+        }
     }
 
     addHandlers() {
