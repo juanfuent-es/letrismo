@@ -58,6 +58,7 @@ export const Akira = (p5) => {
                 },
 
                 circlingRadius: p5.filament.circlingRadius,
+                radius:  p5.filament.radius,
                 angle: ( (Math.PI * 2) / p5.filamentsCount ) * i
             });
         }
@@ -101,10 +102,15 @@ export const Akira = (p5) => {
             p5.setCursorPrview();
         });
         
-        // stroke width
+        // Particle radius
+        window["particleRadius-input"].addEventListener("change", (e) => {
+            p5.filament.radius = parseFloat(window["particleRadius-input"].value);
+            p5.setCursorPrview();
+        });
+
+        // Particle stroke width
         window["strokeWeight-input"].addEventListener("change", (e) => {
             p5.filament.strokeWeight = parseFloat(window["strokeWeight-input"].value);
-            // p5.setCursorPrview();
         });
     }
 
