@@ -76,13 +76,19 @@ puedes consultar este [link](https://stackoverflow.com/questions/67840691/ld-lib
 * Si tienes problemas en terminal/consola haciendo `yarn install` puede ser que tu version de `node` sea "demasiado" avanzada, en mi caso usaba `node 16.1.0` y tuve que bajar a `node 14.17.3` para que funcionara (macOS Big Sur 11.4 chip M1)
 
 # Como crear un eQuill
+1. La clase base (brush.js)
+2. Importa tu eQuill dentro de application.js
+3. Conecta tu eQuill con el panel en Toolbar
+4. Crea el eQuill en el `/admin` del sitio
+
+
 ## La clase base (brush.js)
 Clona el archivo `brush.js` localizado en `app/javascript/brushes/` y utiliza sus metodos como base para desarrollar tu eQuill, brush.js es el ejemplo basico para realizar trazos y guardar coordenadas que seran dibujadas por medio de las funciones `beginShape()` y `endShape()` de p5.
 
 Alternativamente, contamos con otra clase base inspirada en particulas llamada `brush-particle-0.js` con un `array` extra para guardar tus particulas y renderizarlas con nuevas propiedades en cada `frame` para animarlas.
 
 Estos son solo ejemplos funcionales para demostrar el funcionamiento de los metodos basicos de p5 a los que tenemos acceso desde la clase y que estan conectados con algunos controles.
-### Metodos y Controles recomendados
+#### Metodos y Controles recomendados
 
 | Metodos                   | Descripcion                   |
 | ------------------------- | ----------------------------- |
@@ -115,20 +121,30 @@ Dentro del constructor, la funcion `switch()` esta conectada a la `url`, por lo 
 
 
 ## Conecta tu eQuill con el panel en Toolbar
-Dentro de tu nuevo eQuill, busca el `slider` o el `input` en el DOM que hayas decidido utilizar para actualizar las variables de tu eQuill y usa un `eventListener` para conectarlo; puedes definir esta logica dentro del metodo `p5.events()` para seguir la convencion que hemos establecido hasta ahora.
+Dentro de tu nuevo eQuill, busca el `slider` o el `input` en el DOM que hayas decidido utilizar para actualizar las variables de tu eQuill y usa un `eventListener` para conectarlo; puedes definir esta logica dentro del metodo `p5.events()` para seguir la convencion que hemos establecido hasta ahora; por ejemplo:
 
-Dentro del archivo `_toolbar.html.erb` podras ver los `sliders` definidos hasta ahora, asi como textos especificos y sliders extra definidos por eQuill. Si quisieras agregar mas `sliders` que modifiquen tu nuevo eQuill, crea un condicional que identifique el slug de tu eQuill y agrega la configuracion dentro, por ejemplo como lo hace el eQuill "Portal":
+```js
+p5.events = () => {
+  window["layers-input"].addEventListener("change", (e) => {
+      p5.filamentsCount = parseFloat(window["layers-input"].value) * 3;
+      p5.setCursorPrview();
+  });
+  ...
+}
+```
+
+Dentro del archivo `_toolbar.html.erb` podras ver los `input range` definidos hasta ahora, asi como textos especificos y sliders extra definidos por eQuill. Si quisieras agregar mas `inputs` que modifiquen tu nuevo eQuill, crea un condicional que identifique el slug de tu eQuill y agrega la configuracion dentro, por ejemplo:
 
 ```ruby
 <% if @equill.slug == "portal" %>
     <p class="Tool__settings-panel__property">Duración del vaivén</p>
     <div class="Tool__settings-panel__input-wrap">
-        <input type="range" min="0" max="6" step="1" value="3" id="mortality-input" class="styled-slider">
+        <input type="range" min="0" max="6" step="1" value="3" id="layers-input" class="styled-slider">
     </div>
 <% end %>
 ```
 
-  ### Paneles de propiedades por defecto (Toolbar)
+  #### Paneles de propiedades por defecto (Toolbar)
   De momento se cuenta con 2 `input range` por defecto para manipular cada eQuill, sus `ids` son:
   * flow-input
   * layers-input
@@ -144,9 +160,15 @@ Dentro del archivo `_toolbar.html.erb` podras ver los `sliders` definidos hasta 
   Nota que el css en linea tambien tiene que actualizarse con los nuevos valores de min, max y value para que la `barra` del rango se coloree correctamente.
 
 
-  ### Panel de Color ( p5.updateAttr() )
+  #### Panel de Color ( p5.updateAttr() )
   Pasos para actualizar el color en tu equill
 
 
 ## Crea el eQuill en el /admin del sitio
-Pide a un administrador que registre el eQuill en la plataforma utilizando el CMS dentro de `https://equills.letrismo.com/admin/equill`. El administrador unicamente tiene que asegurarse de que el nombre del equill coincida con el `string` definido en el switch cuando lo cree por primera vez. (O Juan debe permitir que se actualice el `slug` :p)
+Pide a un administrador que registre el eQuill en la plataforma utilizando el CMS dentro de `https://equills.letrismo.com/admin/equill`. El administrador unicamente tiene que asegurarse de que el nombre del equill coincida con el `string` definido en la funcion `switch()` cuando creaste el `case` para inicializar tu eQuill dentro de `application.js` cuando lo cree por primera vez. (O Juan debe permitir que se actualice el `slug` :p)
+
+#### Icono y previsualizacion
+Puedes sugerir en el Discord el `icono` y el `thumbnail` para previsualizar tu eQuill ya que estos se suben en el CMS asi que solo los administradores pueden hacerlo por ti.
+
+- Icono: formato `svg`, de proporciones cuadradas
+- Thumbnail: formato `jpg/png` de proporcion `320px x 168px`
