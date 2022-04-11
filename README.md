@@ -82,7 +82,7 @@ puedes consultar este [link](https://stackoverflow.com/questions/67840691/ld-lib
 4. Crea el eQuill en el `/admin` del sitio
 
 
-## La clase base (brush.js)
+## 1. La clase base (brush.js)
 Clona el archivo `brush.js` localizado en `app/javascript/brushes/` y utiliza sus metodos como base para desarrollar tu eQuill, brush.js es el ejemplo basico para realizar trazos y guardar coordenadas que seran dibujadas por medio de las funciones `beginShape()` y `endShape()` de p5.
 
 Alternativamente, contamos con otra clase base inspirada en particulas llamada `brush-particle-0.js` con un `array` extra para guardar tus particulas y renderizarlas con nuevas propiedades en cada `frame` para animarlas.
@@ -114,13 +114,13 @@ Estos son solo ejemplos funcionales para demostrar el funcionamiento de los meto
 | Barra espaciadora (32)    | Lorem                         |
 
 
-## Importa tu eQuill dentro de application.js
+## 2. Importa tu eQuill dentro de application.js
 Una vez que hayas terminado tu eQuill, importalo dentro de application.js en las primeras lineas del archivo asi como los otros eQuills ya existentes como `LightBrush` o `Sgraffito`.
 
 Dentro del constructor, la funcion `switch()` esta conectada a la `url`, por lo que para acceder a tu equill dentro de la plataforma tendras que usar el `string` definido en esta funcion; por ejemplo el eQuill LightBrush es cargado cuando se entra a la ruta `https://equills.letrismo.com/notebook/bulbo`.
 
 
-## Conecta tu eQuill con el panel en Toolbar
+## 3. Conecta tu eQuill con el panel en Toolbar
 Dentro de tu nuevo eQuill, busca el `slider` o el `input` en el DOM que hayas decidido utilizar para actualizar las variables de tu eQuill y usa un `eventListener` para conectarlo; puedes definir esta logica dentro del metodo `p5.events()` para seguir la convencion que hemos establecido hasta ahora; por ejemplo:
 
 ```js
@@ -163,12 +163,22 @@ Dentro del archivo `_toolbar.html.erb` podras ver los `input range` definidos ha
   #### Panel de Color ( p5.updateAttr() )
   Pasos para actualizar el color en tu equill
 
+  #### Atajos para tu eQuill
+  En caso de que quisieras conectar algunas acciones o modificar variables de tu eQuill desde el teclado, tenemos preparada una clase llamada `Controls` definida en el archivo `controls.js`; ahi encontraras un `eventListener` escuchando el teclado por medio del evento `keyup`.
+  
+  Tenemos definidas algunas acciones que se pueden compartir en todos los eQuills como `Borrar Todo` (detonado por la tecla `Esc`) pero sientete libre te agregar tantos `casos` como gustes.
+  
+  Puedes guardar nuevas funciones en esa clase para mantener el codigo dentro del `eventListener` lo mas corto posible, y dentro de tu funcion personalizada, puedes referenciar a tu eQuill por medio de `this.stage`. Notarás como en los eQuills existentes, las `particulas` y los trazos se guardan dentro de su propia clase como `p5.shapes` & `p5.particleShapes` y estos son referenciados desde la clase `Controls` como `this.stage.shapes` & `this.stage.particleShapes`.
 
-## Crea el eQuill en el /admin del sitio
+
+## 4. Crea el eQuill en el /admin del sitio
 Pide a un administrador que registre el eQuill en la plataforma utilizando el CMS dentro de `https://equills.letrismo.com/admin/equill`. El administrador unicamente tiene que asegurarse de que el nombre del equill coincida con el `string` definido en la funcion `switch()` cuando creaste el `case` para inicializar tu eQuill dentro de `application.js` cuando lo cree por primera vez. (O Juan debe permitir que se actualice el `slug` :p)
 
+#### Indica los atajos para tu eQuill
+Para que los atajos que definiste para tu eQuill sean visibles para los usuarios, estos deben agregarse desde el panel del `CMS`, por lo que debes indicar a un administrador que los agregue por ti.
+
 #### Icono y previsualizacion
-Puedes sugerir en el Discord el `icono` y el `thumbnail` para previsualizar tu eQuill ya que estos se suben en el CMS asi que solo los administradores pueden hacerlo por ti.
+Puedes sugerir en el Discord el `icono` y el `thumbnail` para previsualizar tu eQuill ya que estos se suben en el `CMS` asi que solo los administradores pueden hacerlo por ti.
 
 - Icono: formato `svg`, de proporciones cuadradas
 - Thumbnail: formato `jpg/png` de proporcion `320px x 168px`
