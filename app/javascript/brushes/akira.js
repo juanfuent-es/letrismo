@@ -123,7 +123,8 @@ export const Akira = (p5) => {
 
     p5.draw = () => {
         p5.background(p5.bg_color);
-        p5.noFill();
+        // p5.noFill();
+        p5.fill(p5.bg_color);
         p5.stroke(p5.stroke_color);
         p5.strokeWeight(p5.filament.strokeWeight);
 
@@ -197,6 +198,7 @@ export const Akira = (p5) => {
 	            // Guarda la partícula para ser dibujada constantemente
 	            p5.virtualParticleShape.push(_particle);
 	        }
+            p5.setCursorPrview();
         }
 
 
