@@ -22,5 +22,18 @@ export class Particle_Rotating {
 		this.anchor.y = _y;
 	}
 
+	cloneProperties() {
+		var _this = this;
+		return {
+			anchor: _this.anchor,
+			velocity: _this.velocity,
+			circlingRadius: _this.circlingRadius,
+			radius: _this.radius,
+			position: _this.position,
+			angle: _this.angle,
+			frame: _this.frame,
+		}
+	}
+
 
 }

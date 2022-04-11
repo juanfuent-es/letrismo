@@ -42,6 +42,9 @@ export const Akira = (p5) => {
         strokeWeight: 1,
     };
 
+    p5.proximityRate = 1;
+    p5.proximityCounter = 0;
+
     p5.setCursorPrview = () => {
         p5.filaments = [];
 
@@ -181,6 +184,26 @@ export const Akira = (p5) => {
 
         // console.log(p5.particleShapes);
 
+        // ////////////////////////
+        // eQuill particles being created when drawing
+        // ////////////////////////
+        if (p5.mouseIsPressed && p5.proximityRate == p5.proximityCounter) {
+            if (p5.preventDraw) return;
+        	// Creación y configuración de partículas
+	        for (var i = 0; i < p5.filaments.length; i++) {
+                let baseParticle = p5.filaments[i];
+	            let _particle = new Particle_Rotating(baseParticle.cloneProperties());
+
+	            // Guarda la partícula para ser dibujada constantemente
+	            p5.virtualParticleShape.push(_particle);
+	        }
+        }
+
+
+        p5.proximityCounter++;
+        if (p5.proximityCounter > p5.proximityRate) p5.proximityCounter = 0;
+
+
     }
 
     p5.windowResized = () => {
@@ -191,47 +214,6 @@ export const Akira = (p5) => {
     /////////////////////////////////////////////////////////
     ///////// Interacciones con Mouse
     /////////////////////////////////////////////////////////
-    p5.mousePressed = () => {
-        // console.log("mousePressed triggered");
-        if (p5.preventDraw) return;
-        let _mousePos = {
-            x: p5.mouseX,
-            y: p5.mouseY
-        }
-
-        // Agrega coordenadas a la línea que se dibujará para previsualizar el "shape" que se está comenzando a trazar
-        p5.points.push(_mousePos);
-
-        // Agrega coordenadas al "shape" que se va a dibujar una vez se termine el trazo
-        p5.virtualShape.push(_mousePos);
-    }
-
-    p5.mouseDragged = throttle((e) => {
-        // console.log("mouseDragged triggered");
-        if (p5.preventDraw) return;
-
-        p5.drawingShape = true;
-
-        let _mousePos = {
-            x: p5.mouseX,
-            y: p5.mouseY
-        }
-
-        // Mientras el mouse esté presionado y se esté moviendo, agrega puntos al "shape" que se está trazando
-        p5.points.push(_mousePos);
-        p5.virtualShape.push(_mousePos);
-
-        // Creación y configuración de partículas
-        let _particle = new Particle({
-            position: {
-                x: p5.mouseX,
-                y: p5.mouseY,
-            }
-        });
-
-        // Guarda la partícula para ser dibujada constantemente
-        p5.virtualParticleShape.push(_particle);
-    }, 40);
 
     p5.mouseReleased = () => {
         // console.log("mouseReleased triggered", p5.points);
@@ -242,31 +224,19 @@ export const Akira = (p5) => {
             y: p5.mouseY
         }
 
-        // Valida si el usuario realmente dibujó algo o si solo apoyó el lápiz/hizo click
-        if (p5.drawingShape) {
-            // Agrega la última posición del mouse en caso de que el usuario se haya movido demasiado rápido
-            p5.virtualShape.push(_mousePos);
+        
+        p5.particleShapes.push(p5.virtualParticleShape);
 
-            // Guarda el trazo para convertirlo en una forma independiente de las que siguen
-            p5.shapes.push(p5.virtualShape);
-            
-            p5.particleShapes.push(p5.virtualParticleShape);
-
-            // Borra las figuras guardades en el "undo()" para evitar revolverlas en el futuro,
-            // Esto hace que se pierdan para siempre, como al hacer un reset()
-            p5.undoneShapes = [];
-            p5.undoneParticleShapes = [];
-        }
+        // Borra las figuras guardades en el "undo()" para evitar revolverlas en el futuro,
+        // Esto hace que se pierdan para siempre, como al hacer un reset()
+        p5.undoneParticleShapes = [];
 
         // Reset porque va a ser remplazado por su "p5.shape[n]" correspondiente
-        p5.points = [];
-        p5.virtualShape = [];
         p5.virtualParticleShape = [];
 
-        p5.drawingShape = false;
-
+        // console.log(p5.particleShapes);
         p5.showSaveBtn();
-    }
+    };
 
     p5.hideSaveBtn = () => {
         gsap.to("#save-letrism, #equill-bottom-actions", 0.6, {
