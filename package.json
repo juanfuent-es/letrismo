@@ -1,24 +1,50 @@
 {
-  "name": "www",
-  "private": true,
+  "name": "equills_letrismo",
+  "private": false,
   "scripts": {
-    "start": "npm run dev",
-    "dev": "ruby ./bin/webpack-dev-server",
-    "watch": "ruby ./bin/webpack --watch --colors --progress",
-    "build": "./bin/webpack"
+    "start": "yarn build --watch",
+    "css": "yarn build:css --watch",
+    "build": "webpack --config webpack.config.js",
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
   },
   "dependencies": {
-    "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "4.3.0",
+    "@headlessui/vue": "^1.7.16",
+    "@heroicons/vue": "^2.0.18",
+    "@rails/ujs": "^7.0.4-3",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@tailwindcss/typography": "^0.5.9",
+    "@vitejs/plugin-vue": "^4.3.4",
+    "autoprefixer": "^10.4.13",
+    "axios": "^1.5.0",
     "dat.gui": "^0.7.9",
+    "events": "^3.3.0",
+    "glslify-import-loader": "^0.1.2",
+    "glslify-loader": "^2.0.0",
+    "gsap": "^3.11.4",
+    "ismobilejs": "^1.1.1",
     "lodash": "^4.17.20",
     "lodash.merge": "^4.6.2",
-    "pressure": "^2.2.0",
-    "three": "^0.138.2"
-  },
-  "version": "0.1.0",
-  "devDependencies": {
     "p5": "^1.1.9",
-    "webpack-dev-server": "^3.11.0"
+    "pinia": "^2.1.6",
+    "postcss": "^8.4.21",
+    "raw-loader": "^4.0.2",
+    "rollup-plugin-gzip": "^3.1.0",
+    "tailwindcss": "^3.2.4",
+    "three": "^0.153.0",
+    "vite-plugin-full-reload": "^1.0.5",
+    "vite-plugin-glsl": "^1.1.2",
+    "vite-plugin-rails": "^0.1.0",
+    "vue": "^3.3.4",
+    "vue-axios": "^3.5.2",
+    "vue-i18n": "^9.3.0",
+    "vue-preloader": "^1.1.2",
+    "vue-router": "^4.2.4"
+  },
+  "version": "2.1.0",
+  "devDependencies": {
+    "vite": "^4.3.0",
+    "vite-plugin-ruby": "^3.2.0"
   }
 }
