@@ -2,10 +2,10 @@
   "name": "equills_letrismo",
   "private": false,
   "scripts": {
-    "start": "yarn build --watch",
-    "css": "yarn build:css --watch",
-    "build": "webpack --config webpack.config.js",
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+    "start": "yarn css --watch",
+    "build": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "css": "yarn build",
+    "build:css": "yarn build"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.16",
