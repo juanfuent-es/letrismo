@@ -25,12 +25,19 @@ Rails.application.routes.draw do
 	get "humans.txt" => "site_info#humans"
 	get "tech.txt" => "site_info#tech"
 
-	get "404" => "errors#not_found"
-	get "422" => "errors#unacceptable"
-	get "500" => "errors#server_error"
+	  # Errors
+	# https://guides.rubyonrails.org/v4.2.0/action_controller_overview.html#custom-errors-page
+	match "404", via: :all, to: "errors#not_found"
+	match "422", via: :all, to: "errors#unprocessable_entity"
+	match "500", via: :all, to: "errors#server_error"
+	match "offline", via: :all, to: "errors#offline", as: :offline
 
-	scope format: true, constraints: { format: /jpg|png|gif/ } do
-		get '/*anything', to: "static_pages#image_default"
+	scope format: true, constraints: { format: /jpg|png|gif|webp|JPG|JPEG|jpeg/ } do
+		get '/*anything', to: "errors#image_not_found"
+	end
+
+	scope format: true, constraints: { format: /jpg|png|gif|webp|JPG|JPEG|jpeg/ } do
+		get '/*anything', to: "errors#image_not_found"
 	end
 
 end

@@ -19,16 +19,20 @@
   
 
 ### Changed
-
+- error pages
   
   
 
 ### Deprecated
-
+- webpack rails
+- 
   
   
 
 ### Removed
+- webpack
+- rails_admin
+- fontawesome
 
   
   
