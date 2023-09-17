@@ -12,6 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string   :username,       default: ""
       t.string   :country,        default: ""
       t.boolean  :banned,         default: false
+      t.boolean  :admin,          default: false
 
       ## Recoverable
 
