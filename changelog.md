@@ -33,7 +33,7 @@
 - webpack
 - rails_admin
 - fontawesome
-
+- wysiwyg_rails
   
   
 
