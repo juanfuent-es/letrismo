@@ -1,0 +1,9 @@
+window.PX_RATIO = Math.min(window.devicePixelRatio, 2)
+window.SVG_NS = 'http://www.w3.org/2000/svg'
+window.VERSION = '1.0'
+window.PI =         Math.PI
+window.TWO_PI =     Math.PI * 2
+window.TAU =        Math.PI * 2
+window.HALF_PI =    Math.PI / 2
+window.THIRD_PI =   Math.PI / 3
+window.QUARTER_PI = Math.PI / 4

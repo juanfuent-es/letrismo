@@ -29,6 +29,14 @@
     </script>
     <%= vite_javascript_tag "application", defer: true %>
     <%= vite_client_tag %>
+    <script>
+      const TRANSLATIONS = <%= { current: I18n.t('.')[:vue] }.to_json.html_safe %>;
+      const I18n = {
+        prefix: '<%= @lang == I18n.default_locale ? "" : "#{@lang}/" %>',
+        locale: '<%= @lang %>',
+        availableLocales: <%= raw(I18n.available_locales.map {|loc| loc.to_s}) %>
+      }
+    </script>
   </head>
   <body class="light-mode" data-theme="dark">
     <%= render "shared/preloader" %>

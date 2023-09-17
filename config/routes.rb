@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 		get '/log_out' => 'devise/sessions#destroy'
 	end
   	
-	root 'letrisms#index'
+	root 'static_pages#index'
 
 	get 'manifiesto' => 'static_pages#manifest'
 	get 'galeria' => 'static_pages#gallery'
