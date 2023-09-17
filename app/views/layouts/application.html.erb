@@ -1,38 +1,37 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale.to_s.downcase %>">
+<html class="" lang="en" dir="ltr" xmlns="https://www.w3.org/1999/xhtml" xmlns:og="https://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
-    <link rel="preload" as="script" href="/js/vendor.js">
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <!-- @see: https://developers.google.com/analytics/devguides/collection/gtagjs -->
-    <%= render "shared/analytics" %>
-    <meta charset='utf-8'>
-    <!-- user agent -->
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= render "shared/metas" %>
+
+    <%= render "shared/analytics" %>
+    <%= render "shared/metadata" %>
     <%= render "shared/favicons" %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+
     <%= yield :jsonld %>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    <%= render "json_ld/page" %>,
+    <%= render "json_ld/publisher" %>,
+    <%= render "json_ld/provider" %>
+    }
+    </script>
+    <%= vite_javascript_tag "application", defer: true %>
     <%= vite_client_tag %>
-    <%= vite_javascript_tag 'application' %>
-    <!--
-      If using a TypeScript entrypoint file:
-        vite_typescript_tag 'application'
-
-      If using a .jsx or .tsx entrypoint, add the extension:
-        vite_javascript_tag 'application.jsx'
-
-      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
-    -->
-
   </head>
   <body class="light-mode" data-theme="dark">
     <%= render "shared/preloader" %>
-    <%= render "shared/top-nav" %>
-    <%= render "shared/side-menu" %>
-    <main id="app"><%= yield %></main>
-    <script src="/js/vendor.js?v=2.2"></script>
-    <%= javascript_pack_tag 'application' %>
+    <%= yield %>
   </body>
 </html>

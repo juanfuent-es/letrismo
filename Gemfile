@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| "https://github.com/juanfuent-es/letrismo" }
 
 # ruby "3.1.3"
 
@@ -8,10 +8,11 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
+gem "sassc-rails"
 
-# Use pg as the database for Active Record
-gem "pg"
-gem "pgcrypto"
+# database: sqlite3 for dev. mysql2 for prod
+gem "mysql2"
+gem "sqlite3"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
