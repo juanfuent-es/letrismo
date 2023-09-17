@@ -1,9 +1,0 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-@font-face {
-    font-family: 'NType82';
-    src: url('/static/ntype82-regular-webfont.woff2') format('woff2'),
-         url('/static/ntype82-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
