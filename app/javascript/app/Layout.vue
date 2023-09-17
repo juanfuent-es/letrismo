@@ -15,7 +15,7 @@
     transition-type="fade-down"
     :loading-speed="15"
     :transition-speed="650">
-    <img src="/images/letrismo-logo.svg" alt="{{ $t('loading') }}" width="67" height="77" class='w-16 h-auto'>
+    <img src="/images/letrismo-logo.svg" alt="{{ $t('loading') }}" width="67" height="77" class='w-24 h-auto'>
   </vue-preloader>
   <main>
     <Header />

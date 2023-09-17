@@ -20,9 +20,6 @@
 <meta property="og:site_name"           content="DomGL" />
 <meta property='og:type'                content='website'>
 <meta property="og:locale"              content="<%= @lang %>"/>
-<% if @page && @page.versionable.present? %>
-<meta property="og:locale:alternate"    content="<%= @page.versionable.lang %>" />
-<% end %>
 <meta property='og:title'               content='<%= full_title(yield(:title)) %>'>
 <meta property='og:image'               content='<%= meta_image(yield(:image)) %>'>
 <meta property="og:image:type"          content="png">
