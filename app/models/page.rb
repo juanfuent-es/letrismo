@@ -26,9 +26,6 @@ class Page < ApplicationRecord
 
 	mount_uploader :og_image, PageUploader
 
-	has_many :blocks, inverse_of: :page, dependent: :destroy
-	accepts_nested_attributes_for :blocks, allow_destroy: true, reject_if: proc { |attributes| attributes["content"].blank? }
-
     # views, likes
 
     def total_views

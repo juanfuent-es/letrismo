@@ -55,6 +55,6 @@ class Admin::PagesController < ApplicationController
     end
 
     def page_params
-      params.require(:page).permit(:slug, :lang, :og_type, :og_title, :og_description, :title, :content, :category, :restricted, :metatag, :versionable_id, blocks_attributes: [:id, :number, :content, :category, :image_id])
+      params.require(:page).permit(:slug, :lang, :og_type, :og_title, :og_description, :title, :content, :category, :restricted, :metatag)
     end
 end
