@@ -1,6 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  important: false,
   content: [
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
@@ -8,8 +9,7 @@ module.exports = {
     './app/javascript/**/*.*'
   ],
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio')
+    require('@tailwindcss/forms')
   ],
   theme: { // @see: https://tailwindcss.com/docs/customizing-colors
     extend: {

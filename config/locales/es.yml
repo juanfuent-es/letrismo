@@ -1,4 +1,93 @@
 es:
+  vue:
+    hi: Hola
+    company: DomGL
+    loading: Cargando...
+    #menu
+    home: Inicio
+    about: Nosotros
+    contact: Contacto
+    privacy: Aviso de Privacidad
+    terms: Términos y Condiciones
+    #
+    all_rights_reserved: Todos los Derechos Reservados
+    not_found: No encontrado
+    open_menu: Abrir Menú
+    close_menu: Cerrar Menú
+    log_in: Iniciar Sesión
+  not_a_member: Not a member?
+  es: Español
+  en: English
+  image: Imagen
+  images: Imágenes
+  spanish: Español
+  english: English
+  metatag: Metatag
+  metatags: Metatags
+  alt: Texto alternativo
+  description: Descripción
+  og: Archivo OpenGraph
+  ogs: Archivos OpenGraph
+  #users
+  user: Usuario
+  users: Usuarios
+  name: Nombre
+  password: Contraseña
+  password_confirmation: Confirmación de Contraseña
+  role: Rol de usuario
+  www: Link Externo
+  bio: Biografía
+  #countries
+  name_en: Nombre en Inglés
+  name_es: Nombre en Español
+  country: País
+  continent: Continente
+  sub_continent: Sub Continente
+  code: Código
+  countries: Países
+  alpha_2: Código Alfa 2
+  alpha_3: Código Alfa 3
+  #errors
+  not_found: La página a la que intentas acceder no existe, se ha movido o se ha eliminado.
+  server_error: Ha ocurrido un error en servidor. Por favor, reintenta de nuevo más tarde.
+  unprocessable_entity: Ha ocurrido un error al momento de intentar procesar tu petición. Por favor, reintenta de nuevo más tarde.
+  # login
+  profile: Perfil
+  close_session: Cerrar Sesión
+  password: Contraseña
+  password_confirmation: Confirmación de Contraseña
+  remember_me: Recordar Sesión
+  login: Iniciar Sesión
+  email: Correo Electrónico
+  recover: Recuperar
+  recover_password: Recuperar Contraseña
+  login_with: Sign in with
+  or: O
+  body: Contenido
+  sign_up: Registrarse
+  new_account: Nueva Cuenta
+  full_name: Nombre Completo
+  characters_minimum: Caracteres Mínimo
+  accept: Acepto
+  terms: Términos y Condiciones
+  privacy: Aviso de Privacidad
+  save: Guardar
+  delete: Eliminar
+  title: Título
+  description: Descripción
+  editing: Editando
+  new: Nuevo
+  article: Artículo
+  articles: Artículos
+  detail: Detalle
+  post: Post
+  page: Página
+  pages: Páginas
+  content: Contenido
+  category: Categoría
+  slug: friendly-URL
+  picture: Imagen
+  sign_in: Iniciar Sesión
   login: Iniciar Sesión
   hi: Hola
   close: Cerrar

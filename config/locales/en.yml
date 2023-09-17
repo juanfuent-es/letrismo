@@ -1,5 +1,58 @@
 en:
-  hi: Hola
+  # lang
+  vue:
+    hi: Hi
+    company: DomGL
+    loading: Loading...
+    #menu
+    about: About Us
+    home: Home
+    contact: Contact
+    privacy: Privacy Policy
+    terms: Terms and Conditions
+    #errors
+    all_rights_reserved: All Rights Reserved
+    not_found: Not Found
+    open_menu: Open Menu
+    close_menu: Close Menu
+    log_in: Login
+  not_a_member: ¿Aún no tienes cuenta?
+  es: Spanish
+  en: English
+  new: New
+  edit: Edit
+  update: Update
+  create: Create
+  offline: Please check your internet connection
+  #errors
+  not_found: Page not found.
+  server_error: Server Error. Please retry more later.
+  unprocessable_entity: Unprocessable Entity.
+  spanish: Español
+  english: English
+  profile: Perfil
+  full_name: Full Name
+  new_account: New Account
+  sign_up: Sign Up
+  recover: Recover
+  recover_password: Recover Password
+  close_session: Close Session
+  password: Password
+  password_confirmation: Password Confirmation
+  remember_me: Remember me
+  login: "Log In"
+  email: "E-mail"
+  login_with: Sign in with
+  or: OR
+  characters_minimum: Characters Minimum
+  accept: Accept
+  terms: Terms and Conditions
+  privacy: Privacy Notice
+  home: Inicio
+  metatag: Metatag
+  metatags: Metatags
+  description: Description
+  picture: Image
   today: Today
   close: Close
   search: Search
