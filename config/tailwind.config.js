@@ -3,19 +3,18 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   content: [
     './app/views/**/*.html.erb',
-    './app/assets/stylesheets/**/*.css',
-    './app/javascript/**/*.*',
     './app/helpers/**/*.rb',
+    './app/assets/stylesheets/**/*.css',
+    './app/javascript/**/*.*'
   ],
   plugins: [
     require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/typography')
+    require('@tailwindcss/aspect-ratio')
   ],
   theme: { // @see: https://tailwindcss.com/docs/customizing-colors
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter var', 'var(--font-fallback)'],
       },
     },
     colors: {
