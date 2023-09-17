@@ -58,7 +58,7 @@ const lang = I18n.prefix.replace("/", "")
 
 const navigation = [
   { name: "home", href: '/' },
-  { name: "about", href: lang == 'es' ? '/nosotros' : '/about' },
-  { name: "contact", href: lang == 'es' ? '/contacto' : '/contact' },
+  { name: "gallery", href: lang == 'es' ? '/galeria' : '/gallery' },
+  { name: "manifest", href: lang == 'es' ? '/manifiesto' : '/manifest' },
 ]
 </script>

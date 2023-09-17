@@ -8,6 +8,8 @@ es:
     company: DomGL
     loading: Cargando...
     #menu
+    gallery: Galería
+    manifest: Manifiesto
     home: Inicio
     about: Nosotros
     contact: Contacto
