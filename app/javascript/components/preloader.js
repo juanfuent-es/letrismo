@@ -1,36 +1,34 @@
+import {
+    gsap
+} from "gsap"
+
 export default class Preloader {
-	constructor(containerId) {
-		if (containerId === undefined) throw "ContainerId es requerido";
-		this.container = document.getElementById(containerId)
-	}
+    constructor() {
+        this.container = document.querySelector("#preloader")
+        this.loaded = false
+        this.setTL()
+    }
 
-	show(callback) {
-		gsap.to(this.container, 0.35, {
-			ease: Power2.easeOut,
-			opacity: 1,
-			scaleX: 1,
-			scaleY: 1,
-			display: "block",
-			onComplete: () => {
-				if (callback) callback();
-			}
-		});
-	}
+    setTL() {
+        this.tl = gsap.timeline({
+            paused: true
+        }).to(this.container, {
+            ease: 'power2.easeInOut',
+            duration: .45,
+            display: 'none',
+            opacity: 0,
+        }, 0)
+    }
 
-	hide() {
-		gsap.to(this.container, 0.45, {
-			ease: Power2.easeOut,
-			opacity: 0,
-			scaleX: 2,
-			scaleY: 2,
-			display: "none"
-		});
-		gsap.to(".intro-item", 0.45, {
-			ease: Power2.easeOut,
-			delay: 0.35,
-			stagger: 0.05,
-			opacity: 1,
-			y: 0
-		});
-	}
+    show() {
+        if (!this.loaded) return false
+        this.loaded = false
+        return this.tl.reverse()
+    }
+
+    hide() {
+        if (this.loaded) return false
+        this.loaded = true
+        return this.tl.delay(3).play()
+    }
 }

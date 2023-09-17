@@ -1,0 +1,62 @@
+<section class="content">
+  <%= form_for [:admin, page], local: true, html: { :class=> "row" } do |f| %>
+  <%= f.hidden_field :category  %>
+
+  <div class="col-md-12">
+    <%= render "admin/shared/errors", object: page %>
+    <!-- .card/ -->
+    <div class="card card-primary card-outline">
+      <header class="card-header">
+        <p class="card-title"><b>OpenGraph</b></p>
+      </header>
+      <div class="card-body row">
+        <%= render "admin/pages/og", object: f %>
+      </div>
+    </div>
+    <!-- /.card -->
+  </div>
+
+  <div class="col-md-<%= @page.category == "blog" ? 12 : 6 %>">
+    <div class="card card-primary card-outline">
+      <header class="card-header">
+        <h2 class="card-title"><b>Contenido de Página</b></h2>
+      </header>
+      <div class="card-body row">
+        <div class="form-group col-md-12">
+          <%= f.label :title, "Título"  %>
+          <%= f.text_field :title, class: "form-control str-counter", placeholder: "Título del artículo sin mencionar marcas", required: true, data: { target: "#title-counter" }, maxLength: 70 %>
+          <span id="title-counter"><%= f.object.title.to_s.length %></span> / 70 caracteres</i></small>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.label :content, "Contenido"  %>
+          <%= f.text_area :content, class: "form-control editor", placeholder: "Contenido", rows: 5, cols: 25 %>
+        </div>
+      </div>
+      <!-- /.card-body -->
+      <!-- .card-footer/ -->
+      <footer class="card-footer">
+        <button class="btn btn-outline-primary mt-2 mb-2 btn-sm float-right"><i class="fas fa-save"></i>
+          Guardar</button>
+      </footer>
+      <!-- /.card-footer -->
+    </div>
+  </div>
+  <% if @page.category != "blog" %>
+  <div class="col-md-6">
+    <div class="card card-primary card-outline">
+      <header class="card-header">
+        <h2 class="card-title"><b>Bloques de página</b></h2>
+        <%= add_page_block f %>
+      </header>
+      <div class="card-body" id="page-blocks-container">
+        <% idx = 0 %>
+        <%= f.fields_for :blocks do |block|  %>
+          <%= render "admin/pages/block_fields", object: block, idx: idx %>
+          <% idx += 1 %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+</section>

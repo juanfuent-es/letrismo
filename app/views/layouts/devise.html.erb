@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="<%= @lang %>" dir="ltr" xmlns="https://www.w3.org/1999/xhtml" xmlns:og="https://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
+  <head>
+    <meta charset="utf-8">
+    <%= render "shared/fonts" %>
+    <%= render "shared/tag_manager" %>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <%= render "shared/metadata" %>
+    <%= render "shared/favicons" %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application" %>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    <%= render "shared/json_ld/page" %>,
+    <%= render "shared/json_ld/publisher" %>,
+    <%= render "shared/json_ld/provider" %>
+    }
+    </script>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'devise', defer: true %>
+  </head>
+  <body>
+    <%= render "shared/preloader" %>
+    <main class="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <%= yield %>
+    </main>
+  </body>
+</html>

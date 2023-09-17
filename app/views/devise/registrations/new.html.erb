@@ -1,21 +1,36 @@
-<div class="logoContainer intro-item"><%= image_tag("equills.svg") %></div>
-<div class="formBox intro-item">
-  <h2>Registrarse</h2>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "formContainer"}) do |f| %>
+<%= render "devise/shared/header", title: t(:new_account) %>
+<div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 text-black  bg-white mx-auto max-w-7xl p-4 lg:p-8">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'grid grid-cols-1 gap-6 mt-8 space-y-6') do |f| %>
+  
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="formInputs intro-item">
-    <%= f.label :username, "Nickname" %>
-    <%= f.text_field :username, autofocus: true, autocomplete: "Nickname", required: true %>
-    <%= f.label :email, "Email" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
-    <%= f.label :password, "Contraseña" %>
-    <%= f.password_field :password, autocomplete: "new-password", required: true %>
-    <%= f.label :password_confirmation, "Confirmar Contraseña" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
-  </div>
-  <div class="formBottom intro-item">
-    <%= f.submit "Registrarse" %>
-    <%= render "devise/shared/links" %>
-  </div>
+
+  <%= f.label :email, class: '' do %>
+  <span><%= t(:email) %></span>
+  <%= f.email_field :email, autofocus: true, required: true, placeholder: t(:email), autocomplete: "email", class:  "", required: true %>
   <% end %>
-</section>
+
+  <%= f.label :password, class: '' do %>
+  <span><%= t(:password) %></span>
+  <%= f.password_field :password, required: true, placeholder: "********", autocomplete: "new-password", class:  "", required: true %>
+  <% if @minimum_password_length %>
+  <small>(<%= "#{@minimum_password_length} #{t(:characters_minimum)}" %>)</small>
+  <% end %>
+  <% end %>
+
+   <%= f.label :password_confirmation, class: '' do %>
+  <span><%= t(:password_confirmation) %></span>
+  <%= f.password_field :password_confirmation, required: true, placeholder: "********", autocomplete: "new-password", class:  "", required: true %>
+  <% end %>
+
+  <label for="agreeTerms" class='inline-flex items-center'>
+    <input type="checkbox" id="agreeTerms" name="terms" value="agree" required>
+    <span class="ml-1 text-sm"><%= t(:accept) %> <%= link_to t(:terms), terms_path(lang: @lang), title: t(:terms), target: "_blank", class: "" %></span>
+  </label>
+
+  <footer>
+    <%= f.submit t(:sign_up), class: "" %>
+    <%= render "devise/shared/links" %>
+  </footer>
+
+  <% end %>
+</div>

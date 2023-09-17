@@ -1,0 +1,14 @@
+<% if object.errors.any? %>
+<div class="card card-danger card-outline">
+	<header class="card-header">
+		<h2 class="card-title">Corrige los campos marcados en rojo para poder continuar!</h2>
+	</header>
+	<div class="card-body">
+		<ul class="">
+			<% object.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<% end %>

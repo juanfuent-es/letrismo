@@ -3,7 +3,7 @@
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 " aria-label="Global">
       <div class="flex lg:flex-1">
         <router-link to="/" class="-m-1.5 p-1.5" key="home" :title="$t('home')">
-          <img src="/static/domgl-logo.svg" alt='DomGL Logotype' width="160" class='h-8 w-auto'>
+          <img src="/static/letrismo-logo.svg" alt='DomGL Logotype' width="160" class='h-8 w-auto'>
         </router-link>
       </div>
       <div class="flex lg:hidden">
@@ -25,7 +25,7 @@
       <DialogPanel class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
         <div class="flex items-center justify-between">
           <router-link to="/" key="home" class="-m-1.5 p-1.5" :title="$t('home')" @click="mobileMenuOpen = false">
-            <img src="/static/domgl-logo.svg" alt='DomGL Logotype' width="160" class='h-8 w-auto'>
+            <img src="/static/letrismo-logo.svg" alt='DomGL Logotype' width="160" class='h-8 w-auto'>
           </router-link>
           <button type="button" class="-m-2.5 rounded-md p-2.5" @click="mobileMenuOpen = false" aria-label="{{ $t('close_menu') }}">
             <XMarkIcon class="h-6 w-6" aria-hidden="true" />

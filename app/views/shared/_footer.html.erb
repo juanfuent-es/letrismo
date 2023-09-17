@@ -1,0 +1,11 @@
+
+<footer id="main-footer" class="w-full flex items-center justify-between relative z-10 text-white">
+    <nav class="container mx-auto p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14">
+        <% if @lang == 'en' %>
+            <%= link_to t(:terms), terms_path(lang: @lang), class: "link-gl block w-1/2 leading-5 p-2 xl:py-4", title: t(:terms) %>
+        <% else %>
+            <%= link_to t(:terms), terminos_path(lang: @lang), class: "link-gl block w-1/2 leading-5 p-2 xl:py-4", title: t(:terms) %>
+        <% end %>
+        <%= link_to t(:privacy), @lang == 'en' ? privacy_path(lang: @lang) : privacidad_path(lang: @lang), class: "link-gl block w-1/2 leading-5 p-2 xl:py-4", title: t(:privacy) %>
+    </nav>
+</footer>

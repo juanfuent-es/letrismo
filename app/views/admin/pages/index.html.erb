@@ -1,0 +1,27 @@
+<% provide(:title, "Páginas") %>
+
+<!-- Content Header (Page header) -->
+<header class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-12">
+        <h1>Páginas</h1>
+        <br>
+        <% link_to new_admin_page_path, class: 'btn btn-outline-primary btn-sm' do %>
+          <i class="fas fa-plus"></i> Nueva Página
+        <% end %>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</header>
+
+<!-- Main content -->
+<section class="content">
+  <% if @pages.any? %>
+    <%= render "admin/pages/index", object: @pages %>
+  <% else %>
+    <%= render "admin/pages/empty" %>
+  <% end %>
+
+</section>
+<!-- /.content -->

@@ -1,11 +1,13 @@
 class User < ApplicationRecord
-	# Include default devise modules. Others available are:
-	# :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-	devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :registerable
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable, :registerable
 
-	validates_presence_of :username
+  validates_uniqueness_of :username
+  mount_uploader :avatar, AvatarUploader
 
-	has_many :letrisms
-	accepts_nested_attributes_for :letrisms, allow_destroy: true
+  def admin?
+    return role == "admin"
+  end
 
 end

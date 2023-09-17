@@ -1,0 +1,23 @@
+<%% provide(:title, "Nueva <%= singular_table_name %>") %>
+
+<header class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1><%%= "#{t(:new)} #{t(:<%= singular_table_name %>)}" %></h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right mt-2">
+          <li class="breadcrumb-item">
+            <%%= link_to t(:<%= plural_table_name %>), admin_<%= plural_table_name %>_path %>
+          </li>
+          <li class="breadcrumb-item active">
+            <%%= "#{t(:new)} #{t(:<%= singular_table_name %>)}" %>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</header>
+
+<%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>

@@ -1,0 +1,20 @@
+/*
+* Buttons
+* @extends from component: .btn # @see application.tailwind.css#components.btn
+* @more: https://tailwindui.com/components/application-ui/elements/buttons 
+*/
+.btn-xs {
+    @apply btn px-2 py-1 text-xs font-light;
+}
+.btn-sm {
+    @apply btn px-2 py-1 text-sm font-normal;
+}
+.btn-md {
+    @apply btn;
+}
+.btn-lg {
+    @apply btn px-3 py-2 text-lg font-semibold;
+}
+.btn-xl {
+    @apply btn px-3.5 py-2.5 text-xl;
+}

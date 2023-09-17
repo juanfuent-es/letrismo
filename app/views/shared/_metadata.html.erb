@@ -1,6 +1,5 @@
 <% if @page %>
-<% provide(:title, @page.title) %>
-<% provide(:og_title, @page.og_title) %>
+<% provide(:title, @page.og_title) %>
 <% provide(:description, @page.og_description) %>
 <% provide(:image, @page.og_image) %>
 <% provide(:keywords, @page.keywords) %>
@@ -8,6 +7,9 @@
 
 <!-- Primary Meta Tags -->
 <title><%= full_title(yield(:title)) %></title>
+<meta name="title"                      content="<%= full_title(yield(:title)) %>">
+<meta name="description"                content="<%= meta_description(yield(:description)) %>">
+
 <meta name='title'                      content='<%= full_title(yield(:title)) %>'>
 <meta name='image'                      content='<%= meta_image(yield(:image)) %>'>
 <meta name='description'                content='<%= meta_description(yield(:description)) %>'>
@@ -15,10 +17,13 @@
 <link rel="canonical"                   href="<%= canonical %>">
 
 <!-- Open Graph / Facebook -->
-<meta property="og:site_name"           content="eQuills | Letrismo" />
+<meta property="og:site_name"           content="DomGL" />
 <meta property='og:type'                content='website'>
-<meta property="og:locale"              content="en"/>
-<meta property='og:title'               content='<%= og_title(yield(:og_title)) %>'>
+<meta property="og:locale"              content="<%= @lang %>"/>
+<% if @page && @page.versionable.present? %>
+<meta property="og:locale:alternate"    content="<%= @page.versionable.lang %>" />
+<% end %>
+<meta property='og:title'               content='<%= full_title(yield(:title)) %>'>
 <meta property='og:image'               content='<%= meta_image(yield(:image)) %>'>
 <meta property="og:image:type"          content="png">
 <meta property="og:image:width"         content="1200">
@@ -29,6 +34,6 @@
 <!-- Twitter -->
 <meta property="twitter:card"           content="summary_large_image">
 <meta property="twitter:url"            content="<%= canonical %>">
-<meta property="twitter:title"          content="<%= og_title(yield(:og_title)) %>">
+<meta property="twitter:title"          content="<%= full_title(yield(:title)) %>">
 <meta property="twitter:description"    content="<%= meta_description(yield(:description)) %>">
 <meta property="twitter:image"          content="<%= meta_image(yield(:image)) %>">

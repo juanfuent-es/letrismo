@@ -9,43 +9,48 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
-/db/*.sqlite3-journal
 /db/*.sqlite3-*
+/db/schema.rb
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
 
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
 
-# uploads
-/public/assets
-/public/uploads
-/public/imgs
-
-
-.byebug_history
+/public/assets/*
+/public/static/*.mp4
+/public/uploads/*
+/public/avatars/*
+/public/images/*
+/public/audios/*
+/public/videos/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-refs.md
-/public/packs
-/public/packs-test
+/config/credentials.yml.enc
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
 /node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
-
-Gemfile.lock
 yarn.lock
+yarn-error.log
 package-lock.json
-
-.DS_Store
-
-.vscode
+Gemfile.lock
+example.js
+refs.md
 
 # Vite Ruby
 /public/vite*
@@ -54,6 +59,3 @@ node_modules
 # https://vitejs.dev/guide/env-and-mode.html#env-files
 *.local
 
-
-/app/assets/builds/*
-!/app/assets/builds/.keep

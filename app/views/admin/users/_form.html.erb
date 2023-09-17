@@ -1,0 +1,50 @@
+<section class="content">
+  <%= form_for [:admin, user], local: true, html: { :class=> "row" } do |f| %>
+    <div class="col-md-12">
+      <!-- .card/ -->
+      <%= render "admin/shared/errors", object: user %>
+      <div class="card card-primary card-outline">
+        <!-- .card-body/ -->
+        <div class="card-body row">
+          <div class="form-group col-md-6">
+            <%= f.label :name, t(:name) %>
+            <%= f.text_field :name, class: "form-control", placeholder: t(:name), autofocus: true, required: true %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.label :email, t(:email) %>
+            <%= f.email_field :email, class: "form-control", placeholder: "your@email.com", required: true %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.label :role, t(:role) %>
+            <%= f.select :role, [["Visitante", "visitor"], ["Administrador", "admin"], ["Redactor", "writer"]], { include_blank: "Seleccione" }, class: "form-control", required: true %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.label :www, t(:www) %>
+            <%= f.url_field :www, class: "form-control", placeholder: "Ex: https://www.instagram.com/myuser", required: true %>
+          </div>
+          <% if f.object.new_record? %>
+          <div class="form-group col-md-6">
+            <%= f.label :password, t(:password) %>
+            <%= f.password_field :password, class: "form-control", placeholder: "******", required: true %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.label :password_confirmation, t(:password_confirmation) %>
+            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "******", required: true %>
+          </div>
+          <% end %>
+          <div class="form-group col-md-12">
+            <%= f.label :bio, t(:bio) %>
+            <%= f.text_area :bio, class: "form-control", placeholder: "Lorem Ipsum..." %>
+          </div>
+        </div>
+        <!-- /.card-body -->
+        <!-- .card-footer/ -->
+        <footer class="card-footer text-right">
+          <button class="btn btn-outline-primary mt-2 mb-2 btn-sm"><i class="fas fa-save"></i> <%= t(:save) %></button>
+        </footer>
+        <!-- /.card-footer -->
+      </div>
+      <!-- /.card -->
+    </div>
+  <% end %>
+</section>

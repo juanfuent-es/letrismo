@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html lang="<%= @lang %>" dir="ltr" xmlns="https://www.w3.org/1999/xhtml" xmlns:og="https://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
+<html lang="<%= @lang %>" dir="ltr" xmlns="https://www.w3.org/1999/xhtml" xmlns:og="https://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" class="h-full">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <%= render "shared/fonts" %>
+
     <meta name='viewport'           content='width=device-width, initial-scale=1.0'>
     <title><%= full_title(yield(:title)) %></title>
-    <%= stylesheet_link_tag "application", "inter-font" %>
+    <%= stylesheet_link_tag "application" %>
     <%= render "shared/favicons" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    <%= render "shared/json_ld/publisher" %>,
+    <%= render "shared/json_ld/provider" %>
+    }
+    </script>
   </head>
-  <body class="bg-black">
-      <main class="relative isolate min-h-full">
-        <img src="https://equills.letrismo.com/imgs/70/c78e610dc68453324a67-full.png" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-top" />
-        <div class="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
-          <%= yield %>
-          <footer class="mt-10 flex justify-center">
-            <% link_to "/", title: "Home", class: "text-sm font-semibold leading-7 text-white" do %>
-                <span aria-hidden="true">&larr;</span> Back to home
-              <% end %>
-          </footer>
-        </div>
-      </main>
+  <body class="grid min-h-full grid-cols-1 grid-rows-[1fr,auto,1fr] lg:grid-cols-[max(50%,36rem),1fr]">
+    <header class="mx-auto w-full max-w-7xl px-6 pt-6 sm:pt-10 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:px-8">
+      <a href="/" class="inline-block opacity-80 md:hover:opacity-100 transition scale-95 md:hover:scale-100" title="<%= t(:home) %>">
+        <img src="/images/letrismo-logo.svg" alt="Letrismo Logotype" width="160" class="h-12 w-auto sm:h-20 mr-2">
+      </a>
+    </header>
+    <%= yield %>
+    <%= render "pwa/sw" %>
   </body>
 </html>

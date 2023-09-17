@@ -1,0 +1,3 @@
+<% provide(:title, "Perfil: #{@user.name || @user.email}") %>
+
+<%= render "admin/users/show", object: @user %>

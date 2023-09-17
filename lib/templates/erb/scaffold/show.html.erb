@@ -1,0 +1,58 @@
+<%% provide(:title, "<%= singular_table_name %>") %>
+
+<header class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1><%%= "#{t(:detail)} de #{t(:<%= singular_table_name %>)}" %></h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right mt-2">
+          <li class="breadcrumb-item">
+            <%%= link_to t(:<%= plural_table_name %>), admin_<%= plural_table_name %>_path %>
+          </li>
+          <li class="breadcrumb-item active">
+            <%%= "#{t(:detail)} de #{t(:<%= singular_table_name %>)}" %>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</header>
+
+
+<section class="content">
+  <!-- Default box -->
+  <div class="card card-primary card-outline">
+    <header class="card-header">
+      <%%= link_to edit_admin_<%= singular_table_name %>_url(@<%= singular_table_name %>), class: "btn btn-outline-primary btn-sm" do %>
+        <i class="fas fa-pencil-alt"></i> Editar
+      <%% end -%>
+      <%%= link_to admin_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-outline-danger btn-sm float-right", method: :delete, data: { confirm: "¿Estás seguro de eliminar este #{t(:<%= singular_table_name %>)}?" } do %>
+        <i class="fa-solid fa-trash"></i> Eliminar
+      <%% end -%>
+    </header>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <% attributes.reject(&:password_digest?).each do |attribute| -%>
+            <p>
+              <strong><%= attribute.human_name %>:</strong>
+              <% if attribute.attachment? -%>
+                  <%%= link_to <%= singular_name %>.<%= attribute.column_name %>.filename, <%= singular_name %>.<%= attribute.column_name %> if <%= singular_name %>.<%= attribute.column_name %>.attached? %>
+              <% elsif attribute.attachments? -%>
+                  <%% <%= singular_name %>.<%= attribute.column_name %>.each do |<%= attribute.singular_name %>| %>
+                    <div><%%= link_to <%= attribute.singular_name %>.filename, <%= attribute.singular_name %> %></div>
+                  <%% end %>
+              <% else -%>
+                  <%%= @<%= singular_name %>.<%= attribute.column_name %> %>
+              <% end -%>
+            </p>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</section>

@@ -16,8 +16,8 @@ class ErrorsController < ApplicationController
     render status: :internal_server_error
   end
 
-  def image_default
-    send_file '/public/img_not_found.jpg', type: 'image/jpg', disposition: 'inline'
+  def image_not_found
+  	send_file 'public/static/img-not-found.png', type: 'image/png', disposition: 'inline'
   end
 
 end

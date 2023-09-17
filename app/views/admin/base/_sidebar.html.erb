@@ -1,0 +1,81 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="/admin" class="brand-link">
+    <img src="/placeholders/default-avatar.png" alt="Default logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">DomGL</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline mt-2">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Buscar" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+            <%= link_to admin_pages_url, class: "nav-link" do %>
+              <i class="nav-icon fa-solid fa-file"></i>
+              <p>Páginas</p>
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to admin_images_url, class: "nav-link" do %>
+              <i class="nav-icon fa-solid fa-image"></i>
+              <p>Imágenes</p>
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to admin_videos_url, class: "nav-link" do %>
+              <i class="nav-icon fa-solid fa-video"></i>
+              <p>Videos</p>
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to admin_blog_url, class: "nav-link" do %>
+              <i class="nav-icon fa-solid fa-pen-nib"></i>
+              <p>Blog</p>
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to admin_countries_url, class: "nav-link" do %>
+              <i class="nav-icon fa-solid fa-flag"></i>
+              <p>Países</p>
+            <% end %>
+        </li>
+        <li class="nav-header"><%= current_user.role.titleize %></li>
+        <li class="nav-item">
+          <a title="Actualizar Perfil" href="/admin/profile" class="nav-link">
+            <i class="fa-solid fa-user nav-icon"></i>
+            Actualizar Perfil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a title="Usuarios" href="/admin/users" class="nav-link">
+            <i class="fa-solid fa-users nav-icon"></i>
+            Usuarios
+          </a>
+        </li>
+        <li class="nav-item">
+          <a title="<%= t(:close_session) %>" href="<%= destroy_user_session_path(lang: @lang) %>" class="nav-link">
+            <i class="nav-icon fa-solid fa-person-running"></i>
+            Cerrar Sesión
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

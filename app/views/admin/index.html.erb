@@ -1,0 +1,40 @@
+<% provide(:title, "Páginas") %>
+
+<!-- Content Header (Page header) -->
+<header class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Páginas</h1>
+    </div>
+  </div><!-- /.container-fluid -->
+</header>
+
+<!-- Main content -->
+<section class="content">
+  <!-- Default box -->
+  <div class="card card-primary card-outline">
+    <div class="card-body p-0">
+      <table class="table table-hover table-sm">
+        <thead>
+          <tr>
+            <th>Página</th>
+            <th>Visitas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pages.each do |page| %>
+            <tr>
+              <td><%= link_to page.title, edit_admin_page_url(page), class: "btn btn-link btn-sm" %></td>
+              <td><%= page.total_views %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+
+</section>
+<!-- /.content -->

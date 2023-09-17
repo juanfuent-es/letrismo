@@ -4,29 +4,11 @@ main {
 
 html,
 body {
-    font-family: var(--font-base);
+    font-family: var(--font-regular);
     line-height: 1.42em;
     font-size: 16px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-base);
-}
-
-#main-sidebar {
-    background: var(--black);
-}
-#main-sidebar img {
-    background-color: white;
-    padding: 0.2em;
-}
-#main-sidebar .content-wrapper {
-    background: #EDEDED;
-}
-
-#main-sidebar .nav-item>.nav-link {
     font-family: var(--font-title);
-    font-size: 20px;
-    letter-spacing: 2px;
-    font-weight: 100;
 }

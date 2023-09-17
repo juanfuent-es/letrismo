@@ -1,2 +1,0 @@
-module LetrismsHelper
-end

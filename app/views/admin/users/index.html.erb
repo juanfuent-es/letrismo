@@ -1,0 +1,54 @@
+<% provide(:title, "Lista de #{t(:users)}") %>
+
+<!-- Content Header (Page header) -->
+<header class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-12">
+        <h1 class="card-title">Lista de <%= t(:users) %> <sup><%= User.all.count %></sup></h1>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</header>
+
+<!-- Main content -->
+<section class="content">
+  <!-- Default box -->
+  <div class="card card-primary card-outline">
+    <header class="card-header">
+      <%= link_to new_admin_user_path, class: 'btn btn-outline-primary btn-sm float-right' do %>
+        <i class="fas fa-plus"></i> <%= "#{t(:new)} #{t(:user)}" %>
+      <% end %>
+    </header>
+    <div class="card-body">
+      <table class="table table-hover table-sm datatable text-sm">
+        <thead>
+          <tr>
+            <th>Editar</th>
+            <th class='text-center'>Eliminar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
+            <td>
+            <%= link_to edit_admin_user_url(user), class: "btn btn-link btn-sm" do %>
+              <i class="fas fa-pencil-alt"></i> <%= user.email %>
+            <% end %>
+            </td>
+            <td class='text-center'>
+              <%= link_to admin_user_path(user), method: :delete, class: "btn btn-outline-danger btn-sm" , data: { confirm: "¿Estás seguro de eliminar este #{t(:user)} (#{user.email})?" } do %>
+                <i class='fas fa-trash'></i> Eliminar
+              <% end %>
+            </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+
+</section>
+<!-- /.content -->

@@ -1,0 +1,60 @@
+<% provide(:title, "page") %>
+<% provide(:image, "") %>
+<% provide(:description, "") %>
+
+<header class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1><%= @page.title %></h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right mt-2">
+          <li class="breadcrumb-item">
+            <%= link_to t(:pages), admin_pages_path %>
+          </li>
+          <li class="breadcrumb-item active"><%= @page.title %></li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</header>
+
+
+<section class="content">
+  <!-- Default box -->
+  <div class="card card-primary card-outline">
+    <div class="card-body">
+      <div class="row">
+        <article class="col-md-6">
+          <%= image_tag @page.image.url %>
+          <%= @page.slug %>
+        </div>
+        <article class="col-md-6">
+          <h1><%= @page.title %></h1>
+          <p><%= @page.description %></p>
+          <p>
+          <strong>Keywords:</strong>
+          <%= @page.keywords %>
+          </p>
+          <p>
+          <strong>Lang:</strong>
+          <%= @page.lang %>
+          </p>
+          <p>
+          <strong>Og type:</strong>
+          <%= @page.og_type %>
+          </p>
+          </article>
+      </div>
+    </div>
+    <!-- /.card-body -->
+    <footer class="card-footer">
+      <%= link_to edit_admin_page_url(@page), class: "btn btn-outline-primary btn-sm" do %>
+        <i class="fas fa-pencil-alt"></i> Editar
+      <% end -%>
+      <%= link_to t(:delete), admin_page_path(@page), class: "btn btn-outline-danger btn-sm float-right", method: :delete, data: { confirm: "¿Estás seguro de eliminar este #{t(:page)}?" } %>
+    </footer>
+  </div>
+  <!-- /.card -->
+</section>

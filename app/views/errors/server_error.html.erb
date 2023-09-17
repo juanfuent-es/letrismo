@@ -1,15 +1,16 @@
 <%= provide(:title, "Error 500") %>
 <%= provide(:description, t(:server_error)) %>
+<%= provide(:breadcrumb, "") %>
 
 <section class="mx-auto w-full max-w-7xl px-6 py-24 sm:py-32 lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:px-8">
     <article class="max-w-lg">
-        <p class="text-base font-semibold leading-8 text-indigo-600">Error 500</p>
-        <h1 class="mt-4 text-3xl lg:text-4xl font-bold tracking-tight text-gray-900">Internal Server Error</h1>
-        <p class="mt-4 text-base leading-7 text-gray-600"><%= t(:server_error) %></p>
-        <a href="/" class="font-semibold leading-7 text-indigo-600 mt-10 inline-block"><span aria-hidden="true">&larr;</span> Ir a home</a>
+        <p class="text-base font-semibold leading-8 text-red-600">Error 500</p>
+        <h1 class="mt-4 text-3xl lg:text-4xl font-bold tracking-tight text-gray-100">Internal Server Error</h1>
+        <p class="mt-4 text-base leading-7 text-gray-400"><%= t(:server_error) %></p>
+        <a href="/" class="font-semibold leading-7 text-primary-500 mt-10 inline-block"><span aria-hidden="true">&larr;</span> Ir a home</a>
     </article>
 </section>
 <div class="hidden lg:relative lg:col-start-2 lg:row-start-1 lg:row-end-4 lg:block">
-    <img src="https://images.unsplash.com/photo-1601462904263-f2fa0c851cb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2139&q=80"
-        alt="Server Error" class="absolute inset-0 h-full w-full object-cover" />
+    <img src="https://equills.letrismo.com/imgs/59/img.png"
+        alt="Server Error" class="absolute inset-0 h-full w-full object-contain" />
 </div>

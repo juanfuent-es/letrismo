@@ -27,7 +27,7 @@ html {
     scrollbar-color: var(--scroll-background) var(--scroll-background-over);
     scrollbar-width: thin;
     /* FIREFOX */
-    /* scroll-padding-top: 10px; */
+    scroll-padding-top: 10px;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {

@@ -1,0 +1,68 @@
+<header class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Perfil de Usuario</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right mt-2">
+          <li class="breadcrumb-item">
+            <%= link_to t(:users), admin_users_path %>
+          </li>
+          <li class="breadcrumb-item active">
+            Perfil de Usuario
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</header>
+
+
+<section class="content">
+  <div class="col-12 col-md-6 col-xl-4">
+
+    <%= form_for(object, :url => "/admin/update_profile", data: { remote: true }) do |f| %>
+    <%= render "admin/shared/errors", object: object %>
+    <div class="card card-primary card-outline">
+      <div class="card-body box-profile">
+        <div class="text-center">
+        <%= f.label :avatar do %>
+          <%= image_tag f.object.avatar.preview.url, id: "user-avatar", class: "profile-user-img img-fluid img-circle" %>
+          <%= f.file_field :avatar, class: "sr-only input-img", data: { target: "#user-avatar" }, accepts: "image/*" %>
+        <% end %>
+        </div>
+        <h3 class="profile-username text-center"><%= object.name %></h3>
+        <p class="text-muted text-center"><%= object.role %></p>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <%= f.label :email, "email", class: "input-group-text" %>
+          </div>
+          <%= f.url_field :email, class: "form-control", readonly: true %>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <%= f.label :username, "@", class: "input-group-text" %>
+          </div>
+          <%= f.text_field :username, class: "form-control", placeholder: "username", required: true %>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <%= f.label :www, "www", class: "input-group-text" %>
+          </div>
+          <%= f.url_field :www, class: "form-control", placeholder: "Ex: https://www.instagram.com/myuser", required: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :bio, t(:bio), class: "" %>
+          <%= f.text_area :bio, class: "form-control", placeholder: "Lorem Ipsum..." %>
+        </div>
+      </div>
+      <footer class="card-footer">
+        <button class="btn btn-outline-primary mt-2 mb-2 btn-block" data-disable-with="Guardando, porfavor espera..."><i class="fas fa-save"></i> <%= t(:save) %></button>
+      </footer>
+    </div>
+    <% end %>
+  </div>
+  <!-- Default box -->
+  <!-- /.card -->
+</section>

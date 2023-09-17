@@ -9,7 +9,7 @@ import Share from './components/share'
 export default class Layout {
     constructor() {
         this.preloader = new Preloader()
-        this.credits = new Credits("DomGL")
+        this.credits = new Credits("eQuills | Letrismo")
         this.share = new Share()
         this.events()
     }

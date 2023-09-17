@@ -2,26 +2,25 @@ small.legend-validation {
     opacity: 0.6;
 }
 
-.og-card {
+#og-card {
     border-radius: 3px;
     border: 1px solid #dadada;
     background-color: #f7f7f7;
-    display: inline-block;
 }
 
-.og-card label {
+#og-card label {
     padding: 0;
     margin: 0;
     width: 100%;
 }
 
-.og-card img {
+#og-card img {
     aspect-ratio: 2/1;
     object-fit: cover;
     object-position: center;
 }
 
-.og-card h2 {
+#og-card h2 {
     font-weight: 600;
     color: black;
     height: auto;
@@ -31,26 +30,25 @@ small.legend-validation {
     padding-top: 0.75em;
 }
 
-p.page-og-description {
+#og-card p#page-og-description {
     padding: 0.5em 1em 0 1em;
     line-height: 1.42em;
     font-size: 95%;
     margin-bottom: 0;
 }
 
-p.page-one-line-desc {
-    overflow: hidden;
-    width: 100%;
-    height: 2em;
-    color: #616161;
-}
-
-p.page-og-link {
+#og-card p#page-og-link {
     color: #ababab;
     padding: 0 1em;
     margin-top: .35em;
 }
 
-.og-card .form-control {
+#og-card .form-control {
     border: none;
+}
+
+
+#og-card #page-og-synopsis {
+    padding: 0.25em 1em 0 1em;
+    margin-bottom: 0;
 }

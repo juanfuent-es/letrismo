@@ -1,45 +1,40 @@
 <!DOCTYPE html>
-<html class="" lang="en" dir="ltr" xmlns="https://www.w3.org/1999/xhtml" xmlns:og="https://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
+<html lang="<%= @lang %>" dir="ltr" xmlns="https://www.w3.org/1999/xhtml" xmlns:og="https://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
     <meta charset="utf-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <!-- @see: https://developers.google.com/analytics/devguides/collection/gtagjs -->
-
+    <%= render "shared/fonts" %>
+    <%= render "shared/tag_manager" %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <%= stylesheet_link_tag "application" %>
-
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= render "shared/analytics" %>
     <%= render "shared/metadata" %>
     <%= render "shared/favicons" %>
-
-    <%= yield :jsonld %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application" %>
     <script type="application/ld+json">
     {
     "@context": "http://schema.org",
-    <%= render "json_ld/page" %>,
-    <%= render "json_ld/publisher" %>,
-    <%= render "json_ld/provider" %>
+    <%= render "shared/json_ld/page" %>,
+    <%= render "shared/json_ld/publisher" %>,
+    <%= render "shared/json_ld/provider" %>
     }
     </script>
-    <%= vite_javascript_tag "application", defer: true %>
-    <%= vite_client_tag %>
     <script>
-      const TRANSLATIONS = <%= { current: I18n.t('.')[:vue] }.to_json.html_safe %>;
+      const TRANSLATIONS = <%= ui_translations %>;
       const I18n = {
         prefix: '<%= @lang == I18n.default_locale ? "" : "#{@lang}/" %>',
         locale: '<%= @lang %>',
         availableLocales: <%= raw(I18n.available_locales.map {|loc| loc.to_s}) %>
       }
     </script>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application', defer: true %>
+    <%= render "pwa/sw" %>
   </head>
-  <body class="light-mode" data-theme="dark">
+  <body>
     <%= render "shared/preloader" %>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

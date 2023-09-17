@@ -1,8 +1,5 @@
-html, body {
-    height: calc(var(--vh) * 100);
-}
-
 body {
+    font-family: var(--font-family), var(--font-fallback);
     -webkit-text-size-adjust:none;
     -webkit-font-smoothing:subpixel-antialiased;
     -webkit-font-smoothing:antialiased;
@@ -10,6 +7,7 @@ body {
     -o-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
     text-rendering:optimizeLegibility; /*optimizeSpeed*/
+    @apply m-0 p-0;
 }
 
 .pixelated {
@@ -24,8 +22,5 @@ body {
 }
 
 canvas[data-engine] {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: -1;
+    @apply pointer-events-none left-0 top-0 fixed z-0;
 }

@@ -1,0 +1,23 @@
+<% provide(:title, "Nuevo Usuario") %>
+
+<header class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1><%= "#{t(:new)} #{t(:user)}" %></h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right mt-2">
+          <li class="breadcrumb-item">
+            <%= link_to t(:users), admin_users_path %>
+          </li>
+          <li class="breadcrumb-item active">
+            <%= "#{t(:new)} #{t(:user)}" %>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</header>
+
+<%= render 'form', user: @user %>
