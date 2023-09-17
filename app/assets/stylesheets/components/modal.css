@@ -1,0 +1,15 @@
+.modal {
+    @apply fixed w-screen h-screen left-0 top-0 z-50 bg-black bg-opacity-50 flex-row content-center flex-wrap justify-center hidden;
+}
+
+.modal-close-btn {
+    @apply btn-rounded fixed right-4 top-4 border-1;
+}
+
+.modal-content {
+    @apply w-full sm:w-11/12 md:w-10/12 lg:w-8/12 xl:w-9/12 h-full sm:h-5/6 md:h-4/5 lg:h-4/6 xl:h-3/5; xl:h-4/6 bg-black overflow-x-hidden overflow-y-auto relative;
+}
+
+.modal-content iframe {
+    @apply w-full h-full outline-none;
+}

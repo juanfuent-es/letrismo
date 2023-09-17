@@ -1,0 +1,16 @@
+ul#breadcrumb {
+    @apply relative inline-block w-full text-left;
+}
+ul#breadcrumb li {
+    @apply inline;
+}
+ul#breadcrumb li a {
+    @apply pr-4 opacity-50 hover:opacity-100;
+}
+ul#breadcrumb li a:after {
+    content: ">";
+    @apply pl-4;
+}
+ul#breadcrumb li:last-child a:after {
+    content: "";
+}

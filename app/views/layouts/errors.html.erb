@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns="https://www.w3.org/1999/xhtml" xmlns:og="https://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <%= render "shared/fonts" %>
+
+    <meta name='viewport'           content='width=device-width, initial-scale=1.0'>
+    <title><%= full_title(yield(:title)) %></title>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <%= render "shared/favicons" %>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    <%= render "shared/json_ld/publisher" %>,
+    <%= render "shared/json_ld/provider" %>
+    }
+    </script>
+  </head>
+  <body class="bg-black text-white">
+    <%= render "shared/header" %>
+    <main id="app" class="w-full left-0 top-0 absolute">
+      <%= yield %>
+      <%= render "shared/footer" %>
+    </main>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </body>
+</html>

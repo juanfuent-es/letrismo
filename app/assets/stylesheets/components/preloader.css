@@ -1,0 +1,23 @@
+#preloader {
+    z-index: 99;
+}
+#preloader img {
+    animation: 1.5s blink infinite ease-in-out;
+    width: 10vw;
+    min-width: 140px;
+    height: auto;
+}
+
+@keyframes blink {
+    0% {
+        opacity: .5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: .5;
+    }
+}

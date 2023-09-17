@@ -1,0 +1,57 @@
+html.lenis {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+:root {
+    --scroll-background: #EDEDED;
+    --scroll-foreground: #000;
+    --scroll-background-over: #666;
+    --scroll-size: 10px;
+}
+
+::-webkit-scrollbar {
+    background-color: var(--scroll-background);
+    height: var(--scroll-size);
+    width: var(--scroll-size);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--scroll-background);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-foreground);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scroll-background-over);
+}
+
+html {
+    scrollbar-color: var(--scroll-background) var(--scroll-background-over);
+    scrollbar-width: thin;
+    /* FIREFOX */
+    /* scroll-padding-top: 10px; */
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+} */

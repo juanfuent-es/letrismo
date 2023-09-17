@@ -1,0 +1,124 @@
+@import url("base/vars.css");
+@import url("base/text.css");
+@import url("base/fonts.css");
+@import url("base/default.css");
+@import url("base/menu.css");
+@import url("base/header.css");
+@import url("base/footer.css");
+
+@import url("components/scroll.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base -> */
+@layer base {
+    body {
+        @apply bg-black-light text-black m-0 p-0 w-full h-full; /* overflow-x-hidden !overflow-y-scroll; */
+        @apply font-base text-base md:text-lg xl:text-xl font-normal leading-tight;
+    }
+    main {
+        @apply h-full w-full;
+    }
+    label {
+        @apply block p-0 mt-4 mb-0;
+    }
+    video,
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    select,
+    textarea,
+    input[type='text'],
+    input[type='password'],
+    input[type='email'],
+    input[type='number'],
+    input[type='url'],
+    input[type='date'],
+    input[type='datetime-local'],
+    input[type='month'],
+    input[type='week'],
+    input[type='time'],
+    input[type='search'],
+    input[type='tel'] {
+        @apply mb-2 block w-full border-solid border-0 border-b-4 py-1 h-8 border-orange;
+        background-color: transparent!important;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        color: var(--black);
+        -webkit-text-fill-color: var(--black);
+        -webkit-box-shadow: 0 0 0px 1000px var(--gray) inset;
+        transition: background-color 2500ms ease-in-out 0s;
+    }
+
+    textarea {
+        @apply h-44 rounded-xl border-2;
+    }
+
+    input[type='submit'] {
+        @apply relative flex w-full justify-center rounded-md py-2 px-4 font-bold my-4 uppercase text-lg cursor-pointer hover:opacity-60;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-normal font-title my-4;
+    }
+    
+    h1 {
+        @apply text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+    }
+    h2 {
+        @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+    }
+    h3 {
+        @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl;
+    }
+    h4 {
+        @apply text-lg md:text-xl lg:text-2xl xl:text-3xl;
+    }
+    h5 {
+        @apply text-base md:text-lg lg:text-xl xl:text-2xl;
+    }
+    h6 {
+        @apply text-sm md:text-base lg:text-lg xl:text-xl;
+    }
+    p {
+        @apply pb-4;
+    }
+
+}
+
+/* <- Base */
+/* Components -> */
+@layer components {
+    .video-cover,
+    .img-cover {
+        @apply bg-black w-full h-auto;
+        aspect-ratio: 1 / .365;
+    }
+    .font-base {
+        font-family: var(--font-base);
+    }
+    .link {
+        @apply hover:underline;
+    }
+    .link.active {
+        @apply underline;   
+    }
+}
+/* <- Components */
+/* Utilities -> */
+@layer utilities {
+}
+/* <- Utilities */

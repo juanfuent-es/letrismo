@@ -1,0 +1,14 @@
+:root {
+    --text-selection-color:#000;
+    --text-selection-bg:#FFF;
+}
+
+::selection {
+    background-color:var(--text-selection-bg);
+    color:var(--text-selection-color);
+}
+
+::-moz-selection {
+    background-color:var(--text-selection-bg);
+    color:var(--text-selection-color);
+}
