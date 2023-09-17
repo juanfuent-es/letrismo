@@ -16,15 +16,17 @@
     "@context": "http://schema.org",
     <%= render "shared/json_ld/page" %>,
     <%= render "shared/json_ld/publisher" %>,
-    <%= render "shared/json_ld/provider" %>
     }
     </script>
     <%= vite_client_tag %>
     <%= vite_javascript_tag 'devise', defer: true %>
   </head>
-  <body>
+  <body class="text-white">
     <%= render "shared/preloader" %>
     <main class="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <header class="sm:mx-auto sm:w-full sm:max-w-md">
+        <img src="<%= asset_url('letrismo-logo.svg') %>" alt='<%= t(:loading) %>' width="100" height="100" class='h-20 mx-auto w-auto'>
+      </header>
       <%= yield %>
     </main>
   </body>

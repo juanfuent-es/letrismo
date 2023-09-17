@@ -1,39 +1,32 @@
-<%= render "devise/shared/header" %>
+<% provide(:title, t(:login)) %>
 <%# src="https://equills.letrismo.com/imgs/34/img.png" %>
 <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
+  <h1 class="text-center text-xl"><%= t(:login) %></h1>
   <div class="px-6 py-12 shadow sm:rounded-lg sm:px-12">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'space-y-6') do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
       <%= f.label :email, t(:email) %>
-      <div class="mt-2">
-        <%= f.email_field :email, autofocus: true, required: true, placeholder: t(:email), autocomplete: "email" %>
-      </div>
+      <%= f.email_field :email, autofocus: true, required: true, placeholder: t(:email), autocomplete: "email", class:  "mt-2" %>
     </div>
-
-
 
     <div class="field mb-4">
       <%= f.label :password, t(:password), class: '' %>
-      <div class="mt-2">
-        <%= f.password_field :password, required: true, placeholder: "********", autocomplete: "current-password", class:  "" %>
-      </div>
+      <%= f.password_field :password, required: true, placeholder: "********", autocomplete: "current-password", class:  "mt-2" %>
     </div>
 
-    <div class="flex items-center justify-between">
-      <div class="flex items-center">
-        <%= f.label :remember_me, class: "flex items-center" do %>
+    <div class="flex items-center w-full justify-between pb-4">
+      <%= f.label :remember_me, class: "flex items-center" do %>
         <%= f.check_box :remember_me, class: '', checked: true %>
         <span class="ml-3 block text-sm leading-6"><%= t(:remember_me) %></span>
-        <% end %>
+      <% end %>
 
-        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
         <div class="text-sm leading-6">
           <%= link_to t("devise.shared.links.forgot_your_password"), new_password_path(resource_name, lang:@lang), class: 'link' %>
         </div>
-        <% end %>
-      </div>
+      <% end %>
     </div>
 
     <footer class="w-full mt-4 inline">

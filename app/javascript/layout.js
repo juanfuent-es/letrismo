@@ -1,6 +1,6 @@
 import "./core/functions"
 import "./core/constants"
-import "./core/ui"
+// import "./core/ui"
 
 import Preloader from "./components/preloader"
 import Credits from './components/credits'
