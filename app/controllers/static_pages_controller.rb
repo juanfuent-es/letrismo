@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 
-  def page
+  def show
     @pages = Page.where(lang: @lang)
     slug = params[:slug] ? params[:slug] : @lang
     @page = @pages.find_by_slug(slug)
