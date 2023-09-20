@@ -41,22 +41,5 @@
       <!-- /.card-footer -->
     </div>
   </div>
-  <% if @page.category != "blog" %>
-  <div class="col-md-6">
-    <div class="card card-primary card-outline">
-      <header class="card-header">
-        <h2 class="card-title"><b>Bloques de página</b></h2>
-        <%= add_page_block f %>
-      </header>
-      <div class="card-body" id="page-blocks-container">
-        <% idx = 0 %>
-        <%= f.fields_for :blocks do |block|  %>
-          <%= render "admin/pages/block_fields", object: block, idx: idx %>
-          <% idx += 1 %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <% end %>
   <% end %>
 </section>

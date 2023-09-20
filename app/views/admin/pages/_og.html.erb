@@ -23,10 +23,6 @@
             <small class='legend-validation'><i><span id="description-counter"><%= object.object.og_description.to_s.length %></span> / 200 caracteres</i></small>
         </div>
         <div class="form-group col-md-6">
-            <%= object.label :og_type, "Tipo"  %>
-            <%= object.select :og_type, [["Imagen", "image"], ["Video", "video"], ["Audio", "audio"], ["Website","website"]], { prompt: "Seleccione" }, class: "form-control", required: true %>
-        </div>
-        <div class="form-group col-md-6">
             <%= object.label :keywords %>
             <%= object.text_field :keywords, class: "form-control", placeholder: "keyword, separados, por, coma..." %>
         </div>

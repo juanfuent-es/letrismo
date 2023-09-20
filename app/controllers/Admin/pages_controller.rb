@@ -51,7 +51,7 @@ class Admin::PagesController < ApplicationController
   private
     def set_page
       @page = Page.find(params[:id])
-      @images = Image.all
+      # @images = Image.all
     end
 
     def page_params
