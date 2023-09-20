@@ -1,3 +1,15 @@
+
+def create_admin(name, mail, pass)
+    admin = User.create(email: mail, password: pass, password_confirmation: pass, admin: true )
+    if admin.save
+        puts "El administrador: #{admin.email} ha sido creado."
+    else
+        puts "Error:#{admin.email} > #{admin.errors.full_messages}"
+    end
+end
+
+create_admin('Admin', 'demo@admin.com', 'password')
+
 def create_page(category="static", lang="en", title="", slug="/", content="lorem ipsum...")
     page = Page.create({
         lang: lang,
@@ -34,7 +46,9 @@ create_page('static', 'en', 'Terms and Conditions', 'terms', Faker::Hacker.say_s
 create_page('error', 'en', 'Page Not Found', '404', 'The page you are trying to access does not exist, has been moved, or has been deleted.')
 create_page('error', 'en', 'Unprocessable Entity', '422', 'The request could not be processed. Please try again later.')
 create_page('error', 'en', 'Server Error', '500', 'An error has occurred on the server. Please try again later.')
+create_page('error', 'en', 'Offline', 'offline', "You're disconnected. Check your internet Wi-Fi connection, mobile data or lan cable.")
 
 create_page('error', 'es', 'Página no encontrada', '404', 'La página a la que intentas acceder no existe, se ha movido o se ha eliminado.')
 create_page('error', 'es', 'Petición no resuelta', '422', 'La petición no pudo ser procesada. Por favor, reintenta de nuevo más tarde.')
 create_page('error', 'es', 'Error de Servidor', '500', 'Ha ocurrido un error en servidor. Por favor, reintenta de nuevo más tarde.')
+create_page('error', 'es', 'Offline', 'offline', "Estás desconectado. Verifica tu conexión wifi, datos móviles o cable lan.")

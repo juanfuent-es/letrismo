@@ -1,6 +1,5 @@
 module.exports = {
   important: false,
-  darkMode: 'night',
   content: [
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',

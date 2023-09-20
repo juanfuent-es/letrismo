@@ -30,31 +30,7 @@
               <p>Páginas</p>
             <% end %>
         </li>
-        <li class="nav-item">
-            <%= link_to admin_images_url, class: "nav-link" do %>
-              <i class="nav-icon fa-solid fa-image"></i>
-              <p>Imágenes</p>
-            <% end %>
-        </li>
-        <li class="nav-item">
-            <%= link_to admin_videos_url, class: "nav-link" do %>
-              <i class="nav-icon fa-solid fa-video"></i>
-              <p>Videos</p>
-            <% end %>
-        </li>
-        <li class="nav-item">
-            <%= link_to admin_blog_url, class: "nav-link" do %>
-              <i class="nav-icon fa-solid fa-pen-nib"></i>
-              <p>Blog</p>
-            <% end %>
-        </li>
-        <li class="nav-item">
-            <%= link_to admin_countries_url, class: "nav-link" do %>
-              <i class="nav-icon fa-solid fa-flag"></i>
-              <p>Países</p>
-            <% end %>
-        </li>
-        <li class="nav-header"><%= current_user.role.titleize %></li>
+        <li class="nav-header"><%= current_user.email %></li>
         <li class="nav-item">
           <a title="Actualizar Perfil" href="/admin/profile" class="nav-link">
             <i class="fa-solid fa-user nav-icon"></i>

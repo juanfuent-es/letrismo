@@ -6,8 +6,4 @@ class User < ApplicationRecord
   validates_uniqueness_of :username
   mount_uploader :avatar, AvatarUploader
 
-  def admin?
-    return role == "admin"
-  end
-
 end

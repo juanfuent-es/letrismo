@@ -17,22 +17,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/1.2.0/balloon.min.css" integrity="sha512-6jHrqOB5TcbWsW52kWP9TTx06FHzpj7eTOnuxQrKaqSvpcML2HTDR2/wWWPOh/YvcQQBGdomHL/x+V1Hn+AWCA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
-  <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application" %>
+  <%= vite_client_tag %>
 </head>
 
 <body class="hold-transition sidebar-mini">
-  <%= render "admin/shared/flashes" %>
-  <div class="wrapper">
-    <%= render "admin/base/nav" %>
-    <%= render "admin/base/sidebar" %>
-
-    <div class="content-wrapper">
-      <%= yield %>
-    </div>
-
-    <%= render "admin/base/footer" %>
-  <div>
-  
+  <div id="layout"></div>
+  <main>
+    <%= render "admin/shared/flashes" %>
+    <%= yield %>
+  </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -48,7 +42,8 @@
   <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
   <script src="/static/ckeditor.js"></script>
-  <%= javascript_include_tag "admin", "data-turbo-track": "reload", defer: true %>
+  <%= vite_javascript_tag 'admin', defer: true %>
+  <%= javascript_include_tag "admin", defer: true %>
   <%= yield :scripts %>
 </body>
 </html>
