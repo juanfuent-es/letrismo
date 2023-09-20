@@ -3,9 +3,6 @@ class StaticPagesController < ApplicationController
   def show
     @pages = Page.where(lang: @lang)
     slug = params[:slug] ? params[:slug] : @lang
-    puts "*" * 40
-    puts slug
-    puts "*" * 40
     @page = @pages.find_by_slug(slug)
     if !@page
       render template: 'errors/not_found', status: 404, layout: "errors"
