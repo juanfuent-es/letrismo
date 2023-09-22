@@ -1,49 +1,39 @@
 <% provide(:title, t(:login)) %>
 <%# src="https://equills.letrismo.com/imgs/34/img.png" %>
+<%= render "devise/shared/header", title: t(:login), text: "Crea una cuenta y comparte lorem ipsum..." %>
 
-<div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-  <div class="mx-auto w-full max-w-sm lg:w-96">
-    <header>
-      <a href="/" title="<%= t(:home) %>" class="inline-block transition opacity-80 hover:opacity-100 dark:focus:border-teal-400 dark:focus:ring-teal-400/10">
-        <img src="<%= asset_url('letrismo-logo.svg') %>" alt='Letrismo Logo' width="100" height="100" class='h-14 w-auto'>
-      </a>
-      <h1 class="mt-8 text-2xl font-bold leading-9 tracking-tight"><%= t(:login) %></h1>
-      <p class="mt-2 text-sm leading-6 text-gray-500">Crea una cuenta y comparte lorem ipsum...</p>
-    </header>
-    <div class="mt-4">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'space-y-6') do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+<div class="mt-4">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'space-y-6') do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
-      <%= f.label :email, class: '' do %>
-      <span><%= t(:email) %></span>
-      <%= f.email_field :email, autofocus: true, required: true, placeholder: t(:email), autocomplete: "email", class:  "mt-2" %>
-      <% end %>
+  <%= f.label :email, class: '' do %>
+  <span><%= t(:email) %></span>
+  <%= f.email_field :email, autofocus: true, required: true, placeholder: t(:email), autocomplete: "email", class:  "mt-2" %>
+  <% end %>
 
-      <%= f.label :password, class: '' do %>
-      <span><%= t(:password) %></span>
-      <%= f.password_field :password, required: true, placeholder: "********", autocomplete: "current-password", class:  "mt-2" %>
-      <% end %>
+  <%= f.label :password, class: '' do %>
+  <span><%= t(:password) %></span>
+  <%= f.password_field :password, required: true, placeholder: "********", autocomplete: "current-password", class:  "mt-2" %>
+  <% end %>
 
-      <div class="flex items-center w-full justify-between py-4">
-        <%= f.label :remember_me, class: "flex items-center" do %>
-        <%= f.check_box :remember_me, class: '', checked: true %>
-        <span class="ml-3 block text-sm leading-6"><%= t(:remember_me) %></span>
-        <% end %>
+  <div class="flex items-center w-full justify-between py-4">
+    <%= f.label :remember_me, class: "flex items-center" do %>
+    <%= f.check_box :remember_me, class: '', checked: true %>
+    <span class="ml-3 block text-sm leading-6"><%= t(:remember_me) %></span>
+    <% end %>
 
-        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-        <div class="text-sm leading-6">
-          <%= link_to t("devise.shared.links.forgot_your_password"), new_password_path(resource_name, lang:@lang), class: 'link' %>
-        </div>
-        <% end %>
-      </div>
-
-      <footer>
-        <%= f.submit t(:login), class: "my-2" %>
-        <%= render "devise/shared/links" %>
-      </footer>
-
-      <% end %>
-
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <div class="text-sm leading-6">
+      <%= link_to t("devise.shared.links.forgot_your_password"), new_password_path(resource_name, lang:@lang), class: 'link' %>
     </div>
+    <% end %>
   </div>
+
+  <footer>
+    <%= f.submit t(:login), class: "my-2" %>
+    <%= render "devise/shared/links" %>
+  </footer>
+
+  <% end %>
+
 </div>

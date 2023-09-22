@@ -17,7 +17,7 @@
     :transition-speed="650">
     <img src="/images/letrismo-logo.svg" alt="{{ $t('loading') }}" width="100" height="100" class='w-24 h-auto'>
   </vue-preloader>
-  <main>
+  <main class="pb-20 md:pb-16">
     <Header />
     <router-view v-slot="{ Component }">
       <transition name="slide" mode="out-in">

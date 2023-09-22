@@ -1,5 +1,7 @@
 en:
   # lang
+  company: DomGL
+  logotype: Logotype
   vue:
     hi: Hi
     company: DomGL

@@ -2,6 +2,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 es:
+  company: DomGL
+  logotype: Logotipo
   # vue
   vue:
     hi: Hola

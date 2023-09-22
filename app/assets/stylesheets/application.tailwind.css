@@ -59,7 +59,7 @@
     /* forms */
 
     main {
-        @apply min-h-full pb-20 md:pb-16;
+        @apply min-h-full;
     }
 
     a {

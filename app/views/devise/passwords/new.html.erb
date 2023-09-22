@@ -1,18 +1,22 @@
-<%= render "devise/shared/header", title: t(:recover) %>
-<div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5  text-black  bg-white mx-auto max-w-7xl p-4 lg:p-8">
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'grid grid-cols-1 gap-6 mt-8 space-y-6') do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<% provide(:title, t(:recover)) %>
 
-  <%= f.label :email, class: '' do %>
-  <span><%= t(:email) %></span>
-  <%= f.email_field :email, autofocus: true, required: true, placeholder: t(:email), autocomplete: "email", class:  "" %>
+<%= render "devise/shared/header", title: t(:recover), text: "Recupera tu contraseña" %>
+
+<div class="mt-4">
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'space-y-6') do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <%= f.label :email, class: '' do %>
+    <span><%= t(:email) %></span>
+    <%= f.email_field :email, autofocus: true, required: true, placeholder: t(:email), autocomplete: "email", class:  "" %>
+    <% end %>
+
+    <footer>
+      <%= f.submit t(:recover), class: "my-4" %>
+      <%= render "devise/shared/links" %>
+    </footer>
+
   <% end %>
 
-  <footer>
-    <%= f.submit t(:recover), class: "" %>
-    <%= render "devise/shared/links" %>
-  </footer>
-
-  <% end %>
 </div>
-
