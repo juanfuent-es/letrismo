@@ -11,7 +11,7 @@ class User < ApplicationRecord
           :timeoutable, 
           :trackable
 
-  validates_uniqueness_of :username
+  # validates_uniqueness_of :username
   mount_uploader :avatar, AvatarUploader
 
 end

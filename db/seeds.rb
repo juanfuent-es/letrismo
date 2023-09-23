@@ -1,14 +1,12 @@
-
 def create_admin(name, mail, pass)
-    admin = User.create(email: mail, password: pass, password_confirmation: pass, admin: true )
-    if admin.save
+    admin = User.new(email: mail, password: pass, password_confirmation: pass, admin: true )
+    admin.skip_confirmation!
+    if admin.save!
         puts "El administrador: #{admin.email} ha sido creado."
     else
         puts "Error:#{admin.email} > #{admin.errors.full_messages}"
     end
 end
-
-create_admin('Admin', 'demo@admin.com', 'password')
 
 def create_page(category="static", lang="en", title="", slug="/", content="lorem ipsum...")
     page = Page.create({
@@ -27,6 +25,9 @@ def create_page(category="static", lang="en", title="", slug="/", content="lorem
     end
 end
 
+create_admin('Admin', 'demo@admin.com', 'password')
+
+User.all.delete_all
 Page.all.delete_all
 lorem = Faker::Hacker.say_something_smart
 
@@ -56,14 +57,14 @@ create_page('error', 'es', 'Offline', 'offline', "Estás desconectado. Verifica 
 
 # devise
 # en
-create_page('users', 'es', 'Crear Cuenta', 'sign_up', '')
-create_page('users', 'es', 'Iniciar Sesión', 'sign_in', '')
-create_page('users', 'es', 'Confirmación de Cuenta', 'confirmation', '')
-create_page('users', 'es', 'Recuperar Cuenta', 'reset_password', '')
-create_page('users', 'es', 'Desbloquear Cuenta', 'unlock', '')
+create_page('users', 'es', 'Crear Cuenta', 'sign_up', 'Completa los siguientes campos para crear tu cuenta.')
+create_page('users', 'es', 'Iniciar Sesión', 'sign_in', 'Escribe tu mail y contraseña para acceder a la plataforma.')
+create_page('users', 'es', 'Confirmación de Cuenta', 'confirmation', 'Gracias por confirmar tu cuenta. Ahora puedes acceder a la plataforma.')
+create_page('users', 'es', 'Recuperar Cuenta', 'reset_password', 'Ingresa tu e-mail para recibir un correo de recuperación.')
+create_page('users', 'es', 'Desbloquear Cuenta', 'unlock', 'Ingresa tu e-mail para recibir instrucciones para desbloquear tu cuenta.')
 # es
-create_page('users', 'en', 'Create Account', 'sign_up', '')
-create_page('users', 'en', 'Sign In', 'sign_in', '')
-create_page('users', 'en', 'Account Confirmation', 'confirmation', '')
-create_page('users', 'en', 'Reset Password', 'reset_password', '')
-create_page('users', 'en', 'Unlock Account', 'unlock', '')
+create_page('users', 'en', 'Create Account', 'sign_up', 'Complete the following fields for create your account.')
+create_page('users', 'en', 'Sign In', 'sign_in', 'Write your email and password for access to the platform.')
+create_page('users', 'en', 'Account Confirmation', 'confirmation', 'Thanks for confirm your account. Now you can access to the platform.')
+create_page('users', 'en', 'Reset Password', 'reset_password', 'Write your email to follow a recovery email.')
+create_page('users', 'en', 'Unlock Account', 'unlock', 'Write your email for receive instructions for unblock your account.')
