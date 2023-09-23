@@ -1,6 +1,5 @@
 <% provide(:title, t(:sign_up)) %>
 
-<%= render "devise/shared/header", title: t(:sign_up), text: t(:not_a_member) %>
 <div class="mt-4">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'space-y-6') do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>

@@ -2,9 +2,10 @@
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation/new
-  # def new
-  #   super
-  # end
+  def new
+    @page = Page.where(category: "users", lang: @lang, slug: "confirmation").first
+    super
+  end
 
   # POST /resource/confirmation
   # def create

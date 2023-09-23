@@ -1,5 +1,11 @@
 <header>
-  <img src="<%= asset_url('letrismo-logo.svg') %>" alt='<%= t(:company) %> <%= t(:logotype) %>' width="100" height="100" class='h-14 w-auto'>
-  <h1 class="mt-8 text-2xl font-bold leading-9 tracking-tight"><%= title %></h1>
-  <p class="mt-2 text-sm leading-6 text-gray-500"><%= text %></p>
+  <a href="/" title="<%= t(:home) %>">
+    <img src="<%= asset_url('letrismo-logo.svg') %>" alt='<%= t(:company) %> <%= t(:logotype) %>' width="100" height="100" class='h-14 w-auto'>
+  </a>
+  <h1 class="mt-6 text-2xl font-bold leading-9 tracking-tight"><%= @page.title %></h1>
+  <% if !@page.content.blank? %>
+    <p class="mb-2 text-sm leading-6 text-gray-500">
+      <%= @page.content.try(:html_safe) %>
+    </p>
+  <% end %>
 </header>

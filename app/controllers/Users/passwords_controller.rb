@@ -2,9 +2,10 @@
 
 class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
-  # def new
-  #   super
-  # end
+  def new
+    @page = Page.where(category: "users", lang: @lang, slug: "reset_password").first
+    super
+  end
 
   # POST /resource/password
   # def create

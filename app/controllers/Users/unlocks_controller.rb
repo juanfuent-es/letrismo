@@ -2,9 +2,10 @@
 
 class Users::UnlocksController < Devise::UnlocksController
   # GET /resource/unlock/new
-  # def new
-  #   super
-  # end
+  def new
+    @page = Page.where(category: "users", lang: @lang, slug: "unlock").first
+    super
+  end
 
   # POST /resource/unlock
   # def create

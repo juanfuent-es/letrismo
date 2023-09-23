@@ -1,7 +1,5 @@
 <% provide(:title, t(:recover)) %>
 
-<%= render "devise/shared/header", title: t(:recover), text: "Recupera tu contraseña" %>
-
 <div class="mt-4">
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'space-y-6') do |f| %>

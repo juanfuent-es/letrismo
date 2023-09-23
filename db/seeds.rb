@@ -1,5 +1,6 @@
-def create_admin(name, mail, pass)
+def create_admin(mail, pass)
     admin = User.new(email: mail, password: pass, password_confirmation: pass, admin: true )
+    admin = User.new(email: "demo@admin.com", password: "password", password_confirmation: "password", admin: true )
     admin.skip_confirmation!
     if admin.save!
         puts "El administrador: #{admin.email} ha sido creado."
@@ -25,10 +26,11 @@ def create_page(category="static", lang="en", title="", slug="/", content="lorem
     end
 end
 
-create_admin('Admin', 'demo@admin.com', 'password')
-
 User.all.delete_all
 Page.all.delete_all
+
+create_admin('demo@admin.com', 'password')
+
 lorem = Faker::Hacker.say_something_smart
 
 create_page('static', 'es', 'eQuills', 'es', "<p>eQuills es el término que adoptamos para referirnos a las herramientas de escritura digital que desarrollamos con el objetivo de dejar marcas imposibles de crear en el mundo físico. </br>Suena bien ¿Cierto? Pruébalo tú mismo.</p>")
