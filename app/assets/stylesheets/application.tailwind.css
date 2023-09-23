@@ -22,7 +22,7 @@
     }
     /* forms */
     label {
-        @apply block text-sm py-1 font-medium leading-6;
+        @apply block text-sm py-1 font-medium leading-6 text-gray-300;
     }
     input[type="password"],
     input[type="email"],

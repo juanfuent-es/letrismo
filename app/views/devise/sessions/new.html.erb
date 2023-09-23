@@ -12,7 +12,7 @@
   <%= f.password_field :password, required: true, placeholder: "********", autocomplete: "current-password" %>
 </div>
 
-<div class="flex items-center w-full justify-between pt-4 text-sm leading-6">
+<div class="flex items-center w-full justify-between pt-2 text-sm leading-6">
   <%= f.label :remember_me, class: "flex items-center" do %>
   <%= f.check_box :remember_me, class: '', checked: true %>
   <span class="pl-2"><%= t(:remember_me) %></span>
@@ -25,7 +25,7 @@
   <% end %>
 </div>
 
-<footer class="pt-4">
+<footer class="pt-2">
   <%= f.submit t(:login), class: "my-2" %>
   <%= render "devise/shared/links" %>
 </footer>

@@ -61,6 +61,7 @@ es:
   server_error: Ha ocurrido un error en servidor. Por favor, reintenta de nuevo más tarde.
   unprocessable_entity: Ha ocurrido un error al momento de intentar procesar tu petición. Por favor, reintenta de nuevo más tarde.
   # login
+  receive_instructions: Recibir Instrucciones
   profile: Perfil
   close_session: Cerrar Sesión
   password: Contraseña

@@ -1,14 +1,14 @@
-<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }, class: 'space-y-6') do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="pt-2">
     <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
-  </div>
-<% end %>
+  <footer class="pt-2">
+    <%= f.submit "Resend unlock instructions", class: "my-2" %>
+    <%= render "devise/shared/links" %>
+  </footer>
 
-<%= render "devise/shared/links" %>
+<% end %>

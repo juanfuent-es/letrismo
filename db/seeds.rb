@@ -61,12 +61,12 @@ create_page('error', 'es', 'Offline', 'offline', "Estás desconectado. Verifica 
 # en
 create_page('users', 'es', 'Crear Cuenta', 'sign_up', 'Completa los siguientes campos para crear tu cuenta.')
 create_page('users', 'es', 'Iniciar Sesión', 'sign_in', 'Escribe tu mail y contraseña para acceder a la plataforma.')
-create_page('users', 'es', 'Confirmación de Cuenta', 'confirmation', 'Gracias por confirmar tu cuenta. Ahora puedes acceder a la plataforma.')
+create_page('users', 'es', 'Confirmación de Cuenta', 'confirmation', 'Para acceder a la plataforma necesitas primero confirmar tu cuenta, escribe tu email para recibir las instrucciones de confirmación.')
 create_page('users', 'es', 'Recuperar Cuenta', 'reset_password', 'Ingresa tu e-mail para recibir un correo de recuperación.')
 create_page('users', 'es', 'Desbloquear Cuenta', 'unlock', 'Ingresa tu e-mail para recibir instrucciones para desbloquear tu cuenta.')
 # es
 create_page('users', 'en', 'Create Account', 'sign_up', 'Complete the following fields for create your account.')
 create_page('users', 'en', 'Sign In', 'sign_in', 'Write your email and password for access to the platform.')
-create_page('users', 'en', 'Account Confirmation', 'confirmation', 'Thanks for confirm your account. Now you can access to the platform.')
+create_page('users', 'en', 'Account Confirmation', 'confirmation', 'To access the platform you first need to confirm your account, enter your email to receive confirmation instructions.')
 create_page('users', 'en', 'Reset Password', 'reset_password', 'Write your email to follow a recovery email.')
 create_page('users', 'en', 'Unlock Account', 'unlock', 'Write your email for receive instructions for unblock your account.')

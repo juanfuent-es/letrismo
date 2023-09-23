@@ -1,4 +1,4 @@
-<div class="text-center text-sm text-gray-500 pt-2">
+<div class="text-sm text-gray-500 pt-4">
   <%- if devise_mapping.omniauthable? %>
   <div class="social-auth-links text-center">
     <p>- <%= t(:or) %> -</p>
@@ -13,7 +13,7 @@
   <%- if controller_name != 'sessions' %>
     <p>
       <%= t("devise.shared.links.i_already_have_an_account") %>
-      <%= link_to "/#{@lang}/sign_in", class: "link" do %>
+      <%= link_to "/#{@lang}/sign_in", class: "link pt-1" do %>
         <%= t("login") %>
       <% end %>
     </p>
@@ -22,7 +22,7 @@
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <p>
     <%= t(:not_a_member) %>
-    <%= link_to "/#{@lang}/sign_up", class: "link" do %>
+    <%= link_to "/#{@lang}/sign_up", class: "link pt-1" do %>
     <%= t("devise.shared.links.sign_up") %>
     <% end %>
   </p>
@@ -30,7 +30,7 @@
 
   <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <p>
-    <%= link_to "/#{@lang}/confirmation", class: "link" do %>
+    <%= link_to "/#{@lang}/confirmation", class: "link pt-1" do %>
     <%= t("devise.shared.links.didn_t_receive_confirmation_instructions") %>
     <% end %>
   </p>
@@ -38,7 +38,7 @@
 
   <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <p>
-    <%= link_to "/#{@lang}/unlock", class: "link" do %>
+    <%= link_to "/#{@lang}/unlock", class: "link pt-1" do %>
     <%= t("didn_t_receive_unlock_instructions") %>
     <% end %>
   </p>

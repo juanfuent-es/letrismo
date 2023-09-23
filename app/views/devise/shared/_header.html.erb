@@ -4,7 +4,7 @@
   </a>
   <h1 class="mt-6 text-2xl font-bold leading-9 tracking-tight"><%= @page.title %></h1>
   <% if !@page.content.blank? %>
-    <p class="mb-2 text-sm leading-6 text-gray-500">
+    <p class="mb-2 text-sm text-gray-500">
       <%= @page.content.try(:html_safe) %>
     </p>
   <% end %>
