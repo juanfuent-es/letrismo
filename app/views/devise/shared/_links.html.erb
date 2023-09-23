@@ -11,25 +11,25 @@
 
 <%- if controller_name != 'sessions' %>
 <div class='block'>
-  <%= link_to t("devise.shared.links.i_already_have_an_account"), new_session_path(resource_name, lang:@lang), class: "btn" %>
+  <%= link_to t("devise.shared.links.i_already_have_an_account"), new_session_path(resource_name), class: "link text-sm" %>
 </div>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
 <p class="mt-10 text-center text-sm text-gray-500">
   <%= t(:not_a_member) %>
-  <%= link_to t("devise.shared.links.sign_up"), new_registration_path(resource_name, lang:@lang), class: 'link' %>
+  <%= link_to t("devise.shared.links.sign_up"), new_registration_path(resource_name), class: 'link' %>
 </p>
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
 <div class='block'>
-  <%= link_to t("devise.shared.links.didn_t_receive_confirmation_instructions"), new_confirmation_path(resource_name, lang:@lang) %>
+  <%= link_to t("devise.shared.links.didn_t_receive_confirmation_instructions"), new_confirmation_path(resource_name), class: "link text-sm" %>
 </div>
 <% end %>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
 <div class='block'>
-  <%= link_to t("didn_t_receive_unlock_instructions"), new_unlock_path(resource_name, lang:@lang) %>
+  <%= link_to t("didn_t_receive_unlock_instructions"), new_unlock_path(resource_name), class: "link text-sm" %>
 </div>
 <% end %>

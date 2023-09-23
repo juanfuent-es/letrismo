@@ -1,10 +1,32 @@
 Rails.application.routes.draw do
-  
   # users
-  devise_for :users, path: "", :sign_out_via => [ :get ],
-  controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords' }, 
-  path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', registration: 'new', sign_up: 'register' }
-  
+  # devise_for :users, path: "", :sign_out_via => [ :get ],
+  # controllers: {
+  #   confirmations: 'users/confirmations',
+  #   passwords: 'users/passwords',
+  #   registrations: 'users/registrations',
+  #   sessions: 'users/sessions',
+  #   unlocks: 'users/unlocks',
+  # },
+  # path_names: {
+  #   sign_in: 'es/iniciar_sesion',
+  #   sign_out: 'es/cerrar_sesion',
+  #   password: 'es/recuperar_cuenta',
+  #   confirmation: 'es/verificar_cuenta',
+  #   sign_up: 'es/registrarse',
+  #   unlock: 'es/desbloquear'
+  # }
+
+  # devise_scope :user do
+  #   get 'en/sign_in', to: 'users/sessions#new'
+  #   get 'en/cerrar_sesion', to: 'users/sessions#destroy'
+  #   get 'en/registrarse', to: 'users/registrations#new'
+  # end
+
+  as :user do
+    get ':lang/login', to: 'devise/sessions#new'
+  end
+
   # admin
   get 'admin' => 'admin#index', as: :admin  
   namespace :admin do
