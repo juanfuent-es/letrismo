@@ -119,7 +119,7 @@ es:
       signed_out: Sesión finalizada.
     shared:
       links:
-        i_already_have_an_account: Ya tengo cuenta
+        i_already_have_an_account: ¿Ya tienes una cuenta?
         back: Regresar
         didn_t_receive_confirmation_instructions: "¿No ha recibido las instrucciones de confirmación?"
         didn_t_receive_unlock_instructions: "¿No ha recibido instrucciones para desbloquear su cuenta?"

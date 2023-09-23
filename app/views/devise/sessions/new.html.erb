@@ -16,16 +16,16 @@
   <%= f.password_field :password, required: true, placeholder: "********", autocomplete: "current-password", class:  "mt-2" %>
   <% end %>
 
-  <div class="flex items-center w-full justify-between py-4">
+  <div class="flex items-center w-full justify-between py-4 text-sm leading-6">
     <%= f.label :remember_me, class: "flex items-center" do %>
     <%= f.check_box :remember_me, class: '', checked: true %>
-    <span class="ml-3 block text-sm leading-6"><%= t(:remember_me) %></span>
+    <%= t(:remember_me) %>
     <% end %>
 
     <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-    <div class="text-sm leading-6">
-      <%= link_to t("devise.shared.links.forgot_your_password"), new_password_path(resource_name, lang:@lang), class: 'link' %>
-    </div>
+      <%= link_to "/#{@lang}/reset_password", class: 'link' do %>
+        <%= t("devise.shared.links.forgot_your_password") %>
+      <% end %>
     <% end %>
   </div>
 

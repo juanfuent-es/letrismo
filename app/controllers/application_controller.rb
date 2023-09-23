@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 	rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
 	before_action :require_visit_registration
 	after_action :set_vary_header
-	around_action :switch_lang
+	around_action :set_lang
 
 	def index
 		render template: 'layouts/application'
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 		end
     end
 
-	def switch_lang(&action)
+	def set_lang(&action)
 		@lang = "es"
 		# Evaluamos si existe el idioma en parámetro
 		if params[:lang]
