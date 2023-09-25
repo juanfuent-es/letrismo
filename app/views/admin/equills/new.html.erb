@@ -1,0 +1,23 @@
+<% provide(:title, "Nueva equill") %>
+
+<header class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1><%= "#{t(:new)} #{t(:equill)}" %></h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right mt-2">
+          <li class="breadcrumb-item">
+            <%= link_to t(:equills), admin_equills_path %>
+          </li>
+          <li class="breadcrumb-item active">
+            <%= "#{t(:new)} #{t(:equill)}" %>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</header>
+
+<%= render 'form', equill: @equill %>

@@ -1,0 +1,21 @@
+<section class="content">
+  <%= form_for [:admin, equill], local: true, html: { :class=> "row" } do |f| %>
+    <div class="col-md-12">
+      <!-- .card/ -->
+      <%= render "admin/shared/errors", object: equill %>
+      <div class="card card-primary card-outline">
+        <!-- .card-body/ -->
+        <div class="card-body row">
+          
+        </div>
+        <!-- /.card-body -->
+        <!-- .card-footer/ -->
+        <footer class="card-footer text-right">
+          <button class="btn btn-outline-primary mt-2 mb-2 btn-sm"><i class="fas fa-save"></i> <%= t(:save) %></button>
+        </footer>
+        <!-- /.card-footer -->
+      </div>
+      <!-- /.card -->
+    </div>
+  <% end %>
+</section>

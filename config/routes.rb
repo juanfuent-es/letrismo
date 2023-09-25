@@ -19,33 +19,35 @@ Rails.application.routes.draw do
 
   # admin
   get 'admin' => 'admin#index', as: :admin  
-  resources :letrisms
+  
   namespace :admin do
-    resources :users, :letrisms, :pages
+    resources :users, :letrisms, :equills, :pages
   end
   
   # data
   get "manifest.json" => "site_info#manifest"
   get "sitemap" => "sitemaps#index"  # sitemaps
-
+  
   scope format: true, constraints: { format: /jpg|png|gif|webp|JPG|JPEG|jpeg/ } do
 		get '/*anything', to: "errors#image_not_found"
 	end
-
+  
   scope format: true, constraints: { format: /js/ } do
     get '/*anything', to: "errors#script_not_found"
   end
-
+  
   # Errors
   # https://guides.rubyonrails.org/v4.2.0/action_controller_overview.html#custom-errors-page
   match "404", via: :all, to: "errors#not_found", as: :not_found
   match "422", via: :all, to: "errors#unprocessable_entity", as: :unprocessable_entity
   match "500", via: :all, to: "errors#server_error", as: :server_error
   match 'offline', via: :all, to: 'errors#offline', as: :offline
-
-  # App
+  
+  # App  
   root "static_pages#show"
   get ':lang' => 'static_pages#show', as: :home
   get ':lang/:slug' => 'static_pages#show', as: :page # Dynamic by slug, instead of next routes
+
+  resources :letrisms, :equills
   
 end
