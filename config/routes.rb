@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, #path: "", :sign_out_via => [ :get ],
+    :controllers => { 
+      registrations: 'users/registrations',
+      confirmations: 'users/confirmations',
+      passwords: 'users/passwords',
+      sessions: 'users/sessions',
+      unlocks: 'users/unlocks'
+    }
+
   devise_scope :user do
     get ':lang/sign_up', to: 'users/registrations#new'
     get ':lang/sign_in', to: 'users/sessions#new'
@@ -17,10 +25,6 @@ Rails.application.routes.draw do
   
   # data
   get "manifest.json" => "site_info#manifest"
-  get "humans" => "site_info#humans"
-  get "tech" => "site_info#tech"
-  
-  get "docs" => "site_info#docs", as: :documentation
   # sitemaps
   get "sitemap" => "sitemaps#index"
 
@@ -35,12 +39,6 @@ Rails.application.routes.draw do
   root "static_pages#show"
   get ':lang' => 'static_pages#show', as: :home
   get ':lang/:slug' => 'static_pages#show', as: :page # Dynamic by slug, instead of next routes
-  # get ':lang/contact' => 'static#page', as: :contact
-  # get ':lang/contacto' => 'static#page', as: :contacto
-  # get ':lang/privacy-notice' => 'legals#privacy', as: :privacy
-  # get ':lang/aviso-de-privacidad' => 'legals#privacy', as: :privacidad
-  # get ':lang/terms-conditions' => 'legals#terms', as: :terms
-  # get ':lang/terminos-y-condiciones' => 'legals#terms', as: :terminos
       
   scope format: true, constraints: { format: /jpg|png|gif|webp|JPG|JPEG|jpeg/ } do
 		get '/*anything', to: "errors#image_not_found"
