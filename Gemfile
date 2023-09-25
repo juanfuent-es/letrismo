@@ -42,9 +42,8 @@ gem 'browser'
 # file uploader. Read more: https://github.com/carrierwaveuploader/carrierwave
 # Read more: https://github.com/jtescher/carrierwave-imageoptimizer
 gem 'carrierwave'
+gem 'carrierwave-base64'
 gem 'carrierwave-imageoptimizer'
-gem 'carrierwave-video'
-gem 'carrierwave-video-thumbnailer'
 gem 'streamio-ffmpeg'
 gem 'mini_magick'
 gem 'rmagick'
