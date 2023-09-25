@@ -12,7 +12,7 @@ class ErrorsController < ApplicationController
   end
   
   def script_not_found
-    send_file 'public/static/js-not-found.js', type: 'text/javascript', disposition: 'inline', status: :not_found
+    send_file 'public/static/script-not-found.js', type: 'text/javascript', disposition: 'inline', status: :not_found
   end
   
   def unprocessable_entity
@@ -26,11 +26,7 @@ class ErrorsController < ApplicationController
   end
 
   def image_not_found
-  	send_file 'public/static/img-not-found.png', type: 'image/png', disposition: 'inline'
-  end
-  
-  def js_not_found
-    render :js => "alert('Hello Rails')"
+  	send_file 'public/static/img-not-found.jpg', type: 'image/jpg', disposition: 'inline'
   end
 
   private
