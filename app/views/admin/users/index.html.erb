@@ -15,11 +15,6 @@
 <section class="content">
   <!-- Default box -->
   <div class="card card-primary card-outline">
-    <header class="card-header">
-      <%= link_to new_admin_user_path, class: 'btn btn-outline-primary btn-sm float-right' do %>
-        <i class="fas fa-plus"></i> <%= "#{t(:new)} #{t(:user)}" %>
-      <% end %>
-    </header>
     <div class="card-body">
       <table class="table table-hover table-sm datatable text-sm">
         <thead>
@@ -37,7 +32,7 @@
             <% end %>
             </td>
             <td class='text-center'>
-              <%= link_to admin_user_path(user), method: :delete, class: "btn btn-outline-danger btn-sm" , data: { confirm: "¿Estás seguro de eliminar este #{t(:user)} (#{user.email})?" } do %>
+              <%= link_to admin_user_path(user), method: :delete, class: "btn btn-outline-danger btn-sm" , data: { confirm: "¿Estás seguro de eliminar este #{t(:user)}?" } do %>
                 <i class='fas fa-trash'></i> Eliminar
               <% end %>
             </td>

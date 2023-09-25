@@ -1,3 +1,44 @@
-<% provide(:title, "Perfil: #{@user.name || @user.email}") %>
+<% provide(:title, "user") %>
 
-<%= render "admin/users/show", object: @user %>
+<header class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1><%= "#{t(:detail)} de #{t(:user)}" %></h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right mt-2">
+          <li class="breadcrumb-item">
+            <%= link_to t(:users), admin_users_path %>
+          </li>
+          <li class="breadcrumb-item active">
+            <%= "#{t(:detail)} de #{t(:user)}" %>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</header>
+
+
+<section class="content">
+  <!-- Default box -->
+  <div class="card card-primary card-outline">
+    <header class="card-header">
+      <%= link_to edit_admin_user_url(@user), class: "btn btn-outline-primary btn-sm" do %>
+        <i class="fas fa-pencil-alt"></i> Editar
+      <% end -%>
+      <%= link_to admin_user_path(@user), class: "btn btn-outline-danger btn-sm float-right", method: :delete, data: { confirm: "¿Estás seguro de eliminar este #{t(:user)}?" } do %>
+        <i class="fa-solid fa-trash"></i> Eliminar
+      <% end -%>
+    </header>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+                  </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</section>

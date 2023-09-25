@@ -36,7 +36,6 @@ class Admin {
             pageLength: 50,
             responsive: true,
             dom: 'Bfrtip',
-            buttons: ['excel'],
             language: {
                 url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/es-MX.json',
             }
