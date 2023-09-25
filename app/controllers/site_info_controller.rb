@@ -1,10 +1,7 @@
 class SiteInfoController < ApplicationController
 
-  def robots
-    render plain: "User-agent: * \nAllow: /\nDisallow: /search/*\nSitemap: #{request.protocol}#{request.host_with_port}/sitemap.txt"
-  end
-
   def manifest
+    @base_path = "https://equills.letrismo.com/"
     render json: {
       "name": "Letrismo",
       "short_name": "Letrismo",
@@ -19,16 +16,6 @@ class SiteInfoController < ApplicationController
       "background_color": "#ffffff",
       "display": "standalone"
     }
-  end
-
-  def sitemap
-    @base_path = "#{request.protocol}#{request.host_with_port}"
-  end
-
-  def humans
-  end
-
-  def tech
   end
 
 end

@@ -1,16 +1,4 @@
 <%= provide(:title, "Error 422") %>
 <%= provide(:description, t(:unprocessable_entity)) %>
 <%= provide(:breadcrumb, "") %>
-
-<section class="mx-auto w-full max-w-7xl px-6 py-24 sm:py-32 lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:px-8">
-    <article class="max-w-lg">
-        <p class="text-base font-semibold leading-8 text-red-600">Error 422</p>
-        <h1 class="mt-4 text-3xl lg:text-4xl font-bold tracking-tight text-gray-100">Unprocessable Entity</h1>
-        <p class="mt-4 text-base leading-7 text-gray-400"><%= t(:unprocessable_entity) %></p>
-        <a href="/" class="font-semibold leading-7 text-primary-500 mt-10 inline-block"><span aria-hidden="true">&larr;</span> Ir a home</a>
-    </article>
-</section>
-<div class="hidden lg:relative lg:col-start-2 lg:row-start-1 lg:row-end-4 lg:block">
-    <img src="https://equills.letrismo.com/imgs/84/img.png"
-        alt="Unprocessable Entity" class="absolute inset-0 h-full w-full object-contain invert" />
-</div>
+<%= render "errors/error", object: @page, img: "https://equills.letrismo.com/imgs/84/img.png" %>

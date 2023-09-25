@@ -25,8 +25,15 @@ Rails.application.routes.draw do
   
   # data
   get "manifest.json" => "site_info#manifest"
-  # sitemaps
-  get "sitemap" => "sitemaps#index"
+  get "sitemap" => "sitemaps#index"  # sitemaps
+
+  scope format: true, constraints: { format: /jpg|png|gif|webp|JPG|JPEG|jpeg/ } do
+		get '/*anything', to: "errors#image_not_found"
+	end
+
+  scope format: true, constraints: { format: /js/ } do
+    get '/*anything', to: "errors#script_not_found"
+  end
 
   # Errors
   # https://guides.rubyonrails.org/v4.2.0/action_controller_overview.html#custom-errors-page
@@ -39,9 +46,5 @@ Rails.application.routes.draw do
   root "static_pages#show"
   get ':lang' => 'static_pages#show', as: :home
   get ':lang/:slug' => 'static_pages#show', as: :page # Dynamic by slug, instead of next routes
-      
-  scope format: true, constraints: { format: /jpg|png|gif|webp|JPG|JPEG|jpeg/ } do
-		get '/*anything', to: "errors#image_not_found"
-	end
   
 end

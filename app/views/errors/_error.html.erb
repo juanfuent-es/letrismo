@@ -1,0 +1,12 @@
+<section class="mx-auto w-full max-w-7xl px-6 py-24 sm:py-32 lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:px-8">
+    <article class="max-w-lg">
+        <p class="text-base font-semibold leading-8 text-primary-600">Error <%= object.slug %></p>
+        <h1 class="mt-4 text-3xl lg:text-4xl font-bold tracking-tight text-gray-100"><%= object.title %></h1>
+        <div class="mt-4 text-base leading-7 text-gray-500"><%= object.content.try(:html_safe) %></div>
+        <a href="/" class="font-semibold leading-7 text-primary-600 mt-10 inline-block"><span aria-hidden="true">&larr;</span> Ir a home</a>
+    </article>
+</section>
+
+<div class="hidden lg:relative lg:col-start-2 lg:row-start-1 lg:row-end-4 lg:block">
+    <img src="<%= img %>" alt="<%= object.title %>" class="absolute inset-0 h-full w-full object-contain" />
+</div>
