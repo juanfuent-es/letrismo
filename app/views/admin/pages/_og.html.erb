@@ -1,27 +1,25 @@
-<div class="col-lg-6 col-xs-6">
-    <div class="row">
-        <div class="form-group col-md-12">
-            <%= object.label :og_title, "Título" %>
-            <%= object.text_field :og_title, class: "form-control str-counter input-og-value", placeholder: "Título del artículo sin mencionar marcas", required: true, data: { target: "#og-title-counter", attr: "title" }, maxLength: 70 %>
-            <small class='legend-validation'><i><span id="og-title-counter"><%= object.object.og_title.to_s.length %></span> / 70 caracteres</i></small>
-        </div>
-        <div class="form-group col-md-12">
-            <%= object.label :og_description, "Descripción" %>
-            <%= object.text_area :og_description, class: "form-control str-counter input-og-value", placeholder: "De 2 a 3 oraciones que describan el contenido sin usar el título.", required: true, data: { target: "#description-counter", attr: "description" }, maxLength: 200 %>
-            <small class='legend-validation'><i><span id="description-counter"><%= object.object.og_description.to_s.length %></span> / 200 caracteres</i></small>
-        </div>
-        <div class="form-group col-md-12">
-            <%= object.label :keywords %>
-            <%= object.text_field :keywords, class: "form-control", placeholder: "keyword, separados, por, coma..." %>
-        </div>
+<div class="row">
+    <div class="form-group col-md-12" id="og-card">
+        <%= object.label :og_image do %>
+        <%= image_tag object.object.og_image.url, id: "og-img-preview" %>
+        <%= object.file_field :og_image, class: "sr-only input-img", data: { target: "#og-img-preview" } %>
+        <% end %>
+        <h2><span id="page-og-title"><%= object.object.og_title %></span> | eQuills</h2>
+        <p id="page-og-description"><%= object.object.og_description %></p>
+        <p id="page-og-link">https://equills.letrismo.com/<%= object.object.lang %>/<span id="page-og-slug"><%= object.object.slug %></span></p>
     </div>
-</div>
-<div class="form-group col-lg-6 col-xs-6" id="og-card">
-    <%= object.label :og_image do %>
-    <%= image_tag object.object.og_image.url, id: "og-img-preview" %>
-    <%= object.file_field :og_image, class: "sr-only input-img", data: { target: "#og-img-preview" } %>
-    <% end %>
-    <h2><span id="page-og-title"><%= object.object.og_title %></span> | eQuills</h2>
-    <p id="page-og-description"><%= object.object.og_description %></p>
-    <p id="page-og-link">https://equills.letrismo.com/<%= object.object.lang %>/<span id="page-og-slug"><%= object.object.slug %></span></p>
+    <div class="form-group col-md-12">
+        <%= object.label :og_title, "Título OpenGraph" %>
+        <%= object.text_field :og_title, class: "form-control str-counter input-og-value", placeholder: "Título del artículo sin mencionar marcas", required: true, data: { target: "#og-title-counter", attr: "title" }, maxLength: 70 %>
+        <small class='legend-validation'><i><span id="og-title-counter"><%= object.object.og_title.to_s.length %></span> / 70 caracteres</i></small>
+    </div>
+    <div class="form-group col-md-12">
+        <%= object.label :og_description, "Descripción OpenGraph" %>
+        <%= object.text_area :og_description, class: "form-control str-counter input-og-value", placeholder: "De 2 a 3 oraciones que describan el contenido sin usar el título.", required: true, data: { target: "#description-counter", attr: "description" }, maxLength: 200 %>
+        <small class='legend-validation'><i><span id="description-counter"><%= object.object.og_description.to_s.length %></span> / 200 caracteres</i></small>
+    </div>
+    <div class="form-group col-md-12">
+        <%= object.label :keywords %>
+        <%= object.text_field :keywords, class: "form-control", placeholder: "keyword, separados, por, coma..." %>
+    </div>
 </div>

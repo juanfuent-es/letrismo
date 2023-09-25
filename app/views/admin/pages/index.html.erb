@@ -15,8 +15,12 @@
 </header>
 
 <!-- Main content -->
-<section class="content">
+<section class="content row">
+  <div class="col-md-6">
   <%= render "admin/pages/index", object: @pages.where(lang:"es"), title: "Español" %>
-  <%= render "admin/pages/index", object: @pages.where(lang:"en"), title: "Inglés" %>
+  </div>
+  <div class="col-md-6">
+    <%= render "admin/pages/index", object: @pages.where(lang:"en"), title: "Inglés" %>
+  </div>
 </section>
 <!-- /.content -->

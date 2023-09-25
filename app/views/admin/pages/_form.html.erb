@@ -2,7 +2,7 @@
   <%= form_for [:admin, page], local: true, html: { :class=> "row" } do |f| %>
   <%= f.hidden_field :category  %>
 
-  <div class="col-md-12">
+  <div class="col-md-6">
     <%= render "admin/shared/errors", object: page %>
     <!-- .card/ -->
     <div class="card card-primary card-outline">
@@ -16,7 +16,7 @@
     <!-- /.card -->
   </div>
 
-  <div class="col-md-<%= @page.category == "blog" ? 12 : 6 %>">
+  <div class="col-md-6">
     <div class="card card-primary card-outline">
       <header class="card-header">
         <h2 class="card-title"><b>Contenido de Página</b></h2>
