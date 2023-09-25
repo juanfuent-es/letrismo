@@ -19,8 +19,9 @@ Rails.application.routes.draw do
 
   # admin
   get 'admin' => 'admin#index', as: :admin  
+  resources :letrisms
   namespace :admin do
-    resources :users, :pages
+    resources :users, :letrisms, :pages
   end
   
   # data
