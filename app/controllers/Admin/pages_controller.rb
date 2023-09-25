@@ -6,11 +6,8 @@ class Admin::PagesController < ApplicationController
   layout "admin"
 
   def index
-    @pages = Page.where(category: "static")
-  end
-  
-  def blog
-    @pages = Page.where(category: "blog") # Static | Blog | Article | Tutorial | Course | Workshop
+    @pages = Page.all # where(category: "static")
+    @pages = @pages.where(category: params[:category]) if params[:category]
   end
 
   def show

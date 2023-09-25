@@ -10,9 +10,7 @@
         <% pages.each do |page| %>
         <tr>
             <td width="200">
-                <a href="/<%= page.full_url %>" target="_blank" class="btn btn-link" title="<%= page.title %>">
-                    <%= image_tag page.og_image.url, width: 200 %>
-                </a>
+                <%= image_tag page.og_image.url, width: 200 %>
             </td>
             <td>
                 <%= link_to page.title, edit_admin_page_url(page), class: "btn" %> <br>

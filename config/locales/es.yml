@@ -2,12 +2,12 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 es:
-  company: DomGL
+  company: eQuills
   logotype: Logotipo
   # vue
   vue:
     hi: Hola
-    company: DomGL
+    company: eQuills
     loading: Cargando...
     #menu
     gallery: Galería

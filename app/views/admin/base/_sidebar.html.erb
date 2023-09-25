@@ -2,45 +2,58 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="/admin" class="brand-link">
-    <img src="/placeholders/default-avatar.png" alt="Default logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">DomGL</span>
+    <img src="<%= asset_url('letrismo-logo.svg') %>" width="100" height="100" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">eQuills</span>
   </a>
 
   <!-- Sidebar -->
   <div class="sidebar">
 
-    <!-- SidebarSearch Form -->
-    <div class="form-inline mt-2">
-      <div class="input-group" data-widget="sidebar-search">
-        <input class="form-control form-control-sidebar" type="search" placeholder="Buscar" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-sidebar">
-            <i class="fas fa-search fa-fw"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-            <%= link_to admin_pages_url, class: "nav-link" do %>
+          <a title="Letristas" href="/admin/users" class="nav-link">
+            <i class="nav-icon fa-solid fa-users nav-icon"></i>
+            <p>Letristas</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a title="Letrismos" href="/admin/users" class="nav-link">
+            <i class="nav-icon fa-solid fa-pen-nib"></i>
+            <p>Letrismos</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a title="eQuills" href="/admin/users" class="nav-link">
+            <i class="nav-icon fa-solid fa-pen-ruler"></i>
+            <p>eQuills</p>
+          </a>
+        </li>
+        <li class="nav-header">Páginas</li>
+        <li class="nav-item">
+            <%= link_to admin_pages_url(category:'static'), class: "nav-link" do %>
               <i class="nav-icon fa-solid fa-file"></i>
-              <p>Páginas</p>
+              <p>Estáticas</p>
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to admin_pages_url(category:'errors'), class: "nav-link" do %>
+              <i class="nav-icon fa-solid fa-triangle-exclamation"></i>
+              <p>Errores</p>
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to admin_pages_url(category:'users'), class: "nav-link" do %>
+              <i class="nav-icon fa-solid fa-arrow-right-to-bracket"></i>
+              <p>Devise <small>(User Flow)</small></p>
             <% end %>
         </li>
         <li class="nav-header"><%= current_user.email %></li>
         <li class="nav-item">
-          <a title="Usuarios" href="/admin/users" class="nav-link">
-            <i class="fa-solid fa-users nav-icon"></i>
-            Usuarios
-          </a>
-        </li>
-        <li class="nav-item">
           <a title="<%= t(:close_session) %>" href="<%= destroy_user_session_path(lang: @lang) %>" class="nav-link">
             <i class="nav-icon fa-solid fa-person-running"></i>
-            Cerrar Sesión
+            <p>Cerrar Sesión</p>
           </a>
         </li>
       </ul>

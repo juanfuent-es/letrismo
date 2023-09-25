@@ -1,28 +1,16 @@
 <div class="col-lg-6 col-xs-6">
     <div class="row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-12">
             <%= object.label :og_title, "Título" %>
             <%= object.text_field :og_title, class: "form-control str-counter input-og-value", placeholder: "Título del artículo sin mencionar marcas", required: true, data: { target: "#og-title-counter", attr: "title" }, maxLength: 70 %>
             <small class='legend-validation'><i><span id="og-title-counter"><%= object.object.og_title.to_s.length %></span> / 70 caracteres</i></small>
         </div>
-        <div class="form-group col-md-6">
-            <%= object.label :slug do %>
-            URL Semántica
-            <a href="https://es.wikipedia.org/wiki/URL_sem%C3%A1ntica"
-                aria-label="Las URL semánticas o URL amigables son aquellas URL que son, dentro de lo que cabe, entendibles para el usuario..."
-                data-balloon-pos="up" data-balloon-length="xlarge" target="_blank">
-                <i class="fa-solid fa-circle-info"></i>
-            </a>
-            <% end %>
-            <%= object.text_field :slug, class: "form-control input-og-value", placeholder: "mi-url-amigable", required: true, data: { attr: "slug" }, readonly: @page.restricted %>
-        </div>
-
         <div class="form-group col-md-12">
             <%= object.label :og_description, "Descripción" %>
             <%= object.text_area :og_description, class: "form-control str-counter input-og-value", placeholder: "De 2 a 3 oraciones que describan el contenido sin usar el título.", required: true, data: { target: "#description-counter", attr: "description" }, maxLength: 200 %>
             <small class='legend-validation'><i><span id="description-counter"><%= object.object.og_description.to_s.length %></span> / 200 caracteres</i></small>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-12">
             <%= object.label :keywords %>
             <%= object.text_field :keywords, class: "form-control", placeholder: "keyword, separados, por, coma..." %>
         </div>
@@ -33,7 +21,7 @@
     <%= image_tag object.object.og_image.url, id: "og-img-preview" %>
     <%= object.file_field :og_image, class: "sr-only input-img", data: { target: "#og-img-preview" } %>
     <% end %>
-    <h2><span id="page-og-title"><%= object.object.og_title %></span> | JuanFuent.es</h2>
+    <h2><span id="page-og-title"><%= object.object.og_title %></span> | eQuills</h2>
     <p id="page-og-description"><%= object.object.og_description %></p>
-    <p id="page-og-link">https://<%= "en." if object.object.lang == "en" %>juanfuent.es/<span id="page-og-slug"><%= object.object.slug %></span></p>
+    <p id="page-og-link">https://equills.letrismo.com/<%= object.object.lang %>/<span id="page-og-slug"><%= object.object.slug %></span></p>
 </div>

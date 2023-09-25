@@ -5,8 +5,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-12">
-        <h1>Páginas</h1>
-        <br>
+        <h1><%= params[:category].to_s.titleize %> Pages <sup><%= @pages.count %></sup></h1>
         <% link_to new_admin_page_path, class: 'btn btn-outline-primary btn-sm' do %>
           <i class="fas fa-plus"></i> Nueva Página
         <% end %>
@@ -17,11 +16,7 @@
 
 <!-- Main content -->
 <section class="content">
-  <% if @pages.any? %>
-    <%= render "admin/pages/index", object: @pages %>
-  <% else %>
-    <%= render "admin/pages/empty" %>
-  <% end %>
-
+  <%= render "admin/pages/index", object: @pages.where(lang:"es"), title: "Español" %>
+  <%= render "admin/pages/index", object: @pages.where(lang:"en"), title: "Inglés" %>
 </section>
 <!-- /.content -->
