@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::UnlocksController < Devise::UnlocksController
-  around_action :get_lang
+  around_action :set_lang
   before_action :set_page #, except: [:show]
   
   # GET /resource/unlock/new

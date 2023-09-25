@@ -2,7 +2,7 @@
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
   
-  around_action :get_lang
+  around_action :set_lang
   before_action :set_page, except: [:show]
 
   # GET /resource/confirmation/new

@@ -2,7 +2,7 @@
 
 class Users::PasswordsController < Devise::PasswordsController
 
-  around_action :get_lang
+  around_action :set_lang
   before_action :set_page, except: [:edit, :update]
   
   # GET /resource/password/new
