@@ -1,28 +1,6 @@
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 es:
   company: eQuills
   logotype: Logotipo
-  # vue
-  vue:
-    hi: Hola
-    company: eQuills
-    loading: Cargando...
-    #menu
-    gallery: Galería
-    manifest: Manifiesto
-    home: Inicio
-    about: Nosotros
-    contact: Contacto
-    privacy: Aviso de Privacidad
-    terms: Términos y Condiciones
-    #
-    all_rights_reserved: Todos los Derechos Reservados
-    not_found: No encontrado
-    open_menu: Abrir Menú
-    close_menu: Cerrar Menú
-    log_in: Iniciar Sesión
   not_a_member: ¿No estás registrado?
   submission_errors: Corrige los errores para poder continuar
   es: Español
