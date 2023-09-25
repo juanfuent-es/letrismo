@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class Users::UnlocksController < Devise::UnlocksController
+  around_action :get_lang
+  before_action :set_page #, except: [:show]
+  
   # GET /resource/unlock/new
-  def new
-    @page = Page.where(category: "users", lang: @lang, slug: "unlock").first
-    super
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource/unlock
   # def create
@@ -17,7 +19,11 @@ class Users::UnlocksController < Devise::UnlocksController
   #   super
   # end
 
-  # protected
+  protected
+
+  def set_page
+    @page = Page.where(category: "users", lang: @lang, slug: "unlock").first
+  end
 
   # The path used after sending unlock password instructions
   # def after_sending_unlock_instructions_path_for(resource)

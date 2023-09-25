@@ -24,13 +24,14 @@
   <body class="text-white">
     <%= render "shared/preloader" %>
     <main class="flex min-h-full">
-      <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24 w-5/12">
+      <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24 w-full md:w-5/12 z-10">
         <div class="mx-auto w-full max-w-sm lg:w-96">
           <%= render "devise/shared/header" %>
           <%= yield %>
         </div>
       </div>
-      <footer class="w-7/12 relative hidden md:block">
+      <%# <footer class="w-7/12 relative hidden md:block"> %>
+      <footer class="w-full md:w-7/12 absolute md:relative left-0 top-0 md:left-auto h-full md:h-auto z-0 pointer-events-none">
         <img class="absolute inset-0 h-full w-full object-contain"
           src="https://equills.letrismo.com/imgs/39/img.png"
           alt="Letrismo por Typebrain" />

@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
-  # GET /resource/password/new
-  def new
-    @page = Page.where(category: "users", lang: @lang, slug: "reset_password").first
-    super
-  end
 
+  around_action :get_lang
+  before_action :set_page, except: [:edit, :update]
+  
+  # GET /resource/password/new
+  # def new
+  #   super
+  # end
+  
   # POST /resource/password
   # def create
   #   super
@@ -21,8 +24,12 @@ class Users::PasswordsController < Devise::PasswordsController
   # def update
   #   super
   # end
+  
+  protected
 
-  # protected
+  def set_page
+    @page = Page.where(category: "users", lang: @lang, slug: "reset_password").first
+  end
 
   # def after_resetting_password_path_for(resource)
   #   super(resource)

@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
+  
+  around_action :get_lang
+  before_action :set_page, except: [:show]
+
   # GET /resource/confirmation/new
-  def new
-    @page = Page.where(category: "users", lang: @lang, slug: "confirmation").first
-    super
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource/confirmation
   # def create
@@ -17,7 +20,11 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def set_page
+    @page = Page.where(category: "users", lang: @lang, slug: "confirmation").first
+  end
 
   # The path used after resending confirmation instructions.
   # def after_resending_confirmation_instructions_path_for(resource_name)
