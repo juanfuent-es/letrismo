@@ -26,7 +26,7 @@ class ErrorsController < ApplicationController
   end
 
   def image_not_found
-  	send_file 'public/static/img-not-found.jpg', type: 'image/jpg', disposition: 'inline'
+  	send_file 'public/static/img-not-found.png', type: 'image/png', disposition: 'inline'
   end
 
   private
