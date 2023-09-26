@@ -1,0 +1,36 @@
+<% 
+    @button_color = "color:#34d37f;"
+    @button_bg = "#142c33"
+    @font_weight = "font-weight:500;"
+    @border_radius = "border-radius:9999px;"
+    @button_style = "#{@fontfamily}#{@button_color}#{@border_radius}line-height:22px;font-size:18px;padding:12px 24px;display:inline-block;border:2px solid #{@button_bg};text-align:center;text-decoration:none;min-width:150px;background-color:#{@button_bg};border:1px solid #{@border}"
+%>
+<tr>
+    <td align="center" valign="middle" style="padding:40px;">
+        <table border="0" cellspacing="0" cellpadding="0" dir="ltr">
+            <tbody>
+                <tr>
+                    <td align="center" style="<%= @border_radius %>background-color:<%= @link_color %>">
+                        <a href="<%= url %>" style="<%= @button_style %>" target="_blank"><%= text %></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table border="0" cellspacing="0" cellpadding="0" dir="ltr">
+            <tbody>
+                <tr>
+                    <td align="center" valign="top" style="padding-top:20px;">
+                        <p style="<%= @font %>">
+                        <small>
+                        <i>
+                        Si el link no funciona, copie y pegue la siguiente dirección URL en su navegador web: <br>
+                        <u><%= url %></u>
+                        </i>
+                        </small>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </td>
+</tr>

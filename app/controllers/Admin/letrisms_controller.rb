@@ -15,24 +15,8 @@ class Admin::LetrismsController < ApplicationController
   def show
   end
 
-  # GET /letrisms/new
-  def new
-    @letrism = Letrism.new
-  end
-
   # GET /letrisms/1/edit
   def edit
-  end
-
-  # POST /letrisms
-  def create
-    @letrism = Letrism.new(letrism_params)
-
-    if @letrism.save
-      redirect_to admin_letrisms_url, notice: "Letrism ha sido creado."
-    else
-      render :new, status: :unprocessable_entity
-    end
   end
 
   # PATCH/PUT /letrisms/1

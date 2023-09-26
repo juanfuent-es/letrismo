@@ -8,6 +8,14 @@
             <% resource.errors.full_messages.each do |name, msg| %>
               <li><%= msg %></li>
             <% end %>
+            <% flash.each do |key, value| %>
+                <li><%= value %></li>
+            <% end %>
+            <%
+              flash.delete(:notice)
+              flash.discard
+              flash.clear
+            %>
           </ul>
         </div>
       </div>

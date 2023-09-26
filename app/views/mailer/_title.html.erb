@@ -1,0 +1,10 @@
+<%
+color = "color:#FFF;"
+font_size = "font-size:30px;"
+@font_title = "#{@fontfamily}#{color}#{font_size}font-style:normal;font-weight:600;line-height:42px;letter-spacing:normal;margin:0;padding:0;text-align:center";
+%>
+<tr>
+    <td align="center" valign="top" bgcolor="<%= @foreground %>" style="padding:20px;">
+        <h1 style="<%= @font_title %>"><%= title.html_safe %></h1>
+    </td>
+</tr>

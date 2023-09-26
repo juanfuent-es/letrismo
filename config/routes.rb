@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   
   # App  
   root "static_pages#show"
+  get "mail" => "mailer#mail"
   get ':lang' => 'static_pages#show', as: :home
   get ':lang/:slug' => 'static_pages#show', as: :page # Dynamic by slug, instead of next routes
 

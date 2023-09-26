@@ -1,0 +1,6 @@
+<% content_for :header do %>
+Hola {UserName}, Tienes un mensaje
+<% end %>
+<%= render "mailer/title", title: "Hola Usuario,</br>Tienes un mensaje" %>
+<%= render "mailer/text", text: "Este es un mensaje Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque molestias nam accusamus, nesciunt suscipit maiores quam veritatis, facere doloribus ut minima voluptas illo amet deserunt repudiandae dignissimos quis. Fugit, aliquam!" %>
+<%= render "mailer/button", text: "Link cara de botón", url: @domain %>
