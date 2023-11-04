@@ -56,10 +56,4 @@ module ApplicationHelper
 		return keys.empty? ? "" : ""
 	end
 
-	# vite
-	def ui_translations
-		translations = {current: I18n.t('.')[:vue]}
-		translations.to_json.html_safe
-	end
-
 end

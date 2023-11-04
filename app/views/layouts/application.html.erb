@@ -19,21 +19,13 @@
     <%= render "shared/json_ld/provider" %>
     }
     </script>
-    <script>
-      const TRANSLATIONS = <%= ui_translations %>;
-      const I18n = {
-        prefix: '<%= @lang == I18n.default_locale ? "" : "#{@lang}/" %>',
-        locale: '<%= @lang %>',
-        availableLocales: <%= raw(I18n.available_locales.map {|loc| loc.to_s}) %>
-      }
-    </script>
     <%= vite_client_tag %>
-    <%= vite_javascript_tag 'application', defer: true %>
   </head>
   <body>
     <%= render "shared/preloader" %>
     <main class="pb-20 md:pb-16">
       <%= yield %>
     </main>
+    <%= vite_javascript_tag 'application', defer: true %>
   </body>
 </html>

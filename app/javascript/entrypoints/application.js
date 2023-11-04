@@ -1,27 +1,14 @@
-import Axios from "axios"
+import Layout from "../layout"
 
-import { createApp } from "vue"
-import { createPinia } from 'pinia'
-import { createI18n } from 'vue-i18n'
+class App extends Layout {
+    constructor() {
+        super()
+    }
+    
+    loaded() {
+        this.preloader.hide()
+    }
 
-/*
-API
-Needs implement authentication methods
- */
-// import { createApi } from '@/app/plugins/api'
-// const Api = createApi({ handler: Axios })
+}
 
-import Router from '@/app/routes.js'
-import Layout from "@/app/Layout.vue"
-
-const I18n = createI18n({ locale: 'current', messages: TRANSLATIONS })
-const app = createApp(Layout)
-
-const Pinia = createPinia()
-Pinia.use(({ store }) => { store.axios = Axios })
-
-app.use(Router)
-    .use(Pinia )
-    .use(I18n)
-    // .use(Api)
-    .mount("body")
+const _app = new App()
