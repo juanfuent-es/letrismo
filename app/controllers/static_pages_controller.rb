@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
   end
 
   def gallery
-  	@letrisms = Letrism.where(gallery: true) #.paginate(page: params[:page])
+  	@letrisms = Letrism.where(gallery: true).paginate(page: params[:page])
   end
 
   def manifest

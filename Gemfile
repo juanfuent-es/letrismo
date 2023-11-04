@@ -51,6 +51,7 @@ gem 'rmagick'
 # Catch errors
 gem "sentry-ruby"
 gem "sentry-rails"
+gem "will_paginate"
 
 # Optimize html
 gem "htmlcompressor"

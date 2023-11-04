@@ -12,7 +12,7 @@
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
         <%= link_to t(:gallery), @lang == 'en' ? gallery_path(lang: @lang) : galeria_path(lang: @lang), class: "font-semibold leading-6 opacity-50", title: t(:gallery) %>
-        <%= link_to t(:manifest), @lang == 'en' ? gallery_path(lang: @lang) : galeria_path(lang: @lang), class: "font-semibold leading-6 opacity-50", title: t(:manifest) %>
+        <%= link_to t(:manifest), @lang == 'en' ? manifest_path(lang: @lang) : manifiesto_path(lang: @lang), class: "font-semibold leading-6 opacity-50", title: t(:manifest) %>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="/login" class="font-semibold leading-6">Log in <span aria-hidden="true">&rarr;</span></a>
@@ -33,7 +33,7 @@
           <div class="-my-6 divide-y divide-gray-500/25">
             <div class="space-y-2 py-6">
                 <%= link_to t(:gallery), @lang == 'en' ? gallery_path(lang: @lang) : galeria_path(lang: @lang), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800", title: t(:gallery) %>
-                <%= link_to t(:manifest), @lang == 'en' ? gallery_path(lang: @lang) : galeria_path(lang: @lang), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800", title: t(:manifest) %>
+                <%= link_to t(:manifest), @lang == 'en' ? manifest_path(lang: @lang) : manifiesto_path(lang: @lang), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800", title: t(:manifest) %>
             </div>
             <div class="py-6">
               <a href="/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">{{ $t('log_in') }}</a>

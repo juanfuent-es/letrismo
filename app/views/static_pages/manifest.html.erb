@@ -1,46 +1,39 @@
-<div class="container" id="manifestoContainer">
-	<div class="logoContainer intro-item"><%= image_tag("equills.svg") %></div>
-	<div>
-		<p class="intro-item">La forma de las letras siempre ha estado definida por las herramientas que se usan para escribirlas.</p>
-		<p class="intro-item">La última vez que vimos surgir nuevas formas en las letras y una estética reconocible fue en los 70 's con el surgimiento del graffiti contemporáneo que utilizó la pared como sustrato y la pintura en aerosol como herramienta.</p>
-		<p class="intro-item">Desde entonces, software avanzado como Photoshop y Procreate se han empeñado en darnos las posibilidades para replicar lo más fielmente posible todas las herramientas de escritura análogas imaginables. Y si bien agregan algunos atributos como las capas, edición de color, flujo inagotable de tinta y un historial de acciones susceptibles de ser deshechas, la mera imitación implica un alto a la experimentación y por consecuencia a la evolución. Las herramientas que tenemos a la mano hoy en día dejan las limitantes físicas para ubicarse más cercanas al mundo de las ideas.</p>
-		<p class="intro-item">Mediante el uso de lenguajes de programación Andrés Ochoa, Andrew Alva, Eli Ramos y Juan Fuentes, nos encontramos desarrollando herramientas de escritura digitales que buscan dejar marcas imposibles de crear en el mundo físico. Las hemos denominado "eQuills" y en este sitio web podrás utilizarlas. Estamos ansiosos de que letristas alrededor del mundo las usen, escuchar sus opiniones y ver las nuevas e increíbles formas que resultarán de esta “nueva caligrafía”.</p>
-		<section class="intro-item signatureContainer">
-			<%= image_tag("letrismo-logo.svg", :class => "signature") %>
-		</section>
-	</div>
-	<div class="container intro-item" id="socialMedia">
-		<div class="socialBox">
-			<a href="https://www.instagram.com/typebrain" target="_blank">
-				<div class="svgContainer">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>letrismo-social</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><path d="M14.32,6.36a1.87,1.87,0,0,0-1.05-1.05A12.3,12.3,0,0,0,10,5.08a12.2,12.2,0,0,0-3.26.22A1.87,1.87,0,0,0,5.68,6.36a12.3,12.3,0,0,0-.22,3.26,12.2,12.2,0,0,0,.22,3.26,1.87,1.87,0,0,0,1.05,1.05,12.3,12.3,0,0,0,3.26.22,12.2,12.2,0,0,0,3.26-.22,1.87,1.87,0,0,0,1.05-1.05,12.2,12.2,0,0,0,.22-3.26A12.2,12.2,0,0,0,14.32,6.36ZM10,12.46a2.84,2.84,0,1,1,2.84-2.84A2.83,2.83,0,0,1,10,12.46Zm3-5.13a.66.66,0,1,1,.66-.66A.66.66,0,0,1,13,7.33Z" style="fill:#151512"/><path d="M0,0V20H20V0ZM15.5,11.91a3.3,3.3,0,0,1-.89,2.32,3.28,3.28,0,0,1-2.32.89c-.91.05-3.65.05-4.57,0a3.3,3.3,0,0,1-2.32-.89,3.28,3.28,0,0,1-.89-2.32c-.05-.91-.05-3.65,0-4.57A3.29,3.29,0,0,1,5.4,5a3.29,3.29,0,0,1,2.32-.89c.91-.05,3.65-.05,4.57,0A3.3,3.3,0,0,1,14.6,5a3.28,3.28,0,0,1,.89,2.32C15.55,8.25,15.55,11,15.5,11.91Z" style="fill:#151512"/><circle cx="10" cy="9.62" r="1.85" style="fill:#151512"/></g></g></svg>
+<turbo-frame id="turbo-frame">
+	<article class="px-6 py-24 sm:py-32 lg:px-8">
+		<div class="mx-auto max-w-2xl text-center">
+			<header class="logoContainer intro-item"><%= image_tag("equills.svg") %></header>
+			<h1 class="text-center"><%= @page.title %></h1>
+			<div class="py-6"><%= @page.content.try(:html_safe) %></div>
+			<footer class="w-full">
+				<%= image_tag("letrismo-logo.svg", :class => "signature") %>
+
+				<div class="container intro-item" id="socialMedia">
+					<div class="socialBox">
+						<a href="https://www.instagram.com/typebrain" target="_blank">
+							<i class="fa-brands fa-instagram"></i>
+							<p>Andres Ochoa</p>
+						</a>
+					</div>
+					<div class="socialBox">
+						<a href="https://www.instagram.com/andrew__alva/" target="_blank">
+							<i class="fa-brands fa-instagram"></i>
+							<p>Andrew Alva</p>
+						</a>
+					</div>
+					<div class="socialBox">
+						<a href="https://www.instagram.com/coderemo_/" target="_blank">
+							<i class="fa-brands fa-instagram"></i>
+							<p>Eli Ramos</p>
+						</a>
+					</div>
+					<div class="socialBox">
+						<a href="https://www.instagram.com/juanfuent.es/" target="_blank">
+							<i class="fa-brands fa-instagram"></i>
+							<p>Juan Fuentes</p>
+						</a>
+					</div>
 				</div>
-				<p>Andres Ochoa</p>
-			</a>
+			</footer>
 		</div>
-		<div class="socialBox">
-			<a href="https://www.instagram.com/andrew__alva/" target="_blank">
-				<div class="svgContainer">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>letrismo-social</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><path d="M14.32,6.36a1.87,1.87,0,0,0-1.05-1.05A12.3,12.3,0,0,0,10,5.08a12.2,12.2,0,0,0-3.26.22A1.87,1.87,0,0,0,5.68,6.36a12.3,12.3,0,0,0-.22,3.26,12.2,12.2,0,0,0,.22,3.26,1.87,1.87,0,0,0,1.05,1.05,12.3,12.3,0,0,0,3.26.22,12.2,12.2,0,0,0,3.26-.22,1.87,1.87,0,0,0,1.05-1.05,12.2,12.2,0,0,0,.22-3.26A12.2,12.2,0,0,0,14.32,6.36ZM10,12.46a2.84,2.84,0,1,1,2.84-2.84A2.83,2.83,0,0,1,10,12.46Zm3-5.13a.66.66,0,1,1,.66-.66A.66.66,0,0,1,13,7.33Z" style="fill:#151512"/><path d="M0,0V20H20V0ZM15.5,11.91a3.3,3.3,0,0,1-.89,2.32,3.28,3.28,0,0,1-2.32.89c-.91.05-3.65.05-4.57,0a3.3,3.3,0,0,1-2.32-.89,3.28,3.28,0,0,1-.89-2.32c-.05-.91-.05-3.65,0-4.57A3.29,3.29,0,0,1,5.4,5a3.29,3.29,0,0,1,2.32-.89c.91-.05,3.65-.05,4.57,0A3.3,3.3,0,0,1,14.6,5a3.28,3.28,0,0,1,.89,2.32C15.55,8.25,15.55,11,15.5,11.91Z" style="fill:#151512"/><circle cx="10" cy="9.62" r="1.85" style="fill:#151512"/></g></g></svg>
-				</div>
-				<p>Andrew Alva</p>
-			</a>
-		</div>
-		<div class="socialBox">
-			<a href="https://www.instagram.com/coderemo_/" target="_blank">
-				<div class="svgContainer">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>letrismo-social</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><path d="M14.32,6.36a1.87,1.87,0,0,0-1.05-1.05A12.3,12.3,0,0,0,10,5.08a12.2,12.2,0,0,0-3.26.22A1.87,1.87,0,0,0,5.68,6.36a12.3,12.3,0,0,0-.22,3.26,12.2,12.2,0,0,0,.22,3.26,1.87,1.87,0,0,0,1.05,1.05,12.3,12.3,0,0,0,3.26.22,12.2,12.2,0,0,0,3.26-.22,1.87,1.87,0,0,0,1.05-1.05,12.2,12.2,0,0,0,.22-3.26A12.2,12.2,0,0,0,14.32,6.36ZM10,12.46a2.84,2.84,0,1,1,2.84-2.84A2.83,2.83,0,0,1,10,12.46Zm3-5.13a.66.66,0,1,1,.66-.66A.66.66,0,0,1,13,7.33Z" style="fill:#151512"/><path d="M0,0V20H20V0ZM15.5,11.91a3.3,3.3,0,0,1-.89,2.32,3.28,3.28,0,0,1-2.32.89c-.91.05-3.65.05-4.57,0a3.3,3.3,0,0,1-2.32-.89,3.28,3.28,0,0,1-.89-2.32c-.05-.91-.05-3.65,0-4.57A3.29,3.29,0,0,1,5.4,5a3.29,3.29,0,0,1,2.32-.89c.91-.05,3.65-.05,4.57,0A3.3,3.3,0,0,1,14.6,5a3.28,3.28,0,0,1,.89,2.32C15.55,8.25,15.55,11,15.5,11.91Z" style="fill:#151512"/><circle cx="10" cy="9.62" r="1.85" style="fill:#151512"/></g></g></svg>
-				</div>
-				<p>Eli Ramos</p>
-			</a>
-		</div>
-		<div class="socialBox">
-			<a href="https://www.instagram.com/juanfuent.es/" target="_blank">
-				<div class="svgContainer">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>letrismo-social</title><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><path d="M14.32,6.36a1.87,1.87,0,0,0-1.05-1.05A12.3,12.3,0,0,0,10,5.08a12.2,12.2,0,0,0-3.26.22A1.87,1.87,0,0,0,5.68,6.36a12.3,12.3,0,0,0-.22,3.26,12.2,12.2,0,0,0,.22,3.26,1.87,1.87,0,0,0,1.05,1.05,12.3,12.3,0,0,0,3.26.22,12.2,12.2,0,0,0,3.26-.22,1.87,1.87,0,0,0,1.05-1.05,12.2,12.2,0,0,0,.22-3.26A12.2,12.2,0,0,0,14.32,6.36ZM10,12.46a2.84,2.84,0,1,1,2.84-2.84A2.83,2.83,0,0,1,10,12.46Zm3-5.13a.66.66,0,1,1,.66-.66A.66.66,0,0,1,13,7.33Z" style="fill:#151512"/><path d="M0,0V20H20V0ZM15.5,11.91a3.3,3.3,0,0,1-.89,2.32,3.28,3.28,0,0,1-2.32.89c-.91.05-3.65.05-4.57,0a3.3,3.3,0,0,1-2.32-.89,3.28,3.28,0,0,1-.89-2.32c-.05-.91-.05-3.65,0-4.57A3.29,3.29,0,0,1,5.4,5a3.29,3.29,0,0,1,2.32-.89c.91-.05,3.65-.05,4.57,0A3.3,3.3,0,0,1,14.6,5a3.28,3.28,0,0,1,.89,2.32C15.55,8.25,15.55,11,15.5,11.91Z" style="fill:#151512"/><circle cx="10" cy="9.62" r="1.85" style="fill:#151512"/></g></g></svg>
-				</div>
-				<p>Juan Fuentes</p>
-			</a>
-		</div>
-	</div>
-</div>
+	</article>
+</turbo-frame>
