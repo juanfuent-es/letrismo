@@ -44,9 +44,17 @@ Rails.application.routes.draw do
   match 'offline', via: :all, to: 'errors#offline', as: :offline
   
   # App  
-  root "static_pages#show"
-  get "mail" => "mailer#mail"
-  get ':lang' => 'static_pages#show', as: :home
+  root "static_pages#home"
+  get ':lang' => 'static_pages#home', as: :home
+  #
+  get ':lang/terms-conditions' => 'static_pages#terms', as: :terms
+  get ':lang/terminos-y-condiciones' => 'static_pages#terms', as: :terminos
+  #
+  get ':lang/privacy-notice' => 'static_pages#privacy', as: :privacy
+  get ':lang/aviso-de-privacidad' => 'static_pages#privacy', as: :privacidad
+  
+  # get "mail" => "mailer#mail"
+  # get ':lang' => 'static_pages#show', as: :home
   get ':lang/:slug' => 'static_pages#show', as: :page # Dynamic by slug, instead of next routes
 
   resources :letrisms, :equills

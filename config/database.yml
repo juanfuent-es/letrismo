@@ -2,7 +2,7 @@ development:
   adapter: sqlite3
   pool: 5
   timeout: 5000
-  database: db/equills_dev.sqlite3
+  database: db/equills.sqlite3
 
 test:
   adapter: sqlite3
