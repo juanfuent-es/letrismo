@@ -17,7 +17,7 @@
         </router-link>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="/login" class="font-semibold leading-6">Log in <span aria-hidden="true">&rarr;</span></a>
+        <a href="/<%= @lang %>/sign_in" class="font-semibold leading-6">Log in <span aria-hidden="true">&rarr;</span></a>
       </div>
     </nav>
     <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
@@ -39,7 +39,7 @@
               </router-link>
             </div>
             <div class="py-6">
-              <a href="/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">{{ $t('log_in') }}</a>
+              <a href="/<%= @lang %>/sign_in" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">{{ $t('log_in') }}</a>
             </div>
           </div>
         </div>

@@ -1,9 +1,12 @@
-<div class="container" id="container">
-  <div class="logoContainer intro-item"><%= image_tag("equills.svg") %></div>
-  <div class="titleContainer">
-    <h1>Galería</h1>
-  </div>
-  <div id="containerGrid">
+<turbo-frame id="turbo-frame">
+  <article class="px-6 py-24 sm:py-32 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <header class="w-full text-center"><%= image_tag("equills.svg") %></header>
+      <h1 class="text-center"><%= @page.title %></h1>
+      <div class="py-6"><%= @page.content.try(:html_safe) %></div>
+    </div>
+  </article>
+  <section class="w-full">
     <ul>
       <% @letrisms.each do |letrism| %>
       <li>
@@ -14,8 +17,8 @@
       </li>
       <% end %>
     </ul>
-  </div>
-</div>
-<footer id="pagination-container">
-	<%= will_paginate @letrisms %>
-</footer>
+    <footer class="w-full">
+      <%= will_paginate @letrisms %>
+    </footer>
+  </section>
+</turbo-frame>

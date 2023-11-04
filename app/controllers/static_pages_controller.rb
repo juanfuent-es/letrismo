@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
   end
 
   def gallery
+    @page = @pages.find_by_slug(@lang == "en" ? 'gallery' : 'galeria')
   	@letrisms = Letrism.where(gallery: true).paginate(page: params[:page])
   end
 
