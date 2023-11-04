@@ -1,3 +1,5 @@
+import "@hotwired/turbo-rails"
+
 export default class Page {
     constructor() {
         this.turbo()

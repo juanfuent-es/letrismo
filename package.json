@@ -2,6 +2,7 @@
   "name": "app",
   "private": "true",
   "dependencies": {
+    "@hotwired/turbo-rails": "^7.3.0",
     "@rails/ujs": "^7.0.4-3",
     "@studio-freight/lenis": "^1.0.16",
     "@tailwindcss/aspect-ratio": "^0.4.2",
