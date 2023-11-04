@@ -5,10 +5,10 @@
 	$ git clone https://github.com/juanfuent-es/letrismo.git
 	$ cd letrismo
 	$ bundle install
-	$ npm install
 	$ yarn install
 	$ rake db:create
 	$ rake db:migrate
+	$ rake db:seed
 	$ rails s
 ```
 * (Asegurate de haber iniciado un server con mysql antes de correr `rails s`. El comando para hacerlo en mac es `mysql.server start`

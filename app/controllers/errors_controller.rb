@@ -32,7 +32,7 @@ class ErrorsController < ApplicationController
   private
 
   def set_pages
-    lang = cookies[:lang] ? cookies[:lang] : 'en'
+    lang = cookies[:lang] ? cookies[:lang] : 'es'
     @pages = Page.where(category: "errors", lang: lang)
   end
 

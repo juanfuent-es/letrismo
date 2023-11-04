@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def render_not_found
-		lang = cookies[:lang] ? cookies[:lang] : 'en'
+		lang = cookies[:lang] ? cookies[:lang] : 'es'
     	@page = Page.where(category: "errors", lang: lang, slug: "404").first
 		render template: 'errors/not_found', status: 404, layout: 'errors'
 	end

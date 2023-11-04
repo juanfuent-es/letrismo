@@ -19,6 +19,10 @@ class StaticPagesController < ApplicationController
     @page = @pages.find_by_slug(@lang == "en" ? 'manifest' : 'manifiesto')
   end
   
+  def contact
+    @page = @pages.find_by_slug(@lang == "en" ? 'contact' : 'contacto')
+  end
+  
   def terms
     @page = @pages.find_by_slug(@lang == "en" ? 'terms-conditions' : 'terminos-y-condiciones')
   end
