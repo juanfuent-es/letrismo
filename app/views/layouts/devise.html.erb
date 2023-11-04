@@ -6,6 +6,7 @@
     <%= render "shared/tag_manager" %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <%= render "shared/metadata" %>
     <%= render "shared/favicons" %>
     <%= csrf_meta_tags %>
@@ -19,7 +20,6 @@
     }
     </script>
     <%= vite_client_tag %>
-    <%= vite_javascript_tag 'devise', defer: true %>
   </head>
   <body class="text-white">
     <%= render "shared/preloader" %>
@@ -37,5 +37,6 @@
           alt="Letrismo por Typebrain" />
       </footer>
     </main>
+    <%= vite_javascript_tag 'devise', defer: true %>
   </body>
 </html>

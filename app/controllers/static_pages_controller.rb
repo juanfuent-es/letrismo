@@ -11,9 +11,13 @@ class StaticPagesController < ApplicationController
   end
 
   def gallery
-  	@letrisms = Letrism.where(gallery: true).paginate(page: params[:page])
+  	@letrisms = Letrism.where(gallery: true) #.paginate(page: params[:page])
   end
 
+  def manifest
+    @page = @pages.find_by_slug(@lang == "en" ? 'manifest' : 'manifiesto')
+  end
+  
   def terms
     @page = @pages.find_by_slug(@lang == "en" ? 'terms-conditions' : 'terminos-y-condiciones')
   end

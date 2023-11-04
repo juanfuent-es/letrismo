@@ -46,16 +46,20 @@ Rails.application.routes.draw do
   # App  
   root "static_pages#home"
   get ':lang' => 'static_pages#home', as: :home
-  #
+  #en
+  get ':lang/gallery' => 'static_pages#gallery', as: :gallery
+  get ':lang/manifest' => 'static_pages#manifest', as: :manifest
   get ':lang/terms-conditions' => 'static_pages#terms', as: :terms
-  get ':lang/terminos-y-condiciones' => 'static_pages#terms', as: :terminos
-  #
   get ':lang/privacy-notice' => 'static_pages#privacy', as: :privacy
+  #es
+  get ':lang/galeria' => 'static_pages#galeria', as: :galeria
+  get ':lang/manifiesto' => 'static_pages#manifiesto', as: :manifiesto
+  get ':lang/terminos-y-condiciones' => 'static_pages#terms', as: :terminos
   get ':lang/aviso-de-privacidad' => 'static_pages#privacy', as: :privacidad
   
   # get "mail" => "mailer#mail"
   # get ':lang' => 'static_pages#show', as: :home
-  get ':lang/:slug' => 'static_pages#show', as: :page # Dynamic by slug, instead of next routes
+  # get ':lang/:slug' => 'static_pages#show', as: :page # Dynamic by slug, instead of next routes
 
   resources :letrisms, :equills
   
