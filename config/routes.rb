@@ -48,14 +48,14 @@ Rails.application.routes.draw do
   get ':lang' => 'static_pages#home', as: :home
   #en
   get ':lang/gallery' => 'static_pages#gallery', as: :gallery
-  get ':lang/manifest' => 'static_pages#manifest', as: :manifest
+  get ':lang/about' => 'static_pages#about', as: :about
   get ':lang/contact' => 'static_pages#contact', as: :contact
   get ':lang/terms-conditions' => 'static_pages#terms', as: :terms
   get ':lang/privacy-notice' => 'static_pages#privacy', as: :privacy
   #es
   get ':lang/galeria' => 'static_pages#gallery', as: :galeria
   get ':lang/contacto' => 'static_pages#contact', as: :contacto
-  get ':lang/manifiesto' => 'static_pages#manifest', as: :manifiesto
+  get ':lang/acerca-de' => 'static_pages#about', as: :acerca
   get ':lang/terminos-y-condiciones' => 'static_pages#terms', as: :terminos
   get ':lang/aviso-de-privacidad' => 'static_pages#privacy', as: :privacidad
   
