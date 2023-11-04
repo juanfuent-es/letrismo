@@ -1,34 +1,22 @@
-default: &default
-  adapter: mysql2
-  encoding: utf8mb4
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
-  port: 3306
-  username: root
+# default: &default
+#   adapter: mysql2
+#   encoding: utf8mb4
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
+#   port: 3306
+#   username: root
 
 # development:
-#   adapter: sqlite3
-#   pool: 5
-#   timeout: 5000
-#   database: db/equills.sqlite3
+#   <<: *default
+#   host: 127.0.0.1
+#   password: ''
+#   database: letrismo_dev
 
 development:
-  <<: *default
-  host: 127.0.0.1
-  password: ''
-  database: letrismo_dev
-
-# development:
-#   adapter: sqlite3
-#   pool: 5
-#   timeout: 5000
-#   database: db/equills_dev.sqlite3
-
-# test:
-#   adapter: sqlite3
-#   database: db/equills_test.sqlite3
-#   pool: 5
-#   timeout: 5000
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/equills_dev.sqlite3
 
 production:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
