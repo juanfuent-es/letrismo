@@ -31,10 +31,13 @@ class ApplicationController < ActionController::Base
 				render_not_found
 			end
 		end
+		cookies[:lang] = @lang
 		I18n.with_locale(@lang, &action)
 	end
 
 	def render_not_found
+		lang = cookies[:lang] ? cookies[:lang] : 'en'
+    	@page = Page.where(category: "errors", lang: lang, slug: "404").first
 		render template: 'errors/not_found', status: 404, layout: 'errors'
 	end
 
