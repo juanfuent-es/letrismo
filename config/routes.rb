@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, :letrisms, :equills, :pages
   end
+
+  # get ":lang/profile"
+  # get ":lang/update_password"
   
   # data
   get "manifest.json" => "site_info#manifest"
