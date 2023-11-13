@@ -10,6 +10,7 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 gem "sprockets-rails"
 
 # database: sqlite3 for dev. mysql2 for prod
+gem "pg"
 gem "mysql2"
 gem "sqlite3"
 

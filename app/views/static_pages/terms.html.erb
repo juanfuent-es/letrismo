@@ -1,7 +1,11 @@
 <turbo-frame id="turbo-frame">
   <article class="px-6 py-24 sm:py-32 lg:px-8">
-    <div class="mx-auto max-w-2xl text-center">
-      <h1 class="text-center"><%= @page.title %></h1>
+    <div class="mx-auto max-w-2xl text-left">
+      <h1>
+      <span class="text-gray-600 font-light">#<%= "-" * @page.title.length.to_i %>#</span>
+      <br><%= @page.title %><br>
+      <span class="text-gray-600 font-light">#<%= "-" * @page.title.length.to_i %>#</span>
+      </h1>
       <div class="py-6"><%= @page.content.try(:html_safe) %></div>
     </div>
   </article>

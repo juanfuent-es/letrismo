@@ -1,5 +1,5 @@
 body {
-    font-family: var(--font-family), var(--font-fallback);
+    font-family: var(--font-family);
     -webkit-text-size-adjust:none;
     -webkit-font-smoothing:subpixel-antialiased;
     -webkit-font-smoothing:antialiased;
@@ -7,7 +7,6 @@ body {
     -o-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
     text-rendering:optimizeLegibility; /*optimizeSpeed*/
-    @apply m-0 p-0;
 }
 
 .pixelated {

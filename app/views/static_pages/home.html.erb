@@ -1,14 +1,14 @@
 <turbo-frame id="turbo-frame">
   <div class="px-6 py-24 sm:py-32 lg:px-8">
-    <div class="mx-auto max-w-2xl text-center">
-      <div class="relative rounded-full px-4 py-1 text-sm leading-6 opacity-60 ring-1 ring-gray-800 hover:ring-gray-700 inline-block">
-        <p class="font-medium"><strong>Build with:</strong> <a href="https://vite-ruby.netlify.app/" target="_blank" class="text-red-600" title="Vite Ruby">Vite Ruby</a>, <a href="https://threejs.org/docs/index.html" title="three.js" target="_blank" class="text-blue-600">three.js</a></p>
+    <div class="mx-auto text-left max-w-2xl">
+      <div class="relative rounded-sm px-4 py-1 text-sm leading-6 opacity-60 ring-1 ring-gray-800 hover:ring-gray-700 inline-block">
+        <p class="font-medium"><strong>Build with:</strong> <a href="https://rubyonrails.org/" target="_blank" class="text-red-600" title="Ruby on Rails">Ruby on Rails</a>, <a href="https://p5js.org" title="p5.js" target="_blank" class="text-pink-600">p5.js</a></p>
       </div>
-      <h2 class="mt-2 text-4xl font-bold tracking-tight opacity-90 sm:text-6xl"><%= @page.title %></h2>
-      <div class="mt-6 text-lg leading-8 opacity-80"><%= @page.content.try(:html_safe) %></div>
+      <h2 class="mt-2 text-4xl font-normal tracking-tight opacity-90 sm:text-6xl">&lt;<%= @page.title %>/&gt;</h2>
+      <div class="mt-6 text-lg text-left leading-8 opacity-80"><%= @page.content.try(:html_safe) %></div>
       <footer class="w-full py-6">
-        <a href="#" class="btn mx-2" title="Get started">Get started</a>
-        <a href="#" class="link">Learn more <span aria-hidden="true">→</span></a>
+        <a href="#" class="btn mx-2" title="Get started">login()</a>
+        <a href="#" class="link">about()</a>
       </footer>
     </div>
   </div>

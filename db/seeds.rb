@@ -26,8 +26,8 @@ def create_page(category="static", lang="en", title="", slug="/", content="lorem
     end
 end
 
-User.all.delete_all
-Page.all.delete_all
+# User.all.delete_all
+# Page.all.delete_all
 
 create_admin('demo@admin.com', 'password')
 

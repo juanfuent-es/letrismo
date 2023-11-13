@@ -3,8 +3,8 @@
     --color: #0f0c0d;
     --black: #0f0c0d;
     --white: #FFFFFF;
-    --font-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-    --font-regular: var(--font-fallback);
+    --font-family: 'IBM Plex Mono', 'Consolas', 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', 'Monaco', 'Courier New', monospace;
+    --font-regular: var(--font-family);
     --white: #fff;
     --yellow: #ff0;
     --red: #f00;

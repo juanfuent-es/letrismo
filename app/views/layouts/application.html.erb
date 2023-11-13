@@ -22,13 +22,14 @@
     </script>
     <%= vite_client_tag %>
   </head>
-  <body>
+  <body class="bg-black text-white">
     <%= render "shared/preloader" %>
     <main class="pb-20 md:pb-16">
       <%= render "shared/header" %>
       <%= yield %>
     </main>
     <%= render "shared/footer" %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <%= vite_javascript_tag 'application', defer: true %>
   </body>
 </html>
