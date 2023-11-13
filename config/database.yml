@@ -27,6 +27,10 @@ development:
   # database: db/equills_dev.sqlite3
 
 production:
-  <<: *default
+  adapter: mysql2
+  encoding: utf8
+  timeout: 5000
+  port: 3306
+  username: root
   database: equills_production
   password: <%= ENV['db_password'] %>
