@@ -6,7 +6,66 @@
       <div class="card card-primary card-outline">
         <!-- .card-body/ -->
         <div class="card-body row">
-          
+          <div class="form-group col-md-12">
+            <%= f.label :name, "Name"  %>
+            <%= f.text_field :name, class: "form-control", placeholder: "name" %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :dificulty, "Dificulty"  %>
+            <%= f.text_field :dificulty, class: "form-control", placeholder: "dificulty" %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :icon, "Icon"  %>
+            <%= f.text_field :icon, class: "form-control", placeholder: "icon" %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :thumb, "Thumb"  %>
+            <%= f.text_field :thumb, class: "form-control", placeholder: "thumb" %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :preview, "Preview"  %>
+            <%= f.text_field :preview, class: "form-control", placeholder: "preview" %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :slug, "Slug"  %>
+            <%= f.text_field :slug, class: "form-control", placeholder: "slug" %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :family, "Family"  %>
+            <%= f.text_field :family, class: "form-control", placeholder: "family" %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :param_1, "Param 1"  %>
+            <%= f.text_field :param_1, class: "form-control", placeholder: "param_1" %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :param_2, "Param 2"  %>
+            <%= f.text_field :param_2, class: "form-control", placeholder: "param_2" %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :js, "js"  %>
+            <%= f.text_area :js, class: "form-control", placeholder: "js", rows: 5, cols: 25 %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :css, "css"  %>
+            <%= f.text_area :css, class: "form-control", placeholder: "css", rows: 5, cols: 25 %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :html, "html"  %>
+            <%= f.text_area :html, class: "form-control", placeholder: "html", rows: 5, cols: 25 %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :libraries, "Libraries"  %>
+            <%= f.text_area :libraries, class: "form-control", placeholder: "Libraries", rows: 5, cols: 25 %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :description, "Description"  %>
+            <%= f.text_area :description, class: "form-control", placeholder: "Description", rows: 5, cols: 25 %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :public, "Description"  %>
+            <%= f.check_box :public, class: "form-control form-control-sm" %>
+          </div>
         </div>
         <!-- /.card-body -->
         <!-- .card-footer/ -->

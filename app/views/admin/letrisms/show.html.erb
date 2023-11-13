@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1><%= "#{t(:detail)} de #{t(:letrism)}" %></h1>
+        <h1>Detalle de Letrismo</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right mt-2">
@@ -12,7 +12,7 @@
             <%= link_to t(:letrisms), admin_letrisms_path %>
           </li>
           <li class="breadcrumb-item active">
-            <%= "#{t(:detail)} de #{t(:letrism)}" %>
+            Detalle de Letrismo
           </li>
         </ol>
       </div>
@@ -26,16 +26,17 @@
   <div class="card card-primary card-outline">
     <header class="card-header">
       <%= link_to edit_admin_letrism_url(@letrism), class: "btn btn-outline-primary btn-sm" do %>
-        <i class="fas fa-pencil-alt"></i> Editar
+      <i class="fas fa-pencil-alt"></i> Editar
       <% end -%>
       <%= link_to admin_letrism_path(@letrism), class: "btn btn-outline-danger btn-sm float-right", method: :delete, data: { confirm: "¿Estás seguro de eliminar este #{t(:letrism)}?" } do %>
-        <i class="fa-solid fa-trash"></i> Eliminar
+      <i class="fa-solid fa-trash"></i> Eliminar
       <% end -%>
     </header>
     <div class="card-body">
       <div class="row">
         <div class="col-12">
-                  </div>
+          
+        </div>
       </div>
     </div>
     <!-- /.card-body -->
