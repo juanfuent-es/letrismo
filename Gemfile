@@ -10,9 +10,9 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 gem "sprockets-rails"
 
 # database: sqlite3 for dev. mysql2 for prod
-gem "pg"
+# gem "pg"
 gem "mysql2"
-gem "sqlite3"
+# gem "sqlite3"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
