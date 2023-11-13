@@ -1,24 +1,21 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# ruby "3.1.3"
-
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 # database: sqlite3 for dev. mysql2 for prod
-# gem "pg"
 gem "mysql2"
 # gem "sqlite3"
 gem 'escompress'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma"
 gem "faker"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
-
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem "cssbundling-rails"
 
