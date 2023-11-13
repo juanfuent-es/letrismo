@@ -28,5 +28,5 @@ development:
 
 production:
   <<: *default
-  database: letrismo_production
+  database: equills_production
   password: <%= ENV['db_password'] %>
