@@ -1,5 +1,5 @@
 <header>
-  <h1 class="mt-6 text-2xl font-bold leading-9 tracking-tight"><%= @page.title %></h1>
+  <h1 class="my-0 text-2xl font-bold leading-9 tracking-tight"><%= @page.title %></h1>
   <% if !@page.content.blank? %>
     <p class="mb-2 text-sm text-gray-500">
       <%= @page.content.try(:html_safe) %>

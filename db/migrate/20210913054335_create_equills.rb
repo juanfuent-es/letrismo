@@ -1,4 +1,4 @@
-class CreateEquills < ActiveRecord::Migration[6.0]
+class CreateEquills < ActiveRecord::Migration[7.0]
   def change
     create_table :equills do |t|
       t.string :name,       default: ""

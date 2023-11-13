@@ -21,9 +21,9 @@
     </script>
     <%= vite_client_tag %>
   </head>
-  <body class="text-white">
+  <body class="text-white bg-black">
     <%= render "shared/preloader" %>
-    <main class="pb-20 md:pb-16 min-h-full">
+    <main class="w-full min-h-full flex flex-col justify-between">
       <%= render "shared/header" %>
       <div class="flex min-h-full w-full">
         <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24 w-full md:w-5/12 z-10">
@@ -39,8 +39,8 @@
             alt="Letrismo por Typebrain" />
         </footer>
       </div>
+      <%= render "shared/footer" %>
     </main>
-    <%= render "shared/footer" %>
     <%= vite_javascript_tag 'devise', defer: true %>
   </body>
 </html>

@@ -12,7 +12,7 @@
 
   <%- if controller_name != 'sessions' %>
     <p>
-      <%= t("devise.shared.links.i_already_have_an_account") %>
+      <%= t("i_already_have_an_account") %>
       <%= link_to "/#{@lang}/sign_in", class: "link pt-1" do %>
         <%= t("login") %>
       <% end %>
@@ -23,7 +23,7 @@
   <p>
     <%= t(:not_a_member) %>
     <%= link_to "/#{@lang}/sign_up", class: "link pt-1" do %>
-    <%= t("devise.shared.links.sign_up") %>
+    <%= t("sign_up") %>
     <% end %>
   </p>
   <% end %>
@@ -31,7 +31,7 @@
   <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <p>
     <%= link_to "/#{@lang}/confirmation", class: "link pt-1" do %>
-    <%= t("devise.shared.links.didn_t_receive_confirmation_instructions") %>
+    <%= t("didn_t_receive_confirmation_instructions") %>
     <% end %>
   </p>
   <% end %>

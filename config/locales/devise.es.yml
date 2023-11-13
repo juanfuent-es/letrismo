@@ -1,4 +1,12 @@
 es:
+  i_already_have_an_account: ¿Ya tienes una cuenta?
+  back: Regresar
+  didn_t_receive_confirmation_instructions: "¿No ha recibido las instrucciones de confirmación?"
+  didn_t_receive_unlock_instructions: "¿No ha recibido instrucciones para desbloquear su cuenta?"
+  forgot_your_password: Olvidé mi contraseña
+  sign_in: Iniciar sesión
+  sign_in_with_provider: Iniciar sesión con %{provider}
+  sign_up: Crear Cuenta
   activerecord:
     attributes:
       user:
@@ -118,15 +126,6 @@ es:
       signed_in: Sesión iniciada.
       signed_out: Sesión finalizada.
     shared:
-      links:
-        i_already_have_an_account: ¿Ya tienes una cuenta?
-        back: Regresar
-        didn_t_receive_confirmation_instructions: "¿No ha recibido las instrucciones de confirmación?"
-        didn_t_receive_unlock_instructions: "¿No ha recibido instrucciones para desbloquear su cuenta?"
-        forgot_your_password: Olvidé mi contraseña
-        sign_in: Iniciar sesión
-        sign_in_with_provider: Iniciar sesión con %{provider}
-        sign_up: Crear Cuenta
       minimum_password_length:
         one: "(Mínimo %{count} caracter)"
         other: "(Minimo %{count} caracteres)"
