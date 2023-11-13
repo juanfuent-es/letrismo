@@ -1,7 +1,7 @@
 import Rails from "@rails/ujs"
-import Forms from "./admin/forms"
-import Pages from "./admin/pages"
-import Images from "./admin/images"
+import Forms from "../admin/forms"
+import Pages from "../admin/pages"
+import Images from "../admin/images"
 
 class Admin {
     constructor() {
