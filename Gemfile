@@ -7,8 +7,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-# gem "sprockets-rails"
-
+gem 'sprockets-rails'
 # database: sqlite3 for dev. mysql2 for prod
 # gem "pg"
 gem "mysql2"
