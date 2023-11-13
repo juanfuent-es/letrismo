@@ -12,7 +12,7 @@ gem 'sprockets-rails'
 # gem "pg"
 gem "mysql2"
 # gem "sqlite3"
-
+gem 'escompress'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma"
 gem "faker"
