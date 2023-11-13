@@ -7,7 +7,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+# gem "sprockets-rails"
 
 # database: sqlite3 for dev. mysql2 for prod
 # gem "pg"
@@ -15,7 +15,7 @@ gem "mysql2"
 # gem "sqlite3"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma"
 gem "faker"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
@@ -25,19 +25,13 @@ gem "cssbundling-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-gem 'vuejs-rails'
 gem "vite_rails", "~> 3.0"
-
 gem 'devise'
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
-
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
-
 # Read more: https://github.com/fnando/browser
 gem 'browser'
+gem "bootsnap" #, require: false
 
 # Image & Video processors
 # file uploader. Read more: https://github.com/carrierwaveuploader/carrierwave
@@ -45,7 +39,6 @@ gem 'browser'
 gem 'carrierwave'
 gem 'carrierwave-base64'
 gem 'carrierwave-imageoptimizer'
-gem 'streamio-ffmpeg'
 gem 'mini_magick'
 gem 'rmagick'
 
@@ -62,6 +55,4 @@ if RUBY_PLATFORM =~ /x86_64-linux/
 	gem 'mini_racer', platforms: :ruby
 end
 
-group :development, :test do
-  gem "web-console"
-end
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
